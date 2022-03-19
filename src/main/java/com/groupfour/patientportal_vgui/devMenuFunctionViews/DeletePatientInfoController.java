@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author Alexander
  */
-public class DeletePatientInfpController implements Initializable {
+public class DeletePatientInfoController implements Initializable {
 
     /**
      * Initializes the controller class.

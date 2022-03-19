@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 
 public class DevMenuController implements Initializable 
 {
-
+    //Initialize Buttons
     @FXML
     private Button buttonViewPatient;
     @FXML
@@ -31,10 +31,11 @@ public class DevMenuController implements Initializable
     @FXML
     private Button buttonQuitApp;
     
+    //Button Handler Methods
     @FXML
     private void handleButtonViewPatient() throws IOException
     {
-        switchToSecondary();
+        switchToViewPatient();
     }
     @FXML
     private void handlebuttonViewDoctor()
@@ -62,11 +63,15 @@ public class DevMenuController implements Initializable
         System.exit(0);
     }
     
+    //Switch Views Functions
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
-    
+    @FXML
+    private void switchToViewPatient() throws IOException {
+        App.setRoot("viewPatientInfo");
+    }
     
     
     /**
