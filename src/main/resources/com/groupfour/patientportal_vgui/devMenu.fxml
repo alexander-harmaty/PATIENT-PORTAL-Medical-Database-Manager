@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DevMenuController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.groupfour.patientportal_vgui.DevMenuController">
+   <children>
+      <Button fx:id="buttonViewPatient" layoutX="80.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#handleButtonViewPatient" text="View Patient Info" />
+      <Button fx:id="buttonViewDoctor" layoutX="80.0" layoutY="207.0" mnemonicParsing="false" onMouseReleased="#handlebuttonViewDoctor" text="View Doctor Info" />
+      <Button fx:id="buttonUpdatePatient" layoutX="220.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#handlebuttonUpdatePatient" text="Insert / Update Patient Info" />
+      <Button fx:id="buttonUpdateDoctor" layoutX="220.0" layoutY="207.0" mnemonicParsing="false" onMouseReleased="#handlebuttonUpdateDoctor" text="Insert / Update Doctor Info" />
+      <Button fx:id="buttonDeletePatient" layoutX="419.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#handlebuttonDeletePatient" text="Delete Patient Info" />
+      <Button fx:id="buttonQuitApp" layoutX="425.0" layoutY="207.0" mnemonicParsing="false" onMouseReleased="#handlebuttonQuitApp" text="Quit Application" />
+      <Text layoutX="118.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the developers menu!" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="171.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click a button below to select a Sprint 1 function" textAlignment="CENTER" />
+   </children>
 </AnchorPane>
