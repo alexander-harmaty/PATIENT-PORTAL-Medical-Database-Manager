@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -26,7 +27,9 @@
       <Text layoutX="190.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID:" />
       <TextField fx:id="textFieldPatientInsuranceCo" layoutX="263.0" layoutY="361.0" />
       <Text layoutX="189.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Co:" />
-      <Text layoutX="184.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a patient ID and click search to view." textAlignment="CENTER" />
+      <Text layoutX="184.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a patient ID and click search to view." textAlignment="CENTER" />
       <Button fx:id="buttonMainMenu" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Back" />
+      <Button fx:id="buttonClear" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#handleButtonClear" text="Clear" />
+      <Label fx:id="labelErrorText" alignment="CENTER" layoutX="217.0" layoutY="79.0" textAlignment="CENTER" textFill="#cd1c1c" />
    </children>
 </AnchorPane>
