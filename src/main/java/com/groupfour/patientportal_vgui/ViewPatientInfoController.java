@@ -19,8 +19,15 @@ import javafx.scene.control.TextField;
  *
  * @author Alexander
  */
+
 public class ViewPatientInfoController implements Initializable 
 {
+    //ALEX: there should be a better way to pass in server user & pass
+    String user = "pportal";
+    String pwd = "admin";
+    
+    int patientID;
+    
     @FXML
     private Button buttonViewPatientSearch;
     @FXML
@@ -44,33 +51,62 @@ public class ViewPatientInfoController implements Initializable
     @FXML
     private TextField textFieldPatientInsuranceCo;
     
-    String patientID;
-    
     @FXML
     private void handleViewPatientSearchButton()
     {
-//        try
-//        {
-//            patientID = textFieldPatientID.getText();
-//            if (patientID.length() > 5)
-//            {
-//                //throw custom exception and break
-//            }
-//            
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
-//            Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
-//                    + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
-//            Statement st = con.createStatement();
-//            ResultSet rs = st.executeQuery("SELECT * FROM PATIENT WHERE PatientID="+patientID+";");
-//        }
-//        catch (NumberFormatException e)
-//        {
-//            labelErrorText.setText("ONLY use numbers! Please try again.");
-//        }
-//        catch (Exception e)
-//        {
-//            labelErrorText.setText("UNKNOWN ERROR! Please try again.");
-//        }
+        try
+        {
+            patientID = Integer.parseInt(textFieldPatientID.getText());
+            
+            if (String.valueOf(textFieldPatientID.getText()).length() == 5)
+            {
+                labelErrorText.setText("");
+
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
+                Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
+                        + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM PATIENT WHERE PatientID="+patientID+";");
+
+                while (rs.next()) 
+                {   //displays data. there must be a simpler way to implement
+
+                    textFieldPatientID.setText(String.valueOf(rs.getInt("PatientID")));
+                    //System.out.println("PATIENT ID: " + rs.getInt("PatientID"));
+
+                    textFieldPatientFName.setText(rs.getString("PFirstName"));
+                    //System.out.println("FIRST NAME: " + rs.getString("PFirstName"));
+
+                    textFieldPatientLName.setText(rs.getString("PLastName"));
+                    //System.out.println("LAST NAME: " + rs.getString("PLastName"));
+
+                    textFieldPatientPhone.setText(rs.getString("PPhone"));
+                    //System.out.println("PHONE NUMBER: " + rs.getString("PPhone"));
+
+                    textFieldPatientEmail.setText(rs.getString("PEmail"));
+                    //System.out.println("EMAIL: " + rs.getString("PEmail"));
+
+                    textFieldPatientInsuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
+                    //System.out.println("INSURANCE ID: " + rs.getInt("InsuranceID"));
+
+                    textFieldPatientInsuranceCo.setText(rs.getString("Insurance"));
+                    //System.out.println("INSURANCE COMPANY: " + rs.getString("Insurance"));
+                }
+            }
+            else
+            {
+                //ALEX: Maybe throw a custom exception for this?
+                labelErrorText.setText("ONLY use 5 numbers! Please try again."); 
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            labelErrorText.setText("ONLY use numbers! Please try again.");
+        }
+        catch (Exception e)
+        {
+            labelErrorText.setText("UNKNOWN ERROR! Please try again.");
+        }
     }
     @FXML
     private void handleButtonClear()
@@ -83,7 +119,7 @@ public class ViewPatientInfoController implements Initializable
         this.textFieldPatientInsuranceID.clear();
         this.textFieldPatientInsuranceCo.clear();
         this.labelErrorText.setText("");
-        patientID = "";
+        patientID = 0;
     }
     @FXML
     private void handleMainMenuButton() throws IOException

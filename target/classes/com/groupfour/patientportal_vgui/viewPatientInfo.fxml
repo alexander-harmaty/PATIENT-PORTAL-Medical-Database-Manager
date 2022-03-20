@@ -14,7 +14,7 @@
             <Font size="24.0" />
          </font></Text>
       <TextField fx:id="textFieldPatientID" layoutX="195.0" layoutY="104.0" promptText="Patiend ID" />
-      <Button fx:id="buttonViewPatientSearch" layoutX="359.0" layoutY="104.0" mnemonicParsing="false" text="Search" />
+      <Button fx:id="buttonViewPatientSearch" layoutX="359.0" layoutY="104.0" mnemonicParsing="false" onMouseReleased="#handleViewPatientSearchButton" text="Search" />
       <TextField fx:id="textFieldPatientFName" layoutX="262.0" layoutY="154.0" />
       <Text layoutX="195.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
       <TextField fx:id="textFieldPatientLName" layoutX="262.0" layoutY="194.0" />
