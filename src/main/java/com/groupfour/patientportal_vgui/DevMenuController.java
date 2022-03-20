@@ -63,13 +63,9 @@ public class DevMenuController implements Initializable
         System.exit(0);
     }
     
-    //Switch Views Functions
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-    @FXML
-    private void switchToViewPatient() throws IOException {
+    private void switchToViewPatient() throws IOException 
+    {
         App.setRoot("viewPatientInfo");
     }
     
