@@ -20,43 +20,17 @@ public class DevMenuController implements Initializable
     //Initialize Buttons
     @FXML
     private Button buttonViewPatient;
-    @FXML
-    private Button buttonViewDoctor;
-    @FXML
-    private Button buttonUpdatePatient;
-    @FXML
-    private Button buttonUpdateDoctor;
-    @FXML
-    private Button buttonDeletePatient;
+    
     @FXML
     private Button buttonQuitApp;
     
     //Button Handler Methods
     @FXML
-    private void handleButtonViewPatient() throws IOException
+    private void handlebuttonViewPatient() throws IOException
     {
         switchToViewPatient();
     }
-    @FXML
-    private void handlebuttonViewDoctor()
-    {
-        
-    }
-    @FXML
-    private void handlebuttonUpdatePatient()
-    {
-        
-    }
-    @FXML
-    private void handlebuttonUpdateDoctor()
-    {
-        
-    }
-    @FXML
-    private void handlebuttonDeletePatient()
-    {
-        
-    }
+    
     @FXML
     private void handlebuttonQuitApp()
     {

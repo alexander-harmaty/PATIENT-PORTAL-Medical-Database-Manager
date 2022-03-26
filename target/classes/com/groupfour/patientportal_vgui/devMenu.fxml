@@ -7,11 +7,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DevMenuController">
    <children>
-      <Button fx:id="buttonViewPatient" layoutX="80.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#handleButtonViewPatient" text="View Patient Info" />
-      <Button fx:id="buttonViewDoctor" layoutX="80.0" layoutY="207.0" mnemonicParsing="false" onMouseReleased="#handlebuttonViewDoctor" text="View Doctor Info" />
-      <Button fx:id="buttonUpdatePatient" layoutX="220.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#handlebuttonUpdatePatient" text="Insert / Update Patient Info" />
-      <Button fx:id="buttonUpdateDoctor" layoutX="220.0" layoutY="207.0" mnemonicParsing="false" onMouseReleased="#handlebuttonUpdateDoctor" text="Insert / Update Doctor Info" />
-      <Button fx:id="buttonDeletePatient" layoutX="419.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#handlebuttonDeletePatient" text="Delete Patient Info" />
+      <Button fx:id="buttonViewPatient" layoutX="80.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#switchToViewPatient" text="View Patient Info" />
       <Button fx:id="buttonQuitApp" layoutX="425.0" layoutY="207.0" mnemonicParsing="false" onMouseReleased="#handlebuttonQuitApp" text="Quit Application" />
       <Text layoutX="118.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the developers menu!" textAlignment="CENTER">
          <font>

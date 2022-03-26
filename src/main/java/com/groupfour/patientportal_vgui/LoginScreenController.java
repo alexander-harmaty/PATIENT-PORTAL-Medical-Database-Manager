@@ -4,6 +4,7 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -43,6 +44,9 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private ComboBox button_type2;
+    
+    @FXML
+    private Button button_devMenu;
 
     @FXML
     private AnchorPane panel_login;
@@ -153,6 +157,12 @@ public class LoginScreenController implements Initializable {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
+    }
+    
+    @FXML
+    private void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
     }
         
     @Override
