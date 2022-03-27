@@ -108,12 +108,23 @@ public class LoginScreenController implements Initializable {
                     mainStage.setScene(scene);
                     mainStage.show(); 
             }
+        else if (rs.getString(5).toUpperCase().equals("DOCTOR")) {
+            JOptionPane.showMessageDialog(null, "Your login was successful.");
+                    button_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+                    Stage mainStage = new Stage();
+                    Scene scene = new Scene(root);
+                    mainStage.setScene(scene);
+                    mainStage.show(); 
+        }
         else 
             JOptionPane.showMessageDialog(null, "Incorrect username or password.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
     }
+    
+    
     
     public void addUser(ActionEvent event){
         con = DatabaseConnection.connectDB();
@@ -140,7 +151,7 @@ public class LoginScreenController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        button_type.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
+        //button_type.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
         button_type2.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
         // TODO
     }    

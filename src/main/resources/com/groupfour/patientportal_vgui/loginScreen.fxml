@@ -45,7 +45,6 @@
             </Button>
             <TextField fx:id="text_user" layoutX="162.0" layoutY="143.0" prefWidth="250.0" promptText="Username" />
             <PasswordField fx:id="text_pass" layoutX="161.0" layoutY="181.0" prefWidth="250.0" promptText="Password" />
-            <ComboBox fx:id="button_type" layoutX="161.0" layoutY="102.0" prefWidth="150.0" promptText="Select account type" />
             <Text layoutX="224.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
             <Text layoutX="175.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <ImageView fitHeight="89.0" fitWidth="377.0" layoutX="99.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
