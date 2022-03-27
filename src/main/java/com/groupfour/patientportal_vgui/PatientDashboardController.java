@@ -21,7 +21,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * FXML Controller class
  *
- * @author Angie
+ * @author Alex
  */
 
 public class PatientDashboardController implements Initializable 
