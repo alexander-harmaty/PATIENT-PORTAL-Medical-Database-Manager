@@ -85,58 +85,31 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private void Login (ActionEvent event) throws Exception {
-        con = DatabaseConnection.connectDB();
-        String sql = "Select * from LOGIN where Username = ? and Password = ? and Type = ? ";
+        String userName = text_user.getText();
+        String passWord = text_pass.getText();
         try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, text_user.getText());
-            ps.setString(2, text_pass.getText());
-            ps.setString(3, button_type.getValue().toString());
-            rs = ps.executeQuery();
+            
+            con = DatabaseConnection.connectDB();
+            Statement st = (Statement) con.createStatement();
+            rs = st.executeQuery( "Select * FROM LOGIN WHERE Username = '" + userName + "' AND Password = '" + passWord + "';");
             //this loop will read the type and bring to a page specific to the type of user
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Your login was successful.");
-                if ("Patient".equals(button_type.getValue().toString())) {
+            while (rs.next()) {
+               // JOptionPane.showMessageDialog(null, "Your login was successful.");
+               if (rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
+                break;
+
+            }
+        if (rs.getString(5).toUpperCase().equals("PATIENT"))
+        {
                     button_login.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
-                    mainStage.show();
-                }
-                else if ("Doctor".equals(button_type.getValue().toString())) {
-                   button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                    Stage mainStage = new Stage();
-                    Scene scene = new Scene(root);
-                    mainStage.setScene(scene);
                     mainStage.show(); 
-                }
-                else if ("Nurse".equals(button_type.getValue().toString())) {
-                   button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("devMenu.fxml")); 
-                    Stage mainStage = new Stage();
-                    Scene scene = new Scene(root);
-                    mainStage.setScene(scene);
-                    mainStage.show(); 
-                }
-                else if ("Lab".equals(button_type.getValue().toString())) {
-                   button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("devMenu.fxml")); 
-                    Stage mainStage = new Stage();
-                    Scene scene = new Scene(root);
-                    mainStage.setScene(scene);
-                    mainStage.show(); 
-                }
-//                button_login.getScene().getWindow().hide();
-//                Parent root = FXMLLoader.load(getClass().getResource("devMenu.fxml")); 
-//                Stage mainStage = new Stage();
-//                Scene scene = new Scene(root);
-//                mainStage.setScene(scene);
-//                mainStage.show();
-                
-            }else
-            JOptionPane.showMessageDialog(null, "Incorrect account type, username, or password.");
+            }
+        else 
+            JOptionPane.showMessageDialog(null, "Incorrect username or password.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
