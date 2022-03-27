@@ -98,7 +98,7 @@ public class LoginScreenController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Your login was successful.");
                 if ("Patient".equals(button_type.getValue().toString())) {
                     button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("patientInterface.fxml")); 
+                    Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
@@ -106,7 +106,7 @@ public class LoginScreenController implements Initializable {
                 }
                 else if ("Doctor".equals(button_type.getValue().toString())) {
                    button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("devMenu.fxml")); 
+                    Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);

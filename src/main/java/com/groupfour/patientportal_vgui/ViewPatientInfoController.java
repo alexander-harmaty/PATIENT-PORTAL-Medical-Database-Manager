@@ -29,38 +29,38 @@ public class ViewPatientInfoController implements Initializable
     int patientID;
     
     @FXML
-    private Button buttonViewPatientSearch;
+    private Button button_search;
     @FXML
-    private Button buttonMainMenu;
+    private Button button_devMenu;
     @FXML
-    private Button buttonClear;
+    private Button button_clear;
     @FXML
-    private Label labelErrorText;
+    private Label label_errorText;
     @FXML
-    private TextField textFieldPatientID;
+    private TextField textField_patientID;
     @FXML
-    private TextField textFieldPatientFName;
+    private TextField textField_firstName;
     @FXML
-    private TextField textFieldPatientLName;
+    private TextField textField_lastName;
     @FXML
-    private TextField textFieldPatientPhone;
+    private TextField textField_phone;
     @FXML
-    private TextField textFieldPatientEmail;
+    private TextField textField_email;
     @FXML
-    private TextField textFieldPatientInsuranceID;
+    private TextField textField_insuranceID;
     @FXML
-    private TextField textFieldPatientInsuranceCo;
+    private TextField textField_insuranceCo;
     
     @FXML
-    private void handleViewPatientSearchButton()
+    private void handleButton_search()
     {
         try
         {
-            patientID = Integer.parseInt(textFieldPatientID.getText());
+            patientID = Integer.parseInt(textField_patientID.getText());
             
-            if (String.valueOf(textFieldPatientID.getText()).length() == 5)
+            if (String.valueOf(textField_patientID.getText()).length() == 5)
             {
-                labelErrorText.setText("");
+                label_errorText.setText("");
 
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
                 Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
@@ -71,60 +71,55 @@ public class ViewPatientInfoController implements Initializable
                 while (rs.next()) 
                 {   //displays data. there must be a simpler way to implement
 
-                    textFieldPatientID.setText(String.valueOf(rs.getInt("PatientID")));
+                    textField_patientID.setText(String.valueOf(rs.getInt("PatientID")));
                     //System.out.println("PATIENT ID: " + rs.getInt("PatientID"));
 
-                    textFieldPatientFName.setText(rs.getString("PFirstName"));
+                    textField_firstName.setText(rs.getString("PFirstName"));
                     //System.out.println("FIRST NAME: " + rs.getString("PFirstName"));
 
-                    textFieldPatientLName.setText(rs.getString("PLastName"));
+                    textField_lastName.setText(rs.getString("PLastName"));
                     //System.out.println("LAST NAME: " + rs.getString("PLastName"));
 
-                    textFieldPatientPhone.setText(rs.getString("PPhone"));
+                    textField_phone.setText(rs.getString("PPhone"));
                     //System.out.println("PHONE NUMBER: " + rs.getString("PPhone"));
 
-                    textFieldPatientEmail.setText(rs.getString("PEmail"));
+                    textField_email.setText(rs.getString("PEmail"));
                     //System.out.println("EMAIL: " + rs.getString("PEmail"));
 
-                    textFieldPatientInsuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
+                    textField_insuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
                     //System.out.println("INSURANCE ID: " + rs.getInt("InsuranceID"));
 
-                    textFieldPatientInsuranceCo.setText(rs.getString("Insurance"));
+                    textField_insuranceCo.setText(rs.getString("Insurance"));
                     //System.out.println("INSURANCE COMPANY: " + rs.getString("Insurance"));
                 }
             }
             else
             {
                 //ALEX: Maybe throw a custom exception for this?
-                labelErrorText.setText("ONLY use 5 numbers! Please try again."); 
+                label_errorText.setText("ONLY use 5 numbers! Please try again."); 
             }
         }
         catch (NumberFormatException e)
         {
-            labelErrorText.setText("ONLY use numbers! Please try again.");
+            label_errorText.setText("ONLY use numbers! Please try again.");
         }
         catch (Exception e)
         {
-            labelErrorText.setText("UNKNOWN ERROR! Please try again.");
+            label_errorText.setText("UNKNOWN ERROR! Please try again.");
         }
     }
     @FXML
-    private void handleButtonClear()
+    private void handleButton_clear()
     {
-        this.textFieldPatientID.clear();
-        this.textFieldPatientFName.clear();
-        this.textFieldPatientLName.clear();
-        this.textFieldPatientPhone.clear();
-        this.textFieldPatientEmail.clear();
-        this.textFieldPatientInsuranceID.clear();
-        this.textFieldPatientInsuranceCo.clear();
-        this.labelErrorText.setText("");
+        this.textField_patientID.clear();
+        this.textField_firstName.clear();
+        this.textField_lastName.clear();
+        this.textField_phone.clear();
+        this.textField_email.clear();
+        this.textField_insuranceID.clear();
+        this.textField_insuranceCo.clear();
+        this.label_errorText.setText("");
         patientID = 0;
-    }
-    @FXML
-    private void handleMainMenuButton() throws IOException
-    {
-        switchToDevMenu();
     }
     
     @FXML
