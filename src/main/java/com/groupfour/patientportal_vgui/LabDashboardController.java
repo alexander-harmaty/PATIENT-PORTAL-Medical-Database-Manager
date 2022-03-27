@@ -4,16 +4,28 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
- * @author Alexander
+ * @author AlexH
  */
-public class DeletePatientInfoController implements Initializable {
+public class LabDashboardController implements Initializable 
+{
+    @FXML
+    private Button button_devMenu;
+
+    @FXML
+    void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
+    }
 
     /**
      * Initializes the controller class.

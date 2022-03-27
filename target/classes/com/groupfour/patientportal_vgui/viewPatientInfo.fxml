@@ -13,23 +13,23 @@
          <font>
             <Font size="24.0" />
          </font></Text>
-      <TextField fx:id="textFieldPatientID" layoutX="195.0" layoutY="104.0" promptText="Patiend ID" />
-      <Button fx:id="buttonViewPatientSearch" layoutX="359.0" layoutY="104.0" mnemonicParsing="false" onMouseReleased="#handleViewPatientSearchButton" text="Search" />
-      <TextField fx:id="textFieldPatientFName" layoutX="262.0" layoutY="154.0" />
+      <TextField fx:id="textField_patientID" layoutX="195.0" layoutY="104.0" promptText="Patiend ID" />
+      <Button fx:id="button_search" layoutX="359.0" layoutY="104.0" mnemonicParsing="false" onMouseReleased="#handleButton_search" text="Search" />
+      <TextField fx:id="textField_firstName" layoutX="262.0" layoutY="154.0" />
       <Text layoutX="195.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
-      <TextField fx:id="textFieldPatientLName" layoutX="262.0" layoutY="194.0" />
+      <TextField fx:id="textField_lastName" layoutX="262.0" layoutY="194.0" />
       <Text layoutX="195.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
-      <TextField fx:id="textFieldPatientPhone" layoutX="262.0" layoutY="237.0" />
+      <TextField fx:id="textField_phone" layoutX="262.0" layoutY="237.0" />
       <Text layoutX="206.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
-      <TextField fx:id="textFieldPatientEmail" layoutX="262.0" layoutY="277.0" />
+      <TextField fx:id="textField_email" layoutX="262.0" layoutY="277.0" />
       <Text layoutX="207.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" />
-      <TextField fx:id="textFieldPatientInsuranceID" layoutX="263.0" layoutY="321.0" />
+      <TextField fx:id="textField_insuranceID" layoutX="263.0" layoutY="321.0" />
       <Text layoutX="190.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID:" />
-      <TextField fx:id="textFieldPatientInsuranceCo" layoutX="263.0" layoutY="361.0" />
+      <TextField fx:id="textField_insuranceCo" layoutX="263.0" layoutY="361.0" />
       <Text layoutX="189.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Co:" />
       <Text layoutX="184.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a patient ID and click search to view." textAlignment="CENTER" />
-      <Button fx:id="buttonMainMenu" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Back" />
-      <Button fx:id="buttonClear" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#handleButtonClear" text="Clear" />
-      <Label fx:id="labelErrorText" alignment="CENTER" layoutX="217.0" layoutY="79.0" textAlignment="CENTER" textFill="#cd1c1c" />
+      <Button fx:id="button_devMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
+      <Button fx:id="button_clear" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#handleButton_clear" text="Clear" />
+      <Label fx:id="label_errorText" alignment="CENTER" layoutX="217.0" layoutY="79.0" textAlignment="CENTER" textFill="#cd1c1c" />
    </children>
 </AnchorPane>

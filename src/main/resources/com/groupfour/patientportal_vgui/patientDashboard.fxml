@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="338.0" prefWidth="426.0" style="-fx-background-color: #2FAFC9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.PatientDashboardController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="125.0" style="-fx-background-color: #2b5aae;">
+         <children>
+            <ImageView fitHeight="125.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Patient-Portal-Logo.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="button_search" mnemonicParsing="false" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="125.0" text="Search" />
+            <Button fx:id="button_accountInfo" mnemonicParsing="false" onMouseReleased="#handleButton_accountInfo" prefHeight="50.0" prefWidth="125.0" text="Account Info" />
+            <Button fx:id="button_medicalRecords" mnemonicParsing="false" onMouseReleased="#handleButton_medicalRecords" prefHeight="50.0" prefWidth="125.0" text="Medical Records" />
+            <Button fx:id="button_testResults" mnemonicParsing="false" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="125.0" text="Test Results" />
+            <Button fx:id="button_prescriptions" mnemonicParsing="false" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="125.0" text="Prescriptions" />
+            <Button fx:id="button_appointments" mnemonicParsing="false" onMouseReleased="#handleButton_appointments" prefHeight="50.0" prefWidth="125.0" text="Appointments" />
+         </children>
+      </VBox>
+      <AnchorPane fx:id="panel_accountInfo" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="474.0" />
+            <Text fill="WHITE" layoutX="139.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Dashboard" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <TextField fx:id="textField_patientID" layoutX="159.0" layoutY="85.0" promptText="Patiend ID" />
+            <Button fx:id="button_go" layoutX="318.0" layoutY="85.0" mnemonicParsing="false" onMouseReleased="#handleButton_go" text="Go" />
+            <TextField fx:id="textField_firstName" layoutX="199.0" layoutY="127.0" />
+            <Text layoutX="132.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+            <TextField fx:id="textField_lastName" layoutX="199.0" layoutY="167.0" />
+            <Text layoutX="132.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+            <TextField fx:id="textField_phone" layoutX="199.0" layoutY="210.0" />
+            <Text layoutX="143.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
+            <TextField fx:id="textField_email" layoutX="199.0" layoutY="250.0" />
+            <Text layoutX="144.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" />
+            <TextField fx:id="textField_insuranceID" layoutX="200.0" layoutY="294.0" />
+            <Text layoutX="127.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID:" />
+            <TextField fx:id="textField_insuranceCo" layoutX="200.0" layoutY="334.0" />
+            <Text layoutX="126.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Co:" />
+            <Text layoutX="107.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a patient ID and click search to view." textAlignment="CENTER" />
+            <Button fx:id="button_clear" layoutX="104.0" layoutY="85.0" mnemonicParsing="false" onMouseReleased="#handleButton_clear" text="Clear" />
+            <Label fx:id="label_errorText" alignment="CENTER" layoutX="152.0" layoutY="61.0" textAlignment="CENTER" textFill="#cd1c1c" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panel_dashboard" layoutX="126.0" layoutY="1.0" prefHeight="400.0" prefWidth="474.0">
+         <children>
+            <TitledPane animated="false" layoutX="22.0" layoutY="103.0" text="Welcome!">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is your patient dashboard." />
+                        <Text layoutX="13.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To use the Patient Portal from here, please use the navigation drawer to access your feature." wrappingWidth="173.11773681640625" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="250.0" layoutY="103.0" text="User Profile">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Info:" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="474.0" />
+            <Text fill="WHITE" layoutX="139.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Dashboard" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+      <AnchorPane fx:id="panel_search" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="474.0" />
+            <Text fill="WHITE" layoutX="139.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Dashboard" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+      <AnchorPane fx:id="panel_medicalRecords" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+      <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+      <AnchorPane fx:id="panel_prescriptions" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+      <Button fx:id="button_devMenu" layoutX="486.0" layoutY="360.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" prefHeight="25.0" prefWidth="99.0" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
+   </children>
+</AnchorPane>

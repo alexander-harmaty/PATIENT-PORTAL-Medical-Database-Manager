@@ -4,6 +4,7 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -43,6 +44,9 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     private ComboBox button_type2;
+    
+    @FXML
+    private Button button_devMenu;
 
     @FXML
     private AnchorPane panel_login;
@@ -94,7 +98,7 @@ public class LoginScreenController implements Initializable {
                 JOptionPane.showMessageDialog(null, "Your login was successful.");
                 if ("Patient".equals(button_type.getValue().toString())) {
                     button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("patientInterface.fxml")); 
+                    Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
@@ -102,7 +106,7 @@ public class LoginScreenController implements Initializable {
                 }
                 else if ("Doctor".equals(button_type.getValue().toString())) {
                    button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("devMenu.fxml")); 
+                    Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
@@ -153,6 +157,12 @@ public class LoginScreenController implements Initializable {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
+    }
+    
+    @FXML
+    private void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
     }
         
     @Override

@@ -4,55 +4,191 @@
  */
 package com.groupfour.patientportal_vgui;
 
-import java.sql.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
- * @author Alexander
+ * @author Alex
  */
 
-public class ViewPatientInfoController implements Initializable 
+public class PatientDashboardController implements Initializable 
 {
-    //ALEX: there should be a better way to pass in server user & pass
     String user = "pportal";
     String pwd = "admin";
     
     int patientID;
     
     @FXML
-    private Button button_search;
+    private Button button_accountInfo;
+
+    @FXML
+    private Button button_appointments;
+
     @FXML
     private Button button_devMenu;
+
     @FXML
-    private Button button_clear;
+    private Button button_medicalRecords;
+
     @FXML
-    private Label label_errorText;
+    private Button button_prescriptions;
+
     @FXML
-    private TextField textField_patientID;
+    private Button button_search;
+
     @FXML
-    private TextField textField_firstName;
-    @FXML
-    private TextField textField_lastName;
-    @FXML
-    private TextField textField_phone;
-    @FXML
-    private TextField textField_email;
-    @FXML
-    private TextField textField_insuranceID;
-    @FXML
-    private TextField textField_insuranceCo;
+    private Button button_testResults;
     
     @FXML
-    private void handleButton_search()
+    private AnchorPane panel_accountInfo;
+
+    @FXML
+    private AnchorPane panel_appointments;
+
+    @FXML
+    private AnchorPane panel_dashboard;
+
+    @FXML
+    private AnchorPane panel_medicalRecords;
+
+    @FXML
+    private AnchorPane panel_prescriptions;
+
+    @FXML
+    private AnchorPane panel_search;
+
+    @FXML
+    private AnchorPane panel_testResults;
+    
+    @FXML
+    private TextField textField_email;
+
+    @FXML
+    private TextField textField_firstName;
+
+    @FXML
+    private TextField textField_insuranceCo;
+
+    @FXML
+    private TextField textField_insuranceID;
+
+    @FXML
+    private TextField textField_lastName;
+
+    @FXML
+    private TextField textField_patientID;
+
+    @FXML
+    private TextField textField_phone;
+    
+    @FXML
+    private Label label_errorText;
+    
+    public void show_panelDashboard() 
+    {
+        panel_dashboard.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_accountInfo() 
+    {
+        panel_accountInfo.setVisible(true);
+        
+        panel_appointments.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_appointments() 
+    {
+        panel_appointments.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_medicalRecords() 
+    {
+        panel_medicalRecords.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_prescriptions() 
+    {
+        panel_prescriptions.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_search() 
+    {
+        panel_search.setVisible(true);
+        
+        panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_testResults() 
+    {
+        panel_testResults.setVisible(true);
+        
+        panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+    }
+    
+    @FXML
+    private void handleButton_go()
     {
         try
         {
@@ -108,6 +244,7 @@ public class ViewPatientInfoController implements Initializable
             label_errorText.setText("UNKNOWN ERROR! Please try again.");
         }
     }
+    
     @FXML
     private void handleButton_clear()
     {
@@ -121,9 +258,9 @@ public class ViewPatientInfoController implements Initializable
         this.label_errorText.setText("");
         patientID = 0;
     }
-    
+
     @FXML
-    private void switchToDevMenu() throws IOException
+    void switchToDevMenu() throws IOException 
     {
         App.setRoot("devMenu");
     }
