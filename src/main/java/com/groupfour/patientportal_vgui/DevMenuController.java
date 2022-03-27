@@ -27,6 +27,9 @@ public class DevMenuController implements Initializable
     
     //Sprint2
     @FXML
+    private Button button_login;
+    
+    @FXML
     private Button button_patientView;
     
     @FXML
@@ -51,6 +54,11 @@ public class DevMenuController implements Initializable
     {
         System.exit(0);
     }
+    @FXML
+    private void switchToLoginScreen() throws IOException
+    {
+        App.setRoot("loginScreen");
+    }      
     @FXML
     private void switchToPatientDashboard() throws IOException
     {

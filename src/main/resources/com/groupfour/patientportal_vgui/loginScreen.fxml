@@ -12,7 +12,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: slategray;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
    <children>
-      <Button fx:id="button_devMenu" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
       <AnchorPane fx:id="panel_register" layoutX="22.0" layoutY="27.0" prefHeight="347.0" prefWidth="557.0" visible="false">
          <children>
             <TextField fx:id="text_user2" layoutX="299.0" layoutY="107.0" prefHeight="25.0" prefWidth="192.0" promptText="Username" />
@@ -56,10 +55,11 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView blendMode="OVERLAY" disable="true" fitHeight="400.0" fitWidth="606.0" opacity="0.18" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="OVERLAY" disable="true" fitHeight="400.0" fitWidth="606.0" layoutX="7.0" layoutY="1.0" opacity="0.18" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@IoT1_600x400.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="button_devMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
    </children>
 </AnchorPane>
