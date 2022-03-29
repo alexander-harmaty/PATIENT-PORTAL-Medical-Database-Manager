@@ -4,15 +4,31 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,6 +41,8 @@ public class DoctorDashboardController implements Initializable
     String pwd = "admin";
     
     int patientID;
+    
+ 
     
     @FXML
     private Button button_accountInfo;
@@ -79,6 +97,9 @@ public class DoctorDashboardController implements Initializable
 
     @FXML
     private TextField textField_email;
+    
+    @FXML
+    private AnchorPane text_doctordashboard;
 
     @FXML
     private TextField textField_firstName;
@@ -97,6 +118,96 @@ public class DoctorDashboardController implements Initializable
 
     @FXML
     private TextField textField_phone;
+    
+    @FXML
+    private TextField textField_street;
+    
+    @FXML
+    private TextField textField_city;
+    
+    @FXML
+    private TextField textField_zip;
+    
+    @FXML
+    private TextField textField_state;
+    
+    ////TABLEVIEW 
+    @FXML
+    private TableView<PatientTable> table_patients;
+    
+    @FXML
+    private TableColumn<PatientTable, String> column_patientID;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pcity;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pdoctor;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pemail;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pfirstname;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pinsurance;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pinsuranceid;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_plastname;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pphone;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pstate;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pstreet;
+
+    @FXML
+    private TableColumn<PatientTable, String> column_pzip;
+    
+    
+    
+    
+    
+    int index = -1;
+    
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement ps = null;
+    PatientTable pt = null;
+    
+
+    @FXML
+    void handleButton_refresh() {     
+    }
+    
+    
+    
+    @FXML
+    void handleButton_update() {
+        
+    }
+    
+    @FXML
+    void handleButton_insert() {
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("doctorInsertPatient.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   
 
     @FXML
     void handleButton_accountInfo() {
@@ -107,6 +218,7 @@ public class DoctorDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_patients.setVisible(false);
         panel_testResults.setVisible(false);
+        text_doctordashboard.setVisible(true);
     }
 
     @FXML
@@ -118,6 +230,7 @@ public class DoctorDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_patients.setVisible(false);
         panel_testResults.setVisible(false);
+        text_doctordashboard.setVisible(true);
     }
 
     @FXML
@@ -129,6 +242,11 @@ public class DoctorDashboardController implements Initializable
     void handleButton_go() {
         
     }
+    
+//    @FXML
+//    void handleButton_save() {
+//       // String 
+//    }
 
     @FXML
     void handleButton_insertRecords() {
@@ -139,6 +257,7 @@ public class DoctorDashboardController implements Initializable
         panel_medicalRecords.setVisible(true);
         panel_patients.setVisible(false);
         panel_testResults.setVisible(false);
+        text_doctordashboard.setVisible(true);
     }
 
     @FXML
@@ -150,6 +269,7 @@ public class DoctorDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_patients.setVisible(true);
         panel_testResults.setVisible(false);
+        text_doctordashboard.setVisible(true);
     }
 
     @FXML
@@ -161,6 +281,7 @@ public class DoctorDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_patients.setVisible(false);
         panel_testResults.setVisible(false);
+        text_doctordashboard.setVisible(true);
     }
 
     @FXML
@@ -172,6 +293,7 @@ public class DoctorDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_patients.setVisible(false);
         panel_testResults.setVisible(true);
+        text_doctordashboard.setVisible(true);
     }
 
     @FXML
@@ -183,8 +305,39 @@ public class DoctorDashboardController implements Initializable
     /**
      * Initializes the controller class.
      */
+    
+    ObservableList<PatientTable> patientslist = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+ try{
+     
+    Connection con = DatabaseConnection.connectDB();
+    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PATIENT");
+       while (rs.next()) {
+            patientslist.add(new PatientTable(rs.getInt("PatientID"),rs.getString("PFirstName"),
+            rs.getString("PLastName"),rs.getString("PPhone"),rs.getString("PEmail"),
+            rs.getString("Street"),rs.getString("City"),rs.getString("Zip"),
+            rs.getString("State"),rs.getInt("InsuranceID"),rs.getString("Insurance"),
+            rs.getInt("PrimaryDoctor")));
+        }
+ } catch (Exception e) {
+     
+ }
+        column_patientID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_pfirstname.setCellValueFactory(new PropertyValueFactory <>("PFirstName"));
+        column_plastname.setCellValueFactory(new PropertyValueFactory <>("PLastName"));
+        column_pphone.setCellValueFactory(new PropertyValueFactory <>("PPhone"));
+        column_pemail.setCellValueFactory(new PropertyValueFactory <>("PEmail"));
+        column_pstreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
+        column_pcity.setCellValueFactory(new PropertyValueFactory <>("City"));
+        column_pzip.setCellValueFactory(new PropertyValueFactory <>("Zip"));
+        column_pstate.setCellValueFactory(new PropertyValueFactory <>("State"));
+        column_pinsuranceid.setCellValueFactory(new PropertyValueFactory <>("InsuranceID"));
+        column_pinsurance.setCellValueFactory(new PropertyValueFactory <>("Insurance"));
+        column_pdoctor.setCellValueFactory(new PropertyValueFactory <>("PrimaryDoctor"));
+        table_patients.setItems(patientslist);
         // TODO
     }    
     

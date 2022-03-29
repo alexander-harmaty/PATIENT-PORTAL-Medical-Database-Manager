@@ -120,7 +120,8 @@ public class LoginScreenController implements Initializable {
         else 
             JOptionPane.showMessageDialog(null, "Incorrect username or password.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Please fill in all fields.");
+            e.printStackTrace();
+            //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
     }
     
@@ -139,6 +140,7 @@ public class LoginScreenController implements Initializable {
             
             JOptionPane.showMessageDialog(null, "Registered successfully");
         } catch (Exception e) {
+            
             JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
     }
