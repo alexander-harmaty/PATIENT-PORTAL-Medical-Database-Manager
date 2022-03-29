@@ -5,6 +5,7 @@
 package com.groupfour.patientportal_vgui;
 
 import java.net.URL;
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +21,8 @@ import javax.swing.JOptionPane;
  * @author Angie
  */
 public class DoctorInsertPatientController implements Initializable {
+    
+    
     @FXML
     private TextField textField_firstName;
 
@@ -100,25 +103,43 @@ public class DoctorInsertPatientController implements Initializable {
     }
 
     private void getQuery() {
+        
         try {
+        System.out.println("WE made it yesssir lets go love the mets");
         con = DatabaseConnection.connectDB();
+        Statement stmt = con.createStatement();
+        
+      String query = "INSERT INTO PATIENT" + "(PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance, PrimaryDoctor)" + 
+              "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            ps = con.prepareStatement(query);
   
-      String query = "INSERT INTO PATIENT" + "(PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance)" + 
-              "values (?,?,?,?,?,?,?,?,?,?)";
-      ps = con.prepareStatement(query);
-  
+            int ID = Integer.parseInt(textField_patientID.getText());
+            String fname = textField_firstName.getText();
+            String lName = textField_lastName.getText();
+            String pNum =  textField_phone.getText();
+            String email = textField_email.getText();
+            String street = textField_street.getText();
+            String city = textField_city.getText();
+            String zip = textField_zip.getText();
+            String state =  textField_state.getText();
+            int insID =  Integer.parseInt(textField_insuranceID.getText());
+            String insur =  textField_insuranceCo.getText();    
+            int prim = 10001;
             
-            ps.setString(1, textField_firstName.getText());
-            ps.setString(2, textField_lastName.getText());
-            ps.setString(3, textField_phone.getText());
-            ps.setString(4, textField_email.getText());
-            ps.setString(5, textField_street.getText());
-            ps.setString(6, textField_city.getText());
-            ps.setString(7, textField_zip.getText());
-            ps.setString(8, textField_state.getText());
-            ps.setString(9, textField_insuranceID.getText());
-            ps.setString(10, textField_insuranceCo.getText());
-            ps.executeUpdate();
+            query = "INSERT INTO PATIENT" + "(PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance, PrimaryDoctor)" + 
+              "values (" + ID +", '" + fname + "', '" + lName + "', '" + pNum + "', '" + email + "', '" + street +"',  '"+ city +"', '" + zip + "', '" + state + "', " + insID + ", '" + insur + "', " + prim +");";
+            
+            
+            query = "UPDATE PATIENT " + 
+              "SET  pFirstName ='" + fname + "', PLastName = '" + lName + "', PPhone = '" + pNum + "', PEmail = '" + email + "', Street = '" + street +"', City = '"+ city +"', Zip = '" + zip + "', State = '" + state + "', InsuranceID = " + insID + ", Insurance = '" + insur + "', PrimaryDoctor = " + prim +
+                    " WHERE PatientID = " + ID + ";";
+            
+            System.out.println(query);
+            
+            ResultSet rs = stmt.executeQuery(query);
+            
+            
+            
             JOptionPane.showMessageDialog(null,"Saved");
     } catch (Exception e) {
         
