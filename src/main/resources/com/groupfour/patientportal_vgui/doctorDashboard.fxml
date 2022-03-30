@@ -115,7 +115,7 @@
       </AnchorPane>
       <AnchorPane fx:id="text_doctordashboard" layoutX="167.0" layoutY="102.0" prefHeight="0.0" prefWidth="1754.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="102.0" layoutX="102.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1180.0" />
-      <Text fill="WHITE" layoutX="118.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Dashboard" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="127.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Dashboard" textAlignment="CENTER">
          <font>
             <Font name="Arial Black" size="48.0" />
          </font>
