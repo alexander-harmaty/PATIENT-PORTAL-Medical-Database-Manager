@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #2FAFC9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #2FAFC9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
    <children>
       <VBox prefHeight="800.0" prefWidth="104.0" style="-fx-background-color: #2b5aae;">
          <children>
@@ -32,6 +32,57 @@
             <Button fx:id="button_insertRecords" alignment="CENTER" mnemonicParsing="false" onMouseReleased="#handleButton_insertRecords" prefHeight="50.0" prefWidth="125.0" text="Medical Records" />
          </children>
       </VBox>
+      <AnchorPane fx:id="panel_dashboard" layoutX="108.0" layoutY="102.0" prefHeight="885.0" prefWidth="1810.0">
+         <children>
+            <TitledPane animated="false" layoutX="84.0" layoutY="27.0" prefHeight="400.0" prefWidth="438.0" text="Welcome!">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is your doctor dashboard." />
+                        <Text layoutX="13.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To use the Patient Portal from here, please use the navigation drawer to access your feature." wrappingWidth="173.11773681640625" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane animated="false" layoutX="609.0" layoutY="27.0" prefHeight="400.0" prefWidth="460.0" text="User Profile">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="481.0">
+                     <children>
+                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Info:" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <Button fx:id="button_devMenu" layoutX="1057.0" layoutY="666.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" prefHeight="25.0" prefWidth="99.0" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panel_patients" layoutX="104.0" layoutY="97.0" prefHeight="1070.0" prefWidth="1810.0" visible="false">
+         <children>
+            <ScrollPane layoutX="-2.0" layoutY="83.0" prefHeight="620.0" prefWidth="1180.0">
+               <content>
+                  <TableView fx:id="table_patients" prefHeight="622.0" prefWidth="1174.0">
+                    <columns>
+                      <TableColumn fx:id="column_patientID" prefWidth="103.0" text="Patient ID" />
+                      <TableColumn fx:id="column_pfirstname" prefWidth="108.0" text="First Name" />
+                        <TableColumn fx:id="column_plastname" prefWidth="84.0" text="Last Name" />
+                        <TableColumn fx:id="column_pphone" minWidth="2.0" text="Phone" />
+                        <TableColumn fx:id="column_pemail" minWidth="0.0" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="column_pstreet" minWidth="0.0" prefWidth="75.0" text="Street" />
+                        <TableColumn fx:id="column_pcity" minWidth="0.0" prefWidth="75.0" text="City" />
+                        <TableColumn fx:id="column_pzip" minWidth="0.0" prefWidth="75.0" text="Zip" />
+                        <TableColumn fx:id="column_pstate" minWidth="0.0" prefWidth="84.0" text="State" />
+                        <TableColumn fx:id="column_pinsuranceid" prefWidth="101.0" text="Insurance ID" />
+                        <TableColumn fx:id="column_pinsurance" minWidth="0.0" prefWidth="105.0" text="Insurance" />
+                        <TableColumn fx:id="column_pdoctor" minWidth="0.0" prefWidth="106.0" text="Primary Doctor" />
+                    </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#handleButton_insert" prefHeight="40.0" prefWidth="85.0" text="Update" />
+            <Button layoutX="205.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleButton_refresh" prefHeight="40.0" prefWidth="93.0" text="Refresh" />
+            <Button layoutX="110.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#handleButton_delete" prefHeight="40.0" prefWidth="85.0" text="Delete" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="panel_accountInfo" layoutX="126.0" layoutY="110.0" prefHeight="421.0" prefWidth="511.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="474.0" />
@@ -59,60 +110,10 @@
             <Label fx:id="label_errorText" alignment="CENTER" layoutX="152.0" layoutY="61.0" textAlignment="CENTER" textFill="#cd1c1c" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_dashboard" layoutX="108.0" layoutY="102.0" prefHeight="885.0" prefWidth="1810.0">
-         <children>
-            <TitledPane animated="false" layoutX="84.0" layoutY="27.0" prefHeight="400.0" prefWidth="438.0" text="Welcome!">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is your doctor dashboard." />
-                        <Text layoutX="13.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To use the Patient Portal from here, please use the navigation drawer to access your feature." wrappingWidth="173.11773681640625" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane animated="false" layoutX="609.0" layoutY="27.0" prefHeight="400.0" prefWidth="460.0" text="User Profile">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="481.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Info:" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <Button fx:id="button_devMenu" layoutX="1057.0" layoutY="666.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" prefHeight="25.0" prefWidth="99.0" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
       <AnchorPane fx:id="panel_medicalRecords" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
       <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
       <AnchorPane fx:id="panel_prescriptions" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
-      <AnchorPane fx:id="panel_patients" layoutX="104.0" layoutY="97.0" prefHeight="1070.0" prefWidth="1810.0" visible="false">
-         <children>
-            <ScrollPane layoutX="-2.0" layoutY="83.0" prefHeight="620.0" prefWidth="1180.0">
-               <content>
-                  <TableView fx:id="table_patients" prefHeight="622.0" prefWidth="1174.0">
-                    <columns>
-                      <TableColumn fx:id="column_patientID" prefWidth="103.0" text="Patient ID" />
-                      <TableColumn fx:id="column_pfirstname" prefWidth="108.0" text="First Name" />
-                        <TableColumn fx:id="column_plastname" prefWidth="84.0" text="Last Name" />
-                        <TableColumn fx:id="column_pphone" minWidth="2.0" text="Phone" />
-                        <TableColumn fx:id="column_pemail" minWidth="0.0" prefWidth="75.0" text="Email" />
-                        <TableColumn fx:id="column_pstreet" minWidth="0.0" prefWidth="75.0" text="Street" />
-                        <TableColumn fx:id="column_pcity" minWidth="0.0" prefWidth="75.0" text="City" />
-                        <TableColumn fx:id="column_pzip" minWidth="0.0" prefWidth="75.0" text="Zip" />
-                        <TableColumn fx:id="column_pstate" minWidth="0.0" prefWidth="84.0" text="State" />
-                        <TableColumn fx:id="column_pinsuranceid" prefWidth="101.0" text="Insurance ID" />
-                        <TableColumn fx:id="column_pinsurance" minWidth="0.0" prefWidth="105.0" text="Insurance" />
-                        <TableColumn fx:id="column_pdoctor" minWidth="0.0" prefWidth="106.0" text="Primary Doctor" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#handleButton_insert" prefHeight="40.0" prefWidth="85.0" text="Update" />
-            <Button layoutX="203.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleButton_refresh" prefHeight="40.0" prefWidth="93.0" text="Refresh" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="text_doctordashboard" layoutX="167.0" layoutY="102.0" prefHeight="0.0" prefWidth="1754.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="102.0" layoutX="102.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1180.0" />
       <Text fill="WHITE" layoutX="127.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Dashboard" textAlignment="CENTER">
