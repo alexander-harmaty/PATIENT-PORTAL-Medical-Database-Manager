@@ -38,7 +38,7 @@ public class DoctorInsertPatientController implements Initializable {
     @FXML
     private TextField textField_patientID;
     
-     @FXML
+    @FXML
     private TextField textField_email;
 
     @FXML
@@ -56,17 +56,14 @@ public class DoctorInsertPatientController implements Initializable {
     @FXML
     private TextField textField_state;
     
-     @FXML
+    @FXML
     private TextField textField_primarydoc;
-    
-    //String query = null;
+     
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement ps;
     PatientTable table = null;
-    
-    
-
+   
     /**
      * Initializes the controller class.
      */
@@ -79,7 +76,70 @@ public class DoctorInsertPatientController implements Initializable {
     void handleButton_save() {
          con = DatabaseConnection.connectDB();
          getQuery();
-       /**String 
+         JOptionPane.showMessageDialog(null,"Saved");
+    }
+    
+    @FXML
+    void handleButton_clear() {
+        this.textField_patientID.clear();
+        this.textField_firstName.clear();
+        this.textField_lastName.clear();
+        this.textField_phone.clear();
+        this.textField_email.clear();
+        this.textField_street.clear();
+        this.textField_city.clear();
+        this.textField_zip.clear();
+        this.textField_state.clear();
+        this.textField_insuranceID.clear();
+        this.textField_insuranceCo.clear();
+        this.textField_primarydoc.clear();
+        
+    }
+    
+    private void getQuery() {
+        
+        try {
+        System.out.println("Connection Success!");
+        con = DatabaseConnection.connectDB();
+        Statement stmt = con.createStatement();
+        
+            int ID = Integer.parseInt(textField_patientID.getText());
+            String fname = textField_firstName.getText();
+            String lName = textField_lastName.getText();
+            String pNum =  textField_phone.getText();
+            String email = textField_email.getText();
+            String street = textField_street.getText();
+            String city = textField_city.getText();
+            String zip = textField_zip.getText();
+            String state =  textField_state.getText();
+            int insID =  Integer.parseInt(textField_insuranceID.getText());
+            String insur =  textField_insuranceCo.getText();    
+            int prim = Integer.parseInt(textField_primarydoc.getText());
+            
+            String query = "UPDATE PATIENT " + 
+              "SET  pFirstName ='" + fname + "', PLastName = '" + lName + 
+                    "', PPhone = '" + pNum + "', PEmail = '" + email + 
+                    "', Street = '" + street +"', City = '"+ city +
+                    "', Zip = '" + zip + "', State = '" + state + 
+                    "', InsuranceID = " + insID + ", Insurance = '" + insur + 
+                    "', PrimaryDoctor = " + prim +
+                    " WHERE PatientID = " + ID + ";";
+            
+            System.out.println(query);            
+            stmt.executeQuery(query);            
+            JOptionPane.showMessageDialog(null,"Saved");
+            
+    } catch (Exception e) {
+        
+    }
+    }
+
+
+    
+}
+
+
+ /**String 
        con = DatabaseConnection.connectDB();
        String firstname = textField_firstName.getText();
        String lastname = textField_lastName.getText();
@@ -99,77 +159,17 @@ public class DoctorInsertPatientController implements Initializable {
        } else {
            getQuery();
            //insert();
-       }*/
-    }
-    
-    @FXML
-    void handleButton_clear() {
-        this.textField_patientID.clear();
-        this.textField_firstName.clear();
-        this.textField_lastName.clear();
-        this.textField_phone.clear();
-        this.textField_email.clear();
-        this.textField_street.clear();
-        this.textField_city.clear();
-        this.textField_zip.clear();
-        this.textField_state.clear();
-        this.textField_insuranceID.clear();
-        this.textField_insuranceCo.clear();
-        this.textField_primarydoc.clear();
-        
-    }
+       }
+  */
 
-    private void getQuery() {
-        
-        try {
-        System.out.println("Connection Success!");
-        con = DatabaseConnection.connectDB();
-        Statement stmt = con.createStatement();
-        
-      /**String query = "INSERT INTO PATIENT" + "(PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance, PrimaryDoctor)" + 
+
+/**String query = "INSERT INTO PATIENT" + "(PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance, PrimaryDoctor)" + 
               "values (?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = con.prepareStatement(query);*/
-  
-            int ID = Integer.parseInt(textField_patientID.getText());
-            String fname = textField_firstName.getText();
-            String lName = textField_lastName.getText();
-            String pNum =  textField_phone.getText();
-            String email = textField_email.getText();
-            String street = textField_street.getText();
-            String city = textField_city.getText();
-            String zip = textField_zip.getText();
-            String state =  textField_state.getText();
-            int insID =  Integer.parseInt(textField_insuranceID.getText());
-            String insur =  textField_insuranceCo.getText();    
-            int prim = Integer.parseInt(textField_primarydoc.getText());
-            
+
+ 
            /** query = "INSERT INTO PATIENT" + "(PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance, PrimaryDoctor)" + 
               "values (" + ID +", '" + fname + "', '" + lName + "',
               * '" + pNum + "', '" + email + "', '" + street +"', 
               * '"+ city +"', '" + zip + "', '" + state + "',
               * " + insID + ", '" + insur + "', " + prim +");";*/
-            String query = "UPDATE PATIENT " + 
-              "SET  pFirstName ='" + fname + "', PLastName = '" + lName + 
-                    "', PPhone = '" + pNum + "', PEmail = '" + email + 
-                    "', Street = '" + street +"', City = '"+ city +
-                    "', Zip = '" + zip + "', State = '" + state + 
-                    "', InsuranceID = " + insID + ", Insurance = '" + insur + 
-                    "', PrimaryDoctor = " + prim +
-                    " WHERE PatientID = " + ID + ";";
-            
-            System.out.println(query);
-            
-            stmt.executeQuery(query);
-            
-            JOptionPane.showMessageDialog(null,"Saved");
-            
-    } catch (Exception e) {
-        
-    }
-    }
-
-
-    
-}
-
-
