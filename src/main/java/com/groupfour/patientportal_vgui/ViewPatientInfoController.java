@@ -23,8 +23,8 @@ import javafx.scene.control.TextField;
 public class ViewPatientInfoController implements Initializable 
 {
     //ALEX: there should be a better way to pass in server user & pass
-    String user = "pportal";
-    String pwd = "admin";
+    //String user = "pportal";
+    //String pwd = "admin";
     
     int patientID;
     
@@ -62,9 +62,10 @@ public class ViewPatientInfoController implements Initializable
             {
                 label_errorText.setText("");
 
-                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
-                Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
-                        + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
+                //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
+                //Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
+                        //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
+                Connection con = DatabaseConnection.connectDB();
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery("SELECT * FROM PATIENT WHERE PatientID="+patientID+";");
 
