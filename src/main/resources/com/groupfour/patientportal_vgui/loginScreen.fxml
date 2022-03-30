@@ -7,11 +7,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: slategray;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
    <children>
+      <AnchorPane layoutX="18.0" layoutY="41.0" prefHeight="331.0" prefWidth="557.0" visible="false">
+         <children>
+            <VBox layoutX="170.0" layoutY="72.0" prefHeight="230.0" prefWidth="217.0" />
+            <Text layoutX="207.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="panel_register" layoutX="22.0" layoutY="27.0" prefHeight="347.0" prefWidth="557.0" visible="false">
          <children>
             <TextField fx:id="text_user2" layoutX="299.0" layoutY="107.0" prefHeight="25.0" prefWidth="192.0" promptText="Username" />
@@ -23,9 +30,9 @@
                </font>
             </Button>
             <ComboBox fx:id="button_type2" layoutX="299.0" layoutY="57.0" prefHeight="25.0" prefWidth="192.0" promptText="Select account type" />
-            <ImageView fitHeight="211.0" fitWidth="229.0" layoutX="66.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="211.0" fitWidth="229.0" layoutX="35.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Patient-Portal-Logo.png" />
+                  <Image url="@IMG_3300.png" />
                </image>
             </ImageView>
             <Button layoutX="14.0" layoutY="314.0" mnemonicParsing="false" onAction="#panelLoginShow" text="Return to login" />
@@ -33,32 +40,27 @@
       </AnchorPane>
       <AnchorPane fx:id="panel_login" layoutX="22.0" layoutY="27.0" prefHeight="347.0" prefWidth="557.0">
          <children>
-            <Button layoutX="236.0" layoutY="311.0" mnemonicParsing="false" onAction="#panelRegisterShow" text="Create Account">
+            <Button layoutX="221.0" layoutY="310.0" mnemonicParsing="false" onAction="#panelRegisterShow" text="Create Account">
                <font>
                   <Font name="Times New Roman" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="button_login" layoutX="250.0" layoutY="217.0" mnemonicParsing="false" onAction="#Login" text="Login">
+            <Button fx:id="button_login" layoutX="236.0" layoutY="216.0" mnemonicParsing="false" onAction="#Login" text="Login">
                <font>
                   <Font name="Times New Roman" size="19.0" />
                </font>
             </Button>
-            <TextField fx:id="text_user" layoutX="162.0" layoutY="143.0" prefWidth="250.0" promptText="Username" />
-            <PasswordField fx:id="text_pass" layoutX="161.0" layoutY="181.0" prefWidth="250.0" promptText="Password" />
-            <Text layoutX="224.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+            <TextField fx:id="text_user" layoutX="144.0" layoutY="142.0" prefHeight="25.0" prefWidth="256.0" promptText="Username" />
+            <PasswordField fx:id="text_pass" layoutX="144.0" layoutY="179.0" prefHeight="25.0" prefWidth="256.0" promptText="Password" />
+            <Text fill="WHITE" layoutX="210.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
             <Text layoutX="175.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <ImageView fitHeight="89.0" fitWidth="377.0" layoutX="99.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="169.0" fitWidth="350.0" layoutX="104.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@sample.png" />
+                  <Image url="@Title-Logo.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView blendMode="OVERLAY" disable="true" fitHeight="400.0" fitWidth="606.0" layoutX="7.0" layoutY="1.0" opacity="0.18" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@IoT1_600x400.jpg" />
-         </image>
-      </ImageView>
       <Button fx:id="button_devMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
    </children>
 </AnchorPane>
