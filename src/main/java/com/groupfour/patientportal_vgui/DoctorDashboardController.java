@@ -190,7 +190,7 @@ public class DoctorDashboardController implements Initializable
     
     
     @FXML
-    void handleButton_update() {
+    void handleButton_delete() {
         
     }
     
