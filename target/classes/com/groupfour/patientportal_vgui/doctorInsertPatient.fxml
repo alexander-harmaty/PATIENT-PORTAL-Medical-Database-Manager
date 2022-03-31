@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="458.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorInsertPatientController">
    <children>
       <VBox layoutX="48.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="371.0">
@@ -30,25 +29,25 @@
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PFirstName" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_firstName" prefHeight="25.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PLastName" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_lastName" prefHeight="25.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PPhone" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_phone" prefHeight="25.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PEmail" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_email" prefHeight="25.0" prefWidth="200.0" />
                </children>
             </HBox>
