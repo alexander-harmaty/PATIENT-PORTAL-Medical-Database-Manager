@@ -36,13 +36,8 @@ import javafx.stage.Stage;
  * @author Alex
  */
 public class DoctorDashboardController implements Initializable 
-{
-    String user = "pportal";
-    String pwd = "admin";
-    
+{    
     int patientID;
-    
- 
     
     @FXML
     private Button button_accountInfo;
@@ -171,10 +166,6 @@ public class DoctorDashboardController implements Initializable
     @FXML
     private TableColumn<PatientTable, String> column_pzip;
     
-    
-    
-    
-    
     int index = -1;
     
     Connection con = null;
@@ -184,9 +175,9 @@ public class DoctorDashboardController implements Initializable
     
 
     @FXML
-    void handleButton_refresh() {     
+    void handleButton_refresh() { 
+        refreshTable();    
     }
-    
     
     
     @FXML
@@ -253,11 +244,6 @@ public class DoctorDashboardController implements Initializable
         
     }
     
-//    @FXML
-//    void handleButton_save() {
-//       // String 
-//    }
-
     @FXML
     void handleButton_insertRecords() {
         panel_prescriptions.setVisible(false);
@@ -318,37 +304,41 @@ public class DoctorDashboardController implements Initializable
     
     ObservableList<PatientTable> patientslist = FXCollections.observableArrayList();
     
+    public void refreshTable(){
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PATIENT");
+            patientslist.clear();
+                while (rs.next()) {
+                    patientslist.add(new PatientTable(rs.getInt("PatientID"),rs.getString("PFirstName"),
+                    rs.getString("PLastName"),rs.getString("PPhone"),rs.getString("PEmail"),
+                    rs.getString("Street"),rs.getString("City"),rs.getString("Zip"),
+                    rs.getString("State"),rs.getInt("InsuranceID"),rs.getString("Insurance"),
+                    rs.getInt("PrimaryDoctor")));
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_patientID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_pfirstname.setCellValueFactory(new PropertyValueFactory <>("PFirstName"));
+                column_plastname.setCellValueFactory(new PropertyValueFactory <>("PLastName"));
+                column_pphone.setCellValueFactory(new PropertyValueFactory <>("PPhone"));
+                column_pemail.setCellValueFactory(new PropertyValueFactory <>("PEmail"));
+                column_pstreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
+                column_pcity.setCellValueFactory(new PropertyValueFactory <>("City"));
+                column_pzip.setCellValueFactory(new PropertyValueFactory <>("Zip"));
+                column_pstate.setCellValueFactory(new PropertyValueFactory <>("State"));
+                column_pinsuranceid.setCellValueFactory(new PropertyValueFactory <>("InsuranceID"));
+                column_pinsurance.setCellValueFactory(new PropertyValueFactory <>("Insurance"));
+                column_pdoctor.setCellValueFactory(new PropertyValueFactory <>("PrimaryDoctor"));
+                table_patients.setItems(patientslist);
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
- try{
-     
-    Connection con = DatabaseConnection.connectDB();
-    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PATIENT");
-       while (rs.next()) {
-            patientslist.add(new PatientTable(rs.getInt("PatientID"),rs.getString("PFirstName"),
-            rs.getString("PLastName"),rs.getString("PPhone"),rs.getString("PEmail"),
-            rs.getString("Street"),rs.getString("City"),rs.getString("Zip"),
-            rs.getString("State"),rs.getInt("InsuranceID"),rs.getString("Insurance"),
-            rs.getInt("PrimaryDoctor")));
-        }
- } catch (Exception e) {
-     
- }
-        column_patientID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-        column_pfirstname.setCellValueFactory(new PropertyValueFactory <>("PFirstName"));
-        column_plastname.setCellValueFactory(new PropertyValueFactory <>("PLastName"));
-        column_pphone.setCellValueFactory(new PropertyValueFactory <>("PPhone"));
-        column_pemail.setCellValueFactory(new PropertyValueFactory <>("PEmail"));
-        column_pstreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
-        column_pcity.setCellValueFactory(new PropertyValueFactory <>("City"));
-        column_pzip.setCellValueFactory(new PropertyValueFactory <>("Zip"));
-        column_pstate.setCellValueFactory(new PropertyValueFactory <>("State"));
-        column_pinsuranceid.setCellValueFactory(new PropertyValueFactory <>("InsuranceID"));
-        column_pinsurance.setCellValueFactory(new PropertyValueFactory <>("Insurance"));
-        column_pdoctor.setCellValueFactory(new PropertyValueFactory <>("PrimaryDoctor"));
-        table_patients.setItems(patientslist);
-        // TODO
+        refreshTable(); 
     }    
     
 }
