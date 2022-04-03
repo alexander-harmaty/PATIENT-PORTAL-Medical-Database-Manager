@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
@@ -58,11 +59,14 @@ public class DoctorInsertPatientController implements Initializable {
     
     @FXML
     private TextField textField_primarydoc;
+    
+    
      
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement ps;
     PatientTable table = null;
+    int patientID;  
    
     /**
      * Initializes the controller class.
@@ -71,6 +75,34 @@ public class DoctorInsertPatientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @FXML
+    void handleButton_go() {     
+        try
+        {
+            patientID = Integer.parseInt(textField_patientID.getText());
+          
+            Connection con = DatabaseConnection.connectDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM PATIENT WHERE PatientID="+patientID+";");
+
+                while (rs.next()) 
+                {   
+                    textField_patientID.setText(String.valueOf(rs.getInt("PatientID")));                  
+                    textField_firstName.setText(rs.getString("PFirstName"));                   
+                    textField_lastName.setText(rs.getString("PLastName"));
+                    textField_phone.setText(rs.getString("PPhone"));
+                    textField_email.setText(rs.getString("PEmail"));                   
+                    textField_street.setText(rs.getString("Street"));                    
+                    textField_city.setText(rs.getString("City"));                   
+                    textField_zip.setText(rs.getString("Zip"));                   
+                    textField_state.setText(rs.getString("State"));
+                    textField_insuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
+                    textField_insuranceCo.setText(rs.getString("Insurance"));                   
+                    textField_primarydoc.setText(String.valueOf(rs.getInt("PrimaryDoctor")));
+                }
+        } catch (Exception e){}
+    }
     
     @FXML
     void handleButton_save() {

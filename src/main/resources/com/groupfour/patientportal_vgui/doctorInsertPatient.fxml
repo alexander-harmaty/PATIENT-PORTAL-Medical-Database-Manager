@@ -25,6 +25,8 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PatientID" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_patientID" prefHeight="25.0" prefWidth="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="18.222226470708847" />
+                  <Button mnemonicParsing="false" onMousePressed="#handleButton_go" prefHeight="25.0" prefWidth="42.0" text="Go" />
                </children>
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
