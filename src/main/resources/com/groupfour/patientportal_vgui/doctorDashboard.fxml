@@ -79,8 +79,14 @@
                </content>
             </ScrollPane>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#handleButton_update" prefHeight="40.0" prefWidth="85.0" text="Update" />
+            <TextField fx:id="textField_search" layoutX="999.0" layoutY="31.0" prefHeight="25.0" prefWidth="165.0" />
             <Button layoutX="205.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleButton_refresh" prefHeight="40.0" prefWidth="93.0" text="Refresh" />
             <Button layoutX="110.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#handleButton_delete" prefHeight="40.0" prefWidth="85.0" text="Delete" />
+            <Text fill="WHITE" layoutX="922.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+               <font>
+                  <Font name="Arial Black" size="17.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_accountInfo" layoutX="126.0" layoutY="110.0" prefHeight="421.0" prefWidth="511.0" visible="false">
@@ -111,7 +117,29 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
-      <AnchorPane fx:id="panel_medicalRecords" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+      <AnchorPane fx:id="panel_medicalRecords" layoutX="104.0" layoutY="103.0" prefHeight="693.0" prefWidth="1172.0" visible="false">
+         <children>
+            <ScrollPane layoutY="73.0" prefHeight="620.0" prefWidth="1180.0">
+               <content>
+                  <TableView fx:id="table_medicalrecords" prefHeight="622.0" prefWidth="1174.0">
+                     <columns>
+                        <TableColumn fx:id="column_patientID1" prefWidth="103.0" text="Patient ID" />
+                        <TableColumn fx:id="column_pfirstname1" prefWidth="108.0" text="First Name" />
+                        <TableColumn fx:id="column_plastname1" prefWidth="84.0" text="Last Name" />
+                        <TableColumn fx:id="column_pphone1" minWidth="2.0" text="Phone" />
+                        <TableColumn fx:id="column_pemail1" minWidth="0.0" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="column_pstreet1" minWidth="0.0" prefWidth="75.0" text="Street" />
+                        <TableColumn fx:id="column_pcity1" minWidth="0.0" prefWidth="75.0" text="City" />
+                        <TableColumn fx:id="column_pzip1" minWidth="0.0" prefWidth="75.0" text="Zip" />
+                        <TableColumn fx:id="column_pstate1" minWidth="0.0" prefWidth="84.0" text="State" />
+                        <TableColumn fx:id="column_pinsuranceid1" prefWidth="101.0" text="Insurance ID" />
+                        <TableColumn fx:id="column_pinsurance1" minWidth="0.0" prefWidth="105.0" text="Insurance" />
+                        <TableColumn fx:id="column_pdoctor1" minWidth="0.0" prefWidth="106.0" text="Primary Doctor" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children></AnchorPane>
       <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
       <AnchorPane fx:id="panel_prescriptions" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
       <AnchorPane fx:id="text_doctordashboard" layoutX="167.0" layoutY="102.0" prefHeight="0.0" prefWidth="1754.0" />

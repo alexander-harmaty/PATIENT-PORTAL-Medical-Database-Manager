@@ -16,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -126,9 +128,14 @@ public class DoctorDashboardController implements Initializable
     @FXML
     private TextField textField_state;
     
+    @FXML
+    private TextField textField_search;
     ////TABLEVIEW 
     @FXML
     private TableView<PatientTable> table_patients;
+    
+//     @FXML
+//    private TableView<MedicalRecordTable> table_medicalrecords;
     
     @FXML
     private TableColumn<PatientTable, String> column_patientID;
@@ -339,6 +346,58 @@ public class DoctorDashboardController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshTable(); 
+        FilteredList<PatientTable> filtereddata = new FilteredList<>(patientslist, b -> true);
+        textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtereddata.setPredicate(patients -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(patients.getPatientID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (patients.getPFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getPLastName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getPPhone().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getPEmail().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getStreet().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getCity().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getZip().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getState().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                if (String.valueOf(patients.getInsuranceID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (patients.getInsurance().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (String.valueOf(patients.getPrimaryDoctor()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else 
+                    return false;
+            });
+        });
+        SortedList<PatientTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_patients.comparatorProperty());
+        table_patients.setItems(sortedData);
     }    
     
 }
