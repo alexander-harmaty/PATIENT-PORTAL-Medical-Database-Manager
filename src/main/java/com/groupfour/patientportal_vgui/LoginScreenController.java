@@ -128,15 +128,26 @@ public class LoginScreenController implements Initializable {
     
     
     public void addUser(ActionEvent event){
+        long id = 0;
         con = DatabaseConnection.connectDB();
         String sql = "INSERT INTO LOGIN (Username, Password, Email, Type) values (?,?,?,?)";
         try {
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, text_user2.getText());
             ps.setString(2, text_pass2.getText());
             ps.setString(3, text_email.getText());
             ps.setString(4, button_type2.getValue().toString());
-            ps.execute();
+            int affectedRows = ps.executeUpdate();
+            
+            if (affectedRows > 0) {
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        id = rs.getLong(1); 
+                    }
+                } catch (Exception e){} 
+            }
+            
+            System.out.println (id); 
             
             JOptionPane.showMessageDialog(null, "Registered successfully");
         } catch (Exception e) {
