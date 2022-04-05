@@ -32,12 +32,18 @@ public class LoginScreenController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    //Buttons
     
      @FXML
     private Button button_login;
 
     @FXML
     private Button button_register;
+    
+    @FXML
+    private Button button_devMenu;
+    
+    //dropdowns
 
     @FXML
     private ComboBox button_type;
@@ -45,14 +51,21 @@ public class LoginScreenController implements Initializable {
     @FXML
     private ComboBox button_type2;
     
-    @FXML
-    private Button button_devMenu;
+    //AnchorPanes
 
     @FXML
     private AnchorPane panel_login;
 
     @FXML
     private AnchorPane panel_register;
+    
+    @FXML
+    private AnchorPane panel_registerPatient;
+    
+    @FXML
+    private AnchorPane panel_registerDoctor;
+    
+    //Text Fields
 
     @FXML
     private TextField text_email;
@@ -72,17 +85,22 @@ public class LoginScreenController implements Initializable {
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement ps = null;
+    long id = 0;
     
     public void panelLoginShow() {
         panel_login.setVisible(true);
         panel_register.setVisible(false);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
     }
 
     public void panelRegisterShow() {
         panel_login.setVisible(false);
         panel_register.setVisible(true);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
     }
-
+    
     @FXML
     private void Login (ActionEvent event) throws Exception {
         String userName = text_user.getText();
@@ -99,8 +117,8 @@ public class LoginScreenController implements Initializable {
                 break;
 
             }
-        if (rs.getString(5).toUpperCase().equals("PATIENT"))
-        {
+        if (rs.getString(5).toUpperCase().equals("PATIENT")){           
+                    JOptionPane.showMessageDialog(null, "Your login was successful.");
                     button_login.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
                     Stage mainStage = new Stage();
@@ -109,7 +127,7 @@ public class LoginScreenController implements Initializable {
                     mainStage.show(); 
             }
         else if (rs.getString(5).toUpperCase().equals("DOCTOR")) {
-            JOptionPane.showMessageDialog(null, "Your login was successful.");
+                    JOptionPane.showMessageDialog(null, "Your login was successful.");
                     button_login.getScene().getWindow().hide();
                     Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
                     Stage mainStage = new Stage();
@@ -128,7 +146,10 @@ public class LoginScreenController implements Initializable {
     
     
     public void addUser(ActionEvent event){
-        long id = 0;
+        panel_login.setVisible(false);
+        panel_register.setVisible(false);
+        panel_registerPatient.setVisible(true);
+        panel_registerDoctor.setVisible(true);
         con = DatabaseConnection.connectDB();
         String sql = "INSERT INTO LOGIN (Username, Password, Email, Type) values (?,?,?,?)";
         try {
