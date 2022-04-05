@@ -11,11 +11,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -30,6 +37,33 @@ public class PatientDashboardController implements Initializable
     //String pwd = "admin";
     
     int patientID;
+    
+    @FXML
+    private TableView<DoctorTable> table_doctor;
+    
+    @FXML
+    private TableColumn<DoctorTable, String> column_demail;
+
+    @FXML
+    private TableColumn<DoctorTable, String> column_dfirstname;
+
+    @FXML
+    private TableColumn<DoctorTable, String> column_dlastname;
+
+    @FXML
+    private TableColumn<DoctorTable, String> column_doctorid;
+
+    @FXML
+    private TableColumn<DoctorTable, String> column_dphone;
+
+    @FXML
+    private TableColumn<DoctorTable, String> column_degree;
+
+    @FXML
+    private TableColumn<DoctorTable, String> column_specialty;
+    
+    @FXML
+    private TextField textField_search;
     
     @FXML
     private Button button_accountInfo;
@@ -259,6 +293,32 @@ public class PatientDashboardController implements Initializable
         this.label_errorText.setText("");
         patientID = 0;
     }
+    
+    ObservableList<DoctorTable> doctorslist = FXCollections.observableArrayList();
+    
+    public void refreshTable() {
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM DOCTOR");
+            doctorslist.clear();
+                while (rs.next()) {
+                    doctorslist.add(new DoctorTable(rs.getInt("DoctorID"),rs.getString("DFirstName"),
+                    rs.getString("DLastName"),rs.getString("DPhone"),rs.getString("DEmail"),
+                    rs.getString("Degree"),rs.getString("Specialty")));
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_dfirstname.setCellValueFactory(new PropertyValueFactory <>("DFirstName"));
+                column_dlastname.setCellValueFactory(new PropertyValueFactory <>("DLastName"));
+                column_dphone.setCellValueFactory(new PropertyValueFactory <>("DPhone"));
+                column_demail.setCellValueFactory(new PropertyValueFactory <>("DEmail"));
+                column_degree.setCellValueFactory(new PropertyValueFactory <>("Degree"));
+                column_specialty.setCellValueFactory(new PropertyValueFactory <>("Specialty"));
+                table_doctor.setItems(doctorslist);
+    }
 
     @FXML
     void switchToDevMenu() throws IOException 
@@ -271,6 +331,45 @@ public class PatientDashboardController implements Initializable
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        refreshTable();
+        FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
+        textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtereddata.setPredicate(doctors -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(doctors.getDoctorID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (doctors.getDFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDLastName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDPhone().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDEmail().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDegree().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getSpecialty().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+      
+                else 
+                    return false;
+            });
+        });
+        SortedList<DoctorTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_doctor.comparatorProperty());
+        table_doctor.setItems(sortedData);
         // TODO
     }    
     
