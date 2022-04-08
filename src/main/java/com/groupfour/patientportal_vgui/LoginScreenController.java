@@ -243,7 +243,11 @@ public class LoginScreenController implements Initializable {
         
     
     }
-    
+    /**
+     * Not Working, needs to be debugged 
+     * @author Yasin
+     * @param event 
+     */
       @FXML
     public void registerPatient(ActionEvent event) {
         Connection con2 = DatabaseConnection.connectDB();
@@ -265,7 +269,7 @@ public class LoginScreenController implements Initializable {
             ps2.setString(9,textField_pstate.getText());
             ps2.setInt(10,Integer.parseInt(textField_pinsid.getText()));
             ps2.setString(11,textField_pinsurance.getText());    
-            ps2.executeUpdate();
+            ps2.execute(query);
             System.out.println ("Query Complete!");
              
             
@@ -303,6 +307,7 @@ public class LoginScreenController implements Initializable {
 
 
 /** 
+ * @author Yasin
  * These are just some notes and code on the registerPatient methods
  * 
  * none are working but i am getting no errors, please let me know if you guys see whats wrong.

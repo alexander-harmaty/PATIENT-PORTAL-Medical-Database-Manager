@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
    <children>
       <AnchorPane fx:id="panel_registerDoctor" layoutX="9.0" layoutY="40.0" prefHeight="340.0" prefWidth="583.0" visible="false">
          <children>
-            <VBox layoutX="43.0" layoutY="2.0" prefHeight="347.0" prefWidth="154.0">
+            <VBox layoutX="43.0" layoutY="2.0" prefHeight="347.0" prefWidth="218.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -30,34 +30,26 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="149.0" promptText="ID" />
+                        <TextField fx:id="textField_did" prefHeight="25.0" prefWidth="149.0" promptText="ID" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="First Name" />
+                        <TextField fx:id="textField_dfname" promptText="First Name" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Phone Number" />
+                        <TextField fx:id="textField_demail" promptText="Email" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Address" />
+                        <TextField fx:id="textField_spec" promptText="Specialty" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField promptText="Zip Code" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField promptText="Insurance ID" />
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>
             <VBox layoutX="201.0" layoutY="2.0" prefHeight="347.0" prefWidth="154.0">
@@ -65,36 +57,25 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="149.0" promptText="Date Of Birth" />
+                        <TextField fx:id="textField_dphone" promptText="Phone" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Last Name" />
+                        <TextField fx:id="textField_dlname" promptText="Last Name" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Email" />
+                        <TextField fx:id="textField_degree" promptText="Degree" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField promptText="City" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField promptText="State" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField promptText="Insurance Company" />
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>
+            <Button layoutX="392.0" layoutY="239.0" mnemonicParsing="false" onAction="#registerdoctor" prefHeight="24.0" prefWidth="124.0" text="Register" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_registerPatient" layoutX="9.0" layoutY="41.0" prefHeight="349.0" prefWidth="583.0" visible="false">
@@ -112,32 +93,32 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="149.0" promptText="ID" />
+                        <TextField fx:id="textField_pid" prefHeight="25.0" prefWidth="149.0" promptText="ID" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="First Name" />
+                        <TextField fx:id="textField_pfname" promptText="First Name" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Phone Number" />
+                        <TextField fx:id="textField_pphone" promptText="Phone Number" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Address" />
+                        <TextField fx:id="textField_pcity" promptText="City" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Zip Code" />
+                        <TextField fx:id="textField_pstate" promptText="State" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Insurance ID" />
+                        <TextField fx:id="textField_pinsurance" promptText="Insurance Company" />
                      </children>
                   </HBox>
                </children>
@@ -147,36 +128,33 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="149.0" promptText="Date Of Birth" />
+                        <TextField fx:id="textField_pemail" promptText="Email" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Last Name" />
+                        <TextField fx:id="textField_plname" promptText="Last Name" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="Email" />
+                        <TextField fx:id="textField_paddress" promptText="Address" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="City" />
+                        <TextField fx:id="textField_pzip" promptText="Zip Code" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField promptText="State" />
+                        <TextField fx:id="textField_pinsid" promptText="Insurance ID" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <TextField promptText="Insurance Company" />
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>
+            <Button layoutX="423.0" layoutY="305.0" mnemonicParsing="false" onAction="#registerPatient" prefHeight="24.0" prefWidth="124.0" text="Register" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_register" layoutX="22.0" layoutY="27.0" prefHeight="347.0" prefWidth="557.0" visible="false">
