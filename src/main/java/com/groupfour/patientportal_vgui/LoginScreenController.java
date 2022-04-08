@@ -140,8 +140,11 @@ public class LoginScreenController implements Initializable {
     private TextField text_user2;
     
     Connection con = null;
+    Connection con2 = null;
     ResultSet rs = null;
     PreparedStatement ps = null;
+    PreparedStatement ps2 = null;
+    Statement stmt = null;
     long id = 0;
     
     public void panelLoginShow() {
@@ -211,6 +214,7 @@ public class LoginScreenController implements Initializable {
             ps.setString(2, text_pass2.getText());
             ps.setString(3, text_email.getText());
             ps.setString(4, button_type2.getValue().toString());
+            System.out.println (sql);
             int affectedRows = ps.executeUpdate();
             
             if (affectedRows > 0) {
@@ -235,6 +239,7 @@ public class LoginScreenController implements Initializable {
              }
              
              else if (button_type2.getValue().equals("Doctor")){
+                textField_did.setText(String.valueOf(id));
                 panel_login.setVisible(false);
                 panel_register.setVisible(false);
                 panel_registerPatient.setVisible(false);
@@ -244,34 +249,35 @@ public class LoginScreenController implements Initializable {
     
     }
     /**
-     * Not Working, needs to be debugged 
+     * WORKS!!
      * @author Yasin
      * @param event 
      */
       @FXML
     public void registerPatient(ActionEvent event) {
-        Connection con2 = DatabaseConnection.connectDB();
-        String query = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuanceID, Insurance) "
-                    + " Values (?,?,?,?,?,?,?,?,?,?,?);"; 
-       int ID = (int) id;
+        int ID = (int) id; 
         try {
-            System.out.println ("This is the ID:" + ID);
-            System.out.println ("Starting the Query.....");
-            PreparedStatement ps2 = con2.prepareStatement(query);
-            ps2.setInt(1,ID); 
-            ps2.setString(2,textField_pfname.getText());
-            ps2.setString(3,textField_plname.getText());
-            ps2.setString(4,textField_pphone.getText());
-            ps2.setString(5,textField_pemail.getText());
-            ps2.setString(6,textField_paddress.getText());
-            ps2.setString(7,textField_pcity.getText());
-            ps2.setString(8,textField_pzip.getText());
-            ps2.setString(9,textField_pstate.getText());
-            ps2.setInt(10,Integer.parseInt(textField_pinsid.getText()));
-            ps2.setString(11,textField_pinsurance.getText());    
-            ps2.execute(query);
-            System.out.println ("Query Complete!");
-             
+        System.out.println("ID being used is: " + ID);
+        con2 = DatabaseConnection.connectDB();
+        stmt = con2.createStatement();
+        
+            int pID = ID;
+            String fname = textField_pfname.getText();
+            String lname = textField_plname.getText();
+            String pnum =  textField_pphone.getText();
+            String email = textField_pemail.getText();
+            String street = textField_paddress.getText();
+            String city = textField_pcity.getText();
+            String zip = textField_pzip.getText();
+            String state =  textField_pstate.getText();
+            int insid =  Integer.parseInt(textField_pinsid.getText());
+            String insur =  textField_pinsurance.getText();
+            
+        String patquery = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance)" 
+                    + " VALUES  (" + pID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "')";
+        
+        System.out.println(patquery);            
+        stmt.executeQuery(patquery); 
             
         } catch (Exception e) {}
         
@@ -285,6 +291,33 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     public void registerdoctor(ActionEvent event) {
+        int ID = (int) id; 
+        try {
+        System.out.println("ID being used is: " + ID);
+        con2 = DatabaseConnection.connectDB();
+        stmt = con2.createStatement();
+        
+            int dID = ID;
+            String fname = textField_dfname.getText();
+            String lname = textField_dlname.getText();
+            String dnum =  textField_dphone.getText();
+            String email = textField_demail.getText();
+            String degree = textField_degree.getText();
+            String spec = textField_spec.getText();
+            
+        String docquery = "INSERT INTO DOCTOR (DoctorID, DFirstName, DLastName, DPhone, DEmail, Degree, Specialty)" 
+                    + " VALUES  (" + dID + ",'" +fname+ "','" +lname+ "','" +dnum+ "','" +email+ "','" +degree+ "','" +spec+ "')";
+        
+        System.out.println(docquery);            
+        stmt.executeQuery(docquery); 
+            
+        } catch (Exception e) {}
+        
+        panel_login.setVisible(true);
+        panel_register.setVisible(false);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
+        JOptionPane.showMessageDialog(null,"Registration Complete");
 
     }
 
@@ -306,81 +339,3 @@ public class LoginScreenController implements Initializable {
 
 
 
-/** 
- * @author Yasin
- * These are just some notes and code on the registerPatient methods
- * 
- * none are working but i am getting no errors, please let me know if you guys see whats wrong.
- * 
- * Itteration 2
- * 
- * public void registerPatient(ActionEvent event) {
-    try {
-        System.out.println("Connection Success!");
-        con = DatabaseConnection.connectDB();
-        Statement stmt = con.createStatement();
-        
-            int ID = ID;
-            String fname = textField_pfname.getText();
-            String lname = textField_plname.getText();
-            String pnum =  textField_pphone.getText();
-            String email = textField_pemail.getText();
-            String street = textField_pstreet.getText();
-            String city = textField_pcity.getText();
-            String zip = textField_pzip.getText();
-            String state =  textField_pstate.getText();
-            int insid =  Integer.parseInt(textField_pinsid.getText());
-            String insur =  textField_pinsurance.getText(); 
-            
-            stmt.execute("INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuanceID, Insurance)" 
-			+ " VALUES  (" + ID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "');";
-            
-        } catch (Exception e) {}
-        
-        panel_login.setVisible(true);
-        panel_register.setVisible(false);
-        panel_registerPatient.setVisible(false);
-        panel_registerDoctor.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
-
-    }
- * 
- * 
- * Iteration 3
- * 
- * public void registerPatient(ActionEvent event) {
-        int ID = (int) id; 
-        try {
-        System.out.println("ID being used is: " + ID);
-        con = DatabaseConnection.connectDB();
-        Statement stmt = con.createStatement();
-        
-            int pID = ID;
-            String fname = textField_pfname.getText();
-            String lname = textField_plname.getText();
-            String pnum =  textField_pphone.getText();
-            String email = textField_pemail.getText();
-            String street = textField_paddress.getText();
-            String city = textField_pcity.getText();
-            String zip = textField_pzip.getText();
-            String state =  textField_pstate.getText();
-            int insid =  Integer.parseInt(textField_pinsid.getText());
-            String insur =  textField_pinsurance.getText();
-            
-        String query = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuanceID, Insurance)" 
-                    + " VALUES  (" + pID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "')";
-        
-        System.out.println(query);            
-        stmt.executeQuery(query); 
-            
-        } catch (Exception e) {}
-        
-        panel_login.setVisible(true);
-        panel_register.setVisible(false);
-        panel_registerPatient.setVisible(false);
-        panel_registerDoctor.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
-       
-    }
- * 
- */
