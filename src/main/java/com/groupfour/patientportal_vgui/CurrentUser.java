@@ -16,14 +16,6 @@ public class CurrentUser
     private String lastName;
     private String phone;
     private String email;
-
-    public CurrentUser() {
-        this.userID = "userID";
-        this.firstName = "firstName";
-        this.lastName = "lastName";
-        this.phone = "phone";
-        this.email = "email";
-    }
     
     public CurrentUser(String userID) {
         this.userID = userID;
