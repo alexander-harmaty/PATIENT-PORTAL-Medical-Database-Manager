@@ -45,7 +45,7 @@ public class LoginScreenController implements Initializable {
     
     //Textfields
     
-     @FXML
+    @FXML
     private TextField textField_degree;
 
     @FXML
@@ -174,6 +174,7 @@ public class LoginScreenController implements Initializable {
             while (rs.next()) {
                // JOptionPane.showMessageDialog(null, "Your login was successful.");
                if (rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
+                   App.currentUser = new CurrentUser(rs.getString(1));
                 break;
 
             }
@@ -185,6 +186,8 @@ public class LoginScreenController implements Initializable {
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
                     mainStage.show(); 
+                    
+                    //PatientDashboardController.this.setLabelUserFirstLast();
             }
         else if (rs.getString(5).toUpperCase().equals("DOCTOR")) {
                     JOptionPane.showMessageDialog(null, "Your login was successful.");
