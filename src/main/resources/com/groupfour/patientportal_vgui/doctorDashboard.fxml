@@ -123,18 +123,14 @@
                <content>
                   <TableView fx:id="table_medicalrecords" prefHeight="622.0" prefWidth="1174.0">
                      <columns>
-                        <TableColumn fx:id="column_patientID1" prefWidth="103.0" text="Patient ID" />
-                        <TableColumn fx:id="column_pfirstname1" prefWidth="108.0" text="First Name" />
-                        <TableColumn fx:id="column_plastname1" prefWidth="84.0" text="Last Name" />
-                        <TableColumn fx:id="column_pphone1" minWidth="2.0" text="Phone" />
-                        <TableColumn fx:id="column_pemail1" minWidth="0.0" prefWidth="75.0" text="Email" />
-                        <TableColumn fx:id="column_pstreet1" minWidth="0.0" prefWidth="75.0" text="Street" />
-                        <TableColumn fx:id="column_pcity1" minWidth="0.0" prefWidth="75.0" text="City" />
-                        <TableColumn fx:id="column_pzip1" minWidth="0.0" prefWidth="75.0" text="Zip" />
-                        <TableColumn fx:id="column_pstate1" minWidth="0.0" prefWidth="84.0" text="State" />
-                        <TableColumn fx:id="column_pinsuranceid1" prefWidth="101.0" text="Insurance ID" />
-                        <TableColumn fx:id="column_pinsurance1" minWidth="0.0" prefWidth="105.0" text="Insurance" />
-                        <TableColumn fx:id="column_pdoctor1" minWidth="0.0" prefWidth="106.0" text="Primary Doctor" />
+                        <TableColumn fx:id="column_recordID" prefWidth="103.0" text="Record ID" />
+                        <TableColumn fx:id="column_patientID2" prefWidth="108.0" text="Patient ID" />
+                        <TableColumn fx:id="column_dob" prefWidth="84.0" text="Date of Birth" />
+                        <TableColumn fx:id="column_recorddate" minWidth="2.0" text="Record Date" />
+                        <TableColumn fx:id="column_height" minWidth="0.0" prefWidth="97.0" text="Height" />
+                        <TableColumn fx:id="column_weight" minWidth="0.0" prefWidth="94.0" text="Weight" />
+                        <TableColumn fx:id="column_bloodtype" minWidth="0.0" prefWidth="101.0" text="Blood Type" />
+                        <TableColumn fx:id="column_diagnosis" minWidth="0.0" prefWidth="105.0" text="Diagnosis" />
                      </columns>
                   </TableView>
                </content>

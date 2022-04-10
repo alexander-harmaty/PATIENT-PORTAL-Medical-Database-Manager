@@ -173,6 +173,36 @@ public class DoctorDashboardController implements Initializable
     @FXML
     private TableColumn<PatientTable, String> column_pzip;
     
+    @FXML
+    private TableView<MedicalTable> table_medicalrecords;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_recordID;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_recorddate;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_weight;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_bloodtype;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_diagnosis;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_dob;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_height;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_patientID2;
+    
+    
+    
+    
     int index = -1;
     
     Connection con = null;
@@ -308,8 +338,37 @@ public class DoctorDashboardController implements Initializable
     /**
      * Initializes the controller class.
      */
-    
+    ObservableList<MedicalTable> medicalList = FXCollections.observableArrayList();
     ObservableList<PatientTable> patientslist = FXCollections.observableArrayList();
+    
+    public void medicalTable() {
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM MEDICALRECORDS");
+            medicalList.clear();
+                while (rs.next()) {
+                    medicalList.add(new MedicalTable(rs.getInt("RecordID"),rs.getInt("PatientID"),
+                    rs.getString("DOB"),rs.getString("RecordDate"),rs.getString("Height"),
+                    rs.getString("Weight"),rs.getString("BloodType"),rs.getString("Diagnosis")));
+                    
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_recordID.setCellValueFactory(new PropertyValueFactory <>("RecordID"));
+                column_patientID2.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_dob.setCellValueFactory(new PropertyValueFactory <>("DOB"));
+                column_recorddate.setCellValueFactory(new PropertyValueFactory <>("RecordDate"));
+                column_height.setCellValueFactory(new PropertyValueFactory <>("Height"));
+                column_weight.setCellValueFactory(new PropertyValueFactory <>("Weight"));
+                column_bloodtype.setCellValueFactory(new PropertyValueFactory <>("BloodType"));
+                column_diagnosis.setCellValueFactory(new PropertyValueFactory <>("Diagnosis"));
+                
+                table_medicalrecords.setItems(medicalList);
+        
+    }
+    
     
     public void refreshTable(){
         try{
@@ -346,6 +405,7 @@ public class DoctorDashboardController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshTable(); 
+        medicalTable();
         FilteredList<PatientTable> filtereddata = new FilteredList<>(patientslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(patients -> {
