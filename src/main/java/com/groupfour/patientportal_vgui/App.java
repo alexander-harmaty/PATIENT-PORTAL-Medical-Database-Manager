@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.sql.*;
 
 
 import java.io.IOException;
@@ -12,12 +13,12 @@ import java.io.IOException;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends Application{
 
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException{
         scene = new Scene(loadFXML("loginScreen"), 600, 400);
         stage.setScene(scene);
         stage.show();
