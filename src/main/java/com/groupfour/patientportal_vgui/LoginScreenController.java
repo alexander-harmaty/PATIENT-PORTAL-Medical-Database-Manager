@@ -140,10 +140,8 @@ public class LoginScreenController implements Initializable {
     private TextField text_user2;
     
     Connection con = null;
-    Connection con3 = null;
     Connection con2 = null;
     ResultSet rs = null;
-    ResultSet rs2 = null;
     PreparedStatement ps = null;
     PreparedStatement ps2 = null;
     Statement stmt = null;
@@ -167,75 +165,41 @@ public class LoginScreenController implements Initializable {
     private void Login (ActionEvent event) throws Exception {
         String userName = text_user.getText();
         String passWord = text_pass.getText();
-        try 
-        {
+        try {
+            
             con = DatabaseConnection.connectDB();
             Statement st = (Statement) con.createStatement();
             rs = st.executeQuery( "Select * FROM LOGIN WHERE Username = '" + userName + "' AND Password = '" + passWord + "';");
-            
-            con2 = DatabaseConnection.connectDB();
-            Statement st2 = (Statement) con2.createStatement();
-            rs2 = st2.executeQuery( "Select * FROM LOGIN WHERE Email = '" + userName + "' AND Password = '" + passWord + "';");
-            
-            // JOptionPane.showMessageDialog(null, "Your login was successful.");
-            if (rs.next() && rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
-            {
-                App.currentUser = new CurrentUser(rs.getString(1));
-                
-                if (rs.getString(5).toUpperCase().equals("PATIENT"))
-                {           
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
+            //this loop will read the type and bring to a page specific to the type of user
+            while (rs.next()) {
+               // JOptionPane.showMessageDialog(null, "Your login was successful.");
+               if (rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
+                   App.currentUser = new CurrentUser(rs.getString(1));
+                break;
 
-                        //PatientDashboardController.this.setLabelUserFirstLast();
-                }
-                else if (rs.getString(5).toUpperCase().equals("DOCTOR")) 
-                {
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
-                }
             }
-            else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
-            {
-                App.currentUser = new CurrentUser(rs2.getString(1));
-                
-                if (rs2.getString(5).toUpperCase().equals("PATIENT"))
-                {           
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
-
-                        //PatientDashboardController.this.setLabelUserFirstLast();
-                }
-                else if (rs2.getString(5).toUpperCase().equals("DOCTOR")) 
-                {
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
-                }
+        if (rs.getString(5).toUpperCase().equals("PATIENT")){           
+                    JOptionPane.showMessageDialog(null, "Your login was successful.");
+                    button_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+                    Stage mainStage = new Stage();
+                    Scene scene = new Scene(root);
+                    mainStage.setScene(scene);
+                    mainStage.show(); 
+                    
+                    //PatientDashboardController.this.setLabelUserFirstLast();
             }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Incorrect username or password.");
-            }
+        else if (rs.getString(5).toUpperCase().equals("DOCTOR")) {
+                    JOptionPane.showMessageDialog(null, "Your login was successful.");
+                    button_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+                    Stage mainStage = new Stage();
+                    Scene scene = new Scene(root);
+                    mainStage.setScene(scene);
+                    mainStage.show(); 
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Incorrect username or password.");
         } catch (Exception e) {
             e.printStackTrace();
             //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
@@ -297,8 +261,8 @@ public class LoginScreenController implements Initializable {
         int ID = (int) id; 
         try {
         System.out.println("ID being used is: " + ID);
-        con3 = DatabaseConnection.connectDB();
-        stmt = con3.createStatement();
+        con2 = DatabaseConnection.connectDB();
+        stmt = con2.createStatement();
         
             int pID = ID;
             String fname = textField_pfname.getText();
@@ -333,8 +297,8 @@ public class LoginScreenController implements Initializable {
         int ID = (int) id; 
         try {
         System.out.println("ID being used is: " + ID);
-        con3 = DatabaseConnection.connectDB();
-        stmt = con3.createStatement();
+        con2 = DatabaseConnection.connectDB();
+        stmt = con2.createStatement();
         
             int dID = ID;
             String fname = textField_dfname.getText();

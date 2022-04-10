@@ -37,7 +37,7 @@ public class App extends Application {
         launch();
         
         //initializes currentUser for use with DevMenu
-        //currentUser = new CurrentUser("00000");//REMOVE WHEN REMOVING DEV MENU
+        currentUser = new CurrentUser();//REMOVE WHEN REMOVING DEV MENU
     }
 
 }
