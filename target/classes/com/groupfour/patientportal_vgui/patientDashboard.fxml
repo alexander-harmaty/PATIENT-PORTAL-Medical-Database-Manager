@@ -34,12 +34,6 @@
       </VBox>
       <AnchorPane fx:id="panel_accountInfo" layoutX="126.0" layoutY="126.0" prefHeight="552.0" prefWidth="474.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2b5aae" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="474.0" />
-            <Text fill="WHITE" layoutX="139.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Dashboard" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
             <TextField fx:id="textField_patientID" layoutX="159.0" layoutY="85.0" promptText="Patiend ID" />
             <Button fx:id="button_go" layoutX="318.0" layoutY="85.0" mnemonicParsing="false" onMouseReleased="#handleButton_go" text="Go" />
             <TextField fx:id="textField_firstName" layoutX="199.0" layoutY="127.0" />
@@ -80,7 +74,6 @@
                   </AnchorPane>
               </content>
             </TitledPane>
-            <Button fx:id="button_devMenu" layoutX="1008.0" layoutY="638.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" prefHeight="25.0" prefWidth="99.0" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
@@ -117,5 +110,11 @@
             <Font name="Arial Black" size="48.0" />
          </font>
       </Text>
+      <Button fx:id="button_devMenu" layoutX="1188.0" layoutY="774.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" prefHeight="25.0" prefWidth="99.0" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="label_userFirstLast" layoutX="1044.0" layoutY="34.0" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

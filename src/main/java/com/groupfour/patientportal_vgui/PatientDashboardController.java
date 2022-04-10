@@ -36,8 +36,6 @@ public class PatientDashboardController implements Initializable
     //String user = "pportal";
     //String pwd = "admin";
     
-    int patientID;
-    
     @FXML
     private TableView<DoctorTable> table_doctor;
     
@@ -131,6 +129,17 @@ public class PatientDashboardController implements Initializable
     @FXML
     private Label label_errorText;
     
+    @FXML
+    protected  Label label_userFirstLast; 
+    
+    //currentUserID   
+    private String stringID = App.currentUser.getUserID();
+    
+    public  void setLabelUserFirstLast()
+    {
+        label_userFirstLast.setText("test");
+    }
+    
     public void show_panelDashboard() 
     {
         panel_dashboard.setVisible(true);
@@ -154,6 +163,8 @@ public class PatientDashboardController implements Initializable
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
+        
+        textField_patientID.setText(App.currentUser.getUserID());
     }
 
     @FXML
@@ -221,6 +232,8 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
     }
     
+    
+    int patientID;
     @FXML
     private void handleButton_go()
     {
@@ -228,8 +241,8 @@ public class PatientDashboardController implements Initializable
         {
             patientID = Integer.parseInt(textField_patientID.getText());
             
-            if (String.valueOf(textField_patientID.getText()).length() == 5)
-            {
+//            if (String.valueOf(textField_patientID.getText()).length() == 5)
+//            {
                 label_errorText.setText("");
 
                 //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
@@ -263,12 +276,12 @@ public class PatientDashboardController implements Initializable
                     textField_insuranceCo.setText(rs.getString("Insurance"));
                     //System.out.println("INSURANCE COMPANY: " + rs.getString("Insurance"));
                 }
-            }
-            else
-            {
-                //ALEX: Maybe throw a custom exception for this?
-                label_errorText.setText("ONLY use 5 numbers! Please try again."); 
-            }
+//            }
+//            else
+//            {
+//                //ALEX: Maybe throw a custom exception for this?
+//                label_errorText.setText("ONLY use 5 numbers! Please try again."); 
+//            }
         }
         catch (NumberFormatException e)
         {
