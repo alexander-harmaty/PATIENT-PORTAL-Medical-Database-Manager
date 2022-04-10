@@ -140,8 +140,13 @@ public class LoginScreenController implements Initializable {
     private TextField text_user2;
     
     Connection con = null;
+    Connection con3 = null;
+    Connection con2 = null;
     ResultSet rs = null;
+    ResultSet rs2 = null;
     PreparedStatement ps = null;
+    PreparedStatement ps2 = null;
+    Statement stmt = null;
     long id = 0;
     
     public void panelLoginShow() {
@@ -162,41 +167,75 @@ public class LoginScreenController implements Initializable {
     private void Login (ActionEvent event) throws Exception {
         String userName = text_user.getText();
         String passWord = text_pass.getText();
-        try {
-            
+        try 
+        {
             con = DatabaseConnection.connectDB();
             Statement st = (Statement) con.createStatement();
             rs = st.executeQuery( "Select * FROM LOGIN WHERE Username = '" + userName + "' AND Password = '" + passWord + "';");
-            //this loop will read the type and bring to a page specific to the type of user
-            while (rs.next()) {
-               // JOptionPane.showMessageDialog(null, "Your login was successful.");
-               if (rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
-                   App.currentUser = new CurrentUser(rs.getString(1));
-                break;
+            
+            con2 = DatabaseConnection.connectDB();
+            Statement st2 = (Statement) con2.createStatement();
+            rs2 = st2.executeQuery( "Select * FROM LOGIN WHERE Email = '" + userName + "' AND Password = '" + passWord + "';");
+            
+            // JOptionPane.showMessageDialog(null, "Your login was successful.");
+            if (rs.next() && rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
+            {
+                App.currentUser = new CurrentUser(rs.getString(1));
+                
+                if (rs.getString(5).toUpperCase().equals("PATIENT"))
+                {           
+                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        button_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+                        Stage mainStage = new Stage();
+                        Scene scene = new Scene(root);
+                        mainStage.setScene(scene);
+                        mainStage.show(); 
 
+                        //PatientDashboardController.this.setLabelUserFirstLast();
+                }
+                else if (rs.getString(5).toUpperCase().equals("DOCTOR")) 
+                {
+                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        button_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+                        Stage mainStage = new Stage();
+                        Scene scene = new Scene(root);
+                        mainStage.setScene(scene);
+                        mainStage.show(); 
+                }
             }
-        if (rs.getString(5).toUpperCase().equals("PATIENT")){           
-                    JOptionPane.showMessageDialog(null, "Your login was successful.");
-                    button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-                    Stage mainStage = new Stage();
-                    Scene scene = new Scene(root);
-                    mainStage.setScene(scene);
-                    mainStage.show(); 
-                    
-                    //PatientDashboardController.this.setLabelUserFirstLast();
+            else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
+            {
+                App.currentUser = new CurrentUser(rs2.getString(1));
+                
+                if (rs2.getString(5).toUpperCase().equals("PATIENT"))
+                {           
+                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        button_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+                        Stage mainStage = new Stage();
+                        Scene scene = new Scene(root);
+                        mainStage.setScene(scene);
+                        mainStage.show(); 
+
+                        //PatientDashboardController.this.setLabelUserFirstLast();
+                }
+                else if (rs2.getString(5).toUpperCase().equals("DOCTOR")) 
+                {
+                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        button_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+                        Stage mainStage = new Stage();
+                        Scene scene = new Scene(root);
+                        mainStage.setScene(scene);
+                        mainStage.show(); 
+                }
             }
-        else if (rs.getString(5).toUpperCase().equals("DOCTOR")) {
-                    JOptionPane.showMessageDialog(null, "Your login was successful.");
-                    button_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                    Stage mainStage = new Stage();
-                    Scene scene = new Scene(root);
-                    mainStage.setScene(scene);
-                    mainStage.show(); 
-        }
-        else 
-            JOptionPane.showMessageDialog(null, "Incorrect username or password.");
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Incorrect username or password.");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
@@ -214,6 +253,7 @@ public class LoginScreenController implements Initializable {
             ps.setString(2, text_pass2.getText());
             ps.setString(3, text_email.getText());
             ps.setString(4, button_type2.getValue().toString());
+            System.out.println (sql);
             int affectedRows = ps.executeUpdate();
             
             if (affectedRows > 0) {
@@ -238,6 +278,7 @@ public class LoginScreenController implements Initializable {
              }
              
              else if (button_type2.getValue().equals("Doctor")){
+                textField_did.setText(String.valueOf(id));
                 panel_login.setVisible(false);
                 panel_register.setVisible(false);
                 panel_registerPatient.setVisible(false);
@@ -247,34 +288,35 @@ public class LoginScreenController implements Initializable {
     
     }
     /**
-     * Not Working, needs to be debugged 
+     * WORKS!!
      * @author Yasin
      * @param event 
      */
       @FXML
     public void registerPatient(ActionEvent event) {
-        Connection con2 = DatabaseConnection.connectDB();
-        String query = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuanceID, Insurance) "
-                    + " Values (?,?,?,?,?,?,?,?,?,?,?);"; 
-       int ID = (int) id;
+        int ID = (int) id; 
         try {
-            System.out.println ("This is the ID:" + ID);
-            System.out.println ("Starting the Query.....");
-            PreparedStatement ps2 = con2.prepareStatement(query);
-            ps2.setInt(1,ID); 
-            ps2.setString(2,textField_pfname.getText());
-            ps2.setString(3,textField_plname.getText());
-            ps2.setString(4,textField_pphone.getText());
-            ps2.setString(5,textField_pemail.getText());
-            ps2.setString(6,textField_paddress.getText());
-            ps2.setString(7,textField_pcity.getText());
-            ps2.setString(8,textField_pzip.getText());
-            ps2.setString(9,textField_pstate.getText());
-            ps2.setInt(10,Integer.parseInt(textField_pinsid.getText()));
-            ps2.setString(11,textField_pinsurance.getText());    
-            ps2.execute(query);
-            System.out.println ("Query Complete!");
-             
+        System.out.println("ID being used is: " + ID);
+        con3 = DatabaseConnection.connectDB();
+        stmt = con3.createStatement();
+        
+            int pID = ID;
+            String fname = textField_pfname.getText();
+            String lname = textField_plname.getText();
+            String pnum =  textField_pphone.getText();
+            String email = textField_pemail.getText();
+            String street = textField_paddress.getText();
+            String city = textField_pcity.getText();
+            String zip = textField_pzip.getText();
+            String state =  textField_pstate.getText();
+            int insid =  Integer.parseInt(textField_pinsid.getText());
+            String insur =  textField_pinsurance.getText();
+            
+        String patquery = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance)" 
+                    + " VALUES  (" + pID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "')";
+        
+        System.out.println(patquery);            
+        stmt.executeQuery(patquery); 
             
         } catch (Exception e) {}
         
@@ -288,6 +330,33 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     public void registerdoctor(ActionEvent event) {
+        int ID = (int) id; 
+        try {
+        System.out.println("ID being used is: " + ID);
+        con3 = DatabaseConnection.connectDB();
+        stmt = con3.createStatement();
+        
+            int dID = ID;
+            String fname = textField_dfname.getText();
+            String lname = textField_dlname.getText();
+            String dnum =  textField_dphone.getText();
+            String email = textField_demail.getText();
+            String degree = textField_degree.getText();
+            String spec = textField_spec.getText();
+            
+        String docquery = "INSERT INTO DOCTOR (DoctorID, DFirstName, DLastName, DPhone, DEmail, Degree, Specialty)" 
+                    + " VALUES  (" + dID + ",'" +fname+ "','" +lname+ "','" +dnum+ "','" +email+ "','" +degree+ "','" +spec+ "')";
+        
+        System.out.println(docquery);            
+        stmt.executeQuery(docquery); 
+            
+        } catch (Exception e) {}
+        
+        panel_login.setVisible(true);
+        panel_register.setVisible(false);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
+        JOptionPane.showMessageDialog(null,"Registration Complete");
 
     }
 

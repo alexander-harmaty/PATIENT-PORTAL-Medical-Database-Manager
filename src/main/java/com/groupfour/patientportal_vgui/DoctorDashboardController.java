@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,7 +112,7 @@ public class DoctorDashboardController implements Initializable
     private TextField textField_lastName;
 
     @FXML
-    private TextField textField_patientID;
+    private TextField textField_doctorID;
 
     @FXML
     private TextField textField_phone;
@@ -173,36 +174,6 @@ public class DoctorDashboardController implements Initializable
     @FXML
     private TableColumn<PatientTable, String> column_pzip;
     
-    @FXML
-    private TableView<MedicalTable> table_medicalrecords;
-    
-    @FXML
-    private TableColumn<MedicalTable, String> column_recordID;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_recorddate;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_weight;
-    
-    @FXML
-    private TableColumn<MedicalTable, String> column_bloodtype;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_diagnosis;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_dob;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_height;
-    
-    @FXML
-    private TableColumn<MedicalTable, String> column_patientID2;
-    
-    
-    
-    
     int index = -1;
     
     Connection con = null;
@@ -210,7 +181,9 @@ public class DoctorDashboardController implements Initializable
     PreparedStatement ps = null;
     PatientTable pt = null;
     
-
+    //currentUserID   
+    private String doctorID = App.currentUser.getUserID();
+    
     @FXML
     void handleButton_refresh() { 
         refreshTable();    
@@ -257,6 +230,10 @@ public class DoctorDashboardController implements Initializable
         panel_patients.setVisible(false);
         panel_testResults.setVisible(false);
         text_doctordashboard.setVisible(true);
+        
+        textField_doctorID.setText(App.currentUser.getUserID());
+        handleButton_go();
+        
     }
 
     @FXML
@@ -271,14 +248,69 @@ public class DoctorDashboardController implements Initializable
         text_doctordashboard.setVisible(true);
     }
 
+    private String doctorIDText;
     @FXML
-    void handleButton_clear() {
-        
-    }
+    private void handleButton_go()
+    {
+        try
+        {
+            doctorIDText = textField_doctorID.getText();
+            label_errorText.setText("");
 
+            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
+            //Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
+                    //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
+            Connection con = DatabaseConnection.connectDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM DOCTOR WHERE DoctorID="+doctorIDText+";");
+
+            while (rs.next()) 
+            {   //displays data. there must be a simpler way to implement
+
+                textField_doctorID.setText(String.valueOf(rs.getInt("DoctorID")));
+                //System.out.println("PATIENT ID: " + rs.getInt("DoctorID"));
+
+                textField_firstName.setText(rs.getString("DFirstName"));
+                //System.out.println("FIRST NAME: " + rs.getString("DFirstName"));
+
+                textField_lastName.setText(rs.getString("DLastName"));
+                //System.out.println("LAST NAME: " + rs.getString("DLastName"));
+
+                textField_phone.setText(rs.getString("DPhone"));
+                //System.out.println("PHONE NUMBER: " + rs.getString("DPhone"));
+
+                textField_email.setText(rs.getString("DEmail"));
+                //System.out.println("EMAIL: " + rs.getString("DEmail"));
+
+                //textField_insuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
+                //System.out.println("INSURANCE ID: " + rs.getInt("InsuranceID"));
+
+                //textField_insuranceCo.setText(rs.getString("Insurance"));
+                //System.out.println("INSURANCE COMPANY: " + rs.getString("Insurance"));
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            label_errorText.setText("ONLY use numbers! Please try again.");
+        }
+        catch (Exception e)
+        {
+            label_errorText.setText("UNKNOWN ERROR! Please try again.");
+        }
+    }
+    
     @FXML
-    void handleButton_go() {
-        
+    private void handleButton_clear()
+    {
+        this.textField_doctorID.clear();
+        this.textField_firstName.clear();
+        this.textField_lastName.clear();
+        this.textField_phone.clear();
+        this.textField_email.clear();
+        this.textField_insuranceID.clear();
+        this.textField_insuranceCo.clear();
+        this.label_errorText.setText("");
+        doctorID = "";
     }
     
     @FXML
@@ -338,37 +370,8 @@ public class DoctorDashboardController implements Initializable
     /**
      * Initializes the controller class.
      */
-    ObservableList<MedicalTable> medicalList = FXCollections.observableArrayList();
+    
     ObservableList<PatientTable> patientslist = FXCollections.observableArrayList();
-    
-    public void medicalTable() {
-        try{
-     
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM MEDICALRECORDS");
-            medicalList.clear();
-                while (rs.next()) {
-                    medicalList.add(new MedicalTable(rs.getInt("RecordID"),rs.getInt("PatientID"),
-                    rs.getString("DOB"),rs.getString("RecordDate"),rs.getString("Height"),
-                    rs.getString("Weight"),rs.getString("BloodType"),rs.getString("Diagnosis")));
-                    
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_recordID.setCellValueFactory(new PropertyValueFactory <>("RecordID"));
-                column_patientID2.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-                column_dob.setCellValueFactory(new PropertyValueFactory <>("DOB"));
-                column_recorddate.setCellValueFactory(new PropertyValueFactory <>("RecordDate"));
-                column_height.setCellValueFactory(new PropertyValueFactory <>("Height"));
-                column_weight.setCellValueFactory(new PropertyValueFactory <>("Weight"));
-                column_bloodtype.setCellValueFactory(new PropertyValueFactory <>("BloodType"));
-                column_diagnosis.setCellValueFactory(new PropertyValueFactory <>("Diagnosis"));
-                
-                table_medicalrecords.setItems(medicalList);
-        
-    }
-    
     
     public void refreshTable(){
         try{
@@ -405,7 +408,6 @@ public class DoctorDashboardController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshTable(); 
-        medicalTable();
         FilteredList<PatientTable> filtereddata = new FilteredList<>(patientslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(patients -> {
