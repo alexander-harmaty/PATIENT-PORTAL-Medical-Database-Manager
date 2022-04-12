@@ -1,0 +1,17 @@
+OFFICIAL MEDICAL RECORD
+----------------------
+RecordID: 2
+
+PatientID: 10002
+
+Date of Birth: 07/02/99
+
+Record Date: 2022-04-09
+
+Height: 5ft9
+
+Weight 200pounds
+
+Blood Type: O
+
+Diagnosis: Sick

@@ -255,9 +255,7 @@ public class DoctorDashboardController implements Initializable
         }
         
     }
-    
-    
-    
+
     @FXML
     void handleButton_update() {
         
@@ -602,6 +600,18 @@ public class DoctorDashboardController implements Initializable
         table_medicalrecords.setItems(sortedData);
     }
     
+    @FXML
+    public void handleButton_print() {
+         try {
+            Parent root = FXMLLoader.load(getClass().getResource("docPrintRecord.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
