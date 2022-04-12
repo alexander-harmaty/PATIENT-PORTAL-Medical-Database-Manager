@@ -7,6 +7,7 @@ package com.groupfour.patientportal_vgui;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,6 +132,9 @@ public class DoctorDashboardController implements Initializable
     
     @FXML
     private TextField textField_search;
+    
+    @FXML
+    private TextField textField_medicalSearch;
     ////TABLEVIEW 
     @FXML
     private TableView<PatientTable> table_patients;
@@ -216,6 +220,11 @@ public class DoctorDashboardController implements Initializable
         refreshTable();    
     }
     
+    @FXML
+    void handleButton_medicalRefresh() { 
+        medicalTable();    
+    }
+    
     
     @FXML
     void handleButton_delete() {
@@ -232,11 +241,42 @@ public class DoctorDashboardController implements Initializable
         
     }
     
+     @FXML
+    void handleButton_medicalDelete() {
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("docDeleteRecord.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
+    
     @FXML
     void handleButton_update() {
         
         try {
             Parent root = FXMLLoader.load(getClass().getResource("doctorInsertPatient.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void handleButton_medicalUpdate() {
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("doctorInsertRecord.fxml"));
             Stage mainStage = new Stage();
             Scene scene = new Scene(root);
             mainStage.setScene(scene);
@@ -400,7 +440,7 @@ public class DoctorDashboardController implements Initializable
     
     ObservableList<PatientTable> patientslist = FXCollections.observableArrayList();
     ObservableList<MedicalTable> medicalList = FXCollections.observableArrayList();
-    
+  
      public void medicalTable() {
         try{
      
@@ -463,10 +503,7 @@ public class DoctorDashboardController implements Initializable
         
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        refreshTable(); 
-        medicalTable();
+    public void patientSearch() {
         FilteredList<PatientTable> filtereddata = new FilteredList<>(patientslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(patients -> {
@@ -519,6 +556,60 @@ public class DoctorDashboardController implements Initializable
         SortedList<PatientTable> sortedData = new SortedList<>(filtereddata);
         sortedData.comparatorProperty().bind(table_patients.comparatorProperty());
         table_patients.setItems(sortedData);
+    }
+    
+    public void medicalSearch() {
+        FilteredList<MedicalTable> filtereddata = new FilteredList<>(medicalList, b -> true);
+        textField_medicalSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtereddata.setPredicate(patients -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(patients.getRecordID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (String.valueOf(patients.getPatientID()).contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getDOB().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getRecordDate().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getHeight().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getWeight().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getBloodType().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (patients.getDiagnosis().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+               
+                else 
+                    return false;
+            });
+        });
+        SortedList<MedicalTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_medicalrecords.comparatorProperty());
+        table_medicalrecords.setItems(sortedData);
+    }
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        refreshTable(); 
+        medicalTable();
+        patientSearch();
+        medicalSearch();
+        
     }    
     
 }

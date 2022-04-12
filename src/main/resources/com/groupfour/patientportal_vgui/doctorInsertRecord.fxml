@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="458.0" prefWidth="467.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.groupfour.patientportal_vgui.DoctorInsertRecordController">
+   <children>
+      <VBox layoutX="58.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="371.0">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medical Record Information" textAlignment="CENTER" wrappingWidth="370.99609375">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="51.0" prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RecordID" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_recordID" prefHeight="25.0" prefWidth="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="18.222226470708847" />
+                  <Button mnemonicParsing="false" onMousePressed="#handleButton_recordGo" prefHeight="25.0" prefWidth="42.0" text="Go" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PatientID" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_patientID" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_dob" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Record Date" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_recorddate" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_height" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_weight" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_bloodtype" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="371.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diagnosis" wrappingWidth="77.13671875" />
+                  <TextField fx:id="textField_diagnosis" prefHeight="25.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="371.0">
+               <children>
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton_recordSave" prefHeight="32.0" prefWidth="183.0" text="Save" />
+                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseReleased="#handleButton_recordClear" prefHeight="32.0" prefWidth="183.0" text="Clear" />
+               </children>
+               <padding>
+                  <Insets top="12.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

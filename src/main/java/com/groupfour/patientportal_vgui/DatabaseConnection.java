@@ -23,10 +23,10 @@ public class DatabaseConnection {
         try{
              Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
              //This is Specifically for Yasin, Make sure it is Commented out and please dont delete.
-             Connection con = DriverManager.getConnection("jdbc:sqlserver://CIPHER:1433;"
+            // Connection con = DriverManager.getConnection("jdbc:sqlserver://CIPHER:1433;"
+                 //       + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
+             Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
                         + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
-             //Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
-                        //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
              //JOptionPane.showMessageDialog(null, "Connection established successfully");
              return con;
         }
