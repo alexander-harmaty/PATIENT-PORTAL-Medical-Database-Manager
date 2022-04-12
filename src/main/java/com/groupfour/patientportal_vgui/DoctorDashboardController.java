@@ -33,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -104,6 +105,12 @@ public class DoctorDashboardController implements Initializable
     private TextField textField_firstName;
 
     @FXML
+    private TextField textField_degree;
+
+    @FXML
+    private TextField textField_specialty;
+    
+     @FXML
     private TextField textField_insuranceCo;
 
     @FXML
@@ -284,9 +291,28 @@ public class DoctorDashboardController implements Initializable
         }
     }
    
-
     @FXML
     void handleButton_accountInfo() {
+        
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM DOCTOR WHERE DoctorID="+App.currentUser.getUserID()+";");
+
+            while (rs.next()) 
+            {   
+                textField_doctorID.setText(String.valueOf(rs.getInt("DoctorID")));
+                textField_firstName.setText(rs.getString("DFirstName"));
+                textField_lastName.setText(rs.getString("DLastName"));
+                textField_phone.setText(rs.getString("DPhone"));
+                textField_email.setText(rs.getString("DEmail"));
+                textField_degree.setText((rs.getString("Degree")));
+                textField_specialty.setText(rs.getString("Specialty"));              
+            }
+        }
+        catch (Exception e){}
+        
         panel_prescriptions.setVisible(false);
         panel_accountInfo.setVisible(true);
         panel_appointments.setVisible(false);
@@ -295,10 +321,37 @@ public class DoctorDashboardController implements Initializable
         panel_patients.setVisible(false);
         panel_testResults.setVisible(false);
         text_doctordashboard.setVisible(true);
+           
+    }
+    
+    @FXML
+    void handleButton_UpdateDAccInfo() {
         
-        textField_doctorID.setText(App.currentUser.getUserID());
-        handleButton_go();
+        try {
+        System.out.println("Connection Success!");
+        con = DatabaseConnection.connectDB();
+        Statement stmt = con.createStatement();
         
+            int ID = Integer.parseInt(textField_doctorID.getText());
+            String fname = textField_firstName.getText();
+            String lName = textField_lastName.getText();
+            String dNum =  textField_phone.getText();
+            String email = textField_email.getText();
+            String degree = textField_degree.getText();
+            String specialty = textField_specialty.getText();
+            
+            String query = "UPDATE DOCTOR " + 
+              "SET  DFirstName ='" + fname + "', DLastName = '" + lName + 
+                    "', DPhone = '" + dNum + "', DEmail = '" + email + 
+                    "', Degree = '" + degree+ "', Specialty = '" + specialty +
+                    "'  WHERE DoctorID = " + ID + ";";
+            
+            System.out.println(query);            
+            stmt.executeQuery(query);            
+            JOptionPane.showMessageDialog(null,"Saved");
+            
+    } catch (Exception e) {}
+
     }
 
     @FXML
@@ -312,72 +365,7 @@ public class DoctorDashboardController implements Initializable
         panel_testResults.setVisible(false);
         text_doctordashboard.setVisible(true);
     }
-
-    private String doctorIDText;
-    @FXML
-    private void handleButton_go()
-    {
-        try
-        {
-            doctorIDText = textField_doctorID.getText();
-            label_errorText.setText("");
-
-            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
-            //Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
-                    //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
-            Connection con = DatabaseConnection.connectDB();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM DOCTOR WHERE DoctorID="+doctorIDText+";");
-
-            while (rs.next()) 
-            {   //displays data. there must be a simpler way to implement
-
-                textField_doctorID.setText(String.valueOf(rs.getInt("DoctorID")));
-                //System.out.println("PATIENT ID: " + rs.getInt("DoctorID"));
-
-                textField_firstName.setText(rs.getString("DFirstName"));
-                //System.out.println("FIRST NAME: " + rs.getString("DFirstName"));
-
-                textField_lastName.setText(rs.getString("DLastName"));
-                //System.out.println("LAST NAME: " + rs.getString("DLastName"));
-
-                textField_phone.setText(rs.getString("DPhone"));
-                //System.out.println("PHONE NUMBER: " + rs.getString("DPhone"));
-
-                textField_email.setText(rs.getString("DEmail"));
-                //System.out.println("EMAIL: " + rs.getString("DEmail"));
-
-                //textField_insuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
-                //System.out.println("INSURANCE ID: " + rs.getInt("InsuranceID"));
-
-                //textField_insuranceCo.setText(rs.getString("Insurance"));
-                //System.out.println("INSURANCE COMPANY: " + rs.getString("Insurance"));
-            }
-        }
-        catch (NumberFormatException e)
-        {
-            label_errorText.setText("ONLY use numbers! Please try again.");
-        }
-        catch (Exception e)
-        {
-            label_errorText.setText("UNKNOWN ERROR! Please try again.");
-        }
-    }
-    
-    @FXML
-    private void handleButton_clear()
-    {
-        this.textField_doctorID.clear();
-        this.textField_firstName.clear();
-        this.textField_lastName.clear();
-        this.textField_phone.clear();
-        this.textField_email.clear();
-        this.textField_insuranceID.clear();
-        this.textField_insuranceCo.clear();
-        this.label_errorText.setText("");
-        doctorID = "";
-    }
-    
+ 
     @FXML
     void handleButton_insertRecords() {
         panel_prescriptions.setVisible(false);

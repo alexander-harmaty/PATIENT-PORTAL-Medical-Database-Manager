@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #2FAFC9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #2FAFC9;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
    <children>
       <VBox prefHeight="800.0" prefWidth="104.0" style="-fx-background-color: #2b5aae;">
          <children>
@@ -91,22 +91,22 @@
       </AnchorPane>
       <AnchorPane fx:id="panel_accountInfo" layoutX="126.0" layoutY="110.0" prefHeight="421.0" prefWidth="511.0" visible="false">
          <children>
-            <TextField fx:id="textField_doctorID" layoutX="55.0" layoutY="5.0" promptText="Doctor ID" />
-            <Button fx:id="button_go" layoutX="214.0" layoutY="5.0" mnemonicParsing="false" onMouseReleased="#handleButton_go" text="Go" />
+            <TextField fx:id="textField_doctorID" layoutX="94.0" layoutY="10.0" promptText="Doctor ID" />
             <TextField fx:id="textField_firstName" layoutX="95.0" layoutY="47.0" />
-            <Text layoutX="28.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+            <Text layoutX="16.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
             <TextField fx:id="textField_lastName" layoutX="95.0" layoutY="87.0" />
-            <Text layoutX="28.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+            <Text layoutX="18.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
             <TextField fx:id="textField_phone" layoutX="95.0" layoutY="130.0" />
             <Text layoutX="39.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
             <TextField fx:id="textField_email" layoutX="95.0" layoutY="170.0" />
             <Text layoutX="40.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" />
-            <TextField fx:id="textField_insuranceID" layoutX="96.0" layoutY="214.0" />
-            <Text layoutX="23.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID:" />
-            <TextField fx:id="textField_insuranceCo" layoutX="96.0" layoutY="254.0" />
-            <Text layoutX="22.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Co:" />
-            <Button fx:id="button_clear" layoutY="5.0" mnemonicParsing="false" onMouseReleased="#handleButton_clear" text="Clear" />
+            <TextField fx:id="textField_degree" layoutX="96.0" layoutY="214.0" />
+            <Text layoutX="29.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Degree:" textAlignment="CENTER" wrappingWidth="54.31640625" />
+            <TextField fx:id="textField_specialty" layoutX="96.0" layoutY="254.0" />
+            <Text layoutX="22.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specialty:" textAlignment="CENTER" wrappingWidth="64.5" />
             <Label fx:id="label_errorText" alignment="CENTER" layoutX="48.0" layoutY="299.0" prefHeight="40.0" prefWidth="255.0" textAlignment="CENTER" textFill="#cd1c1c" />
+            <Text layoutX="16.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account ID:" />
+            <Button layoutX="104.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleButton_UpdateDAccInfo" prefHeight="38.0" prefWidth="127.0" text="Update Info" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
