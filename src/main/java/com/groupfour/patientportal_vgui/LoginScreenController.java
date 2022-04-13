@@ -271,6 +271,7 @@ public class LoginScreenController implements Initializable {
         
          if (button_type2.getValue().equals("Patient")){
                 textField_pid.setText(String.valueOf(id));
+                textField_pemail.setText(text_email.getText());
                 panel_login.setVisible(false);
                 panel_register.setVisible(false);
                 panel_registerPatient.setVisible(true);
@@ -279,6 +280,7 @@ public class LoginScreenController implements Initializable {
              
              else if (button_type2.getValue().equals("Doctor")){
                 textField_did.setText(String.valueOf(id));
+                textField_demail.setText(text_email.getText());
                 panel_login.setVisible(false);
                 panel_register.setVisible(false);
                 panel_registerPatient.setVisible(false);

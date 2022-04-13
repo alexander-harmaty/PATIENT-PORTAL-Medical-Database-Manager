@@ -351,6 +351,8 @@ public class DoctorDashboardController implements Initializable
             JOptionPane.showMessageDialog(null,"Saved");
             
     } catch (Exception e) {}
+        
+        JOptionPane.showMessageDialog(null,"Saved");
 
     }
 

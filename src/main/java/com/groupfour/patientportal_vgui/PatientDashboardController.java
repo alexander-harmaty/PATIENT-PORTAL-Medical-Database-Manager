@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -127,13 +128,28 @@ public class PatientDashboardController implements Initializable
     private TextField textField_phone;
     
     @FXML
+    private TextField textField_primarydoc;
+    
+    @FXML
+    private TextField textField_street;
+    
+    @FXML
+    private TextField textField_city;
+    
+    @FXML
+    private TextField textField_zip;
+    
+    @FXML
+    private TextField textField_state;
+    
+    @FXML
     private Label label_errorText;
     
     @FXML
     protected  Label label_userFirstLast; 
     
     //currentUserID   
-    private String patientID = App.currentUser.userID;
+    private String patientID = App.currentUser.getUserID();
     
     public  void setLabelUserFirstLast()
     {
@@ -155,17 +171,78 @@ public class PatientDashboardController implements Initializable
     @FXML
     void handleButton_accountInfo() 
     {
-        panel_accountInfo.setVisible(true);
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM PATIENT WHERE PatientID="+patientID+";");
+
+            while (rs.next()) 
+            {   
+                    textField_patientID.setText(String.valueOf(rs.getInt("PatientID")));                  
+                    textField_firstName.setText(rs.getString("PFirstName"));                   
+                    textField_lastName.setText(rs.getString("PLastName"));
+                    textField_phone.setText(rs.getString("PPhone"));
+                    textField_email.setText(rs.getString("PEmail"));                   
+                    textField_street.setText(rs.getString("Street"));                    
+                    textField_city.setText(rs.getString("City"));                   
+                    textField_zip.setText(rs.getString("Zip"));                   
+                    textField_state.setText(rs.getString("State"));
+                    textField_insuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
+                    textField_insuranceCo.setText(rs.getString("Insurance"));                   
+                    textField_primarydoc.setText(String.valueOf(rs.getInt("PrimaryDoctor")));
+            }
+        }
         
+        catch (Exception e){}
+        
+        panel_accountInfo.setVisible(true);
         panel_appointments.setVisible(false);
         panel_dashboard.setVisible(false);
         panel_medicalRecords.setVisible(false);
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
+       
+    }
+    
+    @FXML
+    void handleButton_UpdatePAccInfo() {
         
-        textField_patientID.setText(App.currentUser.getUserID());
-        handleButton_go();
+        try {
+        System.out.println("Connection Success!");
+        Connection con = DatabaseConnection.connectDB();
+        Statement stmt = con.createStatement();
+        
+            int ID = Integer.parseInt(textField_patientID.getText());
+            String fname = textField_firstName.getText();
+            String lName = textField_lastName.getText();
+            String pNum =  textField_phone.getText();
+            String email = textField_email.getText();
+            String street = textField_street.getText();
+            String city = textField_city.getText();
+            String zip = textField_zip.getText();
+            String state =  textField_state.getText();
+            int insID =  Integer.parseInt(textField_insuranceID.getText());
+            String insur =  textField_insuranceCo.getText();    
+            int prim = Integer.parseInt(textField_primarydoc.getText());
+            
+            String query = "UPDATE PATIENT " + 
+              "SET  pFirstName ='" + fname + "', PLastName = '" + lName + 
+                    "', PPhone = '" + pNum + "', PEmail = '" + email + 
+                    "', Street = '" + street +"', City = '"+ city +
+                    "', Zip = '" + zip + "', State = '" + state + 
+                    "', InsuranceID = " + insID + ", Insurance = '" + insur + 
+                    "', PrimaryDoctor = " + prim +
+                    " WHERE PatientID = " + ID + ";";
+            
+            System.out.println(query);            
+            stmt.executeQuery(query);            
+   
+        } catch (Exception e) {}
+        
+        JOptionPane.showMessageDialog(null,"Saved");
+        
     }
 
     @FXML
@@ -231,73 +308,6 @@ public class PatientDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
-    }
-    
-    
-    private String patientIDText;
-    @FXML
-    private void handleButton_go()
-    {
-        try
-        {
-            patientIDText = textField_patientID.getText();
-            //patientID = Integer.parseInt(textField_patientID.getText());
-            label_errorText.setText("");
-
-            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); //cant be cipher
-            //Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
-                    //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
-            Connection con = DatabaseConnection.connectDB();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM PATIENT WHERE PatientID="+patientIDText+";");
-
-            while (rs.next()) 
-            {   //displays data. there must be a simpler way to implement
-
-                textField_patientID.setText(String.valueOf(rs.getInt("PatientID")));
-                //System.out.println("PATIENT ID: " + rs.getInt("PatientID"));
-
-                textField_firstName.setText(rs.getString("PFirstName"));
-                //System.out.println("FIRST NAME: " + rs.getString("PFirstName"));
-
-                textField_lastName.setText(rs.getString("PLastName"));
-                //System.out.println("LAST NAME: " + rs.getString("PLastName"));
-
-                textField_phone.setText(rs.getString("PPhone"));
-                //System.out.println("PHONE NUMBER: " + rs.getString("PPhone"));
-
-                textField_email.setText(rs.getString("PEmail"));
-                //System.out.println("EMAIL: " + rs.getString("PEmail"));
-
-                textField_insuranceID.setText(String.valueOf(rs.getInt("InsuranceID")));
-                //System.out.println("INSURANCE ID: " + rs.getInt("InsuranceID"));
-
-                textField_insuranceCo.setText(rs.getString("Insurance"));
-                //System.out.println("INSURANCE COMPANY: " + rs.getString("Insurance"));
-            }
-        }
-        catch (NumberFormatException e)
-        {
-            label_errorText.setText("ONLY use numbers! Please try again.");
-        }
-        catch (Exception e)
-        {
-            label_errorText.setText("UNKNOWN ERROR! Please try again.");
-        }
-    }
-    
-    @FXML
-    private void handleButton_clear()
-    {
-        this.textField_patientID.clear();
-        this.textField_firstName.clear();
-        this.textField_lastName.clear();
-        this.textField_phone.clear();
-        this.textField_email.clear();
-        this.textField_insuranceID.clear();
-        this.textField_insuranceCo.clear();
-        this.label_errorText.setText("");
-        patientID = "";
     }
     
     ObservableList<DoctorTable> doctorslist = FXCollections.observableArrayList();

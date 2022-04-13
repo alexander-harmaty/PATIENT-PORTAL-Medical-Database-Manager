@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -32,24 +33,85 @@
             <Button fx:id="button_appointments" mnemonicParsing="false" onMouseReleased="#handleButton_appointments" prefHeight="50.0" prefWidth="125.0" text="Appointments" />
          </children>
       </VBox>
-      <AnchorPane fx:id="panel_accountInfo" layoutX="112.0" layoutY="111.0" prefHeight="552.0" prefWidth="474.0" visible="false">
+      <AnchorPane fx:id="panel_accountInfo" layoutX="112.0" layoutY="111.0" prefHeight="685.0" prefWidth="802.0" visible="false">
          <children>
-            <TextField fx:id="textField_patientID" layoutX="61.0" layoutY="7.0" promptText="Patiend ID" />
-            <Button fx:id="button_go" layoutX="220.0" layoutY="7.0" mnemonicParsing="false" onMouseReleased="#handleButton_go" text="Go" />
-            <TextField fx:id="textField_firstName" layoutX="101.0" layoutY="49.0" />
-            <Text layoutX="34.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
-            <TextField fx:id="textField_lastName" layoutX="101.0" layoutY="89.0" />
-            <Text layoutX="34.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
-            <TextField fx:id="textField_phone" layoutX="101.0" layoutY="132.0" />
-            <Text layoutX="45.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" />
-            <TextField fx:id="textField_email" layoutX="101.0" layoutY="172.0" />
-            <Text layoutX="46.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:" />
-            <TextField fx:id="textField_insuranceID" layoutX="102.0" layoutY="216.0" />
-            <Text layoutX="29.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID:" />
-            <TextField fx:id="textField_insuranceCo" layoutX="102.0" layoutY="256.0" />
-            <Text layoutX="28.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Co:" />
-            <Button fx:id="button_clear" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onMouseReleased="#handleButton_clear" text="Clear" />
-            <Label fx:id="label_errorText" alignment="CENTER" layoutX="26.0" layoutY="301.0" prefHeight="17.0" prefWidth="379.0" textAlignment="CENTER" textFill="#cd1c1c" />
+            <VBox layoutX="16.0" layoutY="16.0" prefHeight="499.0" prefWidth="301.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_patientID" promptText="Patiend ID" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_firstName" prefWidth="149.0" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_lastName" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_phone" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_email" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_street" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="447.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_city" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="460.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_zip" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="469.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="State: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_state" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="476.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_insuranceID" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="482.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_insuranceCo" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="487.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Doctor: " wrappingWidth="100.0" />
+                        <TextField fx:id="textField_primarydoc" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button layoutX="60.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleButton_UpdatePAccInfo" prefHeight="35.0" prefWidth="165.0" text="Update Info:" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_dashboard" layoutX="126.0" layoutY="106.0" prefHeight="685.0" prefWidth="1138.0">
