@@ -379,6 +379,21 @@ public class DoctorDashboardController implements Initializable
         panel_testResults.setVisible(false);
         text_doctordashboard.setVisible(true);
     }
+    
+    @FXML
+    void handleButton_medicalInsert() {
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("docInsertMRecord.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     @FXML
     void handleButton_patients() {
