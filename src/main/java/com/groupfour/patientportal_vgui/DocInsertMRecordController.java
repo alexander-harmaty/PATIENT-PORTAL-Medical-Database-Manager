@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -80,6 +81,7 @@ public class DocInsertMRecordController implements Initializable {
         System.out.println(addRecord);            
         stmt.executeQuery(addRecord); 
         System.out.println("Insert Proccess has finished!");
+        JOptionPane.showMessageDialog(null,"New Record Added!");
         
         } catch (Exception e) {}
 
