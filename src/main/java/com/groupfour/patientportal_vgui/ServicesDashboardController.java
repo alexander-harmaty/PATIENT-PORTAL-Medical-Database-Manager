@@ -10,26 +10,43 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
  *
- * @author AlexH
+ * @author Alexander
  */
-public class PharmaDashboardController implements Initializable 
-{
-    @FXML
-    private Button button_devMenu;
+public class ServicesDashboardController implements Initializable {
 
     @FXML
-    void switchToDevMenu() throws IOException 
-    {
-        App.setRoot("devMenu");
-    }
+    private Button button_search;
+    @FXML
+    private Button button_accountInfo;
+    @FXML
+    private Button button_medicalRecords;
+    @FXML
+    private Button button_testResults;
+    @FXML
+    private Button button_prescriptions;
+    @FXML
+    private Button button_appointments;
+    @FXML
+    private Button button_devMenu;
+    
 
     /**
      * Initializes the controller class.
      */
+    
+    @FXML
+    private void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -32,113 +32,56 @@ public class LoginScreenController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    //Buttons
     
-     @FXML
-    private Button button_login;
-
+    //AnchorPanes
     @FXML
-    private Button button_register;
+    private AnchorPane panel_login, panel_register, 
+            panel_registerPatient, panel_registerDoctor;
     
+    
+    
+    //Dev Menu Button: DELETE WHEN REMOVING DEV MENU
     @FXML
     private Button button_devMenu;
     
-    //Textfields
-    
-    @FXML
-    private TextField textField_degree;
-
-    @FXML
-    private TextField textField_demail;
-
-    @FXML
-    private TextField textField_dfname;
-
-    @FXML
-    private TextField textField_did;
-
-    @FXML
-    private TextField textField_dlname;
-
-    @FXML
-    private TextField textField_dphone;
-
-    @FXML
-    private TextField textField_paddress;
-
-    @FXML
-    private TextField textField_pcity;
-
-    @FXML
-    private TextField textField_pemail;
-
-    @FXML
-    private TextField textField_pfname;
-
-    @FXML
-    private TextField textField_pid;
-
-    @FXML
-    private TextField textField_pinsid;
-
-    @FXML
-    private TextField textField_pinsurance;
-
-    @FXML
-    private TextField textField_plname;
-
-    @FXML
-    private TextField textField_pphone;
-
-    @FXML
-    private TextField textField_pstate;
-
-    @FXML
-    private TextField textField_pzip;
-
-    @FXML
-    private TextField textField_spec;
-
-    
-    //dropdowns
-
-    @FXML
-    private ComboBox button_type;
-
-    @FXML
-    private ComboBox button_type2;
-    
-    //AnchorPanes
-
-    @FXML
-    private AnchorPane panel_login;
-
-    @FXML
-    private AnchorPane panel_register;
-    
-    @FXML
-    private AnchorPane panel_registerPatient;
-    
-    @FXML
-    private AnchorPane panel_registerDoctor;
-    
-    //Text Fields
-
-    @FXML
-    private TextField text_email;
-
-    @FXML
-    private PasswordField text_pass;
-
-    @FXML
-    private TextField text_pass2;
-
+    //Login Screen TextFields
     @FXML
     private TextField text_user;
-
     @FXML
-    private TextField text_user2;
+    private PasswordField text_pass;
     
+    //Login & Registration Buttons
+    @FXML
+    private Button button_login, button_register;
+    
+    
+    
+    //AddUser Registration TextFeilds
+    @FXML
+    private TextField text_user2, text_pass2, text_email;
+    
+    //Dropdowns
+    @FXML
+    private ComboBox button_type, button_type2;
+    
+    //Patient Registration Textfields
+    @FXML
+    private TextField 
+            textField_dfname, textField_plname,
+            textField_pid, textField_pemail, textField_pphone,
+            textField_paddress,textField_pcity, textField_pstate, textField_pzip,
+            textField_pinsid, textField_pinsurance;
+
+    //Doctor Registration Textfields
+    @FXML
+    private TextField 
+            textField_pfname, textField_dlname,
+            textField_did, textField_demail, textField_dphone,
+            textField_degree, textField_spec;
+    
+    
+    
+    //Database connections 
     Connection con = null;
     Connection con3 = null;
     Connection con2 = null;
@@ -149,19 +92,7 @@ public class LoginScreenController implements Initializable {
     Statement stmt = null;
     long id = 0;
     
-    public void panelLoginShow() {
-        panel_login.setVisible(true);
-        panel_register.setVisible(false);
-        panel_registerPatient.setVisible(false);
-        panel_registerDoctor.setVisible(false);
-    }
-
-    public void panelRegisterShow() {
-        panel_login.setVisible(false);
-        panel_register.setVisible(true);
-        panel_registerPatient.setVisible(false);
-        panel_registerDoctor.setVisible(false);
-    }
+    
     
     @FXML
     private void Login (ActionEvent event) throws Exception {
@@ -192,6 +123,7 @@ public class LoginScreenController implements Initializable {
                         mainStage.setScene(scene);
                         mainStage.show(); 
 
+                        //attempt at displaying name upon login
                         //PatientDashboardController.this.setLabelUserFirstLast();
                 }
                 else if (rs.getString(5).toUpperCase().equals("DOCTOR")) 
@@ -204,6 +136,17 @@ public class LoginScreenController implements Initializable {
                         mainStage.setScene(scene);
                         mainStage.show(); 
                 }
+                //once we get services database table going
+//                else if (rs.getString(5).toUpperCase().equals("SERVICE")) 
+//                {
+//                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+//                        button_login.getScene().getWindow().hide();
+//                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+//                        Stage mainStage = new Stage();
+//                        Scene scene = new Scene(root);
+//                        mainStage.setScene(scene);
+//                        mainStage.show(); 
+//                }
             }
             else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
             {
@@ -219,6 +162,7 @@ public class LoginScreenController implements Initializable {
                         mainStage.setScene(scene);
                         mainStage.show(); 
 
+                        //attempt at displaying name upon login
                         //PatientDashboardController.this.setLabelUserFirstLast();
                 }
                 else if (rs2.getString(5).toUpperCase().equals("DOCTOR")) 
@@ -231,6 +175,17 @@ public class LoginScreenController implements Initializable {
                         mainStage.setScene(scene);
                         mainStage.show(); 
                 }
+                //once we get services database table going
+//                else if (rs2.getString(5).toUpperCase().equals("SERVICE")) 
+//                {
+//                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+//                        button_login.getScene().getWindow().hide();
+//                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+//                        Stage mainStage = new Stage();
+//                        Scene scene = new Scene(root);
+//                        mainStage.setScene(scene);
+//                        mainStage.show(); 
+//                }
             }
             else
             {
@@ -244,6 +199,7 @@ public class LoginScreenController implements Initializable {
     
     
     
+    @FXML
     public void addUser(ActionEvent event){
         con = DatabaseConnection.connectDB();
         String sql = "INSERT INTO LOGIN (Username, Password, Email, Type) values (?,?,?,?)";
@@ -269,32 +225,36 @@ public class LoginScreenController implements Initializable {
             //JOptionPane.showMessageDialog(null, "Registered successfully");
         } catch (Exception e) {}
         
-         if (button_type2.getValue().equals("Patient")){
-                textField_pid.setText(String.valueOf(id));
-                textField_pemail.setText(text_email.getText());
-                panel_login.setVisible(false);
-                panel_register.setVisible(false);
-                panel_registerPatient.setVisible(true);
-                panel_registerDoctor.setVisible(false);                          
-             }
-             
-             else if (button_type2.getValue().equals("Doctor")){
-                textField_did.setText(String.valueOf(id));
-                textField_demail.setText(text_email.getText());
-                panel_login.setVisible(false);
-                panel_register.setVisible(false);
-                panel_registerPatient.setVisible(false);
-                panel_registerDoctor.setVisible(true);
-             }
+        if (button_type2.getValue().equals("Patient")){
+            
+            textField_pid.setText(String.valueOf(id));
+            textField_pemail.setText(text_email.getText());
+            
+            panel_login.setVisible(false);
+            panel_register.setVisible(false);
+            panel_registerPatient.setVisible(true);
+            panel_registerDoctor.setVisible(false);                          
+        }   
+        else if (button_type2.getValue().equals("Doctor")){
+            
+           textField_did.setText(String.valueOf(id));
+           textField_demail.setText(text_email.getText());
+           
+           panel_login.setVisible(false);
+           panel_register.setVisible(false);
+           panel_registerPatient.setVisible(false);
+           panel_registerDoctor.setVisible(true);
+        }
         
     
     }
+    
     /**
      * WORKS!!
      * @author Yasin
      * @param event 
      */
-      @FXML
+    @FXML
     public void registerPatient(ActionEvent event) {
         int ID = (int) id; 
         try {
@@ -363,20 +323,38 @@ public class LoginScreenController implements Initializable {
     }
 
     
+            
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //button_type.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
+        
+        button_type2.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
+        
+        // TODO
+    }  
+    
+    @FXML
+    public void panelLoginShow() {
+        panel_login.setVisible(true);
+        panel_register.setVisible(false);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
+    }
+    
+    @FXML
+    public void panelRegisterShow() {
+        panel_login.setVisible(false);
+        panel_register.setVisible(true);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
+    }
+    
     @FXML
     private void switchToDevMenu() throws IOException 
     {
         App.setRoot("devMenu");
+        App.currentUser = new CurrentUser("DevMenuUser");
     }
-        
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        //button_type.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
-        button_type2.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
-        // TODO
-    }    
-    
-    
 }
 
 

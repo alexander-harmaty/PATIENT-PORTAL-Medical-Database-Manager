@@ -7,19 +7,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DevMenuController">
    <children>
-      <Button fx:id="button_viewPatient" layoutX="80.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#switchToViewPatient" text="View Patient Info" />
-      <Button fx:id="button_quitApp" layoutX="81.0" layoutY="200.0" mnemonicParsing="false" onMouseReleased="#handlebuttonQuitApp" text="Quit Application" />
-      <Text layoutX="118.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the developers menu!" textAlignment="CENTER">
+      <Text fill="#da0303" layoutX="154.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="_devMenu" textAlignment="CENTER">
          <font>
-            <Font size="24.0" />
+            <Font size="64.0" />
          </font>
       </Text>
-      <Text layoutX="65.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Sprint 1 function:" textAlignment="CENTER" />
-      <Text layoutX="233.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Sprint 2 function:" textAlignment="CENTER" />
-      <Button fx:id="button_patientView" layoutX="259.0" layoutY="200.0" mnemonicParsing="false" onMouseReleased="#switchToPatientDashboard" text="Patient View" />
-      <Button fx:id="button_labView" layoutX="268.0" layoutY="266.0" mnemonicParsing="false" onMouseReleased="#switchToLabDashboard" text="Lab View" />
-      <Button fx:id="button_doctorView" layoutX="259.0" layoutY="233.0" mnemonicParsing="false" onMouseReleased="#switchToDoctorDashboard" text="Doctor View" textAlignment="CENTER" />
-      <Button fx:id="button_pharmaView" layoutX="252.0" layoutY="298.0" mnemonicParsing="false" onMouseReleased="#switchToPharmaDashboard" text="Pharmacy View" />
-      <Button fx:id="button_login" layoutX="277.0" layoutY="167.0" mnemonicParsing="false" onMouseReleased="#switchToLoginScreen" text="Login" />
+      <Text layoutX="230.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="_systemNavigator" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font></Text>
+      <Button fx:id="button_patientView" layoutX="259.0" layoutY="235.0" mnemonicParsing="false" onMouseReleased="#switchToPatientDashboard" text="Patient View" />
+      <Button fx:id="button_doctorView" layoutX="259.0" layoutY="268.0" mnemonicParsing="false" onMouseReleased="#switchToDoctorDashboard" text="Doctor View" textAlignment="CENTER" />
+      <Button fx:id="button_login" layoutX="277.0" layoutY="202.0" mnemonicParsing="false" onMouseReleased="#switchToLoginScreen" text="Login" />
+      <Button fx:id="button_servicesView" layoutX="256.0" layoutY="302.0" mnemonicParsing="false" onMouseReleased="#switchToServicesDashboard" text="Services View" />
    </children>
 </AnchorPane>

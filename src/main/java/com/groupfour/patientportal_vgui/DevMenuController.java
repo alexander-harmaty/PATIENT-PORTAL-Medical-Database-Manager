@@ -9,7 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 //import javafx.collections.ObservableList;
 //import javafx.scene.control.ListView;
 //import javafx.scene.control.TextField;
@@ -36,10 +40,7 @@ public class DevMenuController implements Initializable
     private Button button_doctorView;
 
     @FXML
-    private Button button_labView;
-
-    @FXML
-    private Button button_pharmaView;
+    private Button button_servicesView;
     
     
     
@@ -62,23 +63,34 @@ public class DevMenuController implements Initializable
     @FXML
     private void switchToPatientDashboard() throws IOException
     {
-        App.setRoot("patientDashboard");
+        //App.setRoot("patientDashboard");
+        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show(); 
     }
     @FXML
     private void switchToDoctorDashboard() throws IOException
     {
-        App.setRoot("doctorDashboard");
+        //App.setRoot("doctorDashboard");
+        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show(); 
     }
     @FXML
-    private void switchToLabDashboard() throws IOException
+    private void switchToServicesDashboard() throws IOException
     {
-        App.setRoot("labDashboard");
+        //App.setRoot("servicesDashboard");
+        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show(); 
     }
-    @FXML
-    private void switchToPharmaDashboard() throws IOException
-    {
-        App.setRoot("pharmaDashboard");
-    }
+    
     
     
     /**
