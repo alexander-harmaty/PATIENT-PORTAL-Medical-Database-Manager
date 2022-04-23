@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,9 +27,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -121,6 +127,9 @@ public class DoctorDashboardController implements Initializable
 
     @FXML
     private TextField textField_doctorID;
+    @FXML
+    private TextField textField_doctorID2;
+    
 
     @FXML
     private TextField textField_phone;
@@ -211,6 +220,44 @@ public class DoctorDashboardController implements Initializable
     
     @FXML
     private TableColumn<MedicalTable, String> column_patientID2;
+    
+    /**
+     * Angie 
+     */
+    
+     @FXML
+     private ComboBox combobox_status;
+     
+    @FXML
+    private TextField textField_frequency;
+     
+
+    @FXML
+    private DatePicker datepicker_date;
+    
+    @FXML
+    private Spinner<Integer> spinner_quantity;
+    
+     @FXML
+    private TextArea textField_description;
+     
+    @FXML
+    private TextField textField_dosage;
+    
+    @FXML
+    private TextField textField_medication;
+
+    @FXML
+    private TextField textField_scriptID;
+    
+    @FXML
+    private TextField textField_pharmID;
+    
+    @FXML
+    private TextField textField_patientID;
+    
+    
+
     
     int index = -1;
     
@@ -409,6 +456,19 @@ public class DoctorDashboardController implements Initializable
 
     @FXML
     void handleButton_prescriptions() {
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM DOCTOR WHERE DoctorID="+App.currentUser.getUserID()+";");
+
+            while (rs.next()) 
+            {   
+                textField_doctorID2.setText(String.valueOf(rs.getInt("DoctorID")));
+                        
+            }
+        }
+        catch (Exception e) {}
         panel_prescriptions.setVisible(true);
         panel_accountInfo.setVisible(false);
         panel_appointments.setVisible(false);
@@ -618,8 +678,62 @@ public class DoctorDashboardController implements Initializable
         }
     }
     
+    public void spinnerNumber() {
+        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,20);
+        value.setValue(1);
+        spinner_quantity.setValueFactory(value);
+        
+    }
+    
+    public void comboboxStatus() {
+//         combobox_status.getItems().removeAll(combobox_status.getItems());
+//    combobox_status.getItems().addAll("Option A", "Option B", "Option C");
+//    combobox_status.getSelectionModel().select("Option B");
+        
+        ObservableList<String> list = FXCollections.observableArrayList("Active", "Cancelled", "Deleted", "Expired", "Refill");
+        combobox_status.setItems(list);   
+    }
+    
+   
+    @FXML
+    void handleButton_order() { 
+        try {
+        con = DatabaseConnection.connectDB();
+        Statement stmt = con.createStatement();
+           // int scriptID = Integer.parseInt(textField_scriptID.getText());
+            String medication = textField_medication.getText();
+            String description = textField_description.getText();
+           // String date = datepicker_date.getConverter().toString();
+           String date = datepicker_date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));         
+          
+                   
+           int patientID = Integer.parseInt(textField_patientID.getText());
+            int pharmID = Integer.parseInt(textField_pharmID.getText());
+           int doctorID = Integer.parseInt(textField_doctorID2.getText());
+           String status = combobox_status.getSelectionModel().getSelectedItem().toString();
+           String frequency = textField_frequency.getText();
+           String dosage = textField_dosage.getText();
+           int quantity = spinner_quantity.getValue();
+       
+            String addPrescription = "INSERT INTO SCRIPTDOC (Medication, Description, DATE, PatientID, PharmID, DoctorID, Status, Frequency, Dosage, Quantity)" 
+                    + " VALUES  ("  +medication+ ",'" +description+ "','" +date+ "','" + patientID+ "','" +pharmID+ "','" + doctorID + "','" + status + "','" + frequency + "','" + dosage + "','" + quantity + "')";
+        
+       // System.out.println(addRecord);          
+       //NOTE:   EXECUTE statement for insert, update, delete; executeQuery for data retrieval like select
+       
+
+        stmt.execute(addPrescription);
+        JOptionPane.showMessageDialog(null,"New Record Added!");
+            
+    } catch (Exception e) {
+        System.out.print(e);
+    }  
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        spinnerNumber();
+        comboboxStatus();
         refreshTable(); 
         medicalTable();
         patientSearch();

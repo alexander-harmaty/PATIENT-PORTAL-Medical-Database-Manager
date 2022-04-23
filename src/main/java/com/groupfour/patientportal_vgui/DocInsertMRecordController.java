@@ -79,12 +79,12 @@ public class DocInsertMRecordController implements Initializable {
                     + " VALUES  (" + ID + ",'" +DOB+ "','" +date+ "','" +H+ "','" +W+ "','" +bt+ "','" +diag+ "')";
         
         System.out.println(addRecord);            
-        stmt.executeQuery(addRecord); 
+        stmt.execute(addRecord); 
         System.out.println("Insert Proccess has finished!");
         JOptionPane.showMessageDialog(null,"New Record Added!");
         
-        } catch (Exception e) {}
-
+        } catch (Exception e) {System.out.println(e);}
+        
     }
 
     /**
