@@ -700,25 +700,24 @@ public class DoctorDashboardController implements Initializable
         try {
         con = DatabaseConnection.connectDB();
         Statement stmt = con.createStatement();
-           // int scriptID = Integer.parseInt(textField_scriptID.getText());
+           
             String medication = textField_medication.getText();
             String description = textField_description.getText();
-           // String date = datepicker_date.getConverter().toString();
-           String date = datepicker_date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));         
+            String date = datepicker_date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));         
           
                    
-           int patientID = Integer.parseInt(textField_patientID.getText());
+            int patientID = Integer.parseInt(textField_patientID.getText());
             int pharmID = Integer.parseInt(textField_pharmID.getText());
-           int doctorID = Integer.parseInt(textField_doctorID2.getText());
-           String status = combobox_status.getSelectionModel().getSelectedItem().toString();
-           String frequency = textField_frequency.getText();
-           String dosage = textField_dosage.getText();
-           int quantity = spinner_quantity.getValue();
+            int doctorID = Integer.parseInt(textField_doctorID2.getText());
+            String status = combobox_status.getSelectionModel().getSelectedItem().toString();
+            String frequency = textField_frequency.getText();
+            String dosage = textField_dosage.getText();
+            int quantity = spinner_quantity.getValue();
        
             String addPrescription = "INSERT INTO SCRIPTDOC (Medication, Description, DATE, PatientID, PharmID, DoctorID, Status, Frequency, Dosage, Quantity)" 
-                    + " VALUES  ("  +medication+ ",'" +description+ "','" +date+ "','" + patientID+ "','" +pharmID+ "','" + doctorID + "','" + status + "','" + frequency + "','" + dosage + "','" + quantity + "')";
+                    + " VALUES  ('" +medication+ "','" +description+ "','" +date+ "','" + patientID+ "','" +pharmID+ "','" + doctorID + "','" + status + "','" + frequency + "','" + dosage + "','" + quantity + "')";
         
-       // System.out.println(addRecord);          
+       //System.out.println(addRecord);          
        //NOTE:   EXECUTE statement for insert, update, delete; executeQuery for data retrieval like select
        
 

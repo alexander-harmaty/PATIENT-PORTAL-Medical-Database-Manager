@@ -186,10 +186,9 @@
             <Text layoutX="150.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" />
             <TextArea fx:id="textField_description" layoutX="217.0" layoutY="379.0" prefHeight="78.0" prefWidth="304.0" wrapText="true" />
             <Text layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DoctorID:" />
-            <Text layoutX="553.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PharmID:" />
-            <Text layoutX="734.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ScriptID:" />
+            <Text layoutX="553.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pharmacy ID:" />
             <TextField fx:id="textField_doctorID2" layoutX="80.0" layoutY="14.0" prefHeight="25.0" prefWidth="93.0" />
-            <TextField fx:id="textField_pharmID" layoutX="612.0" layoutY="406.0" prefHeight="25.0" prefWidth="93.0" />
+            <TextField fx:id="textField_pharmID" layoutX="628.0" layoutY="405.0" prefHeight="25.0" prefWidth="93.0" />
             <Button layoutX="521.0" layoutY="495.0" mnemonicParsing="false" onMousePressed="#handleButton_order" prefHeight="40.0" prefWidth="127.0" text="Place Order" />
             <TextField fx:id="textField_frequency" layoutX="215.0" layoutY="314.0" />
          </children></AnchorPane>

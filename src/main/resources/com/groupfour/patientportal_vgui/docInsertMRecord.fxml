@@ -11,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="638.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.groupfour.patientportal_vgui.DocInsertMRecordController">
+<AnchorPane id="AnchorPane" prefHeight="638.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DocInsertMRecordController">
    <children>
       <VBox layoutX="42.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="387.0">
          <children>
@@ -100,7 +99,7 @@
             <HBox prefHeight="230.0" prefWidth="387.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diagnosis" wrappingWidth="77.13671875" />
-                  <TextArea fx:id="textField_diagnosis" prefHeight="200.0" prefWidth="200.0" />
+                  <TextArea fx:id="textField_diagnosis" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                </children>
                <padding>
                   <Insets top="12.0" />
