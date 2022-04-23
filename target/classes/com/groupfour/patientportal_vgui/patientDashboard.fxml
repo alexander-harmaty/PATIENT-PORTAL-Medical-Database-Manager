@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -172,6 +173,11 @@
          </font>
       </Text>
       <Button fx:id="button_devMenu" layoutX="1188.0" layoutY="774.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" prefHeight="25.0" prefWidth="99.0" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
+      <MFXButton fx:id="button_logOut" layoutX="1176.0" layoutY="34.0" onMouseReleased="#handleButton_logOut" prefHeight="35.0" prefWidth="88.0" rippleColor="RED" style="-fx-background-color: red; -fx-background-radius: 1em;" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </MFXButton>
       <Label fx:id="label_userFirstLast" layoutX="1044.0" layoutY="34.0" textFill="WHITE">
          <font>
             <Font size="24.0" />

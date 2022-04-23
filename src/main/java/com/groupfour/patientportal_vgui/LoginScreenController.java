@@ -4,6 +4,9 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,23 +41,19 @@ public class LoginScreenController implements Initializable {
     private AnchorPane panel_login, panel_register, 
             panel_registerPatient, panel_registerDoctor;
     
-    
-    
     //Dev Menu Button: DELETE WHEN REMOVING DEV MENU
     @FXML
-    private Button button_devMenu;
+    private MFXButton button_devMenu;
     
     //Login Screen TextFields
     @FXML
-    private TextField text_user;
+    private MFXTextField text_user;
     @FXML
-    private PasswordField text_pass;
+    private MFXPasswordField text_pass;
     
     //Login & Registration Buttons
     @FXML
     private Button button_login, button_register;
-    
-    
     
     //AddUser Registration TextFeilds
     @FXML

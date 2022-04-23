@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +16,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
    <children>
       <AnchorPane fx:id="panel_registerDoctor" layoutX="9.0" layoutY="40.0" prefHeight="340.0" prefWidth="583.0" visible="false">
          <children>
@@ -178,19 +182,37 @@
       </AnchorPane>
       <AnchorPane fx:id="panel_login" layoutX="22.0" layoutY="27.0" prefHeight="347.0" prefWidth="557.0">
          <children>
-            <Button layoutX="221.0" layoutY="310.0" mnemonicParsing="false" onAction="#panelRegisterShow" text="Create Account">
+            <MFXButton layoutX="203.0" layoutY="318.0" onAction="#panelRegisterShow" rippleColor="#04ff00" style="-fx-background-color: #45DB33;" text="Create an Account" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="13.0" />
+                  <Font name="Arial Bold" size="14.0" />
                </font>
-            </Button>
-            <Button fx:id="button_login" layoutX="236.0" layoutY="216.0" mnemonicParsing="false" onAction="#Login" text="Login">
+            </MFXButton>
+            <MFXButton fx:id="button_login" layoutX="144.0" layoutY="233.0" onAction="#Login" prefHeight="39.0" prefWidth="256.0" rippleColor="#00e1ff" style="-fx-background-color: #2A93D5;" text="Log In" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman" size="19.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
-            </Button>
-            <TextField fx:id="text_user" layoutX="144.0" layoutY="142.0" prefHeight="25.0" prefWidth="256.0" promptText="Username" />
-            <PasswordField fx:id="text_pass" layoutX="144.0" layoutY="179.0" prefHeight="25.0" prefWidth="256.0" promptText="Password" />
-            <Text fill="WHITE" layoutX="210.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+            </MFXButton>
+            <MFXTextField fx:id="text_user" floatMode="DISABLED" layoutX="144.0" layoutY="137.0" prefHeight="36.0" prefWidth="256.0" promptText="Username" textLimit="25">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust hue="-0.4" />
+               </effect>
+            </MFXTextField>
+            <MFXPasswordField fx:id="text_pass" floatMode="DISABLED" layoutX="144.0" layoutY="183.0" prefHeight="36.0" prefWidth="256.0" promptText="Password" textLimit="25">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <ColorAdjust hue="-0.4" />
+               </effect>
+            </MFXPasswordField>
+            <Text fill="WHITE" layoutX="199.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Text>
             <Text layoutX="175.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <ImageView fitHeight="169.0" fitWidth="350.0" layoutX="104.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -199,6 +221,10 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="button_devMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseReleased="#switchToDevMenu" text="Dev Menu" textAlignment="CENTER" textFill="RED" />
+      <MFXButton fx:id="button_devMenu" layoutX="14.0" layoutY="15.0" onMouseReleased="#switchToDevMenu" prefHeight="30.0" prefWidth="100.0" rippleColor="RED" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </MFXButton>
    </children>
 </AnchorPane>

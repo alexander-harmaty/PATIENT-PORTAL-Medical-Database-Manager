@@ -61,6 +61,9 @@ public class DoctorDashboardController implements Initializable
 
     @FXML
     private Button button_devMenu;
+    
+    @FXML
+    private Button button_logOut;
 
     @FXML
     private Button button_go;
@@ -256,8 +259,6 @@ public class DoctorDashboardController implements Initializable
     @FXML
     private TextField textField_patientID;
     
-    
-
     
     int index = -1;
     
@@ -491,12 +492,19 @@ public class DoctorDashboardController implements Initializable
         text_doctordashboard.setVisible(true);
     }
 
+
     @FXML
     void switchToDevMenu() throws IOException 
     {
         App.setRoot("devMenu");
     }
 
+        @FXML
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    } 
+    
     /**
      * Initializes the controller class.
      */
