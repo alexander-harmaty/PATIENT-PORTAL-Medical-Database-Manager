@@ -11,13 +11,14 @@ package com.groupfour.patientportal_vgui;
  */
 public class PrescriptionTable {
 
-    int PatientID, PharmID, DoctorID; 
+    int PatientID, PharmID, DoctorID, ScriptID; 
     String Medication, Description, DATE, Status, Frequency, Dosage, Quantity;
     
-    public PrescriptionTable(int PatientID, int PharmID, int DoctorID, String Medication, String Description, String DATE, String Status, String Frequency, String Dosage, String Quantity) {
+    public PrescriptionTable(int PatientID, int PharmID, int DoctorID, int ScriptID, String Medication, String Description, String DATE, String Status, String Frequency, String Dosage, String Quantity) {
         this.PatientID = PatientID;
         this.PharmID = PharmID;
         this.DoctorID = DoctorID;
+        this.ScriptID = ScriptID;
         this.Medication = Medication;
         this.Description = Description;
         this.DATE = DATE;
@@ -51,6 +52,14 @@ public class PrescriptionTable {
 
     public void setDoctorID(int DoctorID) {
         this.DoctorID = DoctorID;
+    }
+    
+    public int getScriptID() {
+        return ScriptID;
+    }
+
+    public void setScriptID(int ScriptID) {
+        this.ScriptID = ScriptID;
     }
 
     public String getMedication() {

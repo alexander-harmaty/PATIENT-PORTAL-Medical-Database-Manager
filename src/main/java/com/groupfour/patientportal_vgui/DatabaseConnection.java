@@ -26,7 +26,7 @@ public class DatabaseConnection {
              //Connection con = DriverManager.getConnection("jdbc:sqlserver://CIPHER:1433;"
                         //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
              Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
-                        + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
+                         + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
              //JOptionPane.showMessageDialog(null, "Connection established successfully");
              return con;
         }

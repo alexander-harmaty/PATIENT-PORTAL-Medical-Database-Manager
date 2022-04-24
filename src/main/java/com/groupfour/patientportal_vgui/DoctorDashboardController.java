@@ -690,7 +690,7 @@ public class DoctorDashboardController implements Initializable
 //    combobox_status.getItems().addAll("Option A", "Option B", "Option C");
 //    combobox_status.getSelectionModel().select("Option B");
         
-        ObservableList<String> list = FXCollections.observableArrayList("Active", "Cancelled", "Deleted", "Expired", "Refill");
+        ObservableList<String> list = FXCollections.observableArrayList("Proccessing", "Cancelled", "Refill");
         combobox_status.setItems(list);   
     }
     
@@ -703,7 +703,7 @@ public class DoctorDashboardController implements Initializable
            
             String medication = textField_medication.getText();
             String description = textField_description.getText();
-            String date = datepicker_date.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));         
+            String date = datepicker_date.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));         
           
                    
             int patientID = Integer.parseInt(textField_patientID.getText());
