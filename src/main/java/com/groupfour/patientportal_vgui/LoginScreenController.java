@@ -4,6 +4,10 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,35 +42,31 @@ public class LoginScreenController implements Initializable {
     private AnchorPane panel_login, panel_register, 
             panel_registerPatient, panel_registerDoctor;
     
-    
-    
     //Dev Menu Button: DELETE WHEN REMOVING DEV MENU
     @FXML
-    private Button button_devMenu;
+    private MFXButton button_devMenu;
     
     //Login Screen TextFields
     @FXML
-    private TextField text_user;
+    private MFXTextField text_user;
     @FXML
-    private PasswordField text_pass;
+    private MFXPasswordField text_pass;
     
     //Login & Registration Buttons
     @FXML
-    private Button button_login, button_register;
-    
-    
+    private MFXButton button_login, button_register;
     
     //AddUser Registration TextFeilds
     @FXML
-    private TextField text_user2, text_pass2, text_email;
+    private MFXTextField text_user2, text_pass2, text_email;
     
     //Dropdowns
     @FXML
-    private ComboBox button_type, button_type2;
+    private MFXLegacyComboBox button_type, button_type2;
     
     //Patient Registration Textfields
     @FXML
-    private TextField 
+    private MFXTextField 
             textField_dfname, textField_plname,
             textField_pid, textField_pemail, textField_pphone,
             textField_paddress,textField_pcity, textField_pstate, textField_pzip,
@@ -74,12 +74,10 @@ public class LoginScreenController implements Initializable {
 
     //Doctor Registration Textfields
     @FXML
-    private TextField 
+    private MFXTextField 
             textField_pfname, textField_dlname,
             textField_did, textField_demail, textField_dphone,
             textField_degree, textField_spec;
-    
-    
     
     //Database connections 
     Connection con = null;
@@ -90,9 +88,7 @@ public class LoginScreenController implements Initializable {
     PreparedStatement ps = null;
     PreparedStatement ps2 = null;
     Statement stmt = null;
-    long id = 0;
-    
-    
+    long id = 0;   
     
     @FXML
     private void Login (ActionEvent event) throws Exception {
@@ -196,8 +192,6 @@ public class LoginScreenController implements Initializable {
             //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
     }
-    
-    
     
     @FXML
     public void addUser(ActionEvent event){
@@ -320,9 +314,7 @@ public class LoginScreenController implements Initializable {
         panel_registerDoctor.setVisible(false);
         JOptionPane.showMessageDialog(null,"Registration Complete");
 
-    }
-
-    
+    }   
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -356,8 +348,6 @@ public class LoginScreenController implements Initializable {
         App.currentUser = new CurrentUser("DevMenuUser");
     }
 }
-
-
 
 /** 
  * @author Yasin

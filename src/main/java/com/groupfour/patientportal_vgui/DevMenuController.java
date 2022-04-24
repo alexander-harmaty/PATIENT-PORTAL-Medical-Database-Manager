@@ -63,12 +63,13 @@ public class DevMenuController implements Initializable
     @FXML
     private void switchToPatientDashboard() throws IOException
     {
-        //App.setRoot("patientDashboard");
-        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-        Stage mainStage = new Stage();
-        Scene scene = new Scene(root);
-        mainStage.setScene(scene);
-        mainStage.show(); 
+        App.setRoot("patientDashboard");
+        
+       //Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+       //Stage mainStage = new Stage();
+       //Scene scene = new Scene(root);
+       //mainStage.setScene(scene);
+       //mainStage.show();
     }
     @FXML
     private void switchToDoctorDashboard() throws IOException

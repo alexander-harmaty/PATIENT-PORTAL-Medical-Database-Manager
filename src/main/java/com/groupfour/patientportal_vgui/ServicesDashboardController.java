@@ -49,6 +49,8 @@ public class ServicesDashboardController implements Initializable {
     private Button button_appointments;
     @FXML
     private Button button_devMenu;
+    @FXML
+    private Button button_logOut;
     
     // TextFields
   
@@ -244,6 +246,12 @@ public class ServicesDashboardController implements Initializable {
         App.setRoot("devMenu");
         
     }
+    
+        @FXML
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    } 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

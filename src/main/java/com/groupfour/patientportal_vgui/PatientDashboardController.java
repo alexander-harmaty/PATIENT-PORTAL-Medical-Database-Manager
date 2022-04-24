@@ -72,6 +72,11 @@ public class PatientDashboardController implements Initializable
 
     @FXML
     private Button button_devMenu;
+    
+    @FXML
+    private Button button_logOut;
+    
+    private Button button_home;
 
     @FXML
     private Button button_medicalRecords;
@@ -342,6 +347,11 @@ public class PatientDashboardController implements Initializable
         App.setRoot("devMenu");
     }
     
+    @FXML
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    }
     /**
      * Initializes the controller class.
      */
