@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,81 +35,81 @@
    <children>
       <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <AnchorPane id="AnchorPane" layoutX="-283.0" layoutY="-72.0" prefHeight="802.0" prefWidth="1400.0" style="-fx-background-color: #15202B;">
+            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="1391.0" style="-fx-background-color: #15202B;">
                <children>
-                  <AnchorPane fx:id="panel_accountInfo" layoutX="112.0" layoutY="111.0" prefHeight="685.0" prefWidth="802.0" visible="false">
+                  <AnchorPane fx:id="panel_accountInfo" layoutX="349.0" layoutY="182.0" prefHeight="685.0" prefWidth="607.0" visible="false">
                      <children>
                         <VBox layoutX="16.0" layoutY="16.0" prefHeight="499.0" prefWidth="301.0">
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_patientID" promptText="Patiend ID" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_firstName" prefWidth="149.0" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_lastName" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_phone" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_email" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_street" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="447.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_city" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="460.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_zip" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="469.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="State: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_state" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="476.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_insuranceID" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="482.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_insuranceCo" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="487.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Doctor: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Doctor: " wrappingWidth="100.0" />
                                     <TextField fx:id="textField_primarydoc" />
                                  </children>
                               </HBox>
@@ -123,6 +124,9 @@
                            <image>
                               <Image url="@portal.png" />
                            </image>
+                           <effect>
+                              <ColorAdjust hue="0.99" />
+                           </effect>
                         </ImageView>
                         <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
                            <font>
@@ -137,11 +141,11 @@
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
-                  <AnchorPane fx:id="panel_search" layoutX="103.0" layoutY="106.0" prefHeight="692.0" prefWidth="1184.0" visible="false">
+                  <AnchorPane fx:id="panel_search" layoutX="270.0" layoutY="148.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
                      <children>
                         <ScrollPane layoutY="66.0" prefHeight="626.0" prefWidth="1184.0">
                            <content>
-                              <TableView fx:id="table_doctor" prefHeight="626.0" prefWidth="1173.0">
+                              <TableView fx:id="table_doctor" prefHeight="636.0" prefWidth="1173.0">
                                  <columns>
                                     <TableColumn fx:id="column_doctorid" prefWidth="139.0" text="DoctorID" />
                                     <TableColumn fx:id="column_dfirstname" prefWidth="134.0" text="First Name" />
@@ -174,7 +178,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b70316" height="113.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1286.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00786c" height="113.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1286.0" />
       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Dashboard" textAlignment="CENTER" GridPane.columnIndex="1">
          <font>
             <Font name="Arial Black" size="48.0" />
@@ -186,14 +190,17 @@
                <image>
                   <Image url="@Patients-Portal-Logo4.png" />
                </image>
+               <effect>
+                  <ColorAdjust hue="1.0" />
+               </effect>
             </ImageView>
          </children>
       </AnchorPane>
       <Pane prefHeight="536.0" prefWidth="164.0" GridPane.rowIndex="1">
          <children>
-            <VBox prefHeight="670.0" prefWidth="169.0" style="-fx-background-color: #b70316;">
+            <VBox prefHeight="713.0" prefWidth="169.0" style="-fx-background-color: #00786c;">
                <children>
-                  <MFXButton fx:id="button_home" buttonType="RAISED" onMouseReleased="#show_panelDashboard" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Home" textFill="#ff5353">
+                  <MFXButton fx:id="button_home" buttonType="RAISED" onMouseReleased="#show_panelDashboard" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Home" textFill="#009788">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -201,7 +208,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="#ff5353">
+                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="#009788">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
@@ -209,7 +216,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </MFXButton>
-                  <MFXButton fx:id="button_accountInfo" buttonType="RAISED" onMouseReleased="#handleButton_accountInfo" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Account Info" textFill="#ff5353">
+                  <MFXButton fx:id="button_accountInfo" buttonType="RAISED" onMouseReleased="#handleButton_accountInfo" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Account Info" textFill="#009788">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -217,7 +224,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_medicalRecords" buttonType="RAISED" onMouseReleased="#handleButton_medicalRecords" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Medical Records" textFill="#ff5353">
+                  <MFXButton fx:id="button_medicalRecords" buttonType="RAISED" onMouseReleased="#handleButton_medicalRecords" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Medical Records" textFill="#009788">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -225,7 +232,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_testResults" buttonType="RAISED" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Test Results" textFill="#ff5353">
+                  <MFXButton fx:id="button_testResults" buttonType="RAISED" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Test Results" textFill="#009788">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -233,7 +240,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_prescriptions" buttonType="RAISED" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Prescriptions" textFill="#ff5353">
+                  <MFXButton fx:id="button_prescriptions" buttonType="RAISED" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Prescriptions" textFill="#009788">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -241,7 +248,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_appointments" buttonType="RAISED" onMouseReleased="#handleButton_appointments" prefHeight="50.0" prefWidth="150.0" rippleColor="#b70316" style="-fx-border-color: #ff5353; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Appointments" textFill="#ff5353">
+                  <MFXButton fx:id="button_appointments" buttonType="RAISED" onMouseReleased="#handleButton_appointments" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Appointments" textFill="#009788">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
@@ -256,7 +263,7 @@
             <Insets />
          </GridPane.margin>
       </Pane>
-      <MFXButton fx:id="button_logOut" onMouseReleased="#handleButton_logOut" prefHeight="35.0" prefWidth="88.0" rippleColor="#ff7676" style="-fx-background-color: red;" text="Log Out" textFill="WHITE" GridPane.columnIndex="2">
+      <MFXButton fx:id="button_logOut" onMouseReleased="#handleButton_logOut" prefHeight="35.0" prefWidth="88.0" rippleColor="#ff7676" style="-fx-background-color: white; -fx-background-radius: 5 em; -fx-border-color: #009788;" text="Log Out" textFill="#009788" GridPane.columnIndex="2">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
