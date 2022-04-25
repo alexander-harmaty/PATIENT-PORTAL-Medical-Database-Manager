@@ -67,7 +67,7 @@ public class LoginScreenController implements Initializable {
     //Patient Registration Textfields
     @FXML
     private MFXTextField 
-            textField_dfname, textField_plname,
+            textField_pfname, textField_plname,
             textField_pid, textField_pemail, textField_pphone,
             textField_paddress,textField_pcity, textField_pstate, textField_pzip,
             textField_pinsid, textField_pinsurance;
@@ -75,7 +75,7 @@ public class LoginScreenController implements Initializable {
     //Doctor Registration Textfields
     @FXML
     private MFXTextField 
-            textField_pfname, textField_dlname,
+            textField_dfname, textField_dlname,
             textField_did, textField_demail, textField_dphone,
             textField_degree, textField_spec;
     
@@ -104,7 +104,6 @@ public class LoginScreenController implements Initializable {
             Statement st2 = (Statement) con2.createStatement();
             rs2 = st2.executeQuery( "Select * FROM LOGIN WHERE Email = '" + userName + "' AND Password = '" + passWord + "';");
             
-            // JOptionPane.showMessageDialog(null, "Your login was successful.");
             if (rs.next() && rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
             {
                 App.currentUser = new CurrentUser(rs.getString(1));
@@ -117,10 +116,7 @@ public class LoginScreenController implements Initializable {
                         Stage mainStage = new Stage();
                         Scene scene = new Scene(root);
                         mainStage.setScene(scene);
-                        mainStage.show(); 
-
-                        //attempt at displaying name upon login
-                        //PatientDashboardController.this.setLabelUserFirstLast();
+                        mainStage.show();
                 }
                 else if (rs.getString(5).toUpperCase().equals("DOCTOR")) 
                 {
@@ -132,17 +128,16 @@ public class LoginScreenController implements Initializable {
                         mainStage.setScene(scene);
                         mainStage.show(); 
                 }
-                //once we get services database table going
-//                else if (rs.getString(5).toUpperCase().equals("SERVICE")) 
-//                {
-//                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-//                        button_login.getScene().getWindow().hide();
-//                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-//                        Stage mainStage = new Stage();
-//                        Scene scene = new Scene(root);
-//                        mainStage.setScene(scene);
-//                        mainStage.show(); 
-//                }
+                else if (rs.getString(5).toUpperCase().equals("SERVICE")) 
+                {
+                       JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        button_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+                        Stage mainStage = new Stage();
+                        Scene scene = new Scene(root);
+                        mainStage.setScene(scene);
+                        mainStage.show(); 
+                }
             }
             else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
             {
@@ -156,10 +151,7 @@ public class LoginScreenController implements Initializable {
                         Stage mainStage = new Stage();
                         Scene scene = new Scene(root);
                         mainStage.setScene(scene);
-                        mainStage.show(); 
-
-                        //attempt at displaying name upon login
-                        //PatientDashboardController.this.setLabelUserFirstLast();
+                        mainStage.show();
                 }
                 else if (rs2.getString(5).toUpperCase().equals("DOCTOR")) 
                 {
@@ -171,17 +163,16 @@ public class LoginScreenController implements Initializable {
                         mainStage.setScene(scene);
                         mainStage.show(); 
                 }
-                //once we get services database table going
-//                else if (rs2.getString(5).toUpperCase().equals("SERVICE")) 
-//                {
-//                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-//                        button_login.getScene().getWindow().hide();
-//                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-//                        Stage mainStage = new Stage();
-//                        Scene scene = new Scene(root);
-//                        mainStage.setScene(scene);
-//                        mainStage.show(); 
-//                }
+                else if (rs2.getString(5).toUpperCase().equals("SERVICE")) 
+                {
+                        JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        button_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+                        Stage mainStage = new Stage();
+                        Scene scene = new Scene(root);
+                        mainStage.setScene(scene);
+                        mainStage.show(); 
+                }
             }
             else
             {
@@ -215,8 +206,6 @@ public class LoginScreenController implements Initializable {
             }
             
             System.out.println (id); 
-           
-            //JOptionPane.showMessageDialog(null, "Registered successfully");
         } catch (Exception e) {}
         
         if (button_type2.getValue().equals("Patient")){
@@ -264,9 +253,9 @@ public class LoginScreenController implements Initializable {
             String street = textField_paddress.getText();
             String city = textField_pcity.getText();
             String zip = textField_pzip.getText();
-            String state =  textField_pstate.getText();
-            int insid =  Integer.parseInt(textField_pinsid.getText());
-            String insur =  textField_pinsurance.getText();
+            String state = textField_pstate.getText();
+            String insid = textField_pinsid.getText();
+            String insur = textField_pinsurance.getText();
             
         String patquery = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuranceID, Insurance)" 
                     + " VALUES  (" + pID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "')";
@@ -318,11 +307,10 @@ public class LoginScreenController implements Initializable {
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //button_type.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
         
-        button_type2.getItems().addAll("Patient", "Doctor", "Nurse", "Lab");
+        button_type2.getItems().addAll("Patient", "Doctor", "Service");
         
-        // TODO
+      
     }  
     
     @FXML
@@ -351,9 +339,8 @@ public class LoginScreenController implements Initializable {
 
 /** 
  * @author Yasin
- * These are just some notes and code on the registerPatient methods
- * 
- * none are working but i am getting no errors, please let me know if you guys see whats wrong.
+ * These are just some notes and Insert statements and different ways to implement
+ * MAKE SURE SPELLING IS CORRECT
  * 
  * Itteration 2
  * 
