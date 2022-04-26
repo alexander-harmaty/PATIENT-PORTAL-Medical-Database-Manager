@@ -34,124 +34,34 @@ import javax.swing.JOptionPane;
 
 public class PatientDashboardController implements Initializable 
 {
-    //String user = "pportal";
-    //String pwd = "admin";
-    
     @FXML
     private TableView<DoctorTable> table_doctor;
     
     @FXML
-    private TableColumn<DoctorTable, String> column_demail;
-
-    @FXML
-    private TableColumn<DoctorTable, String> column_dfirstname;
-
-    @FXML
-    private TableColumn<DoctorTable, String> column_dlastname;
-
-    @FXML
-    private TableColumn<DoctorTable, String> column_doctorid;
-
-    @FXML
-    private TableColumn<DoctorTable, String> column_dphone;
-
-    @FXML
-    private TableColumn<DoctorTable, String> column_degree;
-
-    @FXML
-    private TableColumn<DoctorTable, String> column_specialty;
+    private TableColumn<DoctorTable, String> 
+            column_demail, column_dfirstname, column_dlastname, column_doctorid, 
+            column_dphone, column_degree, column_specialty;
     
     @FXML
-    private TextField textField_search;
+    private Button button_accountInfo, button_appointments, button_devMenu,
+            button_logOut, button_home, button_medicalRecords, 
+            button_prescriptions, button_search, button_testResults;
     
     @FXML
-    private Button button_accountInfo;
-
-    @FXML
-    private Button button_appointments;
-
-    @FXML
-    private Button button_devMenu;
+    private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard,
+            panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults;
     
     @FXML
-    private Button button_logOut;
-    
-    private Button button_home;
-
-    @FXML
-    private Button button_medicalRecords;
-
-    @FXML
-    private Button button_prescriptions;
-
-    @FXML
-    private Button button_search;
-
-    @FXML
-    private Button button_testResults;
-    
-    @FXML
-    private AnchorPane panel_accountInfo;
-
-    @FXML
-    private AnchorPane panel_appointments;
-
-    @FXML
-    private AnchorPane panel_dashboard;
-
-    @FXML
-    private AnchorPane panel_medicalRecords;
-
-    @FXML
-    private AnchorPane panel_prescriptions;
-
-    @FXML
-    private AnchorPane panel_search;
-
-    @FXML
-    private AnchorPane panel_testResults;
-    
-    @FXML
-    private TextField textField_email;
-
-    @FXML
-    private TextField textField_firstName;
-
-    @FXML
-    private TextField textField_insuranceCo;
-
-    @FXML
-    private TextField textField_insuranceID;
-
-    @FXML
-    private TextField textField_lastName;
-
-    @FXML
-    private TextField textField_patientID;
-
-    @FXML
-    private TextField textField_phone;
-    
-    @FXML
-    private TextField textField_primarydoc;
-    
-    @FXML
-    private TextField textField_street;
-    
-    @FXML
-    private TextField textField_city;
-    
-    @FXML
-    private TextField textField_zip;
-    
-    @FXML
-    private TextField textField_state;
+    private TextField textField_search, textField_email, textField_firstName, 
+            textField_insuranceCo, textField_insuranceID, textField_lastName, 
+            textField_patientID, textField_phone, textField_primarydoc, 
+            textField_street, textField_city, textField_zip, textField_state;
     
     @FXML
     private Label label_errorText;
     
     @FXML
-    protected  Label label_userFirstLast; 
+    protected Label label_userFirstLast; 
     
     //currentUserID   
     private String patientID = App.currentUser.getUserID();

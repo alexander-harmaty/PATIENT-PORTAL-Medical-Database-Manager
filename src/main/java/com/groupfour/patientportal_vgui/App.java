@@ -1,5 +1,6 @@
 package com.groupfour.patientportal_vgui;
 
+import java.awt.Image;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,9 +22,12 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("loginScreen"), 1280, 720);
         stage.setScene(scene);
-        stage.show();
         stage.setResizable(false);
         
+        //Image icon = new Image(getClass().getResourceAsStream("IMG_3300.png"));
+        //stage.getIcons().add(icon);
+        
+        stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
