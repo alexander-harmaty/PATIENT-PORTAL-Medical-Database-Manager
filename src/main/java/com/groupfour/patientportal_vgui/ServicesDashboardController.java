@@ -226,13 +226,13 @@ public class ServicesDashboardController implements Initializable {
     @FXML
     void handleButton_pharmSendPatient(){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(""));
+            Parent root = FXMLLoader.load(getClass().getResource("pharmSendPatient.fxml"));
             Stage mainStage = new Stage();
             Scene scene = new Scene(root);
             mainStage.setScene(scene);
             mainStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServicesDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

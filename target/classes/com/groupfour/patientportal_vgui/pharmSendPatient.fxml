@@ -1,11 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.PharmSendPatientController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="762.0" prefWidth="538.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.groupfour.patientportal_vgui.PharmSendPatientController">
+   <children>
+      <VBox layoutX="133.0" layoutY="158.0" prefHeight="527.0" prefWidth="262.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Patient ID:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_pid">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Doctor ID:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_did">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Pharmacy ID:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_pharmid">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Medication: ">
+                     <HBox.margin>
+                        <Insets left="10.0" right="19.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_med" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="310.0" prefHeight="182.0" prefWidth="262.0">
+               <children>
+                  <Label text="Description:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="21.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="textField_desc" prefHeight="89.0" prefWidth="150.0" wrapText="true">
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="378.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Dosage:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="41.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_dose" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="394.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Frequency:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="26.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_freq" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="405.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Quantity:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="34.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textField_quant" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="413.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Date:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="54.0" />
+                     </HBox.margin>
+                  </Label>
+                  <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="151.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="419.0" prefHeight="100.0" prefWidth="262.0">
+               <children>
+                  <Label text="Staus:">
+                     <HBox.margin>
+                        <Insets left="10.0" right="49.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="statusbar" prefWidth="150.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="225.0" layoutY="694.0" mnemonicParsing="false" onAction="#handleButton_notify" text="Notify Patient" />
+      <Label layoutX="172.0" layoutY="33.0" prefHeight="48.0" prefWidth="196.0" text="Prepare Order" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="92.0" layoutY="104.0" prefHeight="17.0" prefWidth="141.0" text="Please enter the Script ID:" />
+      <TextField fx:id="textField_scriptid" layoutX="241.0" layoutY="100.0" />
+      <Button layoutX="395.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleButton_go" text="Go" />
+   </children>
 </AnchorPane>
