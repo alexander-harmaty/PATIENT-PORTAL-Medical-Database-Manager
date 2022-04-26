@@ -4,7 +4,18 @@
  */
 package com.groupfour.patientportal_vgui;
 
-import java.awt.event.MouseEvent;
+
+import io.github.palexdev.materialfx.beans.properties.functional.ConsumerProperty;
+
+import io.github.palexdev.materialfx.controls.*;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
+import io.github.palexdev.materialfx.controls.MFXSpinner;
+import io.github.palexdev.materialfx.controls.models.spinner.IntegerSpinnerModel;
+
+import io.github.palexdev.materialfx.dialogs.MFXGenericDialog;
+
+import io.github.palexdev.materialfx.dialogs.MFXGenericDialogBuilder;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -12,6 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -38,6 +50,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -229,17 +243,17 @@ public class DoctorDashboardController implements Initializable
      */
     
      @FXML
-     private ComboBox combobox_status;
+     private MFXComboBox combobox_status;
      
     @FXML
     private TextField textField_frequency;
      
 
     @FXML
-    private DatePicker datepicker_date;
+    private MFXDatePicker datepicker_date;
     
     @FXML
-    private Spinner<Integer> spinner_quantity;
+    private MFXSpinner<Integer> spinner_quantity;
     
      @FXML
     private TextArea textField_description;
@@ -686,23 +700,23 @@ public class DoctorDashboardController implements Initializable
         }
     }
     
+  
     public void spinnerNumber() {
-        SpinnerValueFactory<Integer> value = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,20);
-        value.setValue(1);
-        spinner_quantity.setValueFactory(value);
-        
+        IntegerSpinnerModel count = new IntegerSpinnerModel(0);
+        count.next();
+        spinner_quantity.setSpinnerModel(count);
+        //want to add it editable but cant figure it out atm
     }
     
-    public void comboboxStatus() {
-//         combobox_status.getItems().removeAll(combobox_status.getItems());
-//    combobox_status.getItems().addAll("Option A", "Option B", "Option C");
-//    combobox_status.getSelectionModel().select("Option B");
-        
-        ObservableList<String> list = FXCollections.observableArrayList("Proccessing", "Cancelled", "Refill");
+    public void comboboxStatus() {        
+        ObservableList<String> list = FXCollections.observableArrayList("Processing", "Cancelled", "Refill");
         combobox_status.setItems(list);   
     }
     
-   
+    @FXML
+    private StackPane meow;
+    
+     
     @FXML
     void handleButton_order() { 
         try {
@@ -730,13 +744,32 @@ public class DoctorDashboardController implements Initializable
        
 
         stmt.execute(addPrescription);
-        JOptionPane.showMessageDialog(null,"New Record Added!");
-            
+        
+   
+        
+       // JOptionPane.showMessageDialog(null,"New Record Added!");
+      
+    
     } catch (Exception e) {
         System.out.print(e);
+        //JOptionPane.showMessageDialog(null,"New Record Added!");
+       
+        
+       
+        
+      // MFXGenericDialog.b
+      
+      
+        
+        //dialog.contentTextProperty();
     }  
+        
+        
     }
     
+  
+  
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         spinnerNumber();

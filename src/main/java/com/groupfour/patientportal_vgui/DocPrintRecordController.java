@@ -66,7 +66,7 @@ public class DocPrintRecordController implements Initializable {
             
             //SQL
             int ID = Integer.parseInt(textField_recordprintID.getText());
-            String sql = "SELECT * FROM MEDICALRECORDS WHERE RecordID = " + ID;
+            String sql = "SELECT * FROM MEDICALRECORDS WHERE PatientID = " + ID;
             ResultSet rs = st.executeQuery(sql);
             
             //FileChooser
@@ -108,7 +108,7 @@ public class DocPrintRecordController implements Initializable {
                     ps.append("OFFICIAL MEDICAL RECORD" + "\n----------------------" + "\nRecordID: "+ID1+
                     "\n\nPatientID: "+ID2+"\n\nDate of Birth: "+dob+"\n\nRecord Date: "+ recorddate +
                     "\n\nHeight: " + height + "\n\nWeight: " + weight + "\n\nBlood Type: " + bloodtype +
-                    "\n\nDiagnosis: " + diagnosis +"\n");
+                    "\n\nDiagnosis: " + diagnosis +"\n\n");
                 }
                 System.out.println("\nReport Written!\n");
             }

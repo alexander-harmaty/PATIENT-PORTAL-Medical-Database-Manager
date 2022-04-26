@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -107,8 +107,8 @@
             </HBox>
             <HBox prefHeight="38.0" prefWidth="371.0">
                <children>
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton_recordInsert" prefHeight="32.0" prefWidth="183.0" text="Add Record" />
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseReleased="#handleButton_recordClear" prefHeight="32.0" prefWidth="183.0" text="Clear" />
+                  <MFXButton onAction="#handleButton_recordInsert" prefHeight="27.0" prefWidth="168.0" text="Add Record" />
+                  <MFXButton onMouseReleased="#handleButton_recordClear" prefHeight="28.0" prefWidth="171.0" text="Clear" />
                </children>
                <padding>
                   <Insets top="12.0" />

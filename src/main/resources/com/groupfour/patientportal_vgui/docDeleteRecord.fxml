@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,21 +23,21 @@
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the Record ID you want to remove from the portal." textAlignment="CENTER" wrappingWidth="370.9145202636719" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter the Record ID to remove from the portal." textAlignment="CENTER" wrappingWidth="370.9145202636719" />
                </children>
             </HBox>
             <HBox prefHeight="38.0" prefWidth="371.0" />
             <HBox layoutX="10.0" layoutY="51.0" prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RecordID" textAlignment="CENTER" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Record ID" textAlignment="CENTER" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_recorddeleteID" prefHeight="25.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="83.0" prefHeight="38.0" prefWidth="371.0" />
             <HBox prefHeight="38.0" prefWidth="371.0">
                <children>
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#handleButton_recorddelete" prefHeight="32.0" prefWidth="183.0" text="Delete" />
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseReleased="#handleButton_recordclear" prefHeight="32.0" prefWidth="183.0" text="Clear" />
+                  <MFXButton onMousePressed="#handleButton_recorddelete" prefHeight="31.0" prefWidth="179.0" text="Delete" />
+                  <MFXButton onMouseDragReleased="#handleButton_recordclear" prefHeight="31.0" prefWidth="176.0" text="Clear" />
                </children>
             </HBox>
          </children>

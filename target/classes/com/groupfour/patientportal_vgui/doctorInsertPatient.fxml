@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -26,7 +26,7 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PatientID" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_patientID" prefHeight="25.0" prefWidth="200.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="18.222226470708847" />
-                  <Button mnemonicParsing="false" onMousePressed="#handleButton_go" prefHeight="25.0" prefWidth="42.0" text="Go" />
+                  <MFXButton onMousePressed="#handleButton_go" text="Go" />
                </children>
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
@@ -97,8 +97,8 @@
             </HBox>
             <HBox prefHeight="38.0" prefWidth="371.0">
                <children>
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton_save" prefHeight="32.0" prefWidth="183.0" text="Save" />
-                  <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseReleased="#handleButton_clear" prefHeight="32.0" prefWidth="183.0" text="Clear" />
+                  <MFXButton onAction="#handleButton_save" prefHeight="27.0" prefWidth="169.0" text="Save" />
+                  <MFXButton onMouseReleased="#handleButton_clear" prefHeight="27.0" prefWidth="174.0" text="Clear" />
                </children>
             </HBox>
          </children>
