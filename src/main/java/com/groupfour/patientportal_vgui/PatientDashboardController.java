@@ -4,6 +4,7 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -11,12 +12,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -24,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -77,6 +84,86 @@ public class PatientDashboardController implements Initializable
             column_quantity, column_status, column_scriptid;
     
     ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
+    
+    @FXML
+    private TableView<Appointment> table_appointments;
+    
+    @FXML
+    private TableColumn<Appointment, String>
+            column_appID, column_appRreason, column_appDate, column_appTime, 
+            column_appDocID, column_appPatID, column_appOfficeID, column_appLabID;
+    
+    @FXML
+    private MFXButton button_scheduleDocApp, button_scheduleLabApp, 
+            button_rescheduleOrCancelApp, button_refreshApp;
+    
+    @FXML
+    void handleButton_scheduleDocApp()
+    {
+        //button_scheduleDocApp
+        //open docAppointmentInsert.fxml
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("docAppointmentInsert.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void handleButton_scheduleLabApp()
+    {
+        //button_scheduleLabApp
+        //open labAppointmentInsert.fxml
+    }
+    
+    @FXML
+    void handleButton_rescheduleOrCancelApp()
+    {
+        //button_rescheduleOrCancelApp
+        //open appointmentModify.fxml
+    }
+    
+    
+    ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
+    @FXML
+    void handleButton_refreshApp()
+    {
+        //button_refreshApp
+        //refresh tableview 
+        
+        try
+        {
+
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT");
+            appointmentslist.clear();
+            
+                while (rs.next()) 
+                {
+                    appointmentslist.add(new Appointment(rs.getString("Appid"),rs.getString("Reason"),
+                    rs.getString("Date"),rs.getString("Time"),rs.getString("DoctorID"),
+                    rs.getString("PatientID"),rs.getString("OfficeID"),rs.getString("LabID")));
+                }
+        } 
+        catch (Exception e) {}
+
+                column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+                column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+                column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+                column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+                column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+                column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+                table_appointments.setItems(appointmentslist);
+         
+    }
+    
     
     //currentUserID   
     private String patientID = App.currentUser.getUserID();

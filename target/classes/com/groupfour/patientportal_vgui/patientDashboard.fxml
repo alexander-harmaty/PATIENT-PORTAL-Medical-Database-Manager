@@ -165,7 +165,50 @@
                         </ScrollPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+                  <AnchorPane fx:id="panel_appointments" layoutX="272.0" layoutY="154.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
+                     <children>
+                        <ScrollPane layoutX="37.0" layoutY="57.0" prefHeight="400.0" prefWidth="700.0">
+                           <content>
+                              <TableView fx:id="table_appointments" prefHeight="400.0" prefWidth="700.0">
+                                <columns>
+                                  <TableColumn fx:id="column_appID" prefWidth="85.0" text="App ID" />
+                                    <TableColumn fx:id="column_appRreason" prefWidth="85.0" text="Reason" />
+                                  <TableColumn fx:id="column_appDate" minWidth="5.0" prefWidth="85.0" text="Date" />
+                                    <TableColumn fx:id="column_appTime" prefWidth="85.0" text="Time" />
+                                    <TableColumn fx:id="column_appDocID" prefWidth="85.0" text="Doctor ID" />
+                                    <TableColumn fx:id="column_appPatID" prefWidth="85.0" text="Patient ID" />
+                                    <TableColumn fx:id="column_appOfficeID" prefWidth="85.0" text="Office ID" />
+                                    <TableColumn fx:id="column_appLabID" prefWidth="85.0" text="Lab ID" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <MFXButton fx:id="button_scheduleDocApp" layoutX="784.0" layoutY="96.0" onMouseReleased="#handleButton_scheduleDocApp" text="Schedule Doctor Appointment">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_scheduleLabApp" layoutX="798.0" layoutY="192.0" onMouseReleased="#handleButton_scheduleLabApp" text="Schedule Lab Appointment">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="769.0" layoutY="287.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" text="Reschedule / Cancel Appointment">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_refreshApp" layoutX="854.0" layoutY="383.0" onMouseReleased="#handleButton_refreshApp" text="Refresh Table">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <Text fill="WHITE" layoutX="37.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current List Of Upcoming Appointments">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Text>
+                     </children></AnchorPane>
                   <AnchorPane fx:id="panel_search" layoutX="270.0" layoutY="148.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
                      <children>
                         <ScrollPane layoutY="66.0" prefHeight="626.0" prefWidth="1184.0">

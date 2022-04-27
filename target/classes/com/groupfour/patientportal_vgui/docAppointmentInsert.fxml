@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -26,10 +27,10 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter information to make a doctors appointment below" wrappingWidth="400.0" />
                </children>
             </HBox>
-            <HBox prefHeight="30.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID" wrappingWidth="125.0" />
-                  <TextField fx:id="textField_patientID" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reason" wrappingWidth="125.0" />
+                  <TextArea fx:id="textArea_appReason" maxHeight="90.0" prefHeight="90.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox prefHeight="30.0" prefWidth="200.0">
@@ -46,14 +47,14 @@
             </HBox>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Office ID" wrappingWidth="125.0" />
-                  <TextField fx:id="textField_officeID" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor ID" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_doctorID" />
                </children>
             </HBox>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor ID" wrappingWidth="125.0" />
-                  <TextField fx:id="textField_doctorID" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Office ID" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_officeID" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
