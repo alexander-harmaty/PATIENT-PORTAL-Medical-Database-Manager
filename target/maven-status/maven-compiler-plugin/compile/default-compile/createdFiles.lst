@@ -18,4 +18,3 @@ com\groupfour\patientportal_vgui\MedicalTable.class
 com\groupfour\patientportal_vgui\DocAppointmentInsertController.class
 com\groupfour\patientportal_vgui\PatientDashboardController.class
 com\groupfour\patientportal_vgui\DatabaseConnection.class
-com\groupfour\patientportal_vgui\Appointment.class
