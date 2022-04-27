@@ -168,7 +168,28 @@
                   </AnchorPane>
                   <AnchorPane fx:id="panel_medicalRecords" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
                   <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
-                  <AnchorPane fx:id="panel_prescriptions" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
+                  <AnchorPane fx:id="panel_prescriptions" layoutX="285.0" layoutY="161.0" prefHeight="685.0" prefWidth="1161.0" visible="false">
+                     <children>
+                        <ScrollPane prefHeight="480.0" prefWidth="579.0">
+                           <content>
+                              <TableView fx:id="table_prescriptions" prefHeight="470.0" prefWidth="1133.0" stylesheets="@../../../prescriptionTableCSS.css">
+                                 <columns>
+                                    <TableColumn fx:id="column_scriptid" prefWidth="107.0" text=" Precription ID" />
+                                    <TableColumn fx:id="column_pharmid" prefWidth="107.0" text="  Pharmacy ID" />
+                                    <TableColumn fx:id="column_patientid" prefWidth="90.0" text="  Patient ID" />
+                                    <TableColumn fx:id="column_doctorid2" prefWidth="83.0" text=" Doctor ID" />
+                                    <TableColumn fx:id="column_medication" prefWidth="93.0" text="Medication" />
+                                    <TableColumn fx:id="column_description" prefWidth="250.0" text="                          Description" />
+                                    <TableColumn fx:id="column_date" minWidth="0.0" prefWidth="118.0" text="          Date" />
+                                    <TableColumn fx:id="column_status" minWidth="0.0" prefWidth="58.0" text=" Status" />
+                                    <TableColumn fx:id="column_frequency" minWidth="0.0" prefWidth="82.0" text="Frequency" />
+                                    <TableColumn fx:id="column_dosage" minWidth="5.0" prefWidth="67.0" text="Dosage" />
+                                    <TableColumn fx:id="column_quantity" prefWidth="68.0" text="Quantity" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
                   <Label fx:id="label_userFirstLast" layoutX="1044.0" layoutY="34.0" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
