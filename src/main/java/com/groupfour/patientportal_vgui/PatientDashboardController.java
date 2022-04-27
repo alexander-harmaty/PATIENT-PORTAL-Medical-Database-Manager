@@ -57,6 +57,50 @@ public class PatientDashboardController implements Initializable
             textField_patientID, textField_phone, textField_primarydoc, 
             textField_street, textField_city, textField_zip, textField_state;
     
+     
+    /** Tableview for patients to see prescriptions
+     * @author Angie
+     * @throws IOException 
+     */
+
+    @FXML
+    private TableView<PrescriptionTable> table_prescriptions;
+    
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_date;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_description;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_doctorid2;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_dosage;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_frequency;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_medication;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_patientid;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_pharmid;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_quantity;
+
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_status;
+    
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_scriptid;
+    
+    ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
+    
     @FXML
     private Label label_errorText;
     
@@ -250,7 +294,39 @@ public class PatientDashboardController implements Initializable
                 column_specialty.setCellValueFactory(new PropertyValueFactory <>("Specialty"));
                 table_doctor.setItems(doctorslist);
     }
-
+   
+    
+    public void prescriptionTable() {
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM SCRIPTDOC WHERE PatientID = " + patientID);
+            prescriptionList.clear();
+                while (rs.next()) {
+                    prescriptionList.add(new PrescriptionTable( rs.getInt("PatientID"), rs.getInt("PharmID"),
+                    rs.getInt("DoctorID"),rs.getInt("ScriptID"),rs.getString("Medication"),rs.getString("Description"),
+                    rs.getString("Date"),rs.getString("Status"),rs.getString("Frequency"),
+                    rs.getString("Dosage"), rs.getString("Quantity"))); 
+                    
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_medication.setCellValueFactory(new PropertyValueFactory <>("Medication"));
+                column_description.setCellValueFactory(new PropertyValueFactory <>("Description"));
+                column_date.setCellValueFactory(new PropertyValueFactory <>("DATE"));
+                column_patientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_pharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID")); 
+                column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_scriptid.setCellValueFactory(new PropertyValueFactory <>("ScriptID")); 
+                column_status.setCellValueFactory(new PropertyValueFactory <>("Status"));
+                column_frequency.setCellValueFactory(new PropertyValueFactory <>("Frequency"));
+                column_dosage.setCellValueFactory(new PropertyValueFactory <>("Dosage"));
+                column_quantity.setCellValueFactory(new PropertyValueFactory <>("Quantity"));    
+                table_prescriptions.setItems(prescriptionList);
+        
+    }
+    
     @FXML
     void switchToDevMenu() throws IOException 
     {
@@ -268,6 +344,7 @@ public class PatientDashboardController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         refreshTable();
+        prescriptionTable();
         FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(doctors -> {
