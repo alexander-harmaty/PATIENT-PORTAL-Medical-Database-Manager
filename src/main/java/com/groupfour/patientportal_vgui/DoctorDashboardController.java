@@ -768,7 +768,17 @@ public class DoctorDashboardController implements Initializable
         
     }
     
-  
+    public void show_panelDashboard() 
+    {
+        panel_dashboard.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_patients.setVisible(false);
+        panel_testResults.setVisible(false);
+    }
   
 
     @Override
