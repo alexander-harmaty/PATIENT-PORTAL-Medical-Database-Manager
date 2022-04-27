@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Angie
+ * @author Angie 
  */
 public class LoginScreenController implements Initializable {
 
@@ -431,80 +431,3 @@ public class LoginScreenController implements Initializable {
     }
 }
 
-/** 
- * @author Yasin
- * These are just some notes and Insert statements and different ways to implement
- * MAKE SURE SPELLING IS CORRECT
- * 
- * Itteration 2
- * 
- * public void registerPatient(ActionEvent event) {
-    try {
-        System.out.println("Connection Success!");
-        con = DatabaseConnection.connectDB();
-        Statement stmt = con.createStatement();
-        
-            int ID = ID;
-            String fname = textField_pfname.getText();
-            String lname = textField_plname.getText();
-            String pnum =  textField_pphone.getText();
-            String email = textField_pemail.getText();
-            String street = textField_pstreet.getText();
-            String city = textField_pcity.getText();
-            String zip = textField_pzip.getText();
-            String state =  textField_pstate.getText();
-            int insid =  Integer.parseInt(textField_pinsid.getText());
-            String insur =  textField_pinsurance.getText(); 
-            
-            stmt.execute("INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuanceID, Insurance)" 
-			+ " VALUES  (" + ID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "');";
-            
-        } catch (Exception e) {}
-        
-        panel_login.setVisible(true);
-        panel_register.setVisible(false);
-        panel_registerPatient.setVisible(false);
-        panel_registerDoctor.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
-
-    }
- * 
- * 
- * Iteration 3
- * 
- * public void registerPatient(ActionEvent event) {
-        int ID = (int) id; 
-        try {
-        System.out.println("ID being used is: " + ID);
-        con = DatabaseConnection.connectDB();
-        Statement stmt = con.createStatement();
-        
-            int pID = ID;
-            String fname = textField_pfname.getText();
-            String lname = textField_plname.getText();
-            String pnum =  textField_pphone.getText();
-            String email = textField_pemail.getText();
-            String street = textField_paddress.getText();
-            String city = textField_pcity.getText();
-            String zip = textField_pzip.getText();
-            String state =  textField_pstate.getText();
-            int insid =  Integer.parseInt(textField_pinsid.getText());
-            String insur =  textField_pinsurance.getText();
-            
-        String query = "INSERT INTO PATIENT (PatientID, PFirstName, PLastName, PPhone, PEmail, Street, City, Zip, State, InsuanceID, Insurance)" 
-                    + " VALUES  (" + pID + ",'" +fname+ "','" +lname+ "','" +pnum+ "','" +email+ "','" +street+ "','" +city+ "','" +zip+ "','" +state+ "'," +insid+ ",'" +insur+ "')";
-        
-        System.out.println(query);            
-        stmt.executeQuery(query); 
-            
-        } catch (Exception e) {}
-        
-        panel_login.setVisible(true);
-        panel_register.setVisible(false);
-        panel_registerPatient.setVisible(false);
-        panel_registerDoctor.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
-       
-    }
- * 
- */

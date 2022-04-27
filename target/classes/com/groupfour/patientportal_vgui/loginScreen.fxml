@@ -439,7 +439,7 @@
             </MFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_register" layoutX="22.0" layoutY="27.0" prefHeight="679.0" prefWidth="1240.0" visible="false">
+      <AnchorPane fx:id="panel_register" focusTraversable="true" layoutX="22.0" layoutY="27.0" prefHeight="679.0" prefWidth="1240.0" visible="false">
          <children>
             <MFXLegacyComboBox fx:id="button_type2" layoutX="90.0" layoutY="116.0" lineStrokeWidth="3.0" prefHeight="49.0" prefWidth="425.0" promptText="Select account type" style="-fx-font-size: 24 px; -fx-background-color: white;" unfocusedLineColor="#3278dc">
                <effect>
@@ -510,26 +510,78 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="810.0" layoutY="49.0" prefHeight="120.0" prefWidth="57.0" text="• Test • Test • Test • Test" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="810.0" layoutY="243.0" prefHeight="120.0" prefWidth="57.0" text="• Test • Test • Test • Test" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="810.0" layoutY="446.0" prefHeight="120.0" prefWidth="57.0" text="• Test • Test • Test • Test" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
             <Label layoutX="148.0" layoutY="18.0" text="Create an Account" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
+            <VBox layoutX="807.0" layoutY="62.0" prefHeight="120.0" prefWidth="272.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- Manage patient medical information" wrappingWidth="309.77777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- Make/edit patient prescriptions" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- View patient lab results" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- Make/edit appointments" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox layoutX="807.0" layoutY="250.0" prefHeight="120.0" prefWidth="310.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- View/make appointments" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- View medical history" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- View test results" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- View active/ pending prescriptions" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox layoutX="808.0" layoutY="446.0" prefHeight="90.0" prefWidth="340.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- For Labs and Pharmacy's " wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- View prescription orders and prepare them" wrappingWidth="340.0000678168402">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="- Send test results to doctor/patient" wrappingWidth="309.7777777777777">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_login" layoutX="22.0" layoutY="27.0" prefHeight="679.0" prefWidth="1240.0">

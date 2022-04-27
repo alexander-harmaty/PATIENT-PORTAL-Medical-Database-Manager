@@ -213,6 +213,11 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
     }
+    
+    @FXML
+    void handleButton_findPharma() {
+
+    }
 
     @FXML
     void handleButton_search() 

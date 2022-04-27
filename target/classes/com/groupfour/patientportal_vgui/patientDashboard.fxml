@@ -35,11 +35,33 @@
    <children>
       <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="1391.0" style="-fx-background-color: #15202B;">
+            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="1371.0" style="-fx-background-color: #15202B;">
                <children>
-                  <AnchorPane fx:id="panel_accountInfo" layoutX="349.0" layoutY="182.0" prefHeight="685.0" prefWidth="607.0" visible="false">
+                  <AnchorPane fx:id="panel_dashboard" layoutX="312.0" layoutY="152.0" prefHeight="611.0" prefWidth="1050.0">
                      <children>
-                        <VBox layoutX="16.0" layoutY="16.0" prefHeight="499.0" prefWidth="301.0">
+                        <ImageView fitHeight="455.0" fitWidth="338.0" layoutX="576.0" layoutY="35.0" opacity="0.25" pickOnBounds="true">
+                           <image>
+                              <Image url="@portal.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust hue="0.99" />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="1.0" prefHeight="108.0" prefWidth="620.0" text="Welcome to Patient Portal" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="panel_accountInfo" layoutX="271.0" layoutY="154.0" prefHeight="713.0" prefWidth="1117.0" visible="false">
+                     <children>
+                        <VBox layoutX="60.0" layoutY="90.0" prefHeight="499.0" prefWidth="301.0">
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
@@ -115,29 +137,32 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Button layoutX="60.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleButton_UpdatePAccInfo" prefHeight="35.0" prefWidth="165.0" text="Update Info:" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="panel_dashboard" layoutX="312.0" layoutY="152.0" prefHeight="611.0" prefWidth="1050.0">
-                     <children>
-                        <ImageView fitHeight="455.0" fitWidth="338.0" layoutX="576.0" layoutY="35.0" opacity="0.25" pickOnBounds="true">
-                           <image>
-                              <Image url="@portal.png" />
-                           </image>
-                           <effect>
-                              <ColorAdjust hue="0.99" />
-                           </effect>
-                        </ImageView>
-                        <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
+                        <Button layoutX="101.0" layoutY="606.0" mnemonicParsing="false" onAction="#handleButton_UpdatePAccInfo" prefHeight="35.0" prefWidth="165.0" text="Update Info:" />
+                        <Label layoutX="60.0" layoutY="14.0" text="Account Information:" textFill="WHITE">
                            <font>
-                              <Font name="Arial Bold" size="24.0" />
+                              <Font name="Arial Black" size="30.0" />
                            </font>
                         </Label>
-                        <Label layoutX="20.0" layoutY="1.0" prefHeight="108.0" prefWidth="620.0" text="Welcome to Patient Portal" textFill="WHITE" wrapText="true">
+                        <Label layoutX="547.0" layoutY="174.0" text="Emergancy Contact Info:" textFill="WHITE">
                            <font>
-                              <Font name="Arial Bold" size="48.0" />
+                              <Font name="Arial Black" size="20.0" />
                            </font>
                         </Label>
+                        <Button layoutX="580.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleButton_addEC" text="Add" />
+                        <Button layoutX="658.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleButon_deleteEC" text="Delete" />
+                        <Button layoutX="744.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleButton_refreshEC" text="Refresh" />
+                        <ScrollPane layoutX="480.0" layoutY="257.0" prefHeight="332.0" prefWidth="406.0">
+                           <content>
+                              <TableView fx:id="table_emergencyContact" prefHeight="329.0" prefWidth="404.0" stylesheets="@../../../prescriptionTableCSS.css">
+                                 <columns>
+                                    <TableColumn fx:id="column_ecfirst" prefWidth="105.33337736129761" text="First Name" />
+                                    <TableColumn fx:id="column_eclast" prefWidth="96.0" text="Last Name" />
+                                    <TableColumn fx:id="column_ecphone" prefWidth="85.77783203125" text="Phone" />
+                                    <TableColumn fx:id="column_ecrelation" prefWidth="105.77783203125" text="Relationship" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="panel_appointments" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
@@ -168,9 +193,9 @@
                   </AnchorPane>
                   <AnchorPane fx:id="panel_medicalRecords" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
                   <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
-                  <AnchorPane fx:id="panel_prescriptions" layoutX="285.0" layoutY="161.0" prefHeight="685.0" prefWidth="1161.0" visible="false">
+                  <AnchorPane fx:id="panel_prescriptions" layoutX="281.0" layoutY="162.0" prefHeight="685.0" prefWidth="1161.0" visible="false">
                      <children>
-                        <ScrollPane prefHeight="480.0" prefWidth="579.0">
+                        <ScrollPane layoutY="129.0" prefHeight="474.0" prefWidth="1135.0">
                            <content>
                               <TableView fx:id="table_prescriptions" prefHeight="470.0" prefWidth="1133.0" stylesheets="@../../../prescriptionTableCSS.css">
                                  <columns>
@@ -179,7 +204,7 @@
                                     <TableColumn fx:id="column_patientid" prefWidth="90.0" text="  Patient ID" />
                                     <TableColumn fx:id="column_doctorid2" prefWidth="83.0" text=" Doctor ID" />
                                     <TableColumn fx:id="column_medication" prefWidth="93.0" text="Medication" />
-                                    <TableColumn fx:id="column_description" prefWidth="250.0" text="                          Description" />
+                                    <TableColumn fx:id="column_description" prefWidth="250.0" text="                      Description" />
                                     <TableColumn fx:id="column_date" minWidth="0.0" prefWidth="118.0" text="          Date" />
                                     <TableColumn fx:id="column_status" minWidth="0.0" prefWidth="58.0" text=" Status" />
                                     <TableColumn fx:id="column_frequency" minWidth="0.0" prefWidth="82.0" text="Frequency" />
@@ -189,6 +214,12 @@
                               </TableView>
                            </content>
                         </ScrollPane>
+                        <Label layoutX="14.0" layoutY="14.0" text="Prescriptions" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="29.0" layoutY="82.0" mnemonicParsing="false" onAction="#handleButton_findPharma" text="Find Pharmacy" />
                      </children></AnchorPane>
                   <Label fx:id="label_userFirstLast" layoutX="1044.0" layoutY="34.0" textFill="WHITE">
                      <font>
