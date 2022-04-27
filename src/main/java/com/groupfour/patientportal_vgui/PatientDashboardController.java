@@ -447,6 +447,26 @@ public class PatientDashboardController implements Initializable
         sortedData.comparatorProperty().bind(table_doctor.comparatorProperty());
         table_doctor.setItems(sortedData);
         // TODO
+        
+        
     }    
+    
+    @FXML
+    void handleButton_addEC()
+    {
+        //
+    }
+    
+    @FXML
+    void handleButon_deleteEC()
+    {
+        //
+    }
+    
+    @FXML
+    void handleButton_refreshEC()
+    {
+        //
+    }
     
 }
