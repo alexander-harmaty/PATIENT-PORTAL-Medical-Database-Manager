@@ -74,26 +74,24 @@ public class DevMenuController implements Initializable
     @FXML
     private void switchToDoctorDashboard() throws IOException
     {
-        //App.setRoot("doctorDashboard");
-        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-        Stage mainStage = new Stage();
-        Scene scene = new Scene(root);
-        mainStage.setScene(scene);
-        mainStage.show(); 
+        App.setRoot("doctorDashboard");
+        //Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+        //Stage mainStage = new Stage();
+        //Scene scene = new Scene(root);
+        //mainStage.setScene(scene);
+        //mainStage.show(); 
     }
     @FXML
     private void switchToServicesDashboard() throws IOException
     {
-        //App.setRoot("servicesDashboard");
-        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-        Stage mainStage = new Stage();
-        Scene scene = new Scene(root);
-        mainStage.setScene(scene);
-        mainStage.show(); 
+        App.setRoot("servicesDashboard");
+        //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+        //Stage mainStage = new Stage();
+        //Scene scene = new Scene(root);
+        //mainStage.setScene(scene);
+        //mainStage.show(); 
     }
-    
-    
-    
+  
     /**
      * Initializes the controller class.
      */

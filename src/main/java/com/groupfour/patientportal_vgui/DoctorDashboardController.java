@@ -326,6 +326,12 @@ public class DoctorDashboardController implements Initializable
     }
 
     @FXML
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    }
+    
+    @FXML
     void handleButton_update() {
         
         try {
