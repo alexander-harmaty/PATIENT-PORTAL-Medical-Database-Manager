@@ -519,11 +519,6 @@ public class DoctorDashboardController implements Initializable
         App.setRoot("devMenu");
     }
 
-        @FXML
-    private void handleButton_logOut() throws IOException
-    {
-        App.setRoot("loginScreen");
-    } 
     
     /**
      * Initializes the controller class.

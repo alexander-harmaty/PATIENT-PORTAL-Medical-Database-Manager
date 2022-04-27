@@ -13,8 +13,6 @@ com\groupfour\patientportal_vgui\CurrentUser.class
 com\groupfour\patientportal_vgui\DoctorTable.class
 com\groupfour\patientportal_vgui\DocDeleteRecordController.class
 com\groupfour\patientportal_vgui\DocInsertMRecordController.class
-com\groupfour\patientportal_vgui\DoctorDashboardController.class
 com\groupfour\patientportal_vgui\MedicalTable.class
 com\groupfour\patientportal_vgui\DocAppointmentInsertController.class
-com\groupfour\patientportal_vgui\PatientDashboardController.class
 com\groupfour\patientportal_vgui\DatabaseConnection.class
