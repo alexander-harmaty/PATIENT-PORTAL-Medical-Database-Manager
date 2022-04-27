@@ -61,10 +61,10 @@ public class DocAppointmentInsertController implements Initializable {
             String doctorID = textField_doctorID.getText();
             String patientID = App.currentUser.getUserID();
             String officeID = textField_officeID.getText();
-            String labID = "";
+            
                 
-            String addRecord = "INSERT INTO APPOINTMENT (Reason, Date, Time, DoctorID, PatientID, OfficeID, LabID)"
-                    + " VALUES ('" + reason + "','" +date+ "','" +time+ "'," +doctorID+ "," +patientID+ "," +officeID+ "," +labID+")";
+            String addRecord = "INSERT INTO APPOINTMENT (Reason, Date, Time, DoctorID, PatientID, OfficeID)"
+                    + " VALUES ('" + reason + "','" +date+ "','" +time+ "'," +doctorID+ "," +patientID+ "," +officeID+ ")";
             
         System.out.println(addRecord);            
         stmt.execute(addRecord); 
