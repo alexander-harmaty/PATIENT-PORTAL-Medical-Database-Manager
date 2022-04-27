@@ -63,45 +63,18 @@ public class PatientDashboardController implements Initializable
     @FXML
     protected Label label_userFirstLast; 
     
-    /** tableview angie
-     * 
+    /** 
+     * tableview angie
      */
     
       @FXML
     private TableView<PrescriptionTable> table_prescriptions;
     
     @FXML
-    private TableColumn<PrescriptionTable, String> column_date;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_description;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_doctorid2;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_dosage;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_frequency;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_medication;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_patientid;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_pharmid;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_quantity;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_status;
-    
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_scriptid;
+    private TableColumn<PrescriptionTable, String> 
+            column_date, column_description, column_doctorid2, column_dosage, 
+            column_frequency, column_medication, column_patientid, column_pharmid, 
+            column_quantity, column_status, column_scriptid;
     
     ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
     
@@ -268,10 +241,6 @@ public class PatientDashboardController implements Initializable
     }
     
     ObservableList<DoctorTable> doctorslist = FXCollections.observableArrayList();
-    
-     
-  
-  
     
     public void refreshTable() {
         try{
