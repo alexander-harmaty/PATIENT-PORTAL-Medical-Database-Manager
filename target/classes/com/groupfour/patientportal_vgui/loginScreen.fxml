@@ -295,6 +295,150 @@
             </MFXButton>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="panel_registerService" layoutX="78.0" layoutY="52.0" prefHeight="641.0" prefWidth="1181.0" visible="false">
+         <children>
+            <VBox layoutX="174.0" layoutY="76.0" prefHeight="447.0" prefWidth="317.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_sid" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="ID" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="49.0" prefWidth="317.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_sname" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="Company Name" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_sphone" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="Phone Number" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_scity" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="City" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_sstate" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="State" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="317.0" />
+               </children>
+            </VBox>
+            <VBox layoutX="568.0" layoutY="76.0" prefHeight="447.0" prefWidth="473.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_semail" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="Email" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_fax" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="Fax Number" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_saddress" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="Address" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXTextField fx:id="textField_szip" floatMode="DISABLED" prefHeight="40.0" prefWidth="350.0" promptText="Zip Code" textLimit="25">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust hue="-0.4" />
+                           </effect>
+                        </MFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="473.0" />
+                  <HBox prefHeight="100.0" prefWidth="473.0" />
+               </children>
+            </VBox>
+            <MFXButton layoutX="992.0" layoutY="578.0" onAction="#registerPharm" prefHeight="50.0" prefWidth="180.0" rippleColor="#04ff00" style="-fx-background-color: #45DB33;" text="Register Pharmacy" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </MFXButton>
+            <Label layoutX="168.0" layoutY="1.0" text="Please enter your personal information: " textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <MFXButton layoutX="-34.0" layoutY="572.0" onAction="#panelLoginShow" prefHeight="51.0" prefWidth="218.0" rippleColor="#00ccff" style="-fx-background-color: #2A93D5;" text="Return to login" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </MFXButton>
+            <MFXButton layoutX="805.0" layoutY="578.0" onAction="#registerLab" prefHeight="50.0" prefWidth="180.0" rippleColor="#04ff00" style="-fx-background-color: #45DB33;" text="Register Lab" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </MFXButton>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="panel_register" layoutX="22.0" layoutY="27.0" prefHeight="679.0" prefWidth="1240.0" visible="false">
          <children>
             <MFXLegacyComboBox fx:id="button_type2" layoutX="90.0" layoutY="116.0" lineStrokeWidth="3.0" prefHeight="49.0" prefWidth="425.0" promptText="Select account type" style="-fx-font-size: 24 px; -fx-background-color: white;" unfocusedLineColor="#3278dc">

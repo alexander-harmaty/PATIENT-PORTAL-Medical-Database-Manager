@@ -40,7 +40,7 @@ public class LoginScreenController implements Initializable {
     //AnchorPanes
     @FXML
     private AnchorPane panel_login, panel_register, 
-            panel_registerPatient, panel_registerDoctor;
+            panel_registerPatient, panel_registerDoctor, panel_registerService;
     
     //Dev Menu Button: DELETE WHEN REMOVING DEV MENU
     @FXML
@@ -71,6 +71,13 @@ public class LoginScreenController implements Initializable {
             textField_pid, textField_pemail, textField_pphone,
             textField_paddress,textField_pcity, textField_pstate, textField_pzip,
             textField_pinsid, textField_pinsurance;
+    
+    //Service Registration TextFields
+    @FXML
+    private MFXTextField 
+            textField_sname, textField_fax,
+            textField_sid, textField_semail, textField_sphone,
+            textField_saddress,textField_scity, textField_sstate, textField_szip;
 
     //Doctor Registration Textfields
     @FXML
@@ -216,7 +223,8 @@ public class LoginScreenController implements Initializable {
             panel_login.setVisible(false);
             panel_register.setVisible(false);
             panel_registerPatient.setVisible(true);
-            panel_registerDoctor.setVisible(false);                          
+            panel_registerDoctor.setVisible(false);
+            panel_registerService.setVisible(false);
         }   
         else if (button_type2.getValue().equals("Doctor")){
             
@@ -227,9 +235,19 @@ public class LoginScreenController implements Initializable {
            panel_register.setVisible(false);
            panel_registerPatient.setVisible(false);
            panel_registerDoctor.setVisible(true);
+           panel_registerService.setVisible(false);
         }
-        
-    
+         else if (button_type2.getValue().equals("Service")){
+            
+           textField_sid.setText(String.valueOf(id));
+           textField_semail.setText(text_email.getText());
+           
+           panel_login.setVisible(false);
+           panel_register.setVisible(false);
+           panel_registerPatient.setVisible(false);
+           panel_registerDoctor.setVisible(false);
+           panel_registerService.setVisible(true);
+        }
     }
     
     /**
@@ -303,7 +321,81 @@ public class LoginScreenController implements Initializable {
         panel_registerDoctor.setVisible(false);
         JOptionPane.showMessageDialog(null,"Registration Complete");
 
-    }   
+    } 
+    
+    @FXML
+    public void registerLab(ActionEvent event) {
+        int ID = (int) id; 
+        try {
+        System.out.println("ID being used is: " + ID);
+        con3 = DatabaseConnection.connectDB();
+        stmt = con3.createStatement();
+        
+            int labID = ID;
+            String company = textField_sname.getText();
+            String fax = textField_fax.getText();
+            String num =  textField_sphone.getText();
+            String email = textField_semail.getText();
+            String street = textField_saddress.getText();
+            String city = textField_scity.getText();
+            String zip = textField_szip.getText();
+            String state = textField_sstate.getText();
+            
+        String labquery = "INSERT INTO LAB (LabID, Street, City, State, Zip, Phone, Fax, Email, Name)" 
+                    + " VALUES  (" +labID +",'" +street+
+                    "','" +city+ "','" +state+ "','" +zip+ "','" +num+
+                    "','" +fax+ "','" +email+ "','"+company+"')";
+        
+        System.out.println(labquery);            
+        stmt.executeQuery(labquery); 
+            
+        } catch (Exception e) {}
+        
+        panel_login.setVisible(true);
+        panel_register.setVisible(false);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
+        panel_registerService.setVisible(false);
+        JOptionPane.showMessageDialog(null,"Registration Complete");
+       
+    }
+    
+    @FXML
+    public void registerPharm(ActionEvent event) {
+        int ID = (int) id; 
+        try {
+        System.out.println("ID being used is: " + ID);
+        con3 = DatabaseConnection.connectDB();
+        stmt = con3.createStatement();
+        
+            int pharmID = ID;
+            String company = textField_sname.getText();
+            String fax = textField_fax.getText();
+            String num =  textField_sphone.getText();
+            String email = textField_semail.getText();
+            String street = textField_saddress.getText();
+            String city = textField_scity.getText();
+            String zip = textField_szip.getText();
+            String state = textField_sstate.getText();
+            
+        String pharmquery = "INSERT INTO PHARMA (PharmID, Street, City, State, Zip, Phone, Fax, Email, Name)" 
+                    + " VALUES  (" + pharmID + ",'" +street+
+                    "','" +city+ "','" +state+ "','" +zip+ "','" +num+
+                    "','" +fax+ "','" +email+ "','"+company+"')";
+        
+        System.out.println(pharmquery);            
+        stmt.executeQuery(pharmquery); 
+            
+        } catch (Exception e) {}
+        
+        panel_login.setVisible(true);
+        panel_register.setVisible(false);
+        panel_registerPatient.setVisible(false);
+        panel_registerDoctor.setVisible(false);
+        panel_registerService.setVisible(false);
+        JOptionPane.showMessageDialog(null,"Registration Complete");
+       
+    }
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -319,6 +411,7 @@ public class LoginScreenController implements Initializable {
         panel_register.setVisible(false);
         panel_registerPatient.setVisible(false);
         panel_registerDoctor.setVisible(false);
+        panel_registerService.setVisible(false);
     }
     
     @FXML
@@ -327,6 +420,7 @@ public class LoginScreenController implements Initializable {
         panel_register.setVisible(true);
         panel_registerPatient.setVisible(false);
         panel_registerDoctor.setVisible(false);
+        panel_registerService.setVisible(false);
     }
     
     @FXML
