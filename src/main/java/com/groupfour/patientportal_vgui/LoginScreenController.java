@@ -8,6 +8,10 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
+import io.github.palexdev.materialfx.dialogs.MFXDialogs;
+import io.github.palexdev.materialfx.dialogs.MFXGenericDialog;
+import io.github.palexdev.materialfx.dialogs.MFXGenericDialogBuilder;
+import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -183,14 +187,18 @@ public class LoginScreenController implements Initializable {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Incorrect username or password.");
+                
+                
+                //JOptionPane.showMessageDialog(null, "Incorrect username or password.");
             }
         } catch (Exception e) {
             e.printStackTrace();
+            
             //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
     }
-    
+     
+                
     @FXML
     public void addUser(ActionEvent event){
         con = DatabaseConnection.connectDB();

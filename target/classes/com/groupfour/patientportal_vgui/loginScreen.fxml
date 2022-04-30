@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox?>
+<?import io.github.palexdev.materialfx.dialogs.MFXGenericDialog?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -628,6 +629,7 @@
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
+            <MFXGenericDialog fx:id="panel_notification" layoutX="420.0" layoutY="222.0" visible="false" />
          </children>
       </AnchorPane>
       <MFXButton fx:id="button_devMenu" layoutX="14.0" layoutY="15.0" onMouseReleased="#switchToDevMenu" prefHeight="30.0" prefWidth="125.0" rippleColor="RED" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED">
