@@ -142,26 +142,25 @@ public class PatientDashboardController implements Initializable
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT");
             appointmentslist.clear();
             
-                while (rs.next()) 
-                {
-                    appointmentslist.add(new Appointment(rs.getString("Appid"),rs.getString("Reason"),
-                    rs.getString("Date"),rs.getString("Time"),rs.getString("DoctorID"),
-                    rs.getString("PatientID"),rs.getString("OfficeID"),rs.getString("LabID")));
-                }
+            while (rs.next()) 
+            {
+                appointmentslist.add(new Appointment(rs.getString("Appid"),rs.getString("Reason"),
+                rs.getString("Date"),rs.getString("Time"),rs.getString("DoctorID"),
+                rs.getString("PatientID"),rs.getString("OfficeID"),rs.getString("LabID")));
+            }
         } 
         catch (Exception e) {}
 
-                column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
-                column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
-                column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
-                column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
-                column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-                column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-                column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
-                column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
 
-                table_appointments.setItems(appointmentslist);
-         
+        table_appointments.setItems(appointmentslist);
     }
     
     
@@ -273,6 +272,7 @@ public class PatientDashboardController implements Initializable
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
+        refreshTable();
     }
 
     @FXML
