@@ -25,7 +25,7 @@ public class DatabaseConnection {
              //This is Specifically for Yasin, Make sure it is Commented out and please dont delete.
              //Connection con = DriverManager.getConnection("jdbc:sqlserver://CIPHER:1433;"
                         //+ "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
-             Connection con = DriverManager.getConnection("jdbc:sqlserver://24.189.211.114:1433;"
+             Connection con = DriverManager.getConnection("jdbc:sqlserver://24.45.36.120:1433;"
                          + "databaseName=PatientPortal;encrypt=true;trustServerCertificate=true;", user, pwd);
              //JOptionPane.showMessageDialog(null, "Connection established successfully");
              return con;
@@ -38,6 +38,7 @@ public class DatabaseConnection {
     }
     
     //code for table view
+    //24.189.211.114
     
     
      
