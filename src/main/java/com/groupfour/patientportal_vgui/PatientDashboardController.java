@@ -374,7 +374,7 @@ public class PatientDashboardController implements Initializable
         {
 
             Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT");
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PatientID = " + patientID);
             appointmentslist.clear();
             
             while (rs.next()) 
