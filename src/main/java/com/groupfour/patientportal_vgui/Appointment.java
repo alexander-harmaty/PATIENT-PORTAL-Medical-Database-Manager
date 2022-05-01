@@ -9,26 +9,56 @@ package com.groupfour.patientportal_vgui;
  * @author Alexander
  */
 public class Appointment {
-    
-    String AppID, Reason, Date, Time, DoctorID, PatientID, OfficeID, LabID;
 
-    public Appointment(String AppID, String Reason, String Date, String Time, String DoctorID, String PatientID, String OfficeID, String LabID) {
-        this.AppID = AppID;
-        this.Reason = Reason;
-        this.Date = Date;
-        this.Time = Time;
+    public Appointment(int Appid, int DoctorID, int PatientID, int OfficeID, int LabID, String Reason, String Date, String Time) {
+        this.Appid = Appid;
         this.DoctorID = DoctorID;
         this.PatientID = PatientID;
         this.OfficeID = OfficeID;
         this.LabID = LabID;
+        this.Reason = Reason;
+        this.Date = Date;
+        this.Time = Time;
     }
 
-    public String getAppID() {
-        return AppID;
+    public int getAppid() {
+        return Appid;
     }
 
-    public void setAppID(String AppID) {
-        this.AppID = AppID;
+    public void setAppid(int Appid) {
+        this.Appid = Appid;
+    }
+
+    public int getDoctorID() {
+        return DoctorID;
+    }
+
+    public void setDoctorID(int DoctorID) {
+        this.DoctorID = DoctorID;
+    }
+
+    public int getPatientID() {
+        return PatientID;
+    }
+
+    public void setPatientID(int PatientID) {
+        this.PatientID = PatientID;
+    }
+
+    public int getOfficeID() {
+        return OfficeID;
+    }
+
+    public void setOfficeID(int OfficeID) {
+        this.OfficeID = OfficeID;
+    }
+
+    public int getLabID() {
+        return LabID;
+    }
+
+    public void setLabID(int LabID) {
+        this.LabID = LabID;
     }
 
     public String getReason() {
@@ -55,35 +85,11 @@ public class Appointment {
         this.Time = Time;
     }
 
-    public String getDoctorID() {
-        return DoctorID;
-    }
+    int Appid, DoctorID, PatientID, OfficeID, LabID;
+    String Reason, Date, Time;
+   
+    
+   
+    
 
-    public void setDoctorID(String DoctorID) {
-        this.DoctorID = DoctorID;
-    }
-
-    public String getPatientID() {
-        return PatientID;
-    }
-
-    public void setPatientID(String PatientID) {
-        this.PatientID = PatientID;
-    }
-
-    public String getOfficeID() {
-        return OfficeID;
-    }
-
-    public void setOfficeID(String OfficeID) {
-        this.OfficeID = OfficeID;
-    }
-
-    public String getLabID() {
-        return LabID;
-    }
-
-    public void setLabID(String LabID) {
-        this.LabID = LabID;
-    }
 }

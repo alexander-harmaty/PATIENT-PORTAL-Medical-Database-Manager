@@ -136,43 +136,7 @@ public class PatientDashboardController implements Initializable
         //open appointmentModify.fxml
     }
     
-    
-    ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
-    @FXML
-    void handleButton_refreshApp()
-    {
-        //button_refreshApp
-        //refresh tableview 
-        
-        try
-        {
-
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT");
-            appointmentslist.clear();
-            
-            while (rs.next()) 
-            {
-                appointmentslist.add(new Appointment(rs.getString("Appid"),rs.getString("Reason"),
-                rs.getString("Date"),rs.getString("Time"),rs.getString("DoctorID"),
-                rs.getString("PatientID"),rs.getString("OfficeID"),rs.getString("LabID")));
-            }
-        } 
-        catch (Exception e) {}
-
-        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
-        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
-        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
-        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
-        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
-        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
-
-        table_appointments.setItems(appointmentslist);
-    }
-    
-    
+  
     //currentUserID   
     private String patientID = App.currentUser.getUserID();
     
@@ -281,7 +245,7 @@ public class PatientDashboardController implements Initializable
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
-        handleButton_refreshApp();
+        
     }
 
     @FXML
@@ -398,6 +362,42 @@ public class PatientDashboardController implements Initializable
         
     }
     
+      ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
+    
+    
+   public void appointmentTable()
+    {
+        //button_refreshApp
+        //refresh tableview 
+        
+        try
+        {
+
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT");
+            appointmentslist.clear();
+            
+            while (rs.next()) 
+            {
+                appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
+                rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
+                rs.getString("Date"),rs.getString("Time")));
+            }
+        } 
+        catch (Exception e) {}
+
+        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+        table_appointments.setItems(appointmentslist);
+    }
+    
     
     @FXML
     void switchToDevMenu() throws IOException 
@@ -417,6 +417,7 @@ public class PatientDashboardController implements Initializable
     public void initialize(URL url, ResourceBundle rb) {
         refreshTable();
         prescriptionTable();
+        appointmentTable();
         FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(doctors -> {
