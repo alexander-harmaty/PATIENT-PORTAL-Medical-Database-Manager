@@ -281,7 +281,7 @@ public class PatientDashboardController implements Initializable
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
-        refreshTable();
+        handleButton_refreshApp();
     }
 
     @FXML
