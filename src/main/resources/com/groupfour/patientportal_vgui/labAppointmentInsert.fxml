@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LabAppointmentInsertController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.groupfour.patientportal_vgui.LabAppointmentInsertController">
+   <children>
+      <VBox layoutX="25.0" layoutY="20.0" prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Details" wrappingWidth="400.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter information to make a doctors appointment below" wrappingWidth="400.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reason" wrappingWidth="125.0" />
+                  <TextArea fx:id="textArea_appReason" maxHeight="90.0" prefHeight="90.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date (mm/dd/yyyy)" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_date" />
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time (hh:mm)" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_time" />
+               </children>
+            </HBox>
+            <HBox prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lab ID" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_labID" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <MFXButton fx:id="button_clear" onMouseReleased="#handleButton_clear" prefWidth="200.0" text="Clear" />
+                  <MFXButton fx:id="button_createApp" onMouseReleased="#handleButton_createApp" prefWidth="200.0" text="Create Appointment" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

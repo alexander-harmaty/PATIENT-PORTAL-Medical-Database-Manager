@@ -109,7 +109,7 @@ public class PatientDashboardController implements Initializable
             mainStage.setScene(scene);
             mainStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -118,6 +118,15 @@ public class PatientDashboardController implements Initializable
     {
         //button_scheduleLabApp
         //open labAppointmentInsert.fxml
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("labAppointmentInsert.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML
