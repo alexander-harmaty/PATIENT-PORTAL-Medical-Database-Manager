@@ -1,0 +1,53 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : May 1, 2022, 6:20:48 PM
+    Author     : Angie
+*/
+
+
+
+.table-view {
+    -fx-base: #800e29;
+    -fx-background-color: #800e29;
+    -fx-control-inner-background: #800e29;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 25;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent derive(-fx-base, 80%) transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view.column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 15;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:focused {
+    -fx-border-color: derive(-fx-base, 20%);
+    -fx-background-insets: 0 0 0 0;
+}
+
+.table-view:focused .table-row-cell:selected {
+    -fx-background-color: derive(-fx-base, 20%);
+    -fx-background-insets: 0 0 0 0;
+}

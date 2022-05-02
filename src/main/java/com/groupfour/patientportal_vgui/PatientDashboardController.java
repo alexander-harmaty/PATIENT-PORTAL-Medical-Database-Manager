@@ -5,7 +5,10 @@
 package com.groupfour.patientportal_vgui;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,6 +33,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -59,10 +63,12 @@ public class PatientDashboardController implements Initializable
             panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults;
     
     @FXML
-    private TextField textField_search, textField_email, textField_firstName, 
+    private TextField textField_search, textField_medicalSearch, textField_email, textField_firstName, 
             textField_insuranceCo, textField_insuranceID, textField_lastName, 
             textField_patientID, textField_phone, textField_primarydoc, 
             textField_street, textField_city, textField_zip, textField_state;
+    
+   
     
     @FXML
     private Label label_errorText;
@@ -77,6 +83,33 @@ public class PatientDashboardController implements Initializable
       @FXML
     private TableView<PrescriptionTable> table_prescriptions;
     
+          @FXML
+    private TableView<MedicalTable> table_medicalrecords;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_recordID;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_recorddate;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_weight;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_bloodtype;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_diagnosis;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_dob;
+
+    @FXML
+    private TableColumn<MedicalTable, String> column_height;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_patientID2;
+      
     @FXML
     private TableColumn<PrescriptionTable, String> 
             column_date, column_description, column_doctorid2, column_dosage, 
@@ -398,6 +431,146 @@ public class PatientDashboardController implements Initializable
         table_appointments.setItems(appointmentslist);
     }
     
+   ObservableList<MedicalTable> medicalList = FXCollections.observableArrayList();
+    public void medicalTable() {
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM MEDICALRECORDS WHERE PatientID = " + patientID);
+            medicalList.clear();
+                while (rs.next()) {
+                    medicalList.add(new MedicalTable(rs.getInt("RecordID"),rs.getInt("PatientID"),
+                    rs.getString("DOB"),rs.getString("RecordDate"),rs.getString("Height"),
+                    rs.getString("Weight"),rs.getString("BloodType"),rs.getString("Diagnosis")));
+                    
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_recordID.setCellValueFactory(new PropertyValueFactory <>("RecordID"));
+                column_patientID2.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_dob.setCellValueFactory(new PropertyValueFactory <>("DOB"));
+                column_recorddate.setCellValueFactory(new PropertyValueFactory <>("RecordDate"));
+                column_height.setCellValueFactory(new PropertyValueFactory <>("Height"));
+                column_weight.setCellValueFactory(new PropertyValueFactory <>("Weight"));
+                column_bloodtype.setCellValueFactory(new PropertyValueFactory <>("BloodType"));
+                column_diagnosis.setCellValueFactory(new PropertyValueFactory <>("Diagnosis"));
+                
+                table_medicalrecords.setItems(medicalList);
+        
+    }
+    
+      @FXML
+    void handleButton_printMedical() {
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            Statement st = con.createStatement();
+          //  int ID = Integer.parseInt(textField_recordprintID.getText());
+            String sql = "SELECT * FROM MEDICALRECORDS WHERE PatientID = " + patientID;
+            ResultSet rs = st.executeQuery(sql);
+            
+            //FileChooser
+            FileChooser fc;
+            fc = new FileChooser();
+            File selectedFile;
+            selectedFile = fc.showSaveDialog(null);
+            
+            if(selectedFile != null)
+            {
+                System.out.println("\nName & Path Selected!");
+                System.out.println(selectedFile);
+
+                PrintStream ps = null;
+
+                try
+                {
+                    ps = new PrintStream(selectedFile);
+                }
+                catch (FileNotFoundException e)
+                {
+                    System.out.println("File Not Found!");
+                    //break;
+                }
+
+                //cg.report(ps);
+                while (rs.next()) 
+                {
+                    System.out.println("Got here");
+                    int ID1 = rs.getInt("RecordID");
+                    int ID2 = rs.getInt("PatientID");
+                    String dob = rs.getString("DOB");
+                    String recorddate = rs.getString("RecordDate");
+                    String height = rs.getString("Height");
+                    String weight = rs.getString("Weight");
+                    String bloodtype = rs.getString("BloodType");
+                    String diagnosis = rs.getString("Diagnosis");
+
+                    ps.append("OFFICIAL MEDICAL RECORD" + "\n----------------------" + "\nRecordID: "+ID1+
+                    "\n\nPatientID: "+ID2+"\n\nDate of Birth: "+dob+"\n\nRecord Date: "+ recorddate +
+                    "\n\nHeight: " + height + "\n\nWeight: " + weight + "\n\nBlood Type: " + bloodtype +
+                    "\n\nDiagnosis: " + diagnosis +"\n\n");
+                }
+                System.out.println("\nReport Written!\n");
+            }
+            else
+            {
+                System.out.println("File Chooser Closed!");
+            }
+            
+            rs.close();
+            //bw.close();
+            // fout.close();
+        } // End of try statement
+        catch (Exception e) 
+        {
+            System.out.print(e);
+        } 
+    }
+    
+    public void searchMedical() {
+         FilteredList<MedicalTable> filtereddata = new FilteredList<>(medicalList, b -> true);
+        textField_medicalSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtereddata.setPredicate(medical -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(medical.getRecordID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (String.valueOf(medical.getPatientID()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (medical.getDOB().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (medical.getRecordDate().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (medical.getHeight().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (medical.getWeight().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (medical.getBloodType().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (medical.getDiagnosis().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+      
+                else 
+                    return false;
+            });
+        });
+        SortedList<MedicalTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_medicalrecords.comparatorProperty());
+        table_medicalrecords.setItems(sortedData);
+    }
     
     @FXML
     void switchToDevMenu() throws IOException 
@@ -418,6 +591,8 @@ public class PatientDashboardController implements Initializable
         refreshTable();
         prescriptionTable();
         appointmentTable();
+        medicalTable();
+        searchMedical();
         FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(doctors -> {

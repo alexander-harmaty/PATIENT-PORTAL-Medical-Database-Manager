@@ -8,10 +8,13 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.legacy.MFXLegacyComboBox;
+import io.github.palexdev.materialfx.dialogs.AbstractMFXDialog;
 import io.github.palexdev.materialfx.dialogs.MFXDialogs;
 import io.github.palexdev.materialfx.dialogs.MFXGenericDialog;
 import io.github.palexdev.materialfx.dialogs.MFXGenericDialogBuilder;
 import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
+import io.github.palexdev.materialfx.dialogs.MFXStageDialogBuilder;
+import io.github.palexdev.materialfx.enums.ScrimPriority;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,11 +26,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import java.sql.*;
+import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javax.swing.JOptionPane;
 
 /**
@@ -100,6 +107,7 @@ public class LoginScreenController implements Initializable {
     PreparedStatement ps2 = null;
     Statement stmt = null;
     long id = 0;   
+    private MFXGenericDialog dialogContent;
     
     @FXML
     private void Login (ActionEvent event) throws Exception {
@@ -187,8 +195,37 @@ public class LoginScreenController implements Initializable {
             }
             else
             {
-                
-                
+               
+                //Window window = null;
+               // Pane owner = new Pane();
+                this.dialogContent = MFXGenericDialogBuilder.build()
+                        .setContentText("sup")
+                        .makeScrollable(true)
+                        .get();
+                AbstractMFXDialog content = new AbstractMFXDialog () {};
+                content.computeAreaInScreen();
+                MFXStageDialog mfx = new MFXStageDialog();
+                MFXStageDialogBuilder build = new MFXStageDialogBuilder(mfx);
+               //build.initModality(Modality.APPLICATION_MODAL);
+               
+                build.setDraggable(true);
+               build.setTitle("haha");
+               build.setContent(content);
+              
+               build.setScrimOwner(true);
+               mfx.getOwner();
+               mfx.contentProperty();
+               mfx.setTitle("confusedlol");
+               mfx.showDialog();
+               build.get();
+               dialogContent.addActions(
+               Map.entry(new MFXButton("HEY"), event1 -> {
+               }),
+               Map.entry(new MFXButton("Cancel"), event1 -> mfx.close())  
+               );
+               
+               
+               
                 //JOptionPane.showMessageDialog(null, "Incorrect username or password.");
             }
         } catch (Exception e) {
