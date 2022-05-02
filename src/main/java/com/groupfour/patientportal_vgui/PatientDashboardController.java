@@ -167,6 +167,16 @@ public class PatientDashboardController implements Initializable
     {
         //button_rescheduleOrCancelApp
         //open appointmentModify.fxml
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("appointmentRescheduleOrCancel.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
   
@@ -232,9 +242,9 @@ public class PatientDashboardController implements Initializable
     void handleButton_UpdatePAccInfo() {
         
         try {
-        System.out.println("Connection Success!");
-        Connection con = DatabaseConnection.connectDB();
-        Statement stmt = con.createStatement();
+            System.out.println("Connection Success!");
+            Connection con = DatabaseConnection.connectDB();
+            Statement stmt = con.createStatement();
         
             int ID = Integer.parseInt(textField_patientID.getText());
             String fname = textField_firstName.getText();
