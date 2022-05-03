@@ -51,6 +51,8 @@ public class ServicesDashboardController implements Initializable {
     private Button button_devMenu;
     @FXML
     private Button button_logOut;
+    @FXML
+    private Button button_home;
     
     // TextFields
   
@@ -127,8 +129,7 @@ public class ServicesDashboardController implements Initializable {
                     prescriptionList.add(new PrescriptionTable( rs.getInt("PatientID"), rs.getInt("PharmID"),
                     rs.getInt("DoctorID"),rs.getInt("ScriptID"),rs.getString("Medication"),rs.getString("Description"),
                     rs.getString("Date"),rs.getString("Status"),rs.getString("Frequency"),
-                    rs.getString("Dosage"), rs.getString("Quantity"))); 
-                    
+                    rs.getString("Dosage"), rs.getString("Quantity")));  
                     }
             } 
         catch (Exception e) {}
@@ -144,8 +145,7 @@ public class ServicesDashboardController implements Initializable {
                 column_frequency.setCellValueFactory(new PropertyValueFactory <>("Frequency"));
                 column_dosage.setCellValueFactory(new PropertyValueFactory <>("Dosage"));
                 column_quantity.setCellValueFactory(new PropertyValueFactory <>("Quantity"));    
-                table_prescriptions.setItems(prescriptionList);
-        
+                table_prescriptions.setItems(prescriptionList); 
     }
     
     
@@ -158,7 +158,6 @@ public class ServicesDashboardController implements Initializable {
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_dashboard.setVisible(false);
-
     }
 
     @FXML
@@ -170,7 +169,6 @@ public class ServicesDashboardController implements Initializable {
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_dashboard.setVisible(false);
-
     }
 
     @FXML
@@ -182,10 +180,7 @@ public class ServicesDashboardController implements Initializable {
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_dashboard.setVisible(false);
-
     }
-    
-    
 
     @FXML
     void handleButton_record() {

@@ -3,113 +3,199 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.ServicesDashboardController">
+
+<GridPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.ServicesDashboardController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="170.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1190.0" minWidth="10.0" prefWidth="896.6666870117188" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1226.0" minWidth="10.0" prefWidth="255.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="521.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="795.0" minHeight="10.0" prefHeight="609.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <VBox prefHeight="720.0" prefWidth="150.0" style="-fx-background-color: #640018;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1161.0" style="-fx-background-color: #15202B;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <ImageView fitHeight="140.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+            <AnchorPane fx:id="panel_search" layoutX="104.0" layoutY="102.0" prefHeight="697.0" prefWidth="1176.0" visible="false" />
+            <AnchorPane fx:id="panel_account" layoutX="104.0" layoutY="104.0" prefHeight="697.0" prefWidth="1177.0" visible="false" />
+            <AnchorPane fx:id="panel_records" layoutX="104.0" layoutY="104.0" prefHeight="696.0" prefWidth="1176.0" visible="false" />
+            <AnchorPane fx:id="panel_testResults" layoutX="103.0" layoutY="102.0" prefHeight="697.0" prefWidth="1179.0" visible="false" />
+            <AnchorPane fx:id="panel_prescriptions" layoutX="1.0" layoutY="19.0" prefHeight="607.0" prefWidth="1180.0" visible="false">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="89.0" prefHeight="501.0" prefWidth="1110.0">
+                     <content>
+                        <TableView fx:id="table_prescriptions" prefHeight="497.0" prefWidth="1130.0" stylesheets="@../../../tablered.css">
+                          <columns>
+                              <TableColumn fx:id="column_scriptid" prefWidth="107.66665649414062" text="Prescription ID" />
+                              <TableColumn fx:id="column_pharmid" prefWidth="95.66668701171875" text="Pharmacy ID" />
+                              <TableColumn fx:id="column_patientid" prefWidth="107.33331298828125" text="Patient ID" />
+                              <TableColumn fx:id="column_doctorid" prefWidth="83.0" text=" Doctor ID" />
+                            <TableColumn fx:id="column_medication" prefWidth="93.0" text="Medication" />
+                            <TableColumn fx:id="column_description" prefWidth="127.33331298828125" text="     Description" />
+                              <TableColumn fx:id="column_date" minWidth="0.0" prefWidth="129.33331298828125" text="        Date" />
+                              <TableColumn fx:id="column_status" minWidth="0.0" prefWidth="94.66668701171875" text=" Status" />
+                              <TableColumn fx:id="column_frequency" minWidth="0.0" prefWidth="117.6666259765625" text="     Frequency" />
+                              <TableColumn fx:id="column_dosage" minWidth="5.0" prefWidth="70.6666259765625" text="Dosage" />
+                              <TableColumn fx:id="column_quantity" minWidth="0.0" prefWidth="70.6666259765625" text="Quantity" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+                  <Text fill="WHITE" layoutX="30.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Prescription Orders" wrappingWidth="502.72940826416016">
+                     <font>
+                        <Font name="Arial Black" size="36.0" />
+                     </font>
+                  </Text>
+                  <HBox layoutX="613.0" layoutY="22.0" prefHeight="38.0" prefWidth="235.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleButton_pharmSendPatient" prefHeight="38.0" prefWidth="113.0" text="Send to Patient" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="panel_appointment" layoutX="53.0" layoutY="25.0" prefHeight="695.0" prefWidth="1173.0" visible="false" />
+            <AnchorPane fx:id="panel_dashboard" layoutX="13.0" layoutY="9.0" prefHeight="611.0" prefWidth="1050.0">
+               <children>
+                  <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="1.0" prefHeight="108.0" prefWidth="620.0" text="Welcome to Patient Portal" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="390.0" fitWidth="406.0" layoutX="557.0" layoutY="118.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@portal.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust hue="0.01" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="471.0" prefWidth="173.0" style="-fx-background-color: #640018;" GridPane.rowIndex="1">
+         <children>
+            <VBox layoutY="7.0" prefHeight="604.0" prefWidth="169.0" style="-fx-background-color: #640018;">
+               <children>
+                  <MFXButton fx:id="button_home" buttonType="RAISED" onMouseReleased="#show_panelDashboard" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Home" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton fx:id="button_accountInfo" buttonType="RAISED" onMouseReleased="#handleButton_account" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Account Info" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton fx:id="button_medicalRecords" buttonType="RAISED" onMouseReleased="#handleButton_record" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Medical Records" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton fx:id="button_testResults" buttonType="RAISED" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Test Results" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton fx:id="button_prescriptions" buttonType="RAISED" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Prescriptions" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </MFXButton>
+                  <MFXButton fx:id="button_appointments" buttonType="RAISED" onMouseReleased="#handleButton_appointments" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Appointments" textFill="#c32929">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </MFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#640018" height="113.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1283.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Service-Portal-Logo.png" />
                </image>
                <effect>
                   <ColorAdjust hue="-0.35" />
                </effect>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="10.0" />
-               </VBox.margin>
             </ImageView>
-            <Button fx:id="button_search" mnemonicParsing="false" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="125.0" text="Search" />
-            <Button fx:id="button_accountInfo" mnemonicParsing="false" onMouseReleased="#handleButton_account" prefHeight="50.0" prefWidth="125.0" text="Account Info" />
-            <Button fx:id="button_medicalRecords" mnemonicParsing="false" onMouseReleased="#handleButton_record" prefHeight="50.0" prefWidth="125.0" text="Medical Records" />
-            <Button fx:id="button_testResults" mnemonicParsing="false" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="125.0" text="Test Results" />
-            <Button fx:id="button_prescriptions" mnemonicParsing="false" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="125.0" text="Prescriptions" />
-            <Button fx:id="button_appointments" mnemonicParsing="false" onMouseReleased="#handleButton_appointments" prefHeight="50.0" prefWidth="125.0" text="Appointments" />
-         </children>
-      </VBox>
-      <AnchorPane fx:id="panel_dashboard" layoutX="105.0" layoutY="105.0" prefHeight="685.0" prefWidth="1173.0">
-         <children>
-            <TitledPane animated="false" layoutX="73.0" layoutY="31.0" text="Welcome!">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="436.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is your patient dashboard." />
-                        <Text layoutX="13.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To use the Patient Portal from here, please use the navigation drawer to access your feature." wrappingWidth="173.11773681640625" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane animated="false" layoutX="600.0" layoutY="31.0" text="User Profile">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="446.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Info:" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_search" layoutX="104.0" layoutY="102.0" prefHeight="697.0" prefWidth="1176.0" visible="false" />
-      <AnchorPane fx:id="panel_account" layoutX="104.0" layoutY="104.0" prefHeight="697.0" prefWidth="1177.0" visible="false" />
-      <AnchorPane fx:id="panel_records" layoutX="104.0" layoutY="104.0" prefHeight="696.0" prefWidth="1176.0" visible="false" />
-      <AnchorPane fx:id="panel_testResults" layoutX="103.0" layoutY="102.0" prefHeight="697.0" prefWidth="1179.0" visible="false" />
-      <AnchorPane fx:id="panel_prescriptions" layoutX="101.0" layoutY="104.0" prefHeight="607.0" prefWidth="1180.0" visible="false">
-         <children>
-            <ScrollPane layoutX="49.0" layoutY="208.0" prefHeight="407.0" prefWidth="1131.0">
-               <content>
-                  <TableView fx:id="table_prescriptions" prefHeight="418.0" prefWidth="1130.0" stylesheets="@../../../tablered.css">
-                    <columns>
-                        <TableColumn fx:id="column_scriptid" prefWidth="113.0" text=" Prescription ID" />
-                        <TableColumn fx:id="column_pharmid" prefWidth="107.0" text="  Pharmacy ID" />
-                        <TableColumn fx:id="column_patientid" prefWidth="90.0" text="  Patient ID" />
-                        <TableColumn fx:id="column_doctorid" prefWidth="83.0" text=" Doctor ID" />
-                      <TableColumn fx:id="column_medication" prefWidth="93.0" text="Medication" />
-                      <TableColumn fx:id="column_description" prefWidth="223.0" text="                Description" />
-                        <TableColumn fx:id="column_date" minWidth="0.0" prefWidth="118.0" text="          Date" />
-                        <TableColumn fx:id="column_status" minWidth="0.0" prefWidth="58.0" text=" Status" />
-                        <TableColumn fx:id="column_frequency" minWidth="0.0" prefWidth="120.0" text="     Frequency" />
-                        <TableColumn fx:id="column_dosage" minWidth="5.0" prefWidth="67.0" text="Dosage" />
-                        <TableColumn fx:id="column_quantity" prefWidth="68.0" text="Quantity" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <Text layoutX="20.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Prescription Orders" wrappingWidth="502.72940826416016">
-               <font>
-                  <Font name="Arial Black" size="36.0" />
-               </font>
-            </Text>
-            <HBox layoutX="69.0" layoutY="112.0" prefHeight="38.0" prefWidth="1031.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#handleButton_pharmSendPatient" prefHeight="38.0" prefWidth="113.0" text="Send to Patient" />
-               </children>
-            </HBox>
-         </children></AnchorPane>
-      <AnchorPane fx:id="panel_appointment" layoutX="105.0" layoutY="105.0" prefHeight="695.0" prefWidth="1173.0" visible="false" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#640018" height="136.0" layoutX="144.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1143.0" />
-      <Text fill="WHITE" layoutX="164.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Dashboard" textAlignment="CENTER">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Dashboard" textAlignment="CENTER" GridPane.columnIndex="1">
          <font>
             <Font name="Arial Black" size="48.0" />
          </font>
+         <GridPane.margin>
+            <Insets left="15.0" />
+         </GridPane.margin>
       </Text>
-      <MFXButton fx:id="button_devMenu" buttonType="RAISED" layoutX="1164.0" layoutY="51.0" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED">
+      <MFXButton fx:id="button_devMenu" buttonType="RAISED" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED" GridPane.columnIndex="2">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
+         <GridPane.margin>
+            <Insets left="115.0" />
+         </GridPane.margin>
+      </MFXButton>
+      <MFXButton fx:id="button_logOut" buttonType="RAISED" onMouseReleased="#handleButton_logOut" prefHeight="35.0" prefWidth="88.0" rippleColor="#780000" style="-fx-background-color: white; -fx-background-radius: 5 em; -fx-border-color: #c32929;" text="Log Out" textFill="#c32929" GridPane.columnIndex="2">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="115.0" />
+         </GridPane.margin>
       </MFXButton>
    </children>
-</AnchorPane>
+</GridPane>

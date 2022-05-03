@@ -22,20 +22,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.PatientDashboardController">
+<GridPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.PatientDashboardController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="170.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1227.3333320617676" minWidth="10.0" prefWidth="857.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1227.3333320617676" minWidth="10.0" prefWidth="254.666748046875" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1226.0" minWidth="10.0" prefWidth="255.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="521.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="795.0" minHeight="10.0" prefHeight="609.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="796.0" prefWidth="968.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="1371.0" style="-fx-background-color: #15202B;">
+            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="1355.0" style="-fx-background-color: #15202B;">
                <children>
                   <AnchorPane fx:id="panel_dashboard" layoutX="312.0" layoutY="152.0" prefHeight="611.0" prefWidth="1050.0">
                      <children>
@@ -232,7 +232,8 @@
                               <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
-                     </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
                   <AnchorPane fx:id="panel_search" layoutX="270.0" layoutY="148.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
                      <children>
                         <ScrollPane layoutY="66.0" prefHeight="626.0" prefWidth="1184.0">
@@ -283,7 +284,8 @@
                         </Text>
                         <TextField fx:id="textField_medicalSearch" layoutX="104.0" layoutY="45.0" prefHeight="25.0" prefWidth="165.0" />
                         <MFXButton layoutX="636.0" layoutY="36.0" onMouseReleased="#handleButton_printMedical" prefHeight="44.0" prefWidth="100.0" text="Print" />
-                     </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
                   <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
                   <AnchorPane fx:id="panel_prescriptions" layoutX="281.0" layoutY="162.0" prefHeight="685.0" prefWidth="1161.0" visible="false">
                      <children>
@@ -312,7 +314,8 @@
                            </font>
                         </Label>
                         <Button layoutX="29.0" layoutY="82.0" mnemonicParsing="false" onAction="#handleButton_findPharma" text="Find Pharmacy" />
-                     </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
                   <Label fx:id="label_userFirstLast" layoutX="1044.0" layoutY="34.0" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
@@ -327,6 +330,9 @@
          <font>
             <Font name="Arial Black" size="48.0" />
          </font>
+         <GridPane.margin>
+            <Insets left="15.0" />
+         </GridPane.margin>
       </Text>
       <Pane prefHeight="536.0" prefWidth="164.0" GridPane.rowIndex="1">
          <children>
@@ -395,7 +401,7 @@
             <Insets />
          </GridPane.margin>
       </Pane>
-      <MFXButton fx:id="button_logOut" buttonType="RAISED" onMouseReleased="#handleButton_logOut" prefHeight="35.0" prefWidth="88.0" rippleColor="#ff7676" style="-fx-background-color: white; -fx-background-radius: 5 em; -fx-border-color: #009788;" text="Log Out" textFill="#009788" GridPane.columnIndex="2">
+      <MFXButton fx:id="button_logOut" buttonType="RAISED" onMouseReleased="#handleButton_logOut" prefHeight="35.0" prefWidth="88.0" rippleColor="#00786c" style="-fx-background-color: white; -fx-background-radius: 5 em; -fx-border-color: #009788;" text="Log Out" textFill="#009788" GridPane.columnIndex="2">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
