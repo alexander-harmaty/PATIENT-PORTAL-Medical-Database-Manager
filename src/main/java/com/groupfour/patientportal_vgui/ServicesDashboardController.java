@@ -148,6 +148,16 @@ public class ServicesDashboardController implements Initializable {
                 table_prescriptions.setItems(prescriptionList); 
     }
     
+    @FXML
+    void show_panelDashboard() {
+        panel_account.setVisible(false);
+        panel_appointment.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_records.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_dashboard.setVisible(true);
+    }
     
     @FXML
     void handleButton_account() {
