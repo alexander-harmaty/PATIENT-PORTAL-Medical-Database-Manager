@@ -2,7 +2,6 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -33,11 +32,11 @@
       <RowConstraints maxHeight="795.0" minHeight="10.0" prefHeight="609.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="796.0" prefWidth="968.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="683.0" prefWidth="1184.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="1355.0" style="-fx-background-color: #15202B;">
+            <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-46.0" prefHeight="867.0" prefWidth="879.0" style="-fx-background-color: #15202B;">
                <children>
-                  <AnchorPane fx:id="panel_dashboard" layoutX="312.0" layoutY="152.0" prefHeight="611.0" prefWidth="1050.0">
+                  <AnchorPane fx:id="panel_dashboard" layoutX="283.0" layoutY="152.0" prefHeight="611.0" prefWidth="1050.0">
                      <children>
                         <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
                            <font>
@@ -65,73 +64,109 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_patientID" promptText="Patiend ID" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_firstName" prefWidth="149.0" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_lastName" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_phone" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_email" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="410.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Address: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_street" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="447.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_city" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="460.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip Code: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_zip" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="469.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="State: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_state" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="476.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance ID: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_insuranceID" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="482.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_insuranceCo" />
                                  </children>
                               </HBox>
                               <HBox layoutX="10.0" layoutY="487.0" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Doctor: " wrappingWidth="100.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Doctor: " wrappingWidth="100.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font></Text>
                                     <TextField fx:id="textField_primarydoc" />
                                  </children>
                               </HBox>
@@ -142,11 +177,6 @@
                               <Font name="Arial Bold" size="19.0" />
                            </font>
                         </MFXButton>
-                        <Label layoutX="60.0" layoutY="14.0" text="Account Information:" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Black" size="30.0" />
-                           </font>
-                        </Label>
                         <Label layoutX="518.0" layoutY="130.0" text="Emergancy Contact Info:" textFill="WHITE">
                            <font>
                               <Font name="Arial Black" size="24.0" />
@@ -182,63 +212,70 @@
                               <Font size="18.0" />
                            </font>
                         </MFXButton>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="panel_appointments" layoutX="272.0" layoutY="154.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
-                     <children>
-                        <ScrollPane layoutX="37.0" layoutY="143.0" prefHeight="400.0" prefWidth="700.0">
-                           <content>
-                              <TableView fx:id="table_appointments" prefHeight="400.0" prefWidth="700.0">
-                                <columns>
-                                  <TableColumn fx:id="column_appID" prefWidth="85.0" text="App ID" />
-                                    <TableColumn fx:id="column_appRreason" prefWidth="85.0" text="Reason" />
-                                  <TableColumn fx:id="column_appDate" minWidth="5.0" prefWidth="85.0" text="Date" />
-                                    <TableColumn fx:id="column_appTime" prefWidth="85.0" text="Time" />
-                                    <TableColumn fx:id="column_appDocID" prefWidth="85.0" text="Doctor ID" />
-                                    <TableColumn fx:id="column_appPatID" prefWidth="85.0" text="Patient ID" />
-                                    <TableColumn fx:id="column_appOfficeID" prefWidth="85.0" text="Office ID" />
-                                    <TableColumn fx:id="column_appLabID" prefWidth="85.0" text="Lab ID" />
-                                </columns>
-                              </TableView>
-                           </content>
-                        </ScrollPane>
-                        <MFXButton fx:id="button_scheduleDocApp" layoutX="785.0" layoutY="149.0" onMouseReleased="#handleButton_scheduleDocApp" text="Schedule Doctor Appointment">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </MFXButton>
-                        <MFXButton fx:id="button_scheduleLabApp" layoutX="798.0" layoutY="248.0" onMouseReleased="#handleButton_scheduleLabApp" text="Schedule Lab Appointment">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </MFXButton>
-                        <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="770.0" layoutY="357.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" text="Reschedule / Cancel Appointment">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </MFXButton>
-                        <MFXButton fx:id="button_refreshApp" layoutX="854.0" layoutY="476.0" onMouseReleased="#appointmentTable" text="Refresh Table">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </MFXButton>
-                        <Text fill="WHITE" layoutX="37.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current List Of Upcoming Appointments">
-                           <font>
-                              <Font name="Arial Black" size="18.0" />
-                           </font>
-                        </Text>
-                        <Label layoutX="37.0" layoutY="21.0" text="Appointments" textFill="WHITE">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3bad8c" height="74.0" layoutX="1.0" layoutY="-1.0" stroke="#ffffff00" strokeType="INSIDE" width="1117.0" />
+                        <Label layoutX="14.0" layoutY="9.0" text="Account Information" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="panel_search" layoutX="270.0" layoutY="148.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
+                  <AnchorPane fx:id="panel_appointments" layoutX="272.0" layoutY="154.0" prefHeight="713.0" prefWidth="1184.0" visible="false">
                      <children>
-                        <ScrollPane layoutY="66.0" prefHeight="626.0" prefWidth="1184.0">
+                        <ScrollPane layoutX="37.0" layoutY="143.0" prefHeight="373.0" prefWidth="1050.0">
                            <content>
-                              <TableView fx:id="table_doctor" prefHeight="636.0" prefWidth="1173.0">
+                              <TableView fx:id="table_appointments" prefHeight="401.0" prefWidth="1038.0">
+                                <columns>
+                                  <TableColumn fx:id="column_appID" prefWidth="75.0" text="App ID" />
+                                    <TableColumn fx:id="column_appRreason" prefWidth="198.0" text="Reason" />
+                                  <TableColumn fx:id="column_appDate" minWidth="5.0" prefWidth="164.0" text="Date" />
+                                    <TableColumn fx:id="column_appTime" prefWidth="195.0" text="Time" />
+                                    <TableColumn fx:id="column_appDocID" prefWidth="107.0" text="Doctor ID" />
+                                    <TableColumn fx:id="column_appPatID" prefWidth="99.0" text="Patient ID" />
+                                    <TableColumn fx:id="column_appOfficeID" prefWidth="106.0" text="Office ID" />
+                                    <TableColumn fx:id="column_appLabID" prefWidth="92.0" text="Lab ID" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <MFXButton fx:id="button_scheduleDocApp" layoutX="37.0" layoutY="539.0" onMouseReleased="#handleButton_scheduleDocApp" prefHeight="40.0" prefWidth="325.0" rippleColor="#2f88eb" style="-fx-background-color: #2f88eb;" text="Schedule Doctor Appointment" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_scheduleLabApp" layoutX="396.0" layoutY="539.0" onMouseReleased="#handleButton_scheduleLabApp" prefHeight="40.0" prefWidth="325.0" rippleColor="#f59c3d" style="-fx-background-color: #f59c3d;" text="Schedule Lab Appointment" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="760.0" layoutY="539.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" prefHeight="40.0" prefWidth="325.0" rippleColor="#f53b3b" style="-fx-background-color: #f53b3b;" text="Reschedule / Cancel Appointment" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_refreshApp" layoutX="985.0" layoutY="88.0" onMouseReleased="#appointmentTable" prefHeight="40.0" prefWidth="100.0" rippleColor="#2ca9f5" style="-fx-background-color: #2ca9f5;" text="Refresh" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </MFXButton>
+                        <Text fill="WHITE" layoutX="37.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current List Of Upcoming Appointments">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3bad8c" height="74.0" layoutY="-2.0" stroke="#ffffff00" strokeType="INSIDE" width="1117.0" />
+                        <Label layoutX="10.0" layoutY="7.0" text="Appointments" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="panel_search" layoutX="270.0" layoutY="148.0" prefHeight="713.0" prefWidth="1118.0" visible="false">
+                     <children>
+                        <ScrollPane layoutY="149.0" prefHeight="449.0" prefWidth="1110.0">
+                           <content>
+                              <TableView fx:id="table_doctor" prefHeight="458.0" prefWidth="1102.0">
                                  <columns>
                                     <TableColumn fx:id="column_doctorid" prefWidth="139.0" text="DoctorID" />
                                     <TableColumn fx:id="column_dfirstname" prefWidth="134.0" text="First Name" />
@@ -251,56 +288,90 @@
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <TextField fx:id="textField_search" layoutX="95.0" layoutY="24.0" prefHeight="25.0" prefWidth="165.0" />
-                        <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="68.25">
+                        <TextField fx:id="textField_search" layoutX="156.0" layoutY="101.0" prefHeight="25.0" prefWidth="165.0">
                            <font>
-                              <Font name="Arial Black" size="17.0" />
+                              <Font name="Arial" size="14.0" />
+                           </font></TextField>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="142.0">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
                            </font>
                         </Text>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3bad8c" height="74.0" layoutY="5.0" stroke="#ffffff00" strokeType="INSIDE" width="1118.0" />
+                        <Label layoutX="10.0" layoutY="14.0" text="Doctor Search" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="panel_medicalRecords" layoutX="283.0" layoutY="163.0" prefHeight="700.0" prefWidth="1102.0" visible="false">
                      <children>
-                        <ScrollPane layoutX="5.0" layoutY="113.0" prefHeight="482.0" prefWidth="731.0">
+                        <ScrollPane layoutX="5.0" layoutY="135.0" prefHeight="460.0" prefWidth="1088.0">
                            <content>
-                              <TableView fx:id="table_medicalrecords" prefHeight="569.0" prefWidth="908.0">
+                              <TableView fx:id="table_medicalrecords" prefHeight="467.0" prefWidth="1073.0">
                                 <columns>
                                   <TableColumn fx:id="column_recordID" prefWidth="90.0" text="Record ID" />
                                   <TableColumn fx:id="column_patientID2" prefWidth="100.0" text="Patient ID" visible="false" />
-                                    <TableColumn fx:id="column_dob" prefWidth="102.0" text="Date of Birth" />
-                                    <TableColumn fx:id="column_recorddate" minWidth="8.0" prefWidth="89.0" text="Record Date" />
-                                    <TableColumn fx:id="column_height" minWidth="0.0" prefWidth="85.0" text="Height" />
-                                    <TableColumn fx:id="column_weight" minWidth="0.0" prefWidth="75.0" text="Weight" />
-                                    <TableColumn fx:id="column_bloodtype" minWidth="0.0" prefWidth="104.0" text="Blood Type" />
-                                    <TableColumn fx:id="column_diagnosis" minWidth="0.0" prefWidth="173.0" text="Diagnosis" />
+                                    <TableColumn fx:id="column_dob" prefWidth="174.0" text="Date of Birth" />
+                                    <TableColumn fx:id="column_recorddate" minWidth="8.0" prefWidth="141.0" text="Record Date" />
+                                    <TableColumn fx:id="column_height" minWidth="0.0" prefWidth="103.0" text="Height" />
+                                    <TableColumn fx:id="column_weight" minWidth="0.0" prefWidth="110.0" text="Weight" />
+                                    <TableColumn fx:id="column_bloodtype" minWidth="0.0" prefWidth="123.0" text="Blood Type" />
+                                    <TableColumn fx:id="column_diagnosis" minWidth="0.0" prefWidth="329.0" text="Diagnosis" />
                                 </columns>
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <Text fill="WHITE" layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+                        <Text fill="WHITE" layoutX="14.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
                            <font>
-                              <Font name="Arial Black" size="17.0" />
+                              <Font name="Arial Bold" size="36.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="textField_medicalSearch" layoutX="104.0" layoutY="45.0" prefHeight="25.0" prefWidth="165.0" />
-                        <MFXButton layoutX="636.0" layoutY="36.0" onMouseReleased="#handleButton_printMedical" prefHeight="44.0" prefWidth="100.0" text="Print" />
+                        <TextField fx:id="textField_medicalSearch" layoutX="146.0" layoutY="91.0" prefHeight="26.0" prefWidth="262.0">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font></TextField>
+                        <MFXButton layoutX="989.0" layoutY="78.0" onMouseReleased="#handleButton_printMedical" prefHeight="44.0" prefWidth="100.0" rippleColor="#03c956" style="-fx-background-color: #03c956;" text="Print" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="19.0" />
+                           </font></MFXButton>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3bad8c" height="74.0" layoutX="-11.0" layoutY="-10.0" stroke="#ffffff00" strokeType="INSIDE" width="1117.0" />
+                        <Label layoutY="-1.0" text="Medical Records" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="panel_testResults" layoutX="126.0" prefHeight="400.0" prefWidth="474.0" visible="false" />
-                  <AnchorPane fx:id="panel_prescriptions" layoutX="281.0" layoutY="162.0" prefHeight="685.0" prefWidth="1161.0" visible="false">
+                  <AnchorPane fx:id="panel_testResults" layoutX="269.0" layoutY="152.0" prefHeight="596.0" prefWidth="1151.0" visible="false">
                      <children>
-                        <ScrollPane layoutY="129.0" prefHeight="474.0" prefWidth="1102.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3bad8c" height="74.0" layoutX="2.0" stroke="#ffffff00" strokeType="INSIDE" width="1118.0" />
+                        <Label layoutX="10.0" layoutY="9.0" text="Test Results" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                  <Label fx:id="label_userFirstLast" prefHeight="35.0" prefWidth="149.0" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane fx:id="panel_prescriptions" layoutX="272.0" layoutY="153.0" prefHeight="694.0" prefWidth="1170.0" visible="false">
+                     <children>
+                        <ScrollPane layoutY="129.0" prefHeight="460.0" prefWidth="1102.0">
                            <content>
-                              <TableView fx:id="table_prescriptions" prefHeight="470.0" prefWidth="1133.0" stylesheets="@../../../prescriptionTableCSS.css">
+                              <TableView fx:id="table_prescriptions" prefHeight="455.0" prefWidth="1102.0" stylesheets="@../../../prescriptionTableCSS.css">
                                  <columns>
                                     <TableColumn fx:id="column_scriptid" prefWidth="107.0" text=" Precription ID" />
                                     <TableColumn fx:id="column_pharmid" prefWidth="107.0" text="  Pharmacy ID" />
                                     <TableColumn fx:id="column_patientid" prefWidth="90.0" text="  Patient ID" />
                                     <TableColumn fx:id="column_doctorid2" prefWidth="83.0" text=" Doctor ID" />
                                     <TableColumn fx:id="column_medication" prefWidth="97.0" text="Medication" />
-                                    <TableColumn fx:id="column_description" prefWidth="172.0" text="     Description" />
-                                    <TableColumn fx:id="column_date" minWidth="0.0" prefWidth="113.0" text="        Date" />
-                                    <TableColumn fx:id="column_status" minWidth="0.0" prefWidth="88.0" text=" Status" />
+                                    <TableColumn fx:id="column_description" prefWidth="141.0" text="       Description" />
+                                    <TableColumn fx:id="column_date" minWidth="0.0" prefWidth="130.0" text="          Date" />
+                                    <TableColumn fx:id="column_status" minWidth="0.0" prefWidth="102.0" text="      Status" />
                                     <TableColumn fx:id="column_frequency" minWidth="0.0" prefWidth="91.0" text="Frequency" />
                                     <TableColumn fx:id="column_dosage" minWidth="5.0" prefWidth="67.0" text="Dosage" />
                                     <TableColumn fx:id="column_quantity" prefWidth="108.0" text="Quantity" />
@@ -308,19 +379,15 @@
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <Label layoutX="14.0" layoutY="14.0" text="Prescriptions" textFill="WHITE">
+                        <MFXButton layoutX="14.0" layoutY="82.0" onAction="#handleButton_findPharma" text="Find Pharmacy" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3bad8c" height="74.0" stroke="#ffffff00" strokeType="INSIDE" width="1117.0" />
+                        <Label layoutX="14.0" layoutY="10.0" text="Prescriptions" textFill="WHITE">
                            <font>
-                              <Font name="Arial Black" size="30.0" />
+                              <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
-                        <Button layoutX="29.0" layoutY="82.0" mnemonicParsing="false" onAction="#handleButton_findPharma" text="Find Pharmacy" />
                      </children>
                   </AnchorPane>
-                  <Label fx:id="label_userFirstLast" layoutX="1044.0" layoutY="34.0" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
          </children>
@@ -336,7 +403,7 @@
       </Text>
       <Pane prefHeight="536.0" prefWidth="164.0" GridPane.rowIndex="1">
          <children>
-            <VBox prefHeight="713.0" prefWidth="169.0" style="-fx-background-color: #00786c;">
+            <VBox prefHeight="611.0" prefWidth="169.0" style="-fx-background-color: #00786c;">
                <children>
                   <MFXButton fx:id="button_home" buttonType="RAISED" onMouseReleased="#show_panelDashboard" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Home" textFill="#009788">
                      <font>
@@ -346,7 +413,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="#009788">
+                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Doctor Search" textFill="#009788">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
