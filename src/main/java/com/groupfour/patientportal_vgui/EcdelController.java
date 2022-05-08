@@ -44,7 +44,7 @@ public class EcdelController implements Initializable {
             
             System.out.println(query);            
             delquery.executeQuery(query);            
-            JOptionPane.showMessageDialog(null,"Saved");    
+            JOptionPane.showMessageDialog(null,"Emergency contact deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);       
             
         }catch (Exception e) {}
     

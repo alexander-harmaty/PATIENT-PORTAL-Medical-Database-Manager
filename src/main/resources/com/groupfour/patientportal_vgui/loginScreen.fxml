@@ -14,8 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import jfxtras.scene.control.ImageViewButton?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002157;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LoginScreenController">
    <children>
       <AnchorPane fx:id="panel_registerDoctor" layoutX="139.0" layoutY="61.0" prefHeight="612.0" prefWidth="1075.0" visible="false">
          <children>
@@ -133,6 +134,11 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
+            <ImageViewButton fx:id="button_back" fitHeight="47.0" fitWidth="46.0" layoutX="-82.0" layoutY="-11.0" onMousePressed="#panelRegisterShow">
+               <image>
+                  <Image url="@backbutton.png" />
+               </image>
+            </ImageViewButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_registerPatient" layoutX="77.0" layoutY="52.0" prefHeight="630.0" prefWidth="1172.0" visible="false">
@@ -294,9 +300,14 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </MFXButton>
+            <ImageViewButton fitHeight="47.0" fitWidth="46.0" layoutX="-18.0" layoutY="-6.0" onMousePressed="#panelRegisterShow">
+               <image>
+                  <Image url="@backbutton.png" />
+               </image>
+            </ImageViewButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_registerService" layoutX="78.0" layoutY="52.0" prefHeight="641.0" prefWidth="1181.0" visible="false">
+      <AnchorPane fx:id="panel_registerService" layoutX="78.0" layoutY="52.0" prefHeight="641.0" prefWidth="1223.0" visible="false">
          <children>
             <VBox layoutX="174.0" layoutY="76.0" prefHeight="447.0" prefWidth="317.0">
                <children>
@@ -438,6 +449,11 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </MFXButton>
+            <ImageViewButton fitHeight="55.0" fitWidth="55.0" layoutX="-23.0" layoutY="-9.0" onMousePressed="#panelRegisterShow">
+               <image>
+                  <Image url="@backbutton.png" />
+               </image>
+            </ImageViewButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_register" focusTraversable="true" layoutX="22.0" layoutY="27.0" prefHeight="679.0" prefWidth="1240.0" visible="false">
@@ -587,6 +603,11 @@
       </AnchorPane>
       <AnchorPane fx:id="panel_login" layoutX="22.0" layoutY="27.0" prefHeight="679.0" prefWidth="1240.0">
          <children>
+            <MFXButton fx:id="button_devMenu" onMouseReleased="#switchToDevMenu" prefHeight="30.0" prefWidth="122.0" rippleColor="RED" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </MFXButton>
             <MFXButton layoutX="502.0" layoutY="546.0" onAction="#panelRegisterShow" rippleColor="#04ff00" style="-fx-background-color: #45DB33;" text="Create an Account" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="24.0" />
@@ -632,10 +653,5 @@
             <MFXGenericDialog fx:id="panel_notification" layoutX="420.0" layoutY="222.0" visible="false" />
          </children>
       </AnchorPane>
-      <MFXButton fx:id="button_devMenu" layoutX="14.0" layoutY="15.0" onMouseReleased="#switchToDevMenu" prefHeight="30.0" prefWidth="125.0" rippleColor="RED" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </MFXButton>
    </children>
 </AnchorPane>

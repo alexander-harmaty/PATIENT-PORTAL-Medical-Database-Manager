@@ -107,7 +107,7 @@ public class LoginScreenController implements Initializable {
     PreparedStatement ps2 = null;
     Statement stmt = null;
     long id = 0;   
-    private MFXGenericDialog dialogContent;
+    
     
     @FXML
     private void Login (ActionEvent event) throws Exception {
@@ -196,41 +196,19 @@ public class LoginScreenController implements Initializable {
             else
             {
                
-                //Window window = null;
-               // Pane owner = new Pane();
-                this.dialogContent = MFXGenericDialogBuilder.build()
-                        .setContentText("sup")
-                        .makeScrollable(true)
-                        .get();
-                AbstractMFXDialog content = new AbstractMFXDialog () {};
-                content.computeAreaInScreen();
-                MFXStageDialog mfx = new MFXStageDialog();
-                MFXStageDialogBuilder build = new MFXStageDialogBuilder(mfx);
-               //build.initModality(Modality.APPLICATION_MODAL);
-               
-                build.setDraggable(true);
-               build.setTitle("haha");
-               build.setContent(content);
-              
-               build.setScrimOwner(true);
-               mfx.getOwner();
-               mfx.contentProperty();
-               mfx.setTitle("confusedlol");
-               mfx.showDialog();
-               build.get();
-               dialogContent.addActions(
-               Map.entry(new MFXButton("HEY"), event1 -> {
-               }),
-               Map.entry(new MFXButton("Cancel"), event1 -> mfx.close())  
-               );
+             JOptionPane.showMessageDialog( null, "Incorrect username or password." , "Error", 
+             JOptionPane.ERROR_MESSAGE );
+         
+         //JOptionPane.showMessageDialog(f,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);  
                
                
                
                 //JOptionPane.showMessageDialog(null, "Incorrect username or password.");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            
+          
+            JOptionPane.showMessageDialog( null, "Please fill in all fields" , "Error", 
+             JOptionPane.ERROR_MESSAGE );
             //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         }
     }
@@ -258,7 +236,8 @@ public class LoginScreenController implements Initializable {
             }
             
             System.out.println (id); 
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(null,"Please fill out all fields.", "Error", JOptionPane.ERROR_MESSAGE);}
         
         if (button_type2.getValue().equals("Patient")){
             
@@ -293,6 +272,9 @@ public class LoginScreenController implements Initializable {
            panel_registerDoctor.setVisible(false);
            panel_registerService.setVisible(true);
         }
+         
+             
+         
     }
     
     /**
@@ -332,7 +314,8 @@ public class LoginScreenController implements Initializable {
         panel_register.setVisible(false);
         panel_registerPatient.setVisible(false);
         panel_registerDoctor.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
+        JOptionPane.showMessageDialog(null,"Registration Complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
        
     }
 
@@ -393,7 +376,7 @@ public class LoginScreenController implements Initializable {
         
         System.out.println(labquery);            
         stmt.executeQuery(labquery); 
-            
+        JOptionPane.showMessageDialog(null,"Registration Complete!", "Success", JOptionPane.INFORMATION_MESSAGE);    
         } catch (Exception e) {}
         
         panel_login.setVisible(true);
@@ -402,6 +385,7 @@ public class LoginScreenController implements Initializable {
         panel_registerDoctor.setVisible(false);
         panel_registerService.setVisible(false);
         JOptionPane.showMessageDialog(null,"Registration Complete");
+        JOptionPane.showMessageDialog(null,"Registration Complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
        
     }
     

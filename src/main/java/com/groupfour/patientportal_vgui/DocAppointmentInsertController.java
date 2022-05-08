@@ -71,7 +71,8 @@ public class DocAppointmentInsertController implements Initializable {
         System.out.println("Insert Proccess has finished!");
         JOptionPane.showMessageDialog(null,"New Record Added!");
         
-        } catch (Exception e) {System.out.println(e);}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Please fill out all fields.", "Error", JOptionPane.ERROR_MESSAGE);}
     }
     
     

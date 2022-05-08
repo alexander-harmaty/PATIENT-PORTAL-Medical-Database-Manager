@@ -291,7 +291,7 @@ public class PatientDashboardController implements Initializable
    
         } catch (Exception e) {}
         
-        JOptionPane.showMessageDialog(null,"Saved");
+        JOptionPane.showMessageDialog(null,"Account information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
         
     }
 

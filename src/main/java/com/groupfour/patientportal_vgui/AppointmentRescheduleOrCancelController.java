@@ -67,7 +67,8 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
                     textField_officeID.setText(rs.getString("OfficeID")); 
                     textField_labID.setText(rs.getString("LabID")); 
                 }
-        } catch (Exception e){}
+        } catch (Exception e){
+            }
     }
     
 //    Connection con = null;
@@ -102,7 +103,7 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
    
         } catch (Exception e) {}
         
-        JOptionPane.showMessageDialog(null,"Saved");
+       
         
     }
     
