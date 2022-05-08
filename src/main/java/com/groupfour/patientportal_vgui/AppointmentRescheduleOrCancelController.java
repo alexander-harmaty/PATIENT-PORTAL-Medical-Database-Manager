@@ -90,7 +90,7 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
             String officeID = textField_officeID.getText();
             String labID = textField_labID.getText();
             
-            String query = "UPDATE PATIENT " + 
+            String query = "UPDATE APPOINTMENT " + 
               "SET  Reason ='" + reason + "', Date = '" + date + 
                     "', Time = '" + time + "', DoctorID = '" + doctorID + 
                     "', PatientID = '" + patientID +"', OfficeID = '"+ officeID +

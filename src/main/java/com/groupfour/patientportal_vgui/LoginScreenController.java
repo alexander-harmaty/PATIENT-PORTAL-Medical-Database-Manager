@@ -429,7 +429,14 @@ public class LoginScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        button_type2.getItems().addAll("Patient", "Doctor", "Service");
+        //button_type2.getItems().addAll("Patient", "Doctor", "Service");
+        
+        String[] test = new String[3];
+        test[0] = "Patient";
+        test[1] = "Doctor";
+        //test[2] = "Service";
+        
+        button_type2.getItems().addAll(test);
         
       
     }  
