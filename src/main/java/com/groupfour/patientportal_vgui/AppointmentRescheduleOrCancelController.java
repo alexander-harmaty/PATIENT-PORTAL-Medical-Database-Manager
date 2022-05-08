@@ -99,10 +99,10 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
             System.out.println(query);            
             stmt.executeQuery(query);    
             
-            JOptionPane.showMessageDialog(null,"New Record Updated!");
+            
    
         } catch (Exception e) {}
-  
+        JOptionPane.showMessageDialog(null,"New Record Updated!");
     }
     
     @FXML
