@@ -94,7 +94,7 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
               "SET  Reason ='" + reason + "', Date = '" + date + 
                     "', Time = '" + time + "', DoctorID = " + doctorID + 
                     ", PatientID = " + patientID +", OfficeID = "+ officeID +
-                    ", LabID = " + labID + ";";
+                    ", LabID = " + labID + " WHERE AppID = " +appID+ ";";
            
             System.out.println(query);            
             stmt.executeQuery(query);    
