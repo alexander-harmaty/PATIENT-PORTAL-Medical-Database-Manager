@@ -92,9 +92,9 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
             
             String query = "UPDATE APPOINTMENT " + 
               "SET  Reason ='" + reason + "', Date = '" + date + 
-                    "', Time = '" + time + "', DoctorID = '" + doctorID + 
-                    "', PatientID = '" + patientID +"', OfficeID = '"+ officeID +
-                    "', LabID = '" + labID + ";";
+                    "', Time = '" + time + "', DoctorID = " + doctorID + 
+                    ", PatientID = " + patientID +", OfficeID = "+ officeID +
+                    ", LabID = " + labID + ";";
            
             System.out.println(query);            
             stmt.executeQuery(query);    
@@ -102,9 +102,7 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
             JOptionPane.showMessageDialog(null,"New Record Updated!");
    
         } catch (Exception e) {}
-        
-       
-        
+  
     }
     
     @FXML
