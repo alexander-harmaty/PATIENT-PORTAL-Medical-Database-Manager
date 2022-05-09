@@ -81,7 +81,7 @@ public class DocInsertMRecordController implements Initializable {
         System.out.println(addRecord);            
         stmt.execute(addRecord); 
         System.out.println("Insert Proccess has finished!");
-        JOptionPane.showMessageDialog(null,"New Record Added!");
+        JOptionPane.showMessageDialog(null,"Medical record added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
         
         } catch (Exception e) {System.out.println(e);}
         

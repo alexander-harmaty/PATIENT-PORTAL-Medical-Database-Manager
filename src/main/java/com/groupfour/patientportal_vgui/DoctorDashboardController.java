@@ -416,11 +416,11 @@ public class DoctorDashboardController implements Initializable
             
             System.out.println(query);            
             stmt.executeQuery(query);            
-            JOptionPane.showMessageDialog(null,"Saved");
+            JOptionPane.showMessageDialog(null,"Changes updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             
     } catch (Exception e) {}
         
-        JOptionPane.showMessageDialog(null,"Saved");
+        JOptionPane.showMessageDialog(null,"Changes updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -753,17 +753,8 @@ public class DoctorDashboardController implements Initializable
     
     } catch (Exception e) {
         System.out.print(e);
-        //JOptionPane.showMessageDialog(null,"New Record Added!");
-       
-        
-       
-        
-      // MFXGenericDialog.b
-      
-      
-        
-        //dialog.contentTextProperty();
     }  
+        JOptionPane.showMessageDialog(null,"Prescription order placed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
         
         
     }

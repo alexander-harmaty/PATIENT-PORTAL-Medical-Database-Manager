@@ -136,7 +136,7 @@ public class DoctorInsertRecordController implements Initializable {
                     "' WHERE RecordID = " + ID + ";";
             
             System.out.println(query2);  
-           JOptionPane.showMessageDialog(null,"Medical Record Updated Successfully.");
+           JOptionPane.showMessageDialog(null,"Medical record updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             stmt.executeQuery(query2);            
             
             

@@ -347,7 +347,7 @@ public class LoginScreenController implements Initializable {
         panel_register.setVisible(false);
         panel_registerPatient.setVisible(false);
         panel_registerDoctor.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
+         JOptionPane.showMessageDialog(null,"Registration Complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
     } 
     
@@ -384,7 +384,7 @@ public class LoginScreenController implements Initializable {
         panel_registerPatient.setVisible(false);
         panel_registerDoctor.setVisible(false);
         panel_registerService.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
+        //JOptionPane.showMessageDialog(null,"Registration Complete");
         JOptionPane.showMessageDialog(null,"Registration Complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
        
     }
@@ -422,7 +422,7 @@ public class LoginScreenController implements Initializable {
         panel_registerPatient.setVisible(false);
         panel_registerDoctor.setVisible(false);
         panel_registerService.setVisible(false);
-        JOptionPane.showMessageDialog(null,"Registration Complete");
+         JOptionPane.showMessageDialog(null,"Registration Complete!", "Success", JOptionPane.INFORMATION_MESSAGE);
        
     }
             

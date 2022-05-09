@@ -159,7 +159,7 @@ public class DoctorInsertPatientController implements Initializable {
             
             System.out.println(query);            
             stmt.executeQuery(query);            
-            JOptionPane.showMessageDialog(null,"Saved");
+               JOptionPane.showMessageDialog(null,"Patient information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); 
             
     } catch (Exception e) {
         

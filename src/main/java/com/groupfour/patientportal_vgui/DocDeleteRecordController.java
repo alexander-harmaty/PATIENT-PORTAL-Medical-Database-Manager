@@ -36,7 +36,8 @@ public class DocDeleteRecordController implements Initializable {
     void handleButton_recorddelete() {
         Connection con = DatabaseConnection.connectDB();
          getDelQuery();
-         JOptionPane.showMessageDialog(null,"Medical Record Deleted"); 
+          JOptionPane.showMessageDialog(null,"Medical record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
+         //JOptionPane.showMessageDialog(null,"Medical Record Deleted"); 
     }
     
 
@@ -60,7 +61,7 @@ public class DocDeleteRecordController implements Initializable {
             
             System.out.println(query);            
             delquery.executeQuery(query);            
-            JOptionPane.showMessageDialog(null,"Saved");    
+            JOptionPane.showMessageDialog(null,"Medical record deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
             
         }catch (Exception e) {}
     

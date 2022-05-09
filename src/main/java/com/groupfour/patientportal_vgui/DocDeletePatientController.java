@@ -57,7 +57,7 @@ public class DocDeletePatientController implements Initializable {
             
             System.out.println(query);            
             delquery.executeQuery(query);            
-            JOptionPane.showMessageDialog(null,"Saved");    
+               JOptionPane.showMessageDialog(null,"Patient removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
             
         }catch (Exception e) {}
     
