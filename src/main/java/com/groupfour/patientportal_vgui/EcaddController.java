@@ -27,7 +27,7 @@ public class EcaddController implements Initializable {
     @FXML
     void handleButton_save() {
          getQuery();
-         JOptionPane.showMessageDialog(null,"Saved");
+         JOptionPane.showMessageDialog(null,"Contact saved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);;
     }
     
     @FXML
@@ -57,7 +57,7 @@ public class EcaddController implements Initializable {
         
         System.out.println(ECquery);            
         stmt.executeQuery(ECquery);            
-            JOptionPane.showMessageDialog(null,"Saved");
+           // JOptionPane.showMessageDialog(null,"Contact saved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
             
         } catch (Exception e) {}
         

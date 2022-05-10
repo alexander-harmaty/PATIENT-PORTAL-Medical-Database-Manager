@@ -434,7 +434,7 @@ public class LoginScreenController implements Initializable {
         String[] test = new String[3];
         test[0] = "Patient";
         test[1] = "Doctor";
-        //test[2] = "Service";
+        test[2] = "Service";
         
         button_type2.getItems().addAll(test);
         

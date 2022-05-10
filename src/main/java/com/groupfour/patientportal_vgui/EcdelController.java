@@ -27,7 +27,7 @@ public class EcdelController implements Initializable {
     @FXML
     void handleButton_delete() {
          getDelQuery();
-         JOptionPane.showMessageDialog(null,"Contact Deleted"); 
+         JOptionPane.showMessageDialog(null,"Contact deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); 
     }
     
     @Override
@@ -44,7 +44,7 @@ public class EcdelController implements Initializable {
             
             System.out.println(query);            
             delquery.executeQuery(query);            
-            JOptionPane.showMessageDialog(null,"Emergency contact deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);       
+           // JOptionPane.showMessageDialog(null,"Emergency contact deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);       
             
         }catch (Exception e) {}
     

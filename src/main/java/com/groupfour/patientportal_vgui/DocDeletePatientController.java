@@ -33,7 +33,7 @@ public class DocDeletePatientController implements Initializable {
     void handleButton_patientdelete() {
         Connection con = DatabaseConnection.connectDB();
          getDelQuery();
-         JOptionPane.showMessageDialog(null,"Patient Removed"); 
+         JOptionPane.showMessageDialog(null,"Patient removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
     }
     
 
@@ -57,7 +57,7 @@ public class DocDeletePatientController implements Initializable {
             
             System.out.println(query);            
             delquery.executeQuery(query);            
-               JOptionPane.showMessageDialog(null,"Patient removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
+              
             
         }catch (Exception e) {}
     

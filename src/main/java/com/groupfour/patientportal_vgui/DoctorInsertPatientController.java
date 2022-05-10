@@ -108,7 +108,7 @@ public class DoctorInsertPatientController implements Initializable {
     void handleButton_save() {
          con = DatabaseConnection.connectDB();
          getQuery();
-         JOptionPane.showMessageDialog(null,"Saved");
+          JOptionPane.showMessageDialog(null,"Patient information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); 
     }
     
     @FXML
@@ -159,7 +159,7 @@ public class DoctorInsertPatientController implements Initializable {
             
             System.out.println(query);            
             stmt.executeQuery(query);            
-               JOptionPane.showMessageDialog(null,"Patient information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); 
+              
             
     } catch (Exception e) {
         
