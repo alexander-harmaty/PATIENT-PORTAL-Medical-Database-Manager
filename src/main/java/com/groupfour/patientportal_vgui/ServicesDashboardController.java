@@ -249,7 +249,6 @@ public class ServicesDashboardController implements Initializable {
     private void switchToDevMenu() throws IOException 
     {
         App.setRoot("devMenu");
-        
     }
     
         @FXML

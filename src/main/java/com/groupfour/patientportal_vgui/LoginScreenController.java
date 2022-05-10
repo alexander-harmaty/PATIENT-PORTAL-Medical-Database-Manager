@@ -31,6 +31,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -108,7 +110,7 @@ public class LoginScreenController implements Initializable {
     Statement stmt = null;
     long id = 0;   
     
-    
+
     @FXML
     private void Login (ActionEvent event) throws Exception {
         String userName = text_user.getText();
@@ -129,33 +131,36 @@ public class LoginScreenController implements Initializable {
                 
                 if (rs.getString(5).toUpperCase().equals("PATIENT"))
                 {           
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show();
+                        App.setRoot("patientDashboard");
+                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        //button_login.getScene().getWindow().hide();
+                        //Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+                        //Stage mainStage = new Stage();
+                        //Scene scene = new Scene(root);
+                        //mainStage.setScene(scene);
+                        //mainStage.show();
                 }
                 else if (rs.getString(5).toUpperCase().equals("DOCTOR")) 
                 {
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
+                        App.setRoot("doctorDashboard");
+                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        //button_login.getScene().getWindow().hide();
+                        //Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+                        //Stage mainStage = new Stage();
+                        //Scene scene = new Scene(root);
+                        //mainStage.setScene(scene);
+                        //mainStage.show(); 
                 }
                 else if (rs.getString(5).toUpperCase().equals("SERVICE")) 
                 {
-                       JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
+                        App.setRoot("serviceDashboard");
+                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        //button_login.getScene().getWindow().hide();
+                        //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+                        //Stage mainStage = new Stage();
+                        //Scene scene = new Scene(root);
+                        //mainStage.setScene(scene);
+                        //mainStage.show(); 
                 }
             }
             else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
@@ -163,34 +168,37 @@ public class LoginScreenController implements Initializable {
                 App.currentUser = new CurrentUser(rs2.getString(1));
                 
                 if (rs2.getString(5).toUpperCase().equals("PATIENT"))
-                {           
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show();
+                {       
+                        App.setRoot("patientDashboard");
+                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        //button_login.getScene().getWindow().hide();
+                        //Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
+                        //Stage mainStage = new Stage();
+                        //Scene scene = new Scene(root);
+                        //mainStage.setScene(scene);
+                        //mainStage.show();
                 }
                 else if (rs2.getString(5).toUpperCase().equals("DOCTOR")) 
                 {
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
+                        App.setRoot("doctorDashboard");
+                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        //button_login.getScene().getWindow().hide();
+                        //Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
+                        //Stage mainStage = new Stage();
+                        //Scene scene = new Scene(root);
+                        //mainStage.setScene(scene);
+                        //mainStage.show(); 
                 }
                 else if (rs2.getString(5).toUpperCase().equals("SERVICE")) 
                 {
-                        JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        button_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-                        Stage mainStage = new Stage();
-                        Scene scene = new Scene(root);
-                        mainStage.setScene(scene);
-                        mainStage.show(); 
+                        App.setRoot("serviceDashboard");
+                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
+                        //button_login.getScene().getWindow().hide();
+                        //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
+                        //Stage mainStage = new Stage();
+                        //Scene scene = new Scene(root);
+                        //mainStage.setScene(scene);
+                        //mainStage.show(); 
                 }
             }
             else
@@ -213,7 +221,7 @@ public class LoginScreenController implements Initializable {
         }
     }
      
-                
+    
     @FXML
     public void addUser(ActionEvent event){
         con = DatabaseConnection.connectDB();
@@ -464,6 +472,14 @@ public class LoginScreenController implements Initializable {
     {
         App.setRoot("devMenu");
         App.currentUser = new CurrentUser("DevMenuUser");
+    }
+    
+    @FXML
+    void showDev(KeyEvent event)throws IOException {
+        if(event.getCode() == KeyCode.F2){
+        App.setRoot("devMenu");
+        App.currentUser = new CurrentUser("DevMenuUser");
+        }
     }
 }
 

@@ -193,7 +193,6 @@ public class PatientDashboardController implements Initializable
             Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
   
     //currentUserID   
     private String patientID = App.currentUser.getUserID();
@@ -206,7 +205,6 @@ public class PatientDashboardController implements Initializable
     public void show_panelDashboard() 
     {
         panel_dashboard.setVisible(true);
-        
         panel_accountInfo.setVisible(false);
         panel_appointments.setVisible(false);
         panel_medicalRecords.setVisible(false);
@@ -371,7 +369,6 @@ public class PatientDashboardController implements Initializable
     void handleButton_testResults() 
     {
         panel_testResults.setVisible(true);
-        
         panel_dashboard.setVisible(false);
         panel_accountInfo.setVisible(false);
         panel_appointments.setVisible(false);
@@ -850,8 +847,6 @@ public class PatientDashboardController implements Initializable
         // TODO
         
         
-    }    
-    
-    
+    }      
     
 }

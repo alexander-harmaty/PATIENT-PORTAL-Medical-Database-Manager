@@ -6,10 +6,14 @@ com\groupfour\patientportal_vgui\DevMenuController.class
 com\groupfour\patientportal_vgui\DoctorTable.class
 com\groupfour\patientportal_vgui\DoctorDashboardController.class
 com\groupfour\patientportal_vgui\MedicalTable.class
+com\groupfour\patientportal_vgui\ECTable.class
+com\groupfour\patientportal_vgui\PharmaTable.class
 com\groupfour\patientportal_vgui\PrescriptionTable.class
 com\groupfour\patientportal_vgui\App.class
 com\groupfour\patientportal_vgui\DocDeletePatientController.class
+com\groupfour\patientportal_vgui\EcdelController.class
 com\groupfour\patientportal_vgui\ServicesDashboardController.class
+com\groupfour\patientportal_vgui\EcaddController.class
 com\groupfour\patientportal_vgui\DoctorInsertRecordController.class
 com\groupfour\patientportal_vgui\PharmSendPatientController.class
 com\groupfour\patientportal_vgui\PatientTable.class
