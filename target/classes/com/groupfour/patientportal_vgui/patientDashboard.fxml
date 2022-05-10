@@ -442,7 +442,7 @@
             <Insets right="115.0" />
          </GridPane.margin>
       </MFXButton>
-      <MFXButton fx:id="button_devMenu" buttonType="RAISED" onKeyPressed="#showDev" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED" GridPane.columnIndex="2">
+      <MFXButton fx:id="button_devMenu" buttonType="RAISED" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED" GridPane.columnIndex="2">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
