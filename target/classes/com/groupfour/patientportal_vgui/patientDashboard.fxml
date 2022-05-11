@@ -36,7 +36,7 @@
          <children>
             <AnchorPane id="AnchorPane" layoutX="-272.0" layoutY="-97.0" prefHeight="707.0" prefWidth="1372.0" style="-fx-background-color: #15202B;">
                <children>
-                  <AnchorPane fx:id="panel_dashboard" layoutX="272.0" layoutY="70.0" prefHeight="609.0" prefWidth="1090.0" visible="false">
+                  <AnchorPane fx:id="panel_dashboard" layoutX="272.0" layoutY="70.0" prefHeight="609.0" prefWidth="1090.0">
                      <children>
                         <Label layoutX="28.0" layoutY="193.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
                            <font>
@@ -389,7 +389,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="panel_medicalRecords" layoutX="277.0" layoutY="61.0" prefHeight="599.0" prefWidth="1108.0">
+                  <AnchorPane fx:id="panel_medicalRecords" layoutX="277.0" layoutY="61.0" prefHeight="599.0" prefWidth="1108.0" visible="false">
                      <children>
                         <ScrollPane layoutX="10.0" layoutY="187.0" prefHeight="449.0" prefWidth="1090.0">
                            <content>
@@ -423,7 +423,7 @@
                               <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
-                        <HBox layoutX="488.0" layoutY="131.0" prefHeight="56.0" prefWidth="620.0" spacing="20.0">
+                        <HBox layoutX="474.0" layoutY="133.0" prefHeight="56.0" prefWidth="620.0" spacing="20.0">
                            <children>
                               <MFXButton buttonType="RAISED" disable="true" prefHeight="40.0" prefWidth="120.0" text="New Record">
                                  <font>
