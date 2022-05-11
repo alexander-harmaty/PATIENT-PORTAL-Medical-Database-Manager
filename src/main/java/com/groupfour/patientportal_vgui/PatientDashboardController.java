@@ -55,7 +55,7 @@ public class PatientDashboardController implements Initializable
     
     @FXML
     private Button button_accountInfo, button_appointments, button_devMenu,
-            button_logOut, button_home, button_medicalRecords, 
+            button_logOut, button_home, button_medicalRecords,
             button_prescriptions, button_search, button_testResults;
     
     @FXML

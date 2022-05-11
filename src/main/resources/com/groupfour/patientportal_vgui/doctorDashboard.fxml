@@ -22,9 +22,9 @@
 <?import javafx.scene.text.Text?>
 <?import jfxtras.scene.control.agenda.Agenda?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #15202B;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #15202B;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
    <children>
-      <VBox prefHeight="800.0" prefWidth="177.0" style="-fx-background-color: #2b5aae;">
+      <VBox prefHeight="720.0" prefWidth="177.0" style="-fx-background-color: #2b5aae;">
          <children>
             <ImageView fitHeight="140.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,15 +58,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                </VBox.margin>
             </MFXButton>
-            <MFXButton fx:id="button_testResults" buttonType="RAISED" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="150.0" rippleColor="#2b5aae" style="-fx-border-color: #1f9aff; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Test Results" textFill="#1f9aff">
-               <font>
-                  <Font name="Arial Bold" size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
-               </VBox.margin>
-            </MFXButton>
-            <MFXButton fx:id="button_prescriptions" buttonType="RAISED" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="150.0" rippleColor="#2b5aae" style="-fx-border-color: #1f9aff; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Prescriptions" textFill="#1f9aff">
+            <MFXButton fx:id="button_insertRecords" buttonType="RAISED" onMouseReleased="#handleButton_insertRecords" prefHeight="50.0" prefWidth="150.0" rippleColor="#2b5aae" style="-fx-border-color: #1f9aff; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Medical Records" textFill="#1f9aff">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -82,7 +74,15 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                </VBox.margin>
             </MFXButton>
-            <MFXButton fx:id="button_insertRecords" buttonType="RAISED" onMouseReleased="#handleButton_insertRecords" prefHeight="50.0" prefWidth="150.0" rippleColor="#2b5aae" style="-fx-border-color: #1f9aff; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Medical Records" textFill="#1f9aff">
+            <MFXButton fx:id="button_prescriptions" buttonType="RAISED" onMouseReleased="#handleButton_prescriptions" prefHeight="50.0" prefWidth="150.0" rippleColor="#2b5aae" style="-fx-border-color: #1f9aff; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Prescriptions" textFill="#1f9aff">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+            </MFXButton>
+            <MFXButton fx:id="button_testResults" buttonType="RAISED" onMouseReleased="#handleButton_testResults" prefHeight="50.0" prefWidth="150.0" rippleColor="#2b5aae" style="-fx-border-color: #1f9aff; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Test Results" textFill="#1f9aff">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
@@ -94,17 +94,23 @@
       </VBox>
       <AnchorPane fx:id="panel_dashboard" layoutX="135.0" layoutY="102.0" prefHeight="686.0" prefWidth="1783.0">
          <children>
-            <Label layoutX="81.0" layoutY="28.0" prefHeight="108.0" prefWidth="620.0" text="Welcome to Patient Portal" textFill="WHITE" wrapText="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutX="42.0" layoutY="18.0" stroke="#ffffff00" strokeType="INSIDE" width="1106.0" />
+            <Label layoutX="53.0" layoutY="28.0" text="Home" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="81.0" layoutY="136.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
+            <Label layoutX="71.0" layoutY="88.0" prefHeight="108.0" prefWidth="620.0" text="Welcome to Patient Portal" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="71.0" layoutY="196.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="390.0" fitWidth="406.0" layoutX="604.0" layoutY="136.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="390.0" fitWidth="406.0" layoutX="641.0" layoutY="148.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@portal.png" />
                </image>
@@ -116,9 +122,9 @@
       </AnchorPane>
       <AnchorPane fx:id="panel_patients" layoutX="179.0" layoutY="121.0" prefHeight="1046.0" prefWidth="1098.0" visible="false">
          <children>
-            <ScrollPane layoutX="-2.0" layoutY="140.0" prefHeight="527.0" prefWidth="1092.0">
+            <ScrollPane layoutX="-2.0" layoutY="140.0" prefHeight="451.0" prefWidth="1098.0">
                <content>
-                  <TableView fx:id="table_patients" prefHeight="543.0" prefWidth="1079.0">
+                  <TableView fx:id="table_patients" prefHeight="450.0" prefWidth="1079.0">
                     <columns>
                       <TableColumn fx:id="column_patientID" prefWidth="103.0" text="Patient ID" />
                       <TableColumn fx:id="column_pfirstname" prefWidth="108.0" text="First Name" />
@@ -162,7 +168,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_accountInfo" layoutX="174.0" layoutY="120.0" prefHeight="661.0" prefWidth="1074.0" visible="false">
+      <AnchorPane fx:id="panel_accountInfo" layoutX="174.0" layoutY="120.0" prefHeight="582.0" prefWidth="1106.0" visible="false">
          <children>
             <TextField fx:id="textField_doctorID" layoutX="140.0" layoutY="99.0" prefHeight="33.0" prefWidth="255.0" promptText="Doctor ID">
                <font>
@@ -231,16 +237,16 @@
                   <Font name="Arial" size="18.0" />
                </font>
             </TextField>
-            <MFXButton layoutX="902.0" layoutY="596.0" onAction="#handleButton_UpdateDAccInfo" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Update Info" textFill="WHITE">
+            <MFXButton layoutX="912.0" layoutY="528.0" onAction="#handleButton_UpdateDAccInfo" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Update Info" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </MFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_appointments" layoutX="175.0" layoutY="118.0" prefHeight="693.0" prefWidth="1106.0" style="-fx-background-color: white;" visible="false">
+      <AnchorPane fx:id="panel_appointments" layoutX="175.0" layoutY="118.0" prefHeight="597.0" prefWidth="1106.0" style="-fx-background-color: white;" visible="false">
          <children>
-            <Agenda layoutY="70.0" prefHeight="620.0" prefWidth="1092.0">
+            <Agenda layoutY="70.0" prefHeight="531.0" prefWidth="1092.0">
                <effect>
                   <ColorAdjust />
                </effect></Agenda>
@@ -253,18 +259,18 @@
          </children></AnchorPane>
       <AnchorPane fx:id="panel_medicalRecords" layoutX="178.0" layoutY="118.0" prefHeight="693.0" prefWidth="1078.0" visible="false">
          <children>
-            <ScrollPane layoutY="149.0" prefHeight="537.0" prefWidth="1092.0">
+            <ScrollPane layoutX="6.0" layoutY="149.0" prefHeight="445.0" prefWidth="1092.0">
                <content>
-                  <TableView fx:id="table_medicalrecords" prefHeight="530.0" prefWidth="1088.0">
+                  <TableView fx:id="table_medicalrecords" prefHeight="447.0" prefWidth="1097.0">
                      <columns>
-                        <TableColumn fx:id="column_recordID" prefWidth="103.0" text="Record ID" />
-                        <TableColumn fx:id="column_patientID2" prefWidth="108.0" text="Patient ID" />
-                        <TableColumn fx:id="column_dob" prefWidth="84.0" text="Date of Birth" />
-                        <TableColumn fx:id="column_recorddate" minWidth="2.0" text="Record Date" />
-                        <TableColumn fx:id="column_height" minWidth="0.0" prefWidth="75.0" text="Height" />
-                        <TableColumn fx:id="column_weight" minWidth="0.0" prefWidth="75.0" text="Weight" />
-                        <TableColumn fx:id="column_bloodtype" minWidth="0.0" prefWidth="75.0" text="Blood Type" />
-                        <TableColumn fx:id="column_diagnosis" minWidth="0.0" prefWidth="75.0" text="Diagnosis" />
+                        <TableColumn fx:id="column_recordID" prefWidth="100.0" text="Record ID" />
+                        <TableColumn fx:id="column_patientID2" prefWidth="100.0" text="Patient ID" />
+                        <TableColumn fx:id="column_dob" prefWidth="150.0" text="Date of Birth" />
+                        <TableColumn fx:id="column_recorddate" minWidth="2.0" prefWidth="150.0" text="Record Date" />
+                        <TableColumn fx:id="column_height" minWidth="0.0" prefWidth="100.0" text="Height" />
+                        <TableColumn fx:id="column_weight" minWidth="0.0" prefWidth="100.0" text="Weight" />
+                        <TableColumn fx:id="column_bloodtype" minWidth="0.0" prefWidth="100.0" text="Blood Type" />
+                        <TableColumn fx:id="column_diagnosis" minWidth="0.0" prefWidth="277.0" text="Diagnosis" />
                      </columns>
                   </TableView>
                </content>
@@ -284,21 +290,21 @@
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font></MFXButton>
-                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_print" prefHeight="40.0" prefWidth="120.0" rippleColor="#6b6b6b" text="Print">
+                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_print" prefHeight="40.0" prefWidth="120.0" rippleColor="#e571ff" style="-fx-background-color: #d430f8;" text="Print" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </MFXButton>
-                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_medicalUpdate" prefHeight="40.0" prefWidth="120.0" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Update" textFill="WHITE">
+                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_medicalUpdate" prefHeight="40.0" prefWidth="120.0" rippleColor="#62ff9c" style="-fx-background-color: #0dd75a;" text="Update" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </MFXButton>
-                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_medicalDelete" prefHeight="40.0" prefWidth="120.0" rippleColor="#fc3f3f" style="-fx-background-color: #fc3f3f;" text="Delete" textFill="WHITE">
+                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_medicalDelete" prefHeight="40.0" prefWidth="120.0" rippleColor="#ff9090" style="-fx-background-color: #fc3f3f;" text="Delete" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font></MFXButton>
-                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_medicalRefresh" prefHeight="40.0" prefWidth="120.0" rippleColor="#26acff" style="-fx-background-color: #26acff;" text="Refresh" textFill="WHITE">
+                  <MFXButton buttonType="RAISED" onMouseReleased="#handleButton_medicalRefresh" prefHeight="40.0" prefWidth="120.0" rippleColor="#88d3ff" style="-fx-background-color: #26acff;" text="Refresh" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font></MFXButton>
@@ -308,13 +314,13 @@
                </opaqueInsets>
             </HBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutX="-2.0" layoutY="3.0" stroke="#ffffff00" strokeType="INSIDE" width="1106.0" />
-            <Label layoutX="11.0" layoutY="7.0" prefHeight="56.0" prefWidth="406.0" text="Medical Records" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="12.0" prefHeight="56.0" prefWidth="406.0" text="Medical Records" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane fx:id="panel_testResults" layoutX="184.0" layoutY="129.0" prefHeight="400.0" prefWidth="474.0" visible="false">
+      <AnchorPane fx:id="panel_testResults" layoutX="184.0" layoutY="129.0" prefHeight="582.0" prefWidth="1098.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutX="-8.0" layoutY="-8.0" stroke="#ffffff00" strokeType="INSIDE" width="1106.0" />
             <Label layoutX="3.0" layoutY="2.0" text="Test Results" textFill="WHITE">
@@ -322,99 +328,104 @@
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
+            <Label layoutX="23.0" layoutY="87.0" text="Under Construction" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="48.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
-      <AnchorPane fx:id="panel_prescriptions" layoutX="184.0" layoutY="129.0" prefHeight="693.0" prefWidth="1092.0" visible="false">
+      <AnchorPane fx:id="panel_prescriptions" layoutX="184.0" layoutY="129.0" prefHeight="601.0" prefWidth="1098.0" visible="false">
          <children>
-            <Text fill="WHITE" layoutX="50.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PatientID:" wrappingWidth="99.0263671875">
+            <Text fill="WHITE" layoutX="37.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PatientID:" wrappingWidth="99.0263671875">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="textField_patientID" layoutX="183.0" layoutY="171.0" prefHeight="30.0" prefWidth="235.0">
+            <TextField fx:id="textField_patientID" layoutX="170.0" layoutY="139.0" prefHeight="30.0" prefWidth="235.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></TextField>
-            <Text fill="WHITE" layoutX="30.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Name:" textAlignment="RIGHT" wrappingWidth="120.076171875">
+            <Text fill="WHITE" layoutX="17.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication Name:" textAlignment="RIGHT" wrappingWidth="120.076171875">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <TextField fx:id="textField_medication" layoutX="183.0" layoutY="285.0" prefHeight="30.0" prefWidth="235.0">
+            <TextField fx:id="textField_medication" layoutX="170.0" layoutY="253.0" prefHeight="30.0" prefWidth="235.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></TextField>
-            <Text fill="WHITE" layoutX="560.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dosage:">
+            <Text fill="WHITE" layoutX="547.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dosage:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <TextField fx:id="textField_dosage" layoutX="658.0" layoutY="306.0" prefHeight="40.0" prefWidth="177.0">
+            <TextField fx:id="textField_dosage" layoutX="645.0" layoutY="274.0" prefHeight="40.0" prefWidth="177.0">
                <font>
                   <Font name="Arial" size="18.0" />
                </font></TextField>
-            <Text fill="WHITE" layoutX="847.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="units">
+            <Text fill="WHITE" layoutX="834.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="units">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Text>
-            <Text fill="WHITE" layoutX="45.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency:">
+            <Text fill="WHITE" layoutX="32.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <Text fill="WHITE" layoutX="481.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Prescribed:">
+            <Text fill="WHITE" layoutX="468.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Prescribed:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <Text fill="WHITE" layoutX="572.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+            <Text fill="WHITE" layoutX="559.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <Text fill="WHITE" layoutX="40.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+            <Text fill="WHITE" layoutX="27.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <TextArea fx:id="textField_description" layoutX="184.0" layoutY="465.0" prefHeight="157.0" prefWidth="536.0" wrapText="true">
+            <TextArea fx:id="textField_description" layoutX="171.0" layoutY="433.0" prefHeight="131.0" prefWidth="536.0" text="a&#10;a&#10;a&#10;a&#10;a&#10;a&#10;a" wrapText="true">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></TextArea>
-            <Text fill="WHITE" layoutX="53.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DoctorID:">
+            <Text fill="WHITE" layoutX="40.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DoctorID:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <Text fill="WHITE" layoutX="27.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pharmacy ID:">
+            <Text fill="WHITE" layoutX="14.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pharmacy ID:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Text>
-            <TextField fx:id="textField_doctorID2" layoutX="183.0" layoutY="229.0" prefHeight="30.0" prefWidth="235.0">
+            <TextField fx:id="textField_doctorID2" layoutX="170.0" layoutY="197.0" prefHeight="30.0" prefWidth="235.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></TextField>
-            <TextField fx:id="textField_pharmID" layoutX="183.0" layoutY="403.0" prefHeight="33.0" prefWidth="235.0">
+            <TextField fx:id="textField_pharmID" layoutX="170.0" layoutY="371.0" prefHeight="33.0" prefWidth="235.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></TextField>
-            <TextField fx:id="textField_frequency" layoutX="183.0" layoutY="346.0" prefHeight="30.0" prefWidth="235.0">
+            <TextField fx:id="textField_frequency" layoutX="170.0" layoutY="314.0" prefHeight="30.0" prefWidth="235.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></TextField>
-            <MFXDatePicker fx:id="datepicker_date" layoutX="658.0" layoutY="182.0" prefHeight="33.0" prefWidth="177.0">
+            <MFXDatePicker fx:id="datepicker_date" layoutX="645.0" layoutY="150.0" prefHeight="33.0" prefWidth="177.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
                <effect>
                   <ColorAdjust hue="-0.4" />
                </effect></MFXDatePicker>
-            <MFXSpinner fx:id="spinner_quantity" editable="true" graphicTextGap="1.0" layoutX="658.0" layoutY="243.0" prefHeight="41.0" prefWidth="115.0">
+            <MFXSpinner fx:id="spinner_quantity" editable="true" graphicTextGap="1.0" layoutX="645.0" layoutY="211.0" prefHeight="41.0" prefWidth="115.0">
                <effect>
                   <ColorAdjust hue="-0.4" />
                </effect></MFXSpinner>
-            <MFXComboBox fx:id="combobox_status" layoutX="658.0" layoutY="372.0" prefHeight="45.0" prefWidth="177.0">
+            <MFXComboBox fx:id="combobox_status" layoutX="645.0" layoutY="340.0" prefHeight="45.0" prefWidth="177.0">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></MFXComboBox>
-            <MFXButton layoutX="943.0" layoutY="591.0" onMousePressed="#handleButton_order" prefHeight="50.0" prefWidth="127.0" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Place Order" textFill="WHITE">
+            <MFXButton layoutX="957.0" layoutY="523.0" onMousePressed="#handleButton_order" prefHeight="50.0" prefWidth="127.0" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Place Order" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </MFXButton>
-            <Text fill="WHITE" layoutX="555.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
+            <Text fill="WHITE" layoutX="542.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
@@ -425,7 +436,7 @@
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="92.0" text="New Order Form" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="77.0" text="New Order Form" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="36.0" />
                </font>
