@@ -153,7 +153,7 @@ public class LoginScreenController implements Initializable {
                 }
                 else if (rs.getString(5).toUpperCase().equals("SERVICE")) 
                 {
-                        App.setRoot("serviceDashboard");
+                        App.setRoot("servicesDashboard");
                         //JOptionPane.showMessageDialog(null, "Your login was successful.");
                         //button_login.getScene().getWindow().hide();
                         //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
@@ -191,7 +191,7 @@ public class LoginScreenController implements Initializable {
                 }
                 else if (rs2.getString(5).toUpperCase().equals("SERVICE")) 
                 {
-                        App.setRoot("serviceDashboard");
+                        App.setRoot("servicesDashboard");
                         //JOptionPane.showMessageDialog(null, "Your login was successful.");
                         //button_login.getScene().getWindow().hide();
                         //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
