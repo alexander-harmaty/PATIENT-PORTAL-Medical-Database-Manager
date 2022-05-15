@@ -759,6 +759,101 @@ public class DoctorDashboardController implements Initializable
         
     }
     
+    
+    @FXML
+    void handleButton_scheduleLabApp()
+    {
+        //button_scheduleLabApp
+        //open labAppointmentInsert.fxml
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("labAppointmentInsert.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void handleButton_scheduleDocApp()
+    {
+        //button_scheduleDocApp
+        //open docAppointmentInsert.fxml
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("docAppointmentInsert.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void handleButton_rescheduleOrCancelApp()
+    {
+        //button_rescheduleOrCancelApp
+        //open appointmentModify.fxml
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("appointmentRescheduleOrCancel.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
+    
+    @FXML
+    private TableColumn<Appointment, String>
+            column_appID, column_appRreason, column_appDate, column_appTime, 
+            column_appDocID, column_appPatID, column_appOfficeID, column_appLabID;
+    
+    @FXML
+    private TableView<Appointment> table_appointments;
+    
+    public void appointmentTable()
+    {
+        //button_refreshApp
+        //refresh tableview 
+        
+        try
+        {
+
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PatientID = " + patientID);
+            appointmentslist.clear();
+            
+            while (rs.next()) 
+            {
+                appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
+                rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
+                rs.getString("Date"),rs.getString("Time")));
+            }
+        } 
+        catch (Exception e) {}
+
+        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+        table_appointments.setItems(appointmentslist);
+    }
+    
+    
+    
     public void show_panelDashboard() 
     {
         panel_dashboard.setVisible(true);

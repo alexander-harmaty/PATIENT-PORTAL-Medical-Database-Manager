@@ -20,9 +20,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import jfxtras.scene.control.agenda.Agenda?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #15202B;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #15202B;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.DoctorDashboardController">
    <children>
       <VBox prefHeight="720.0" prefWidth="177.0" style="-fx-background-color: #2b5aae;">
          <children>
@@ -244,19 +243,57 @@
             </MFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panel_appointments" layoutX="175.0" layoutY="118.0" prefHeight="597.0" prefWidth="1106.0" style="-fx-background-color: white;" visible="false">
+      <AnchorPane fx:id="panel_appointments" layoutX="177.0" layoutY="94.0" prefHeight="609.0" prefWidth="1117.0" visible="false">
          <children>
-            <Agenda layoutY="70.0" prefHeight="531.0" prefWidth="1092.0">
-               <effect>
-                  <ColorAdjust />
-               </effect></Agenda>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutY="-4.0" stroke="#ffffff00" strokeType="INSIDE" width="1106.0" />
-            <Label layoutX="11.0" layoutY="3.0" prefHeight="56.0" prefWidth="362.0" text="Appointments" textFill="WHITE">
+            <ScrollPane layoutX="11.0" layoutY="224.0" prefHeight="400.0" prefWidth="1090.0">
+               <content>
+                  <TableView fx:id="table_appointments" prefHeight="400.0" prefWidth="1086.0">
+                     <columns>
+                        <TableColumn fx:id="column_appID" prefWidth="100.0" text="App ID" />
+                        <TableColumn fx:id="column_appRreason" prefWidth="200.0" text="Reason" />
+                        <TableColumn fx:id="column_appDate" minWidth="5.0" prefWidth="200.0" text="Date" />
+                        <TableColumn fx:id="column_appTime" prefWidth="190.0" text="Time" />
+                        <TableColumn fx:id="column_appDocID" prefWidth="100.0" text="Doctor ID" />
+                        <TableColumn fx:id="column_appPatID" prefWidth="100.0" text="Patient ID" />
+                        <TableColumn fx:id="column_appOfficeID" prefWidth="100.0" text="Office ID" />
+                        <TableColumn fx:id="column_appLabID" prefWidth="100.0" text="Lab ID" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <MFXButton fx:id="button_scheduleDocApp" layoutX="14.0" layoutY="163.0" onMouseReleased="#handleButton_scheduleDocApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#7eaeff" style="-fx-background-color: #4277d3;" text="Schedule Doctor" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="button_scheduleLabApp" layoutX="314.0" layoutY="163.0" onMouseReleased="#handleButton_scheduleLabApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Schedule Lab" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="607.0" layoutY="163.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Reschedule / Cancel" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="button_refreshApp" layoutX="902.0" layoutY="163.0" onMouseReleased="#appointmentTable" prefHeight="50.0" prefWidth="200.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </MFXButton>
+            <Text fill="WHITE" layoutX="20.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current List Of Upcoming Appointments">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutY="27.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
+            <Label layoutX="11.0" layoutY="34.0" prefHeight="56.0" prefWidth="372.0" text="Appointments" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="panel_medicalRecords" layoutX="178.0" layoutY="118.0" prefHeight="693.0" prefWidth="1078.0" visible="false">
          <children>
             <ScrollPane layoutX="6.0" layoutY="149.0" prefHeight="445.0" prefWidth="1092.0">
