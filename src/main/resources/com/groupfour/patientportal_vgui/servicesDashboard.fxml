@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,7 +35,6 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1161.0" style="-fx-background-color: #15202B;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <AnchorPane fx:id="panel_search" layoutX="104.0" layoutY="102.0" prefHeight="697.0" prefWidth="1176.0" visible="false" />
-            <AnchorPane fx:id="panel_account" layoutX="104.0" layoutY="104.0" prefHeight="697.0" prefWidth="1177.0" visible="false" />
             <AnchorPane fx:id="panel_records" layoutX="104.0" layoutY="104.0" prefHeight="696.0" prefWidth="1176.0" visible="false" />
             <AnchorPane fx:id="panel_testResults" layoutX="103.0" layoutY="102.0" prefHeight="697.0" prefWidth="1179.0" visible="false" />
             <AnchorPane fx:id="panel_prescriptions" layoutX="1.0" layoutY="19.0" prefHeight="607.0" prefWidth="1180.0" visible="false">
@@ -141,6 +141,116 @@
                         <ColorAdjust hue="0.01" />
                      </effect>
                   </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="panel_account" prefHeight="582.0" prefWidth="1106.0" visible="false">
+               <children>
+                  <TextField fx:id="textField_serviceid" layoutX="140.0" layoutY="99.0" prefHeight="33.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="18.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_scity" layoutX="140.0" layoutY="224.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="20.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_sstate" layoutX="140.0" layoutY="291.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="57.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_szip" layoutX="140.0" layoutY="358.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="57.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_sphone" layoutX="140.0" layoutY="421.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="52.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" textAlignment="CENTER" wrappingWidth="70.234375">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_sfax" layoutX="140.0" layoutY="485.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="37.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fax:" textAlignment="CENTER" wrappingWidth="85.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="18.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account ID:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#790f0f" height="80.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
+                  <Label fx:id="label_errorText" alignment="CENTER" layoutX="455.0" layoutY="155.0" prefHeight="40.0" prefWidth="255.0" textAlignment="CENTER" textFill="#cd1c1c">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="18.0" layoutY="24.0" prefHeight="56.0" prefWidth="320.0" text="Account Info" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textField_sstreet" layoutX="140.0" layoutY="160.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <MFXButton layoutX="912.0" layoutY="528.0" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Update Info" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </MFXButton>
+                  <TextField fx:id="textField_semail" layoutX="552.0" layoutY="107.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="464.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" textAlignment="CENTER" wrappingWidth="70.234375">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_sname" layoutX="552.0" layoutY="171.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="449.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="85.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>

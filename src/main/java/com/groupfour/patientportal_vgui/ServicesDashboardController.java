@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -55,6 +57,35 @@ public class ServicesDashboardController implements Initializable {
     private Button button_home;
     
     // TextFields
+    /**Angie
+     * 
+     */
+     @FXML
+    private TextField textField_scity;
+
+    @FXML
+    private TextField textField_semail;
+
+    @FXML
+    private TextField textField_serviceid;
+
+    @FXML
+    private TextField textField_sfax;
+
+    @FXML
+    private TextField textField_sname;
+
+    @FXML
+    private TextField textField_sphone;
+
+    @FXML
+    private TextField textField_sstate;
+
+    @FXML
+    private TextField textField_sstreet;
+
+    @FXML
+    private TextField textField_szip;
   
     
     //Anchor Panes
@@ -161,6 +192,25 @@ public class ServicesDashboardController implements Initializable {
     
     @FXML
     void handleButton_account() {
+//         try
+//        {
+//            Connection con = DatabaseConnection.connectDB();
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery("SELECT * FROM DOCTOR WHERE DoctorID="+App.currentUser.getUserID()+";");
+//
+//            while (rs.next()) 
+//            {   
+//                textField_serviceid.setText(String.valueOf(rs.getInt("DoctorID")));
+//                textField_firstName.setText(rs.getString("DFirstName"));
+//                textField_lastName.setText(rs.getString("DLastName"));
+//                textField_phone.setText(rs.getString("DPhone"));
+//                textField_email.setText(rs.getString("DEmail"));
+//                textField_degree.setText((rs.getString("Degree")));
+//                textField_specialty.setText(rs.getString("Specialty"));              
+//            }
+//        }
+//        catch (Exception e){}
+         
         panel_account.setVisible(true);
         panel_appointment.setVisible(false);
         panel_prescriptions.setVisible(false);
