@@ -70,7 +70,7 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="panel_appointment" prefHeight="609.0" prefWidth="1117.0" visible="false">
+            <AnchorPane fx:id="panel_appointment" layoutX="13.0" layoutY="-11.0" prefHeight="609.0" prefWidth="1117.0" visible="false">
                <children>
                   <ScrollPane layoutX="11.0" layoutY="224.0" prefHeight="400.0" prefWidth="1090.0">
                      <content>
@@ -113,7 +113,7 @@
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="74.0" layoutY="27.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#97062d" height="74.0" layoutY="27.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
                   <Label layoutX="11.0" layoutY="34.0" prefHeight="56.0" prefWidth="372.0" text="Appointments" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="48.0" />
