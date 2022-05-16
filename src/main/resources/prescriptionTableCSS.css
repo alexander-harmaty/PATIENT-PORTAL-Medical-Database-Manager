@@ -8,11 +8,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 .table-view {
-    -fx-base: #3877A7;
-    -fx-background-color: #3877A7;
-    -fx-control-inner-background: #3877A7;
+    -fx-base: black; 
+    -fx-background-color: #F5F5F5;
+    -fx-control-inner-background: #F5F5F5;
     -fx-table-cell-border-color: transparent;
-    -fx-table-header-border-color: transparent;
+    
+    -fx-table-header-border-color: #CBCBCB;
     -fx-padding: 5;
 }
 
@@ -23,7 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header, .table-view .filler {
     -fx-size: 25;
     -fx-border-width: 0 0 1 0;
-    -fx-background-color: transparent;
+    -fx-background-color: #DDDDDD;
     -fx-border-color: transparent transparent derive(-fx-base, 80%) transparent;
     -fx-border-insets: 0 10 1 0;
 }
@@ -35,7 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header .label {
     -fx-font-size: 15;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-alignment: center-left;
     -fx-opacity: 1;
 }
@@ -46,6 +47,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .table-view:focused .table-row-cell:selected {
-    -fx-background-color: derive(-fx-base, 20%);
+    -fx-background-color: #2E5BAE;
     -fx-background-insets: 0 0 0 0;
 }
