@@ -127,7 +127,7 @@ public class LoginScreenController implements Initializable {
             
             if (rs.next() && rs.getString(2).equals(userName) && rs.getString(3).equals(passWord)) 
             {
-                App.currentUser = new CurrentUser(rs.getString(1));
+                App.currentUser = new CurrentUser(rs.getString(1), rs.getString(5));
                 
                 if (rs.getString(5).toUpperCase().equals("PATIENT"))
                 {           
@@ -165,7 +165,7 @@ public class LoginScreenController implements Initializable {
             }
             else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
             {
-                App.currentUser = new CurrentUser(rs2.getString(1));
+                App.currentUser = new CurrentUser(rs2.getString(1), rs.getString(5));
                 
                 if (rs2.getString(5).toUpperCase().equals("PATIENT"))
                 {       
@@ -471,14 +471,14 @@ public class LoginScreenController implements Initializable {
     private void switchToDevMenu() throws IOException 
     {
         App.setRoot("devMenu");
-        App.currentUser = new CurrentUser("DevMenuUser");
+        App.currentUser = new CurrentUser("DevMenuUser", "DevMenuUser");
     }
     
     @FXML
     void showDev(KeyEvent event)throws IOException {
         if(event.getCode() == KeyCode.F2){
         App.setRoot("devMenu");
-        App.currentUser = new CurrentUser("DevMenuUser");
+        App.currentUser = new CurrentUser("DevMenuUser", "DevMenuUser");
         }
     }
 }

@@ -12,10 +12,11 @@ public class CurrentUser
 {
     
     protected static String userID;
-    private String firstName;
-    private String lastName;
-    private String phone;
-    private String email;
+    private static String firstName;
+    private static String lastName;
+    private static String phone;
+    private static String email;
+    private static String type;
 
     public CurrentUser() {
         this.userID = "userID";
@@ -23,14 +24,16 @@ public class CurrentUser
         this.lastName = "lastName";
         this.phone = "phone";
         this.email = "email";
+        this.type = "type";
     }
     
-    public CurrentUser(String userID) {
+    public CurrentUser(String userID, String type) {
         this.userID = userID;
         this.firstName = "firstName";
         this.lastName = "lastName";
         this.phone = "phone";
         this.email = "email";
+        this.type = type;
     }    
 
     public String getUserID() {
