@@ -62,7 +62,7 @@ import javax.swing.JOptionPane;
  */
 public class DoctorDashboardController implements Initializable 
 {    
-    int patientID;
+    String currentUserID = App.currentUser.getUserID();
     
     @FXML
     private Button button_accountInfo;
@@ -479,6 +479,8 @@ public class DoctorDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_pharmacy.setVisible(false);
         panel_lab.setVisible(false);
+        
+        appointmentTable();
     }
  
     @FXML
@@ -885,7 +887,7 @@ public class DoctorDashboardController implements Initializable
         {
 
             Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PatientID = " + patientID);
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE DoctorID = " + currentUserID);
             appointmentslist.clear();
             
             while (rs.next()) 

@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -229,6 +230,8 @@ public class ServicesDashboardController implements Initializable {
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_dashboard.setVisible(false);
+        
+        appointmentTable();
     }
 
     @FXML
@@ -297,7 +300,7 @@ public class ServicesDashboardController implements Initializable {
     
     
     //currentUserID   
-    private String patientID = App.currentUser.getUserID();
+    private String currentUserID = App.currentUser.getUserID();
     
     @FXML
     void handleButton_scheduleLabApp()
@@ -363,32 +366,102 @@ public class ServicesDashboardController implements Initializable {
         //button_refreshApp
         //refresh tableview 
         
-        try
-        {
+        String currentUserID = App.currentUser.getUserID();
+        String currentUserType = App.currentUser.getType();
+        
+        switch (currentUserType) {
+            case "Lab":
+                try
+                {
 
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PatientID = " + patientID);
-            appointmentslist.clear();
-            
-            while (rs.next()) 
-            {
-                appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
-                rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
-                rs.getString("Date"),rs.getString("Time")));
-            }
-        } 
-        catch (Exception e) {}
+                    Connection con = DatabaseConnection.connectDB();
+                    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE LabID = " + currentUserID);
+                    appointmentslist.clear();
 
-        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
-        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
-        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
-        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
-        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
-        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+                    while (rs.next()) 
+                    {
+                        appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
+                        rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
+                        rs.getString("Date"),rs.getString("Time")));
+                    }
+                } 
+                catch (Exception e) {}
 
-        table_appointments.setItems(appointmentslist);
+                column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+                column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+                column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+                column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+                column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+                column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+                table_appointments.setItems(appointmentslist);
+                
+                break;
+            case "Office":
+                try
+                {
+
+                    Connection con = DatabaseConnection.connectDB();
+                    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE OfficeID = " + currentUserID);
+                    appointmentslist.clear();
+
+                    while (rs.next()) 
+                    {
+                        appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
+                        rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
+                        rs.getString("Date"),rs.getString("Time")));
+                    }
+                } 
+                catch (Exception e) {}
+
+                column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+                column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+                column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+                column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+                column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+                column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+                table_appointments.setItems(appointmentslist);
+                
+                break;
+            case "Service":
+                try
+                {
+
+                    Connection con = DatabaseConnection.connectDB();
+                    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE LabID = " + currentUserID);
+                    appointmentslist.clear();
+
+                    while (rs.next()) 
+                    {
+                        appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
+                        rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
+                        rs.getString("Date"),rs.getString("Time")));
+                    }
+                } 
+                catch (Exception e) {}
+
+                column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+                column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+                column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+                column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+                column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+                column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+                table_appointments.setItems(appointmentslist);
+                
+                break;
+            default:
+                JOptionPane.showMessageDialog(null,"Unable to get current user data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
     }
     
     /**
