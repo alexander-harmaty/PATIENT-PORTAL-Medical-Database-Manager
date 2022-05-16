@@ -57,10 +57,21 @@
                   <TextField fx:id="textField_officeID" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="280.0" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_patientID" />
+               </children>
+            </HBox>
+            <HBox prefHeight="52.0" prefWidth="400.0">
                <children>
                   <MFXButton fx:id="button_clear" onMouseReleased="#handleButton_clear" prefWidth="200.0" text="Clear" />
                   <MFXButton fx:id="button_createApp" onMouseReleased="#handleButton_createApp" prefWidth="200.0" text="Create Appointment" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <MFXButton fx:id="button_getAppData" onMouseReleased="#handleButton_getAppData" text="Get Current User ID" />
                </children>
             </HBox>
          </children>

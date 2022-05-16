@@ -70,6 +70,12 @@
                   <TextField fx:id="textField_labID" />
                </children>
             </HBox>
+            <HBox layoutX="10.0" layoutY="340.0" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_patientID" />
+               </children>
+            </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <MFXButton fx:id="button_clear" onMouseReleased="#handleButton_clear" prefWidth="200.0" text="Clear" />

@@ -31,7 +31,7 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
 
     @FXML
     private TextField textField_date, textField_time, textField_doctorID, 
-            textField_officeID, textField_labID, textField_appID;
+            textField_officeID, textField_labID, textField_appID, textField_patientID;
     
     @FXML
     void handleButton_clear()
@@ -66,6 +66,7 @@ public class AppointmentRescheduleOrCancelController implements Initializable {
                     textField_doctorID.setText(rs.getString("DoctorID")); 
                     textField_officeID.setText(rs.getString("OfficeID")); 
                     textField_labID.setText(rs.getString("LabID")); 
+                    textField_patientID.setText(rs.getString("PatientID"));
                 }
         } catch (Exception e){
             }

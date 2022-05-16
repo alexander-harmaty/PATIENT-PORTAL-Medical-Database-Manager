@@ -76,4 +76,15 @@ public class CurrentUser
         this.email = email;
     }
     
+    
+    public String getType() {
+        return type;
+    }
+     
+    public void setType(String type) {
+        this.type = type;
+    }
+   
+    
+    
 }

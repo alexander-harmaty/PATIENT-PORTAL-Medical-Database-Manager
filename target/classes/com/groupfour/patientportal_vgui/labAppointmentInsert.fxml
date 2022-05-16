@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.groupfour.patientportal_vgui.LabAppointmentInsertController">
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.LabAppointmentInsertController">
    <children>
       <VBox layoutX="25.0" layoutY="20.0" prefHeight="600.0" prefWidth="400.0">
          <children>
@@ -52,10 +51,21 @@
                   <TextField fx:id="textField_labID" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="10.0" layoutY="250.0" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient ID" wrappingWidth="125.0" />
+                  <TextField fx:id="textField_patientID" />
+               </children>
+            </HBox>
+            <HBox prefHeight="46.0" prefWidth="400.0">
                <children>
                   <MFXButton fx:id="button_clear" onMouseReleased="#handleButton_clear" prefWidth="200.0" text="Clear" />
                   <MFXButton fx:id="button_createApp" onMouseReleased="#handleButton_createApp" prefWidth="200.0" text="Create Appointment" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <MFXButton fx:id="button_getAppData" onMouseReleased="#handleButton_getAppData" text="Get Current User ID" />
                </children>
             </HBox>
          </children>
