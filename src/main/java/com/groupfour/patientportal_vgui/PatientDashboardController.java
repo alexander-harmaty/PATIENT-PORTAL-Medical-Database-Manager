@@ -110,7 +110,7 @@ public class PatientDashboardController implements Initializable
         table_doctor.setItems(sortedData);
     }
     
-    //Declare anchor panes
+    
     @FXML
     private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard,
             panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults, panel_findPharma;
@@ -121,7 +121,7 @@ public class PatientDashboardController implements Initializable
             button_logOut, button_home, button_medicalRecords,
             button_prescriptions, button_search, button_testResults;
     
-    //Switch to log-in menu
+    //Switch to log-in menu and log-out of current account
     @FXML
     private void handleButton_logOut() throws IOException
     {
@@ -634,22 +634,14 @@ public class PatientDashboardController implements Initializable
                 
                 String lowerCaseFilter = newValue.toLowerCase();
                 
-                if (String.valueOf(medical.getRecordID()).contains(lowerCaseFilter)) { return true; }
-                
-                else if (String.valueOf(medical.getPatientID()).toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (medical.getDOB().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (medical.getRecordDate().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (medical.getHeight().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (medical.getWeight().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (medical.getBloodType().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (medical.getDiagnosis().toLowerCase().contains(lowerCaseFilter)) { return true; }
-      
+                if (String.valueOf(medical.getRecordID()).contains(lowerCaseFilter)) { return true; }                
+                else if (String.valueOf(medical.getPatientID()).toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (medical.getDOB().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (medical.getRecordDate().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (medical.getHeight().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (medical.getWeight().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (medical.getBloodType().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (medical.getDiagnosis().toLowerCase().contains(lowerCaseFilter)) { return true; }      
                 else return false;
             });
         });
@@ -997,24 +989,15 @@ public class PatientDashboardController implements Initializable
                 
                 String lowerCaseFilter = newValue.toLowerCase();
                 
-                if (String.valueOf(pharma.getPharmID()).contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getName().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getStreet().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getCity().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getState().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getZip().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getEmail().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getPhone().toLowerCase().contains(lowerCaseFilter)) { return true; }
-                
-                else if (pharma.getFax().toLowerCase().contains(lowerCaseFilter)) { return true; }
-      
+                if (String.valueOf(pharma.getPharmID()).contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getName().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getStreet().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getCity().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getState().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getZip().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getEmail().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getPhone().toLowerCase().contains(lowerCaseFilter)) { return true; }                
+                else if (pharma.getFax().toLowerCase().contains(lowerCaseFilter)) { return true; }      
                 else return false;
             });
         });
@@ -1054,7 +1037,7 @@ public class PatientDashboardController implements Initializable
     
     
 ////////////////////////////////////////////////////////////////////////////////
-//// ▲ TEST RESULTS ▲ ////////////////////////////////////////////////////////
+//// ▲ TEST RESULTS ▲ /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //// ▼ END OF CLASS ▼ /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
