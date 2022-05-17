@@ -194,7 +194,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Switch to search patients anchor pane
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     public void handleButton_searchpatients() 
@@ -214,7 +214,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Switch to search lab anchor pane
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     public void handleButton_searchlab() 
@@ -234,7 +234,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Switch to search pharmacy anchor pane
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     public void handleButton_searchpharmacy() {
@@ -305,7 +305,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Button handler function
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     void handleButton_refresh() { 
@@ -315,7 +315,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to refresh patient table
      * 
-     * @author 
+     * @author Angela Todaro
      */
     public void refreshTable(){
         try
@@ -354,7 +354,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to search through patient table
      * 
-     * @author
+     * @author Angela Todaro
      */
     public void patientSearch() {
         FilteredList<PatientTable> filtereddata = new FilteredList<>(patientslist, b -> true);
@@ -674,7 +674,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Switch to medical records anchor pane
      * 
-     * @author
+     * @author 
      */
     @FXML
     void handleButton_insertRecords() {
@@ -711,7 +711,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to refresh medical records table
      * 
-     * @author
+     * @author Angela Todaro
      */
     public void medicalTable() 
     {
@@ -744,7 +744,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to search through medical records table
      * 
-     * @author 
+     * @author Angela Todaro
      */
     public void medicalSearch() 
     {
@@ -794,7 +794,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Button handler function to call medical table refresh
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     void handleButton_medicalRefresh() 
@@ -848,7 +848,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to print medical records table
      * 
-     * @author 
+     * @author Angela Todaro
      */
     @FXML
     public void handleButton_print() 
@@ -1049,7 +1049,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function for spinner
      * 
-     * @author
+     * @author Angela Todaro
      */
     public void spinnerNumber() 
     {
@@ -1066,7 +1066,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Switch to prescriptions anchor pane
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     void handleButton_prescriptions() {
@@ -1098,7 +1098,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to set status combo box (drop-down menu) for prescriptions
      * 
-     * @author
+     * @author Angela Todaro
      */
     public void comboboxStatus() 
     {        
@@ -1109,7 +1109,7 @@ public class DoctorDashboardController implements Initializable
     /**
      * Function to place order for prescription
      * 
-     * @author
+     * @author Angela Todaro
      */
     @FXML
     void handleButton_order()

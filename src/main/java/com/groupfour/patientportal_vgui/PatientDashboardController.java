@@ -70,6 +70,10 @@ public class PatientDashboardController implements Initializable
         searchPharma(); 
         ECTable();
         RefreshECTable();
+        pharmacyTable();
+        pharmacySearch();
+        labTable();
+        labSearch();
         FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(doctors -> {
@@ -110,10 +114,40 @@ public class PatientDashboardController implements Initializable
         table_doctor.setItems(sortedData);
     }
     
+    //Initialize observable list for lab table
+    ObservableList<LabTable> lablist = FXCollections.observableArrayList();
+    
+    //Initialize observable list for pharmacy table
+    ObservableList<PharmacyTable> pharmacylist = FXCollections.observableArrayList();
+    
+    //Declare search text fields
+    @FXML 
+    private TextField textField_pharmacysearch, textField_labsearch;
+    
+    //Declare columns for pharmacy table
+    @FXML
+    private TableColumn<PharmacyTable, String>
+            column_pharmacyid, column_pharmacystreet, column_pharmacycity, column_pharmacyzip, 
+            column_pharmacystate, column_pharmacyphone, column_pharmacyfax, column_pharmacyemail, column_pharmacyname;
+    
+    //Declare columns for lab table
+    @FXML
+    private TableColumn<LabTable, String>
+            column_labid, column_labstreet, column_labcity, column_labstate, 
+            column_labzip, column_labphone, column_labfax, column_labemail, column_labname;
+    
+    //Declare table view for lab table
+    @FXML
+    private TableView<LabTable> table_lab;
+    
+    //Declare table view for pharmacy table
+    @FXML
+    private TableView<PharmacyTable> table_pharmacy;
     
     @FXML
     private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard,
-            panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults, panel_findPharma;
+            panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults, panel_findPharma, 
+            panel_doctors, panel_pharmacy, panel_lab;
     
     //Declare buttons to switch anchor panes
     @FXML
@@ -146,10 +180,199 @@ public class PatientDashboardController implements Initializable
     @FXML
     private Label label_errorText, label_userFirstLast;
     
+     /**
+     * Function to refresh pharmacy table
+     * 
+     * @author Angela Todaro
+     */
+   ////  ▲ UNORGANIZED AND OTHER ▲/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////// 
+   //// ▼ SEARCH AND TABLEVIEWS ▼ /////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    /**
+     * Switch to search lab anchor pane
+     * 
+     * @author Angela Todaro
+     */
+    @FXML
+    public void handleButton_searchlab() 
+    {
+        panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+        panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(true);
+    }
+    
+    /**
+     * Switch to search pharmacy anchor pane
+     * 
+     * @author Angela Todaro
+     */
+    @FXML
+    public void handleButton_searchpharmacy() {
+       panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+        panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(true);
+        panel_lab.setVisible(false);
+    }
+    
+    public void pharmacyTable()
+    {
+        //button_refreshApp
+        //refresh tableview 
+        
+        try
+        {
+
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PHARMA");
+            pharmacylist.clear();
+            
+            while (rs.next()) 
+            {
+                pharmacylist.add(new PharmacyTable(rs.getInt("PharmID"), rs.getString("Street"),
+                rs.getString("City"),rs.getString("State"),rs.getString("Zip"), rs.getString("Phone"),
+                rs.getString("Fax"),rs.getString("Email"), rs.getString("Name")));
+            }
+        } 
+        catch (Exception e) {}
+
+        column_pharmacyid.setCellValueFactory(new PropertyValueFactory <>("PharmID"));
+        column_pharmacystreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
+        column_pharmacycity.setCellValueFactory(new PropertyValueFactory <>("City"));
+        column_pharmacyzip.setCellValueFactory(new PropertyValueFactory <>("State"));
+        column_pharmacystate.setCellValueFactory(new PropertyValueFactory <>("Zip"));
+        column_pharmacyphone.setCellValueFactory(new PropertyValueFactory <>("Phone"));
+        column_pharmacyfax.setCellValueFactory(new PropertyValueFactory <>("Fax"));
+        column_pharmacyemail.setCellValueFactory(new PropertyValueFactory <>("Email"));
+         column_pharmacyname.setCellValueFactory(new PropertyValueFactory <>("Name"));
+
+        table_pharmacy.setItems(pharmacylist);
+    }
+    
+    /**
+     * Function to search through pharmacy table
+     * 
+     * @author Angela Todaro
+     */
+    public void pharmacySearch() 
+    {
+        FilteredList<PharmacyTable> filtereddata = new FilteredList<>(pharmacylist, b -> true);
+        textField_pharmacysearch.textProperty().addListener((observable, oldValue, newValue) -> 
+        {
+            filtereddata.setPredicate(patients -> 
+            {
+                if (newValue == null || newValue.isEmpty()) { return true; }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(patients.getPharmID()).contains(lowerCaseFilter)) { return true; }
+                else if (patients.getStreet().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getCity().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getState().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getZip().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getPhone().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getFax().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getEmail().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getName().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else return false;
+            });
+        });
+        SortedList<PharmacyTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_pharmacy.comparatorProperty());
+        table_pharmacy.setItems(sortedData);
+    }
+    
+    /**
+     * Function to refresh lab table
+     * 
+     * @author Angela Todaro
+     */
+    public void labTable()
+    {
+        //button_refreshApp
+        //refresh tableview 
+        
+        try
+        {
+
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM LAB");
+            lablist.clear();
+            
+            while (rs.next()) 
+            {
+                lablist.add(new LabTable(rs.getInt("LabID"), rs.getString("Street"),
+                rs.getString("City"),rs.getString("State"),rs.getString("Zip"), rs.getString("Phone"),
+                rs.getString("Fax"),rs.getString("Email"), rs.getString("Name")));
+            }
+        } 
+        catch (Exception e) {}
+
+        column_labid.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+        column_labstreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
+        column_labcity.setCellValueFactory(new PropertyValueFactory <>("City"));
+        column_labzip.setCellValueFactory(new PropertyValueFactory <>("State"));
+        column_labstate.setCellValueFactory(new PropertyValueFactory <>("Zip"));
+        column_labphone.setCellValueFactory(new PropertyValueFactory <>("Phone"));
+        column_labfax.setCellValueFactory(new PropertyValueFactory <>("Fax"));
+        column_labemail.setCellValueFactory(new PropertyValueFactory <>("Email"));
+         column_labname.setCellValueFactory(new PropertyValueFactory <>("Name"));
+
+        table_lab.setItems(lablist);
+    }
+      
+    /**
+     * Function to search through lab table
+     * 
+     * @author Angela Todaro
+     */
+    public void labSearch() {
+        FilteredList<LabTable> filtereddata = new FilteredList<>(lablist, b -> true);
+        textField_labsearch.textProperty().addListener((observable, oldValue, newValue) -> 
+        {
+            filtereddata.setPredicate(patients -> 
+            {
+                if (newValue == null || newValue.isEmpty()) { return true; }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(patients.getLabID()).contains(lowerCaseFilter)) { return true; }
+                else if (patients.getStreet().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getCity().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getState().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getZip().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getPhone().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getFax().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getEmail().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else if (patients.getName().toLowerCase().contains(lowerCaseFilter)) { return true; }
+                else return false;
+            });
+        });
+        SortedList<LabTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_lab.comparatorProperty());
+        table_lab.setItems(sortedData);
+    }
+    
     
     
 ////////////////////////////////////////////////////////////////////////////////
-//// ▲ UNORGANIZED & OTHER ▲ //////////////////////////////////////////////////
+//// ▲ SEARCH AND TABLEVIEWS ▲ //////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //// ▼ HOME ▼ /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -171,6 +394,9 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+        panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     
@@ -200,6 +426,10 @@ public class PatientDashboardController implements Initializable
         panel_prescriptions.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+        panel_doctors.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     //Declare table for list of doctors
@@ -244,6 +474,22 @@ public class PatientDashboardController implements Initializable
         column_degree.setCellValueFactory(new PropertyValueFactory <>("Degree"));
         column_specialty.setCellValueFactory(new PropertyValueFactory <>("Specialty"));
         table_doctor.setItems(doctorslist);
+    }
+    
+    @FXML
+    public void handleButton_searchdoctors() 
+    {
+        panel_search.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+        panel_doctors.setVisible(true);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     
@@ -296,6 +542,9 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     //Declare text fields for account information
@@ -495,6 +744,9 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     //Declare table view for medical records table
@@ -677,6 +929,9 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
         
     }
     
@@ -831,6 +1086,9 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     /**
@@ -850,6 +1108,9 @@ public class PatientDashboardController implements Initializable
         panel_medicalRecords.setVisible(false);
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     /**
@@ -869,6 +1130,9 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
      //Declare table view for prescriptions table
@@ -1032,6 +1296,9 @@ public class PatientDashboardController implements Initializable
         panel_prescriptions.setVisible(false);
         panel_search.setVisible(false);
         panel_findPharma.setVisible(false);
+         panel_doctors.setVisible(false);
+        panel_pharmacy.setVisible(false);
+        panel_lab.setVisible(false);
     }
     
     

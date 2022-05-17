@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.PatientDashboardController">
+<GridPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupfour.patientportal_vgui.PatientDashboardController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="170.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1227.3333320617676" minWidth="10.0" prefWidth="857.0" />
@@ -48,7 +48,7 @@
                               <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="74.0" layoutX="-2.0" layoutY="28.0" stroke="#ffffff00" strokeType="INSIDE" width="1122.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="74.0" layoutX="-2.0" layoutY="28.0" stroke="#ffffff00" strokeType="INSIDE" width="1127.0" />
                         <Label layoutX="14.0" layoutY="34.0" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="48.0" />
@@ -64,11 +64,11 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="panel_search" layoutX="270.0" layoutY="59.0" prefHeight="609.0" prefWidth="1117.0" visible="false">
+                  <AnchorPane fx:id="panel_doctors" layoutX="270.0" layoutY="59.0" prefHeight="609.0" prefWidth="1117.0" visible="false">
                      <children>
-                        <ScrollPane layoutX="14.0" layoutY="179.0" prefHeight="449.0" prefWidth="1090.0">
+                        <ScrollPane layoutX="8.0" layoutY="179.0" prefHeight="463.0" prefWidth="1120.0">
                            <content>
-                              <TableView fx:id="table_doctor" prefHeight="481.0" prefWidth="1111.0">
+                              <TableView fx:id="table_doctor" prefHeight="471.0" prefWidth="1106.0">
                                  <columns>
                                     <TableColumn fx:id="column_doctorid" prefWidth="100.0" text="DoctorID" />
                                     <TableColumn fx:id="column_dfirstname" prefWidth="175.0" text="First Name" />
@@ -76,19 +76,19 @@
                                     <TableColumn fx:id="column_dphone" minWidth="2.0" prefWidth="125.0" text="Phone" />
                                     <TableColumn fx:id="column_demail" minWidth="0.0" prefWidth="175.0" text="Email" />
                                     <TableColumn fx:id="column_degree" minWidth="0.0" prefWidth="165.0" text="Degree" />
-                                    <TableColumn fx:id="column_specialty" minWidth="0.0" prefWidth="175.0" text="Specialty" />
+                                    <TableColumn fx:id="column_specialty" minWidth="0.0" prefWidth="190.0" text="Specialty" />
                                  </columns>
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <TextField fx:id="textField_search" layoutX="103.0" layoutY="131.0" prefHeight="25.0" prefWidth="339.0">
+                        <TextField fx:id="textField_search" layoutX="154.0" layoutY="129.0" prefHeight="25.0" prefWidth="339.0">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </TextField>
-                        <Text fill="WHITE" layoutX="14.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="88.0">
+                        <Text fill="WHITE" layoutX="14.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="134.0">
                            <font>
-                              <Font name="Arial Bold" size="24.0" />
+                              <Font name="Arial Bold" size="36.0" />
                            </font>
                         </Text>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="74.0" layoutX="2.0" layoutY="38.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
@@ -543,6 +543,102 @@
                         </Label>
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="panel_search" layoutX="272.0" layoutY="99.0" prefHeight="494.0" prefWidth="1127.0" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="84.0" layoutX="-4.0" layoutY="-12.0" stroke="#ffffff00" strokeType="INSIDE" width="1127.0" />
+                        <Label layoutX="8.0" layoutY="1.0" prefHeight="68.0" prefWidth="161.0" text="Search" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <MFXButton buttonType="RAISED" layoutX="482.0" layoutY="204.0" onAction="#handleButton_searchdoctors" prefHeight="68.0" prefWidth="161.0" rippleColor="#3ea3fc" style="-fx-background-color: #4277d3;" text="Doctors" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton buttonType="RAISED" layoutX="482.0" layoutY="304.0" onAction="#handleButton_searchpharmacy" prefHeight="68.0" prefWidth="161.0" rippleColor="#b53d30" style="-fx-background-color: #640018;" text="Pharmacy" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton buttonType="RAISED" layoutX="482.0" layoutY="405.0" onAction="#handleButton_searchlab" prefHeight="68.0" prefWidth="161.0" rippleColor="#ffc44f" style="-fx-background-color: #ffb637;" text="Lab" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </MFXButton>
+                        <Text fill="WHITE" layoutX="317.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click a button below to search." wrappingWidth="491.0">
+                           <font>
+                              <Font name="Arial Black" size="28.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="panel_pharmacy" layoutX="272.0" layoutY="100.0" prefHeight="599.0" prefWidth="1120.0" visible="false">
+                     <children>
+                        <ScrollPane layoutX="6.0" layoutY="155.0" prefHeight="449.0" prefWidth="923.0">
+                           <content>
+                              <TableView fx:id="table_pharmacy" prefHeight="458.0" prefWidth="917.0">
+                                 <columns>
+                                    <TableColumn fx:id="column_pharmacyid" prefWidth="103.0" text="Pharmacy ID" />
+                                    <TableColumn fx:id="column_pharmacystreet" prefWidth="108.0" text="Street" />
+                                    <TableColumn fx:id="column_pharmacycity" prefWidth="114.0" text="City" />
+                                    <TableColumn fx:id="column_pharmacyzip" minWidth="2.0" prefWidth="89.0" text="State" />
+                                    <TableColumn fx:id="column_pharmacystate" minWidth="0.0" prefWidth="77.0" text="Zip" />
+                                    <TableColumn fx:id="column_pharmacyphone" minWidth="0.0" prefWidth="102.0" text="Phone" />
+                                    <TableColumn fx:id="column_pharmacyfax" minWidth="0.0" prefWidth="100.0" text="Fax" />
+                                    <TableColumn fx:id="column_pharmacyemail" minWidth="0.0" prefWidth="116.0" text="Email" />
+                                    <TableColumn fx:id="column_pharmacyname" minWidth="0.0" prefWidth="105.0" text="Name" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="90.0" layoutY="-6.0" stroke="#ffffff00" strokeType="INSIDE" width="1127.0" />
+                        <TextField fx:id="textField_pharmacysearch" layoutX="148.0" layoutY="100.0" prefHeight="35.0" prefWidth="354.0" />
+                        <Label layoutX="7.0" layoutY="5.0" prefHeight="68.0" prefWidth="424.0" text="Pharmacy Search" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="149.0">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="panel_lab" layoutX="271.0" layoutY="100.0" prefHeight="604.0" prefWidth="1128.0" visible="false">
+                     <children>
+                        <ScrollPane layoutX="6.0" layoutY="155.0" prefHeight="449.0" prefWidth="923.0">
+                           <content>
+                              <TableView fx:id="table_lab" prefHeight="455.0" prefWidth="921.0">
+                                 <columns>
+                                    <TableColumn fx:id="column_labid" prefWidth="103.0" text="Lab ID" />
+                                    <TableColumn fx:id="column_labstreet" prefWidth="108.0" text="Street" />
+                                    <TableColumn fx:id="column_labcity" prefWidth="114.0" text="City" />
+                                    <TableColumn fx:id="column_labzip" minWidth="0.0" prefWidth="86.0" text="State" />
+                                    <TableColumn fx:id="column_labstate" minWidth="2.0" prefWidth="79.0" text="Zip" />
+                                    <TableColumn fx:id="column_labphone" minWidth="0.0" prefWidth="103.0" text="Phone" />
+                                    <TableColumn fx:id="column_labfax" minWidth="0.0" prefWidth="100.0" text="Fax" />
+                                    <TableColumn fx:id="column_labemail" minWidth="0.0" prefWidth="116.0" text="Email" />
+                                    <TableColumn fx:id="column_labname" minWidth="0.0" prefWidth="105.0" text="Name" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009788" height="90.0" layoutY="-6.0" stroke="#ffffff00" strokeType="INSIDE" width="1127.0" />
+                        <TextField fx:id="textField_labsearch" layoutX="148.0" layoutY="100.0" prefHeight="35.0" prefWidth="354.0" />
+                        <Label layoutX="7.0" layoutY="5.0" prefHeight="68.0" prefWidth="424.0" text="Lab Search" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="149.0">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
@@ -568,7 +664,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Doctors" textFill="#009788">
+                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#00786c" style="-fx-border-color: #009788; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="#009788">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin>
