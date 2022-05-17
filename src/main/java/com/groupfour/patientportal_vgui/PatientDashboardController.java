@@ -45,22 +45,96 @@ import javax.swing.JOptionPane;
 
 public class PatientDashboardController implements Initializable 
 {
-    @FXML
-    private TableView<DoctorTable> table_doctor;
     
-    @FXML
-    private TableColumn<DoctorTable, String> 
-            column_demail, column_dfirstname, column_dlastname, column_doctorid, 
-            column_dphone, column_degree, column_specialty;
     
+    
+    
+    //Initialize this controller class
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        refreshTable();
+        prescriptionTable();
+        appointmentTable();
+        medicalTable();
+        searchMedical();
+        pharmaTable();
+        searchPharma(); 
+        ECTable();
+        RefreshECTable();
+        FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
+        textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtereddata.setPredicate(doctors -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(doctors.getDoctorID()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (doctors.getDFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDLastName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDPhone().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDEmail().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDegree().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getSpecialty().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+      
+                else 
+                    return false;
+            });
+        });
+        SortedList<DoctorTable> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_doctor.comparatorProperty());
+        table_doctor.setItems(sortedData);
+    }
+    
+    //DECLARE ANCHOR PANES
+    @FXML
+    private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard,
+            panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults, panel_findPharma;
+    
+    //DECLARE BUTTONS TO SWITCH ANCHOR PANES
     @FXML
     private Button button_accountInfo, button_appointments, button_devMenu,
             button_logOut, button_home, button_medicalRecords,
             button_prescriptions, button_search, button_testResults;
     
+    //SWITCH TO LOG-IN MENU
     @FXML
-    private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard,
-            panel_medicalRecords, panel_prescriptions, panel_search, panel_testResults, panel_findPharma;
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    }
+    
+    //OPEN DEVELOPER MENU OPTIONS
+    @FXML
+    void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
+    }
+    
+    
+    
+    //INITIALIZE CURRENT USER ID   
+    private String patientID = App.currentUser.getUserID();
+    
+    public  void setLabelUserFirstLast()
+    {
+        label_userFirstLast.setText("test");
+    }
     
     @FXML
     private TextField textField_search, textField_medicalSearch, textField_email, textField_firstName, 
@@ -69,117 +143,19 @@ public class PatientDashboardController implements Initializable
             textField_street, textField_city, textField_zip, textField_state, textField_searchPharma;
     
     @FXML
-    private Label label_errorText, label_userFirstLast; 
+    private Label label_errorText, label_userFirstLast;
     
     
-    //Script Table
-    @FXML
-    private TableView<PrescriptionTable> table_prescriptions;
     
-    @FXML
-    private TableView<MedicalTable> table_medicalrecords;
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ UNORGANIZED & OTHER ▲ //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ HOME ▼ /////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
     
-    @FXML
-    private TableColumn<MedicalTable, String> column_recordID, column_recorddate, 
-            column_weight, column_bloodtype, column_diagnosis, 
-            column_dob, column_height, column_patientID2;
-      
-    @FXML
-    private TableColumn<PrescriptionTable, String> 
-            column_date, column_description, column_doctorid2, column_dosage, 
-            column_frequency, column_medication, column_patientid, column_pharmid, 
-            column_quantity, column_status, column_scriptid;
     
-    ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
     
-    //Appointment Table
-    @FXML
-    private TableView<Appointment> table_appointments;
-    
-    @FXML
-    private TableColumn<Appointment, String>
-            column_appID, column_appRreason, column_appDate, column_appTime, 
-            column_appDocID, column_appPatID, column_appOfficeID, column_appLabID;
-    
-    //find pharma table:
-    @FXML
-    private TableView<PharmaTable> table_pharmaLocation;
-    
-     @FXML
-    private TableColumn<PharmaTable, String> 
-             column_femail,column_ffax,column_fname
-             ,column_fpharmid, column_fphone,column_fstate
-             ,column_fstreet,column_fzip, column_fcity;
-
-     // Emergency Contact table
-      @FXML
-    private TableView<ECTable> table_EC;
-      
-     @FXML
-    private TableColumn<ECTable, String> column_ecfirst, column_eclast
-             , column_ecphone, column_ecrelation;
-    
-    @FXML
-    private MFXButton button_scheduleDocApp, button_scheduleLabApp, 
-            button_rescheduleOrCancelApp, button_refreshApp, button_backToScript;
-    
-    @FXML
-    void handleButton_scheduleDocApp()
-    {
-        //button_scheduleDocApp
-        //open docAppointmentInsert.fxml
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("docAppointmentInsert.fxml"));
-            Stage mainStage = new Stage();
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @FXML
-    void handleButton_scheduleLabApp()
-    {
-        //button_scheduleLabApp
-        //open labAppointmentInsert.fxml
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("labAppointmentInsert.fxml"));
-            Stage mainStage = new Stage();
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @FXML
-    void handleButton_rescheduleOrCancelApp()
-    {
-        //button_rescheduleOrCancelApp
-        //open appointmentModify.fxml
-        
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("appointmentRescheduleOrCancel.fxml"));
-            Stage mainStage = new Stage();
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-  
-    //currentUserID   
-    private String patientID = App.currentUser.getUserID();
-    
-    public  void setLabelUserFirstLast()
-    {
-        label_userFirstLast.setText("test");
-    }
-    
+    //SWITCH TO HOME ANCHOR PANE
     public void show_panelDashboard() 
     {
         panel_dashboard.setVisible(true);
@@ -191,7 +167,83 @@ public class PatientDashboardController implements Initializable
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
     }
-
+    
+    
+        
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ HOME ▲ /////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ DOCTORS ▼ //////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    //SWITCH TO SEARCH DOCTORS ANCHOR PANE
+    @FXML
+    void handleButton_search() 
+    {
+        panel_search.setVisible(true);
+        
+        panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+    }
+    
+    //DECLARE TABLE FOR DOCTORS
+    @FXML
+    private TableView<DoctorTable> table_doctor;
+    
+    //DECLARE COLUMNS FOR DOCTOR TABLE
+    @FXML
+    private TableColumn<DoctorTable, String>
+            column_demail, column_dfirstname, column_dlastname, column_doctorid,
+            column_dphone, column_degree, column_specialty;
+    
+    //INITIALIZE OBSERVABLE LIST FOR DOCTOR TABLE
+    ObservableList<DoctorTable> doctorslist = FXCollections.observableArrayList();
+    
+    //INITIALIZE FUNCTION TO REFRESH DOCTOR TABLE
+    public void refreshTable() 
+    {
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM DOCTOR");
+            doctorslist.clear();
+            while (rs.next()) 
+            {
+                doctorslist.add(new DoctorTable(rs.getInt("DoctorID"),rs.getString("DFirstName"),
+                rs.getString("DLastName"),rs.getString("DPhone"),rs.getString("DEmail"),
+                rs.getString("Degree"),rs.getString("Specialty")));
+            }
+        }
+        catch (Exception e) {}
+        
+        column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_dfirstname.setCellValueFactory(new PropertyValueFactory <>("DFirstName"));
+        column_dlastname.setCellValueFactory(new PropertyValueFactory <>("DLastName"));
+        column_dphone.setCellValueFactory(new PropertyValueFactory <>("DPhone"));
+        column_demail.setCellValueFactory(new PropertyValueFactory <>("DEmail"));
+        column_degree.setCellValueFactory(new PropertyValueFactory <>("Degree"));
+        column_specialty.setCellValueFactory(new PropertyValueFactory <>("Specialty"));
+        table_doctor.setItems(doctorslist);
+    }
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ DOCTORS ▲ //////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ ACCOUNT INFO ▼ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    //SWITCH TO ACCOUNT INFO ANCHOR PANE    
     @FXML
     void handleButton_accountInfo() 
     {
@@ -217,7 +269,6 @@ public class PatientDashboardController implements Initializable
                     textField_primarydoc.setText(String.valueOf(rs.getInt("PrimaryDoctor")));
             }
         }
-        
         catch (Exception e){}
         
         panel_accountInfo.setVisible(true);
@@ -228,18 +279,30 @@ public class PatientDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
-        
-       
     }
     
+    //DECLARE TABLE VIEW FOR EMERGENCY CONTACTS
     @FXML
-    void handleButton_UpdatePAccInfo() {
-        
-        try {
+    private TableView<ECTable> table_EC;
+    
+    //DECLARE COLUMNS FOR EMERGENCY CONTACTS TABLE
+    @FXML
+    private TableColumn<ECTable, String> column_ecfirst, column_eclast, 
+            column_ecphone, column_ecrelation;
+    
+    //INITIALIZE OBSERVABLE LIST FOR EMERGENCY CONTACTS
+    ObservableList<ECTable> ECList = FXCollections.observableArrayList();
+    
+    //INITIALIZE FUNCTION TO UPDATE PATIENT ACCOUNT INFORMATION
+    @FXML
+    void handleButton_UpdatePAccInfo() 
+    {
+        try
+        {
             System.out.println("Connection Success!");
             Connection con = DatabaseConnection.connectDB();
             Statement stmt = con.createStatement();
-        
+            
             int ID = Integer.parseInt(textField_patientID.getText());
             String fname = textField_firstName.getText();
             String lName = textField_lastName.getText();
@@ -250,7 +313,7 @@ public class PatientDashboardController implements Initializable
             String zip = textField_zip.getText();
             String state =  textField_state.getText();
             int insID =  Integer.parseInt(textField_insuranceID.getText());
-            String insur =  textField_insuranceCo.getText();    
+            String insur =  textField_insuranceCo.getText();
             int prim = Integer.parseInt(textField_primarydoc.getText());
             
             String query = "UPDATE PATIENT " + 
@@ -262,30 +325,116 @@ public class PatientDashboardController implements Initializable
                     "', PrimaryDoctor = " + prim +
                     " WHERE PatientID = " + ID + ";";
             
-            System.out.println(query);            
-            stmt.executeQuery(query);            
-   
+            System.out.println(query);
+            stmt.executeQuery(query);
         } catch (Exception e) {}
         
-        JOptionPane.showMessageDialog(null,"Account information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);    
-        
+        JOptionPane.showMessageDialog(null,"Account information updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
-
-    @FXML
-    void handleButton_appointments() 
+    
+    //INITIALIZE EMERGENCY CONTACT TABLE
+    public void ECTable() 
     {
-        panel_appointments.setVisible(true);
-        
-        panel_accountInfo.setVisible(false);
-        panel_dashboard.setVisible(false);
-        panel_medicalRecords.setVisible(false);
-        panel_prescriptions.setVisible(false);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(false);
-        panel_findPharma.setVisible(false);
-        
-    }
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM EC WHERE PatientID = " + patientID);
+            ECList.clear();
+            while (rs.next()) 
+            {
+                ECList.add(new ECTable(rs.getString("ECfirst"),
+                rs.getString("EClast"),rs.getString("ECphone"),rs.getString("Relation")));
+            }
+        }
+        catch (Exception e) {}
+ 
+        column_ecfirst.setCellValueFactory(new PropertyValueFactory <>("ECfirst"));
+        column_eclast.setCellValueFactory(new PropertyValueFactory <>("EClast"));
+        column_ecphone.setCellValueFactory(new PropertyValueFactory <>("ECphone"));
+        column_ecrelation.setCellValueFactory(new PropertyValueFactory <>("Relation"));
 
+        table_EC.setItems(ECList);
+    }
+    
+    //INITIALIZE FUNCTION TO REFRESH EMERGENCY CONTACT TABLE
+    public void RefreshECTable()
+    {
+        try
+        {
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM EC WHERE PatientID = " + patientID);
+            ECList.clear();
+            while (rs.next()) 
+            {
+                ECList.add(new ECTable(rs.getString("ECfirst"),
+                rs.getString("EClast"),rs.getString("ECphone"),rs.getString("Relation")));
+
+            }
+        } 
+        catch (Exception e) {}
+ 
+        column_ecfirst.setCellValueFactory(new PropertyValueFactory <>("ECfirst"));
+        column_eclast.setCellValueFactory(new PropertyValueFactory <>("EClast"));
+        column_ecphone.setCellValueFactory(new PropertyValueFactory <>("ECphone"));
+        column_ecrelation.setCellValueFactory(new PropertyValueFactory <>("Relation"));
+
+        table_EC.setItems(ECList);
+    }
+     
+    //INITIALIZE BUTTON HANDLER FUNCTION TO ADD AN EMERGENCY CONTACT
+    @FXML
+    void handleButton_addEC()
+    {
+        try 
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("ecadd.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) 
+        {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //INITIALIZE BUTTON HANDLER FUNCTION TO DELETE AN EMERGENCY CONTACT
+    @FXML
+    void handleButon_deleteEC()
+    {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ecdel.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //INITIALIZE BUTTON HANDLER FUNCTION TO REFRESH THE EMERGENCY CONTACT TABLE
+    @FXML
+    void handleButton_refreshEC(){RefreshECTable();}
+    
+    
+
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ ACCOUNT INFO ▲ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ MEDICAL RECORDS ▼ //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+    
+    
+    @FXML
+    private TableView<MedicalTable> table_medicalrecords;
+    
+    @FXML
+    private TableColumn<MedicalTable, String> column_recordID, column_recorddate, 
+            column_weight, column_bloodtype, column_diagnosis, 
+            column_dob, column_height, column_patientID2;
+    
     @FXML
     void handleButton_medicalRecords() 
     {
@@ -299,157 +448,8 @@ public class PatientDashboardController implements Initializable
         panel_testResults.setVisible(false);
         panel_findPharma.setVisible(false);
     }
-
-    @FXML
-    void handleButton_prescriptions() 
-    {
-        panel_prescriptions.setVisible(true);
-        
-        panel_accountInfo.setVisible(false);
-        panel_appointments.setVisible(false);
-        panel_dashboard.setVisible(false);
-        panel_medicalRecords.setVisible(false);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(false);
-        panel_findPharma.setVisible(false);
-    }
     
-    @FXML
-    void handleButton_findPharma() {
-        
-        panel_findPharma.setVisible(true);
-        
-        panel_prescriptions.setVisible(false); 
-        panel_accountInfo.setVisible(false);
-        panel_appointments.setVisible(false);
-        panel_dashboard.setVisible(false);
-        panel_medicalRecords.setVisible(false);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(false);
-
-    }
-
-    @FXML
-    void handleButton_search() 
-    {
-        panel_search.setVisible(true);
-        
-        panel_dashboard.setVisible(false);
-        panel_accountInfo.setVisible(false);
-        panel_appointments.setVisible(false);
-        panel_medicalRecords.setVisible(false);
-        panel_prescriptions.setVisible(false);
-        panel_testResults.setVisible(false);
-        panel_findPharma.setVisible(false);
-    }
-
-    @FXML
-    void handleButton_testResults() 
-    {
-        panel_testResults.setVisible(true);
-        panel_dashboard.setVisible(false);
-        panel_accountInfo.setVisible(false);
-        panel_appointments.setVisible(false);
-        panel_medicalRecords.setVisible(false);
-        panel_prescriptions.setVisible(false);
-        panel_search.setVisible(false);
-        panel_findPharma.setVisible(false);
-    }
-    
-    ObservableList<DoctorTable> doctorslist = FXCollections.observableArrayList();
-    
-    public void refreshTable() {
-        try{
-     
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM DOCTOR");
-            doctorslist.clear();
-                while (rs.next()) {
-                    doctorslist.add(new DoctorTable(rs.getInt("DoctorID"),rs.getString("DFirstName"),
-                    rs.getString("DLastName"),rs.getString("DPhone"),rs.getString("DEmail"),
-                    rs.getString("Degree"),rs.getString("Specialty")));
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-                column_dfirstname.setCellValueFactory(new PropertyValueFactory <>("DFirstName"));
-                column_dlastname.setCellValueFactory(new PropertyValueFactory <>("DLastName"));
-                column_dphone.setCellValueFactory(new PropertyValueFactory <>("DPhone"));
-                column_demail.setCellValueFactory(new PropertyValueFactory <>("DEmail"));
-                column_degree.setCellValueFactory(new PropertyValueFactory <>("Degree"));
-                column_specialty.setCellValueFactory(new PropertyValueFactory <>("Specialty"));
-                table_doctor.setItems(doctorslist);
-    }
-
-    public void prescriptionTable() {
-        try{
-     
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM SCRIPTDOC WHERE PatientID = " + patientID);
-            prescriptionList.clear();
-                while (rs.next()) {
-                    prescriptionList.add(new PrescriptionTable( rs.getInt("PatientID"), rs.getInt("PharmID"),
-                    rs.getInt("DoctorID"),rs.getInt("ScriptID"),rs.getString("Medication"),rs.getString("Description"),
-                    rs.getString("Date"),rs.getString("Status"),rs.getString("Frequency"),
-                    rs.getString("Dosage"), rs.getString("Quantity"))); 
-                    
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_medication.setCellValueFactory(new PropertyValueFactory <>("Medication"));
-                column_description.setCellValueFactory(new PropertyValueFactory <>("Description"));
-                column_date.setCellValueFactory(new PropertyValueFactory <>("DATE"));
-                column_patientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-                column_pharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID")); 
-                column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-                column_scriptid.setCellValueFactory(new PropertyValueFactory <>("ScriptID")); 
-                column_status.setCellValueFactory(new PropertyValueFactory <>("Status"));
-                column_frequency.setCellValueFactory(new PropertyValueFactory <>("Frequency"));
-                column_dosage.setCellValueFactory(new PropertyValueFactory <>("Dosage"));
-                column_quantity.setCellValueFactory(new PropertyValueFactory <>("Quantity"));    
-                table_prescriptions.setItems(prescriptionList);
-        
-    }
-    
-      ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
-    
-    
-   public void appointmentTable()
-    {
-        //button_refreshApp
-        //refresh tableview 
-        
-        try
-        {
-
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PatientID = " + patientID);
-            appointmentslist.clear();
-            
-            while (rs.next()) 
-            {
-                appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
-                rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
-                rs.getString("Date"),rs.getString("Time")));
-            }
-        } 
-        catch (Exception e) {}
-
-        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
-        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
-        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
-        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
-        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
-        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
-
-        table_appointments.setItems(appointmentslist);
-    }
-    
-   ObservableList<MedicalTable> medicalList = FXCollections.observableArrayList();
+    ObservableList<MedicalTable> medicalList = FXCollections.observableArrayList();
     public void medicalTable() {
         try{
      
@@ -477,128 +477,6 @@ public class PatientDashboardController implements Initializable
                 table_medicalrecords.setItems(medicalList);
         
     }
-    
-    ObservableList<PharmaTable> pharmaList = FXCollections.observableArrayList();
-    public void pharmaTable() {
-        try{
-     
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PHARMA ");
-            pharmaList.clear();
-                while (rs.next()) {
-                    pharmaList.add(new PharmaTable(rs.getInt("PharmID"),rs.getString("Name"),
-                    rs.getString("Street"),rs.getString("City"),rs.getString("State"),
-                    rs.getString("Zip"),rs.getString("Email"),rs.getString("Phone"),rs.getString("Fax")));
-                    
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_fpharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID"));
-                column_fname.setCellValueFactory(new PropertyValueFactory <>("Name"));
-                column_fstreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
-                column_fcity.setCellValueFactory(new PropertyValueFactory <>("City"));
-                column_fstate.setCellValueFactory(new PropertyValueFactory <>("State"));
-                column_fzip.setCellValueFactory(new PropertyValueFactory <>("Zip"));
-                column_femail.setCellValueFactory(new PropertyValueFactory <>("Email"));
-                column_fphone.setCellValueFactory(new PropertyValueFactory <>("Phone"));
-                column_ffax.setCellValueFactory(new PropertyValueFactory <>("Fax"));
-                
-                table_pharmaLocation.setItems(pharmaList);
-        
-    }
-    
-     @FXML
-     void handleButton_backToScript() {
-         
-        panel_prescriptions.setVisible(true);
-        
-        panel_accountInfo.setVisible(false);
-        panel_appointments.setVisible(false);
-        panel_dashboard.setVisible(false);
-        panel_medicalRecords.setVisible(false);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(false);
-        panel_findPharma.setVisible(false);
-        
-     }
-     
-     ObservableList<ECTable> ECList = FXCollections.observableArrayList();
-     public void ECTable() {
-        try{
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM EC WHERE PatientID = " + patientID);
-            ECList.clear();
-                while (rs.next()) {
-                    ECList.add(new ECTable(rs.getString("ECfirst"),
-                    rs.getString("EClast"),rs.getString("ECphone"),rs.getString("Relation")));
-                    
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_ecfirst.setCellValueFactory(new PropertyValueFactory <>("ECfirst"));
-                column_eclast.setCellValueFactory(new PropertyValueFactory <>("EClast"));
-                column_ecphone.setCellValueFactory(new PropertyValueFactory <>("ECphone"));
-                column_ecrelation.setCellValueFactory(new PropertyValueFactory <>("Relation"));
-               
-                table_EC.setItems(ECList);
-        
-    }
-     
-     public void RefreshECTable() {
-        try{
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM EC WHERE PatientID = " + patientID);
-            ECList.clear();
-                while (rs.next()) {
-                    ECList.add(new ECTable(rs.getString("ECfirst"),
-                    rs.getString("EClast"),rs.getString("ECphone"),rs.getString("Relation")));
-                    
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_ecfirst.setCellValueFactory(new PropertyValueFactory <>("ECfirst"));
-                column_eclast.setCellValueFactory(new PropertyValueFactory <>("EClast"));
-                column_ecphone.setCellValueFactory(new PropertyValueFactory <>("ECphone"));
-                column_ecrelation.setCellValueFactory(new PropertyValueFactory <>("Relation"));
-               
-                table_EC.setItems(ECList);
-        
-    }
-     
-     @FXML
-    void handleButton_addEC()
-    {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("ecadd.fxml"));
-            Stage mainStage = new Stage();
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @FXML
-    void handleButon_deleteEC()
-    {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("ecdel.fxml"));
-            Stage mainStage = new Stage();
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(DoctorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @FXML
-    void handleButton_refreshEC(){RefreshECTable();}
-    
     
       @FXML
     void handleButton_printMedical() {
@@ -712,7 +590,269 @@ public class PatientDashboardController implements Initializable
         table_medicalrecords.setItems(sortedData);
     }
     
-    public void searchPharma() {
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ MEDICAL RECORDS ▲ //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ APPOINTMENTS ▼ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    @FXML
+    private MFXButton button_scheduleDocApp, button_scheduleLabApp, 
+            button_rescheduleOrCancelApp, button_refreshApp;
+    
+    ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
+    
+    
+    @FXML
+    void handleButton_appointments() 
+    {
+        panel_appointments.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+        
+    }
+    
+    
+    @FXML
+    private TableView<Appointment> table_appointments;
+    
+    @FXML
+    private TableColumn<Appointment, String>
+            column_appID, column_appRreason, column_appDate, column_appTime, 
+            column_appDocID, column_appPatID, column_appOfficeID, column_appLabID;
+    
+    
+    @FXML
+    void handleButton_scheduleDocApp()
+    {
+        //button_scheduleDocApp
+        //open docAppointmentInsert.fxml
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("docAppointmentInsert.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void handleButton_scheduleLabApp()
+    {
+        //button_scheduleLabApp
+        //open labAppointmentInsert.fxml
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("labAppointmentInsert.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    void handleButton_rescheduleOrCancelApp()
+    {
+        //button_rescheduleOrCancelApp
+        //open appointmentModify.fxml
+        
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("appointmentRescheduleOrCancel.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void appointmentTable()
+    {
+        //button_refreshApp
+        //refresh tableview 
+        
+        try
+        {
+
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PatientID = " + patientID);
+            appointmentslist.clear();
+            
+            while (rs.next()) 
+            {
+                appointmentslist.add(new Appointment(rs.getInt("Appid"), rs.getInt("DoctorID"),
+                rs.getInt("PatientID"),rs.getInt("OfficeID"),rs.getInt("LabID"), rs.getString("Reason"),
+                rs.getString("Date"),rs.getString("Time")));
+            }
+        } 
+        catch (Exception e) {}
+
+        column_appID.setCellValueFactory(new PropertyValueFactory <>("Appid"));
+        column_appRreason.setCellValueFactory(new PropertyValueFactory <>("Reason"));
+        column_appDate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+        column_appTime.setCellValueFactory(new PropertyValueFactory <>("Time"));
+        column_appDocID.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_appPatID.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_appOfficeID.setCellValueFactory(new PropertyValueFactory <>("OfficeID"));
+        column_appLabID.setCellValueFactory(new PropertyValueFactory <>("LabID"));
+
+        table_appointments.setItems(appointmentslist);
+    }
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ APPOINTMENTS ▲ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ PRESCRIPTIONS ▼ ////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+    
+    
+    @FXML
+    private TableView<PrescriptionTable> table_prescriptions;
+    
+    @FXML
+    private TableColumn<PrescriptionTable, String> 
+            column_date, column_description, column_doctorid2, column_dosage, 
+            column_frequency, column_medication, column_patientid, column_pharmid, 
+            column_quantity, column_status, column_scriptid;
+    
+    ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
+    
+    @FXML
+    private TableView<PharmaTable> table_pharmaLocation;
+    
+     @FXML
+    private TableColumn<PharmaTable, String> 
+             column_femail,column_ffax,column_fname
+             ,column_fpharmid, column_fphone,column_fstate
+             ,column_fstreet,column_fzip, column_fcity;
+
+    @FXML
+    private MFXButton button_backToScript;
+    
+    @FXML
+    void handleButton_prescriptions() 
+    {
+        panel_prescriptions.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+    }
+    
+    @FXML
+    void handleButton_findPharma() {
+        
+        panel_findPharma.setVisible(true);
+        
+        panel_prescriptions.setVisible(false); 
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+
+    }
+    
+    public void prescriptionTable() {
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM SCRIPTDOC WHERE PatientID = " + patientID);
+            prescriptionList.clear();
+                while (rs.next()) {
+                    prescriptionList.add(new PrescriptionTable( rs.getInt("PatientID"), rs.getInt("PharmID"),
+                    rs.getInt("DoctorID"),rs.getInt("ScriptID"),rs.getString("Medication"),rs.getString("Description"),
+                    rs.getString("Date"),rs.getString("Status"),rs.getString("Frequency"),
+                    rs.getString("Dosage"), rs.getString("Quantity"))); 
+                    
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_medication.setCellValueFactory(new PropertyValueFactory <>("Medication"));
+                column_description.setCellValueFactory(new PropertyValueFactory <>("Description"));
+                column_date.setCellValueFactory(new PropertyValueFactory <>("DATE"));
+                column_patientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+                column_pharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID")); 
+                column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+                column_scriptid.setCellValueFactory(new PropertyValueFactory <>("ScriptID")); 
+                column_status.setCellValueFactory(new PropertyValueFactory <>("Status"));
+                column_frequency.setCellValueFactory(new PropertyValueFactory <>("Frequency"));
+                column_dosage.setCellValueFactory(new PropertyValueFactory <>("Dosage"));
+                column_quantity.setCellValueFactory(new PropertyValueFactory <>("Quantity"));    
+                table_prescriptions.setItems(prescriptionList);
+        
+    }
+    
+    ObservableList<PharmaTable> pharmaList = FXCollections.observableArrayList();
+    public void pharmaTable() {
+        try{
+     
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PHARMA ");
+            pharmaList.clear();
+                while (rs.next()) {
+                    pharmaList.add(new PharmaTable(rs.getInt("PharmID"),rs.getString("Name"),
+                    rs.getString("Street"),rs.getString("City"),rs.getString("State"),
+                    rs.getString("Zip"),rs.getString("Email"),rs.getString("Phone"),rs.getString("Fax")));
+                    
+                    }
+            } 
+        catch (Exception e) {}
+ 
+                column_fpharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID"));
+                column_fname.setCellValueFactory(new PropertyValueFactory <>("Name"));
+                column_fstreet.setCellValueFactory(new PropertyValueFactory <>("Street"));
+                column_fcity.setCellValueFactory(new PropertyValueFactory <>("City"));
+                column_fstate.setCellValueFactory(new PropertyValueFactory <>("State"));
+                column_fzip.setCellValueFactory(new PropertyValueFactory <>("Zip"));
+                column_femail.setCellValueFactory(new PropertyValueFactory <>("Email"));
+                column_fphone.setCellValueFactory(new PropertyValueFactory <>("Phone"));
+                column_ffax.setCellValueFactory(new PropertyValueFactory <>("Fax"));
+                
+                table_pharmaLocation.setItems(pharmaList);
+        
+    }
+    
+     @FXML
+     void handleButton_backToScript() {
+         
+        panel_prescriptions.setVisible(true);
+        
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_dashboard.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_findPharma.setVisible(false);
+        
+     }
+     
+     public void searchPharma() {
          FilteredList<PharmaTable> filtereddata = new FilteredList<>(pharmaList, b -> true);
         textField_searchPharma.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(pharma -> {
@@ -758,73 +898,29 @@ public class PatientDashboardController implements Initializable
         sortedData.comparatorProperty().bind(table_pharmaLocation.comparatorProperty());
         table_pharmaLocation.setItems(sortedData);
     }
-    
-    @FXML
-    void switchToDevMenu() throws IOException 
+     
+     
+     @FXML
+    void handleButton_testResults() 
     {
-        App.setRoot("devMenu");
+        panel_testResults.setVisible(true);
+        panel_dashboard.setVisible(false);
+        panel_accountInfo.setVisible(false);
+        panel_appointments.setVisible(false);
+        panel_medicalRecords.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_search.setVisible(false);
+        panel_findPharma.setVisible(false);
     }
     
-    @FXML
-    private void handleButton_logOut() throws IOException
-    {
-        App.setRoot("loginScreen");
-    }
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        refreshTable();
-        prescriptionTable();
-        appointmentTable();
-        medicalTable();
-        searchMedical();
-        pharmaTable();
-        searchPharma(); 
-        ECTable();
-        RefreshECTable();
-        FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
-        textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
-            filtereddata.setPredicate(doctors -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                
-                String lowerCaseFilter = newValue.toLowerCase();
-                
-                if (String.valueOf(doctors.getDoctorID()).contains(lowerCaseFilter)) {
-                    return true;
-                }
-                else if (doctors.getDFirstName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;  
-                }
-                else if (doctors.getDLastName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;  
-                }
-                else if (doctors.getDPhone().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;  
-                }
-                else if (doctors.getDEmail().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;  
-                }
-                else if (doctors.getDegree().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;  
-                }
-                else if (doctors.getSpecialty().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;  
-                }
-      
-                else 
-                    return false;
-            });
-        });
-        SortedList<DoctorTable> sortedData = new SortedList<>(filtereddata);
-        sortedData.comparatorProperty().bind(table_doctor.comparatorProperty());
-        table_doctor.setItems(sortedData);
-        // TODO
-        
-        
-    }      
     
-}
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ TEST RESULTS ▲ ////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ END OF CLASS ▼ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+}//END OF PATIENT DASHBOARD CONTROLLER CLASS
