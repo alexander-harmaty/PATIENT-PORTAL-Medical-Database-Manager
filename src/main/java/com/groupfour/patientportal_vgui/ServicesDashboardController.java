@@ -4,7 +4,6 @@
  */
 package com.groupfour.patientportal_vgui;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -33,155 +32,81 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Alexander
+ * @author Alexander Harmaty, Yasin Khan, Brian Noss, Christopher Scheer, Angela Todaro
  */
-public class ServicesDashboardController implements Initializable {
-
-    // Buttons
-    @FXML
-    private Button button_search;
-    @FXML
-    private Button button_accountInfo;
-    @FXML
-    private Button button_medicalRecords;
-    @FXML
-    private Button button_testResults;
-    @FXML
-    private Button button_prescriptions;
-    @FXML
-    private Button button_appointments;
-    @FXML
-    private Button button_devMenu;
-    @FXML
-    private Button button_logOut;
-    @FXML
-    private Button button_home;
+public class ServicesDashboardController implements Initializable 
+{
     
-    // TextFields
-    /**Angie
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ UNORGANIZED & OTHER ▼ //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////    
+    
+    
+    
+    /**
+     * Initializes the controller class.
      * 
+     * @author
+     * 
+     * @param url
+     * @param rb 
      */
-     @FXML
-    private TextField textField_scity;
-
-    @FXML
-    private TextField textField_semail;
-
-    @FXML
-    private TextField textField_serviceid;
-
-    @FXML
-    private TextField textField_sfax;
-
-    @FXML
-    private TextField textField_sname;
-
-    @FXML
-    private TextField textField_sphone;
-
-    @FXML
-    private TextField textField_sstate;
-
-    @FXML
-    private TextField textField_sstreet;
-
-    @FXML
-    private TextField textField_szip;
-  
-    
-    //Anchor Panes
-    @FXML
-    private AnchorPane panel_account;
-
-    @FXML
-    private AnchorPane panel_appointment;
-
-    @FXML
-    private AnchorPane panel_dashboard;
-
-    @FXML
-    private AnchorPane panel_prescriptions;
-
-    @FXML
-    private AnchorPane panel_records;
-
-    @FXML
-    private AnchorPane panel_search;
-
-    @FXML
-    private AnchorPane panel_testResults;
-
-    //Table variables
-    
-    @FXML
-    private TableView<PrescriptionTable> table_prescriptions;
-    
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_date;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_description;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_doctorid;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_dosage;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_frequency;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_medication;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_patientid;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_pharmid;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_quantity;
-
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_status;
-    
-    @FXML
-    private TableColumn<PrescriptionTable, String> column_scriptid;
-    
-    ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
-    
-    public void prescriptionTable() {
-        try{
-     
-            Connection con = DatabaseConnection.connectDB();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM SCRIPTDOC");
-            prescriptionList.clear();
-                while (rs.next()) {
-                    prescriptionList.add(new PrescriptionTable( rs.getInt("PatientID"), rs.getInt("PharmID"),
-                    rs.getInt("DoctorID"),rs.getInt("ScriptID"),rs.getString("Medication"),rs.getString("Description"),
-                    rs.getString("Date"),rs.getString("Status"),rs.getString("Frequency"),
-                    rs.getString("Dosage"), rs.getString("Quantity")));  
-                    }
-            } 
-        catch (Exception e) {}
- 
-                column_medication.setCellValueFactory(new PropertyValueFactory <>("Medication"));
-                column_description.setCellValueFactory(new PropertyValueFactory <>("Description"));
-                column_date.setCellValueFactory(new PropertyValueFactory <>("DATE"));
-                column_patientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
-                column_pharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID")); 
-                column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
-                column_scriptid.setCellValueFactory(new PropertyValueFactory <>("ScriptID")); 
-                column_status.setCellValueFactory(new PropertyValueFactory <>("Status"));
-                column_frequency.setCellValueFactory(new PropertyValueFactory <>("Frequency"));
-                column_dosage.setCellValueFactory(new PropertyValueFactory <>("Dosage"));
-                column_quantity.setCellValueFactory(new PropertyValueFactory <>("Quantity"));    
-                table_prescriptions.setItems(prescriptionList); 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        prescriptionTable();
+        // TODO
     }
     
+    //Declare anchor panes
     @FXML
-    void show_panelDashboard() {
+    private AnchorPane panel_account, panel_appointment, panel_dashboard, 
+            panel_prescriptions, panel_records, panel_search, panel_testResults;
+    
+    //Declare buttons to switch anchor panes
+    @FXML
+    private Button button_home, button_search, button_accountInfo, button_medicalRecords, 
+            button_testResults, button_prescriptions, button_appointments;
+    
+    //Declare buttons for log-out and devMenu
+    @FXML
+    private Button button_logOut, button_devMenu;
+    
+    //Switch to log-in menu
+    @FXML
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    } 
+    
+    //Open developer menu options
+    @FXML
+    private void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
+    }
+    
+    //Initialize current user ID  
+    private String currentUserID = App.currentUser.getUserID();
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ UNORGANIZED & OTHER ▲ //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ HOME ▼ /////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    /**
+     * Switch to home anchor pane
+     * 
+     * @author 
+     */
+    @FXML
+    void show_panelDashboard() 
+    {
         panel_account.setVisible(false);
         panel_appointment.setVisible(false);
         panel_prescriptions.setVisible(false);
@@ -191,9 +116,52 @@ public class ServicesDashboardController implements Initializable {
         panel_dashboard.setVisible(true);
     }
     
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ HOME ▲ /////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ SEARCH ▼ ///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////   
+    
+    
+    
+    /**
+     * Switch to search anchor pane
+     * 
+     * @author
+     */
     @FXML
-    void handleButton_account() {
-//         try
+    void handleButton_search() 
+    {
+        panel_account.setVisible(false);
+        panel_appointment.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_records.setVisible(false);
+        panel_search.setVisible(true);
+        panel_testResults.setVisible(false);
+        panel_dashboard.setVisible(false);
+    }
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ SEARCH ▲ ///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ ACCOUNT INFO ▼ /////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////// 
+    
+    
+    
+    /**
+     * Switch to account information anchor pane
+     * 
+     * @author Angela Todaro
+     */
+    @FXML
+    void handleButton_account() 
+    {
+//        try
 //        {
 //            Connection con = DatabaseConnection.connectDB();
 //            Statement st = con.createStatement();
@@ -220,9 +188,180 @@ public class ServicesDashboardController implements Initializable {
         panel_testResults.setVisible(false);
         panel_dashboard.setVisible(false);
     }
-
+    
+    //Declare textfields for account information
     @FXML
-    void handleButton_appointments() {
+    private TextField textField_scity, textField_semail, textField_serviceid, 
+             textField_sfax, textField_sname, textField_sphone, 
+             textField_sstate, textField_sstreet, textField_szip;
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ ACCOUNT INFO ▲ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ MEDICAL RECORDS ▼ //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////    
+    
+    
+    
+    /**
+     * Switch to medical records anchor pane
+     */
+    @FXML
+    void handleButton_record() 
+    {
+        panel_account.setVisible(false);
+        panel_appointment.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_records.setVisible(true);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_dashboard.setVisible(false);
+    }
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ MEDICAL RECORDS ▲ //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ TEST RESULTS ▼ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    /**
+     * Switch to test results anchor pane
+     * 
+     * @author
+     */
+    @FXML
+    void handleButton_testResults() 
+    {
+        panel_account.setVisible(false);
+        panel_appointment.setVisible(false);
+        panel_prescriptions.setVisible(false);
+        panel_records.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(true);
+        panel_dashboard.setVisible(false);
+    }
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ TEST RESULTS ▲ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ PRESCRIPTIONS ▼ ////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////    
+    
+    
+    
+    /**
+     * Switch to prescriptions anchor pane
+     * 
+     * @author
+     */
+    @FXML
+    void handleButton_prescriptions() 
+    {
+        panel_account.setVisible(false);
+        panel_appointment.setVisible(false);
+        panel_prescriptions.setVisible(true);
+        panel_records.setVisible(false);
+        panel_search.setVisible(false);
+        panel_testResults.setVisible(false);
+        panel_dashboard.setVisible(false);
+    }
+    
+    //Declare table view for prescriptions table
+    @FXML
+    private TableView<PrescriptionTable> table_prescriptions;
+    
+    //Declare columns for prescriptions table
+    @FXML
+    private TableColumn<PrescriptionTable, String> column_date, 
+            column_description, column_doctorid, column_dosage, 
+            column_frequency, column_medication, column_patientid, 
+            column_pharmid, column_quantity, column_status, column_scriptid;
+    
+    //Declare observable lsit for prescriptions table
+    ObservableList<PrescriptionTable> prescriptionList = FXCollections.observableArrayList();
+    
+    /**
+     * Function to refresh prescriptions table
+     * 
+     * @author
+     */
+    public void prescriptionTable() 
+    {
+        try{
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM SCRIPTDOC");
+            prescriptionList.clear();
+            while (rs.next()) 
+            {
+                prescriptionList.add(new PrescriptionTable( rs.getInt("PatientID"), rs.getInt("PharmID"),
+                rs.getInt("DoctorID"),rs.getInt("ScriptID"),rs.getString("Medication"),rs.getString("Description"),
+                rs.getString("Date"),rs.getString("Status"),rs.getString("Frequency"),
+                rs.getString("Dosage"), rs.getString("Quantity")));  
+            }
+        } 
+        catch (Exception e) {}
+ 
+        column_medication.setCellValueFactory(new PropertyValueFactory <>("Medication"));
+        column_description.setCellValueFactory(new PropertyValueFactory <>("Description"));
+        column_date.setCellValueFactory(new PropertyValueFactory <>("DATE"));
+        column_patientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_pharmid.setCellValueFactory(new PropertyValueFactory <>("PharmID")); 
+        column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_scriptid.setCellValueFactory(new PropertyValueFactory <>("ScriptID")); 
+        column_status.setCellValueFactory(new PropertyValueFactory <>("Status"));
+        column_frequency.setCellValueFactory(new PropertyValueFactory <>("Frequency"));
+        column_dosage.setCellValueFactory(new PropertyValueFactory <>("Dosage"));
+        column_quantity.setCellValueFactory(new PropertyValueFactory <>("Quantity"));    
+        table_prescriptions.setItems(prescriptionList); 
+    }
+    
+    /**
+     * Button handler function to sent prescriptions to patient from pharmacy
+     * 
+     * @author
+     */
+    @FXML
+    void handleButton_pharmSendPatient()
+    {
+        try 
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("pharmSendPatient.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException ex) 
+        {
+            Logger.getLogger(ServicesDashboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ PRESCRIPTIONS ▲ ////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ APPOINTMENTS ▼ /////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////// 
+    
+    
+    
+    /**
+     * Switch to appointments anchor pane
+     * 
+     * @author Alexander Harmaty
+     */
+    @FXML
+    void handleButton_appointments() 
+    {
         panel_account.setVisible(false);
         panel_appointment.setVisible(true);
         panel_prescriptions.setVisible(false);
@@ -234,74 +373,11 @@ public class ServicesDashboardController implements Initializable {
         appointmentTable();
     }
 
-    @FXML
-    void handleButton_prescriptions() {
-        panel_account.setVisible(false);
-        panel_appointment.setVisible(false);
-        panel_prescriptions.setVisible(true);
-        panel_records.setVisible(false);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(false);
-        panel_dashboard.setVisible(false);
-    }
-
-    @FXML
-    void handleButton_record() {
-        panel_account.setVisible(false);
-        panel_appointment.setVisible(false);
-        panel_prescriptions.setVisible(false);
-        panel_records.setVisible(true);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(false);
-        panel_dashboard.setVisible(false);
-
-    }
-
-    @FXML
-    void handleButton_search() {
-        panel_account.setVisible(false);
-        panel_appointment.setVisible(false);
-        panel_prescriptions.setVisible(false);
-        panel_records.setVisible(false);
-        panel_search.setVisible(true);
-        panel_testResults.setVisible(false);
-        panel_dashboard.setVisible(false);
-
-    }
-
-    @FXML
-    void handleButton_testResults() {
-        panel_account.setVisible(false);
-        panel_appointment.setVisible(false);
-        panel_prescriptions.setVisible(false);
-        panel_records.setVisible(false);
-        panel_search.setVisible(false);
-        panel_testResults.setVisible(true);
-        panel_dashboard.setVisible(false);
-
-    }
-
-    @FXML
-    void handleButton_pharmSendPatient(){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("pharmSendPatient.fxml"));
-            Stage mainStage = new Stage();
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ServicesDashboardController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    
-    
-    
-    
-    
-    //currentUserID   
-    private String currentUserID = App.currentUser.getUserID();
-    
+    /**
+     * Function to schedule a lab appointment 
+     * 
+     * @author Alexander Harmaty
+     */
     @FXML
     void handleButton_scheduleLabApp()
     {
@@ -318,6 +394,11 @@ public class ServicesDashboardController implements Initializable {
         }
     }
     
+    /**
+     * Function to schedule a doctor appointment 
+     * 
+     * @author Alexander Harmaty
+     */
     @FXML
     void handleButton_scheduleDocApp()
     {
@@ -334,6 +415,11 @@ public class ServicesDashboardController implements Initializable {
         }
     }
     
+    /**
+     * Function to reschedule or cancel any appointment 
+     * 
+     * @author Alexander Harmaty
+     */
     @FXML
     void handleButton_rescheduleOrCancelApp()
     {
@@ -351,16 +437,24 @@ public class ServicesDashboardController implements Initializable {
         }
     }
     
+    //Declare table view for appointments table
+    @FXML
+    private TableView<Appointment> table_appointments;
+    
+    //Initialize observable list for appointments table
     ObservableList<Appointment> appointmentslist = FXCollections.observableArrayList();
     
+    //Declare columns for appointments table
     @FXML
     private TableColumn<Appointment, String>
             column_appID, column_appRreason, column_appDate, column_appTime, 
             column_appDocID, column_appPatID, column_appOfficeID, column_appLabID;
     
-    @FXML
-    private TableView<Appointment> table_appointments;
-    
+    /**
+     * Function to refresh appointments table
+     * 
+     * @author Alexander Harmaty
+     */
     public void appointmentTable()
     {
         //button_refreshApp
@@ -369,7 +463,8 @@ public class ServicesDashboardController implements Initializable {
         String currentUserID = App.currentUser.getUserID();
         String currentUserType = App.currentUser.getType();
         
-        switch (currentUserType) {
+        switch (currentUserType) 
+        {
             case "Lab":
                 try
                 {
@@ -399,6 +494,7 @@ public class ServicesDashboardController implements Initializable {
                 table_appointments.setItems(appointmentslist);
                 
                 break;
+                
             case "Office":
                 try
                 {
@@ -428,6 +524,7 @@ public class ServicesDashboardController implements Initializable {
                 table_appointments.setItems(appointmentslist);
                 
                 break;
+                
             case "Service":
                 try
                 {
@@ -457,33 +554,18 @@ public class ServicesDashboardController implements Initializable {
                 table_appointments.setItems(appointmentslist);
                 
                 break;
+                
             default:
                 JOptionPane.showMessageDialog(null,"Unable to get current user data.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }
+
+////////////////////////////////////////////////////////////////////////////////
+//// ▲ APPOINTMENTS ▲ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ END OF CLASS ▼ /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
     
-    /**
-     * Initializes the controller class.
-     */
     
-    @FXML
-    private void switchToDevMenu() throws IOException 
-    {
-        App.setRoot("devMenu");
-    }
     
-        @FXML
-    private void handleButton_logOut() throws IOException
-    {
-        App.setRoot("loginScreen");
-    } 
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        prescriptionTable();
-        // TODO
-    }    
-    
-}
+}//END OF SERVICE DASHBOARD CONTROLLER CLASS

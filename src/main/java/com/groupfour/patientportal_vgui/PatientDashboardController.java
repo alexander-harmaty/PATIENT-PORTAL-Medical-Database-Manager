@@ -42,9 +42,15 @@ import javax.swing.JOptionPane;
  *
  * @author Alexander Harmaty, Yasin Khan, Brian Noss, Christopher Scheer, Angela Todaro
  */
-
 public class PatientDashboardController implements Initializable 
 {
+    
+////////////////////////////////////////////////////////////////////////////////
+//// ▼ UNORGANIZED & OTHER ▼ //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
     /**
      * Initialize this controller class
      * 
