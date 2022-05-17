@@ -76,32 +76,6 @@ public class DoctorDashboardController implements Initializable
 
     
     
-    //Declare anchor panes
-    @FXML
-    private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard, 
-            panel_medicalRecords, panel_patients, panel_pharmacy,text_doctordashboard, 
-            panel_prescriptions, panel_testResults, panel_search, panel_lab;
-
-    //Switch to log-in menu and log-out of current account
-    @FXML
-    private void handleButton_logOut() throws IOException
-    {
-        App.setRoot("loginScreen");
-    }
-    
-    //Open developer menu options
-    @FXML
-    void switchToDevMenu() throws IOException 
-    {
-        App.setRoot("devMenu");
-    }
-    
-    //Initialize current user ID  
-    private String doctorID = App.currentUser.getUserID();
-    String currentUserID = App.currentUser.getUserID();
-    
-    
-    
     //Meow
     @FXML
     private StackPane meow;
@@ -136,6 +110,30 @@ public class DoctorDashboardController implements Initializable
         labTable();
         labSearch();
     }
+    
+    //Declare anchor panes
+    @FXML
+    private AnchorPane panel_accountInfo, panel_appointments, panel_dashboard, 
+            panel_medicalRecords, panel_patients, panel_pharmacy,text_doctordashboard, 
+            panel_prescriptions, panel_testResults, panel_search, panel_lab;
+
+    //Switch to log-in menu and log-out of current account
+    @FXML
+    private void handleButton_logOut() throws IOException
+    {
+        App.setRoot("loginScreen");
+    }
+    
+    //Open developer menu options
+    @FXML
+    void switchToDevMenu() throws IOException 
+    {
+        App.setRoot("devMenu");
+    }
+    
+    //Initialize current user ID  
+    private String doctorID = App.currentUser.getUserID();
+    String currentUserID = App.currentUser.getUserID();
     
     
     
