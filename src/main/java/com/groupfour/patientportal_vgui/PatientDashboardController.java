@@ -69,10 +69,7 @@ public class PatientDashboardController implements Initializable
             textField_street, textField_city, textField_zip, textField_state, textField_searchPharma;
     
     @FXML
-    private Label label_errorText;
-    
-    @FXML
-    protected Label label_userFirstLast; 
+    private Label label_errorText, label_userFirstLast; 
     
     
     //Script Table
@@ -83,28 +80,9 @@ public class PatientDashboardController implements Initializable
     private TableView<MedicalTable> table_medicalrecords;
     
     @FXML
-    private TableColumn<MedicalTable, String> column_recordID;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_recorddate;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_weight;
-    
-    @FXML
-    private TableColumn<MedicalTable, String> column_bloodtype;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_diagnosis;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_dob;
-
-    @FXML
-    private TableColumn<MedicalTable, String> column_height;
-    
-    @FXML
-    private TableColumn<MedicalTable, String> column_patientID2;
+    private TableColumn<MedicalTable, String> column_recordID, column_recorddate, 
+            column_weight, column_bloodtype, column_diagnosis, 
+            column_dob, column_height, column_patientID2;
       
     @FXML
     private TableColumn<PrescriptionTable, String> 
