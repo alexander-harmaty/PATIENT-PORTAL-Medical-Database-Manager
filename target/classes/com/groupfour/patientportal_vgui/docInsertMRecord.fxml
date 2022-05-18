@@ -53,7 +53,7 @@
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth (mm/dd/yyyy) " wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_dob" prefHeight="25.0" prefWidth="200.0" />
                </children>
                <padding>
@@ -62,7 +62,7 @@
             </HBox>
             <HBox prefHeight="28.0" prefWidth="371.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Record Date" wrappingWidth="77.13671875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Record Date (yyyy-mm-dd)" wrappingWidth="77.13671875" />
                   <TextField fx:id="textField_recorddate" prefHeight="25.0" prefWidth="200.0" />
                </children>
                <padding>
