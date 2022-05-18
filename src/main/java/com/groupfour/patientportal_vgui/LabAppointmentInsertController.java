@@ -17,15 +17,12 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 
 /**
- * FXML Controller class
+ * FXML Controller class to create a lab appointment
  *
- * @author AlexH
+ * @author Alexander Harmaty
  */
-public class LabAppointmentInsertController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
+public class LabAppointmentInsertController implements Initializable 
+{
     @FXML
     private MFXButton button_clear, button_createApp;
     
@@ -44,43 +41,63 @@ public class LabAppointmentInsertController implements Initializable {
         this.textField_labID.clear();
     }
     
-    Connection con = null;
-    Statement stmt = null;
-    
     @FXML
     void handleButton_createApp()
     {
-        try {
-            System.out.println("Insert Proccess has Started!");
-            con = DatabaseConnection.connectDB();
-            stmt = con.createStatement();
-                
-            String reason = textArea_appReason.getText();
-            String date = textField_date.getText();
-            String time = textField_time.getText();
-            String labID = textField_labID.getText();
-            String patientID = textField_patientID.getText();
-                
-            String addRecord = "INSERT INTO APPOINTMENT (Reason, Date, Time, PatientID, LabID)"
-                    + " VALUES ('" + reason + "','" +date+ "','" +time+ "'," +patientID+ "," +labID+ ")";
-            
-        System.out.println(addRecord);            
-        stmt.execute(addRecord); 
-        System.out.println("Insert Proccess has finished!");
-        JOptionPane.showMessageDialog(null,"New Record Added!");
-        
-        } catch (Exception e) {JOptionPane.showMessageDialog(null,"Please fill out all fields.", "Error", JOptionPane.ERROR_MESSAGE);}
-    }
-    
-    
-    
-    @FXML
-    void handleButton_getAppData() {
-        
         String currentUserID = App.currentUser.getUserID();
         String currentUserType = App.currentUser.getType();
         
-        switch (currentUserType) {
+        String reason = textArea_appReason.getText();
+        String date = textField_date.getText();
+        String time = textField_time.getText();
+        String labID = textField_labID.getText();
+        String patientID = textField_patientID.getText();
+        
+        if ("Patient".equals(currentUserType) && !currentUserID.equals(patientID))
+        {
+            JOptionPane.showMessageDialog(null,"Patient ID does not match the current user!"
+                    + "\nPlease enter the correct ID, and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if ("Lab".equals(currentUserType) && !currentUserID.equals(labID))
+        {
+            JOptionPane.showMessageDialog(null,"Doctor ID does not match the current user!"
+                    + "\nPlease enter the correct ID, and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            try 
+            {
+                System.out.println("Insert Proccess has Started!");
+                Connection con = DatabaseConnection.connectDB();
+                Statement stmt = con.createStatement();
+
+
+
+                String addRecord = "INSERT INTO APPOINTMENT (Reason, Date, Time, PatientID, LabID)"
+                        + " VALUES ('" + reason + "','" +date+ "','" +time+ "'," +patientID+ "," +labID+ ")";
+
+                System.out.println(addRecord);            
+                stmt.execute(addRecord); 
+                System.out.println("Insert Proccess has finished!");
+                JOptionPane.showMessageDialog(null,"New Record Added!");
+
+            } 
+            catch (Exception e) 
+            {
+                JOptionPane.showMessageDialog(null,"Please fill out all fields\n"
+                        + "and assure all IDs are correct.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
+    @FXML
+    void handleButton_getAppData() 
+    {
+        String currentUserID = App.currentUser.getUserID();
+        String currentUserType = App.currentUser.getType();
+        
+        switch (currentUserType) 
+        {
             case "Patient":
                 textField_patientID.setText(currentUserID);
                 break;
@@ -89,6 +106,15 @@ public class LabAppointmentInsertController implements Initializable {
                 break;
             case "Service":
                 textField_labID.setText(currentUserID);
+                break;
+            case "Office":
+                JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+            case "Lab":
+                JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+            case "Pharmacy":
+                JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
             default:
                 JOptionPane.showMessageDialog(null,"Unable to get current user data.", "Error", JOptionPane.ERROR_MESSAGE);
