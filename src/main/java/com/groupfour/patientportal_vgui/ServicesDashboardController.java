@@ -55,7 +55,7 @@ public class ServicesDashboardController implements Initializable
     public void initialize(URL url, ResourceBundle rb) 
     {
         prescriptionTable();
-        // TODO
+        TestResultsTable();
     }
     
     //Declare anchor panes
@@ -102,7 +102,7 @@ public class ServicesDashboardController implements Initializable
     /**
      * Switch to home anchor pane
      * 
-     * @author 
+     * @author yasin
      */
     @FXML
     void show_panelDashboard() 
@@ -233,7 +233,7 @@ public class ServicesDashboardController implements Initializable
     /**
      * Switch to test results anchor pane
      * 
-     * @author
+     * @author Yasin Khan
      */
     @FXML
     void handleButton_testResults() 
@@ -245,6 +245,50 @@ public class ServicesDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(true);
         panel_dashboard.setVisible(false);
+    }
+    
+    //Declare table view for Results table
+    @FXML
+    private TableView<TRTable> table_testResults;
+    
+    //Declare columns for Results table
+    @FXML
+    private TableColumn<TRTable, String> column_trid, 
+            column_title, column_result, column_trdate, 
+            column_type, column_trpatientid, column_trlabid;
+    
+    //Declare observable lsit for Results table
+    ObservableList<TRTable> resultList = FXCollections.observableArrayList();
+    
+    /**
+     * Function to load and refresh Results table
+     * 
+     * @author
+     */
+    public void TestResultsTable() 
+    {
+        try{
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM TESTRESULTS");
+            resultList.clear();
+            while (rs.next()) 
+            {
+                resultList.add(new TRTable(rs.getInt("TRID"), rs.getString("Title"),
+                rs.getString("Result"),rs.getString("Date"),rs.getString("Type"),
+                rs.getInt("PatientID"),rs.getInt("LabID")));  
+            }
+        } 
+        catch (Exception e) {}
+ 
+        column_trid.setCellValueFactory(new PropertyValueFactory <>("TRID"));
+        column_title.setCellValueFactory(new PropertyValueFactory <>("Title"));
+        column_result.setCellValueFactory(new PropertyValueFactory <>("Result"));
+        column_trdate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+        column_type.setCellValueFactory(new PropertyValueFactory <>("Type")); 
+        column_trpatientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_trlabid.setCellValueFactory(new PropertyValueFactory <>("LabID")); 
+   
+        table_testResults.setItems(resultList); 
     }
     
     
@@ -260,7 +304,7 @@ public class ServicesDashboardController implements Initializable
     /**
      * Switch to prescriptions anchor pane
      * 
-     * @author
+     * @author yasin
      */
     @FXML
     void handleButton_prescriptions() 
@@ -326,7 +370,7 @@ public class ServicesDashboardController implements Initializable
     /**
      * Button handler function to sent prescriptions to patient from pharmacy
      * 
-     * @author
+     * @author yasin
      */
     @FXML
     void handleButton_pharmSendPatient()
