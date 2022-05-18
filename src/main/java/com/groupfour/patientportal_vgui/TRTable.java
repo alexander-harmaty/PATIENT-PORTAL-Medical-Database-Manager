@@ -11,9 +11,10 @@ package com.groupfour.patientportal_vgui;
 public class TRTable {
     int TRID;
     String Title, Result, Date, Type;
-    int PatientID, LabID; 
+    int PatientID, LabID;
+    String Name, City;
     
-    public TRTable(int TRID, String Title, String Result, String Date, String Type, int PatientID, int LabID) {
+    public TRTable(int TRID, String Title, String Result, String Date, String Type, int PatientID, int LabID, String Name, String City) {
         this.TRID = TRID;
         this.Title = Title;
         this.Result = Result;
@@ -21,6 +22,8 @@ public class TRTable {
         this.Type = Type;
         this.PatientID = PatientID;
         this.LabID = LabID;
+        this.Name = Name;
+        this.City = City;
     }
 
     
@@ -79,5 +82,20 @@ public class TRTable {
 
     public void setLabID(int LabID) {
         this.LabID= LabID;
+    }
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+    
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String City) {
+        this.City = City;
     }
 }

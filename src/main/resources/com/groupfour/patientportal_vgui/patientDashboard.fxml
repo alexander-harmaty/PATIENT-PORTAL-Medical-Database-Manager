@@ -546,11 +546,23 @@
                               <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
-                        <Label layoutX="14.0" layoutY="105.0" text="Under Construction" textFill="WHITE">
-                           <font>
-                              <Font name="Arial" size="48.0" />
-                           </font>
-                        </Label>
+                        <ScrollPane layoutX="5.0" layoutY="111.0" prefHeight="416.0" prefWidth="1110.0">
+                           <content>
+                              <TableView fx:id="table_testResults" prefHeight="497.0" prefWidth="1099.0">
+                                 <columns>
+                                    <TableColumn fx:id="column_trid" prefWidth="98.22223234176636" text="Result ID" />
+                                    <TableColumn fx:id="column_title" prefWidth="133.33335876464844" text="Title" />
+                                    <TableColumn fx:id="column_result" prefWidth="275.9999084472656" text="Result" />
+                                    <TableColumn fx:id="column_trdate" prefWidth="106.22219848632812" text="Date" />
+                                    <TableColumn fx:id="column_type" prefWidth="101.7777099609375" text="Type" />
+                                    <TableColumn fx:id="column_trpatientid" prefWidth="100.4444580078125" text="Patient ID" />
+                                    <TableColumn fx:id="column_trlabid" minWidth="0.0" prefWidth="87.5555419921875" text="Lab ID" />
+                                    <TableColumn fx:id="column_trname" minWidth="0.0" prefWidth="96.888916015625" text="Lab Name" />
+                                    <TableColumn fx:id="column_trcity" minWidth="0.0" prefWidth="259.5555419921875" text="City" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="panel_search" layoutX="272.0" layoutY="99.0" prefHeight="494.0" prefWidth="1127.0" visible="false">

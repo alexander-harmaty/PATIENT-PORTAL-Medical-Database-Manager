@@ -110,6 +110,7 @@ public class DoctorDashboardController implements Initializable
         labTable();
         labSearch();
         appSearch();
+        TestResultsTable();
     }
     
     //Declare anchor panes
@@ -1225,6 +1226,54 @@ public class DoctorDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_pharmacy.setVisible(false);
         panel_lab.setVisible(false);
+    }
+    
+    //Declare table view for Results table
+    @FXML
+    private TableView<TRTable> table_testResults;
+    
+    //Declare columns for Results table
+    @FXML
+    private TableColumn<TRTable, String> column_trid, 
+            column_title, column_result, column_trdate, 
+            column_type, column_trpatientid, column_trlabid,
+            column_trname,column_trcity;
+    
+    //Declare observable lsit for Results table
+    ObservableList<TRTable> resultList = FXCollections.observableArrayList();
+    
+    /**
+     * Function to load and refresh Results table
+     * 
+     * @author Yasin Khan
+     */
+    public void TestResultsTable() 
+    {
+        try{
+            Connection con = DatabaseConnection.connectDB();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM TRVIEW");
+            resultList.clear();
+            while (rs.next()) 
+            {
+                resultList.add(new TRTable(rs.getInt("TRID"), rs.getString("Title"),
+                rs.getString("Result"),rs.getString("Date"),rs.getString("Type"),
+                rs.getInt("PatientID"),rs.getInt("LabID"),rs.getString("Name"), rs.getString("City")));  
+            }
+        } 
+        catch (Exception e) {}
+ 
+        column_trid.setCellValueFactory(new PropertyValueFactory <>("TRID"));
+        column_title.setCellValueFactory(new PropertyValueFactory <>("Title"));
+        column_result.setCellValueFactory(new PropertyValueFactory <>("Result"));
+        column_trdate.setCellValueFactory(new PropertyValueFactory <>("Date"));
+        column_type.setCellValueFactory(new PropertyValueFactory <>("Type")); 
+        column_trpatientid.setCellValueFactory(new PropertyValueFactory <>("PatientID"));
+        column_trlabid.setCellValueFactory(new PropertyValueFactory <>("LabID")); 
+        column_trname.setCellValueFactory(new PropertyValueFactory <>("Name")); 
+        column_trcity.setCellValueFactory(new PropertyValueFactory <>("City")); 
+        
+   
+        table_testResults.setItems(resultList); 
     }
 
 ////////////////////////////////////////////////////////////////////////////////
