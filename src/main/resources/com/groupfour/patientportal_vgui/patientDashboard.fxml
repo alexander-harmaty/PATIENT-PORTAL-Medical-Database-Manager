@@ -70,7 +70,7 @@
                            <content>
                               <TableView fx:id="table_doctor" prefHeight="471.0" prefWidth="1106.0">
                                  <columns>
-                                    <TableColumn fx:id="column_doctorid" prefWidth="100.0" text="DoctorID" />
+                                    <TableColumn fx:id="column_doctoridpatient" prefWidth="100.0" text="DoctorID" />
                                     <TableColumn fx:id="column_dfirstname" prefWidth="175.0" text="First Name" />
                                     <TableColumn fx:id="column_dlastname" prefWidth="175.0" text="Last Name" />
                                     <TableColumn fx:id="column_dphone" minWidth="2.0" prefWidth="125.0" text="Phone" />

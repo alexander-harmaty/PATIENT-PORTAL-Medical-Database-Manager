@@ -489,8 +489,8 @@ public class PatientDashboardController implements Initializable
     //Declare columns for doctor table
     @FXML
     private TableColumn<DoctorTable, String>
-            column_demail, column_dfirstname, column_dlastname, column_doctorid,
-            column_dphone, column_degree, column_specialty;
+            column_demail, column_dfirstname, column_dlastname, 
+            column_dphone, column_degree, column_specialty, column_doctoridpatient, column_doctorid;
     
     //Initialize observable list for doctor table
     ObservableList<DoctorTable> doctorslist = FXCollections.observableArrayList();
@@ -516,7 +516,7 @@ public class PatientDashboardController implements Initializable
         }
         catch (Exception e) {}
         
-        column_doctorid.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
+        column_doctoridpatient.setCellValueFactory(new PropertyValueFactory <>("DoctorID"));
         column_dfirstname.setCellValueFactory(new PropertyValueFactory <>("DFirstName"));
         column_dlastname.setCellValueFactory(new PropertyValueFactory <>("DLastName"));
         column_dphone.setCellValueFactory(new PropertyValueFactory <>("DPhone"));
