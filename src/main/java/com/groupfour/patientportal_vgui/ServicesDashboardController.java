@@ -156,29 +156,97 @@ public class ServicesDashboardController implements Initializable
     /**
      * Switch to account information anchor pane
      * 
-     * @author Angela Todaro
+     * @author Alexander Harmaty, Angela Todaro
      */
     @FXML
     void handleButton_account() 
     {
-//        try
-//        {
-//            Connection con = DatabaseConnection.connectDB();
-//            Statement st = con.createStatement();
-//            ResultSet rs = st.executeQuery("SELECT * FROM DOCTOR WHERE DoctorID="+App.currentUser.getUserID()+";");
-//
-//            while (rs.next()) 
-//            {   
-//                textField_serviceid.setText(String.valueOf(rs.getInt("DoctorID")));
-//                textField_firstName.setText(rs.getString("DFirstName"));
-//                textField_lastName.setText(rs.getString("DLastName"));
-//                textField_phone.setText(rs.getString("DPhone"));
-//                textField_email.setText(rs.getString("DEmail"));
-//                textField_degree.setText((rs.getString("Degree")));
-//                textField_specialty.setText(rs.getString("Specialty"));              
-//            }
-//        }
-//        catch (Exception e){}
+        String currentUserID = App.currentUser.getUserID();
+        String currentUserType = App.currentUser.getType();
+        
+        switch(currentUserType)
+        {
+            case "Office":
+                
+                try
+                {
+                    Connection con = DatabaseConnection.connectDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM OFFICE WHERE OfficeID="+currentUserID+";");
+
+                    while (rs.next()) 
+                    {   
+                        textField_serviceid.setText(rs.getString("OfficeID"));
+                        textField_sname.setText(rs.getString("OfficeName"));
+                        textField_sType.setText(currentUserType);
+                        
+                        textField_sstreet.setText(rs.getString("Street"));
+                        textField_scity.setText(rs.getString("City"));
+                        textField_sstate.setText(rs.getString("State"));
+                        textField_szip.setText(rs.getString("Zip"));
+                        textField_sphone.setText(rs.getString("Phone"));
+                        textField_sfax.setText(rs.getString("Fax"));
+                        textField_semail.setText(rs.getString("Email"));
+                    }
+                }
+                catch (Exception e){}
+                
+                break;
+            case "Lab":
+                
+                try
+                {
+                    Connection con = DatabaseConnection.connectDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM LAB WHERE LabID="+currentUserID+";");
+
+                    while (rs.next()) 
+                    {   
+                        textField_serviceid.setText(rs.getString("LabID"));
+                        textField_sname.setText(rs.getString("Name"));
+                        textField_sType.setText(currentUserType);
+                        
+                        textField_sstreet.setText(rs.getString("Street"));
+                        textField_scity.setText(rs.getString("City"));
+                        textField_sstate.setText(rs.getString("State"));
+                        textField_szip.setText(rs.getString("Zip"));
+                        textField_sphone.setText(rs.getString("Phone"));
+                        textField_sfax.setText(rs.getString("Fax"));
+                        textField_semail.setText(rs.getString("Email"));
+                    }
+                }
+                catch (Exception e){}
+                
+                break;
+            case "Pharmacy":
+                
+                try
+                {
+                    Connection con = DatabaseConnection.connectDB();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("SELECT * FROM PHARMA WHERE PharmID="+currentUserID+";");
+
+                    while (rs.next()) 
+                    {   
+                        textField_serviceid.setText(rs.getString("PharmID"));
+                        textField_sname.setText(rs.getString("Name"));
+                        textField_sType.setText(currentUserType);
+                        
+                        textField_sstreet.setText(rs.getString("Street"));
+                        textField_scity.setText(rs.getString("City"));
+                        textField_sstate.setText(rs.getString("State"));
+                        textField_szip.setText(rs.getString("Zip"));
+                        textField_sphone.setText(rs.getString("Phone"));
+                        textField_sfax.setText(rs.getString("Fax"));
+                        textField_semail.setText(rs.getString("Email"));
+                    }
+                }
+                catch (Exception e){}
+                
+                break;
+            default:
+                break;
+        }
          
         panel_account.setVisible(true);
         panel_appointment.setVisible(false);
@@ -193,7 +261,144 @@ public class ServicesDashboardController implements Initializable
     @FXML
     private TextField textField_scity, textField_semail, textField_serviceid, 
              textField_sfax, textField_sname, textField_sphone, 
-             textField_sstate, textField_sstreet, textField_szip;
+             textField_sstate, textField_sstreet, textField_szip, textField_sType;
+    
+    /**
+     * Function to update service account information
+     * 
+     * @author Alexander Harmaty
+     */
+    @FXML
+    void handleButton_UpdateSAccInfo()
+    {
+        String currentUserID = App.currentUser.getUserID();
+        String currentUserType = App.currentUser.getType();
+        
+        switch(currentUserType)
+        {
+            case "Office":
+                
+                try
+                {
+                    System.out.println("Connection Success!");
+                    Connection con = DatabaseConnection.connectDB();
+                    Statement stmt = con.createStatement();
+                    
+                    //String id = textField_serviceid.getText();
+                    String name = textField_sname.getText();
+                    //String type = textField_sType.getText();
+
+                    String street = textField_sstreet.getText();
+                    String city = textField_scity.getText();
+                    String state = textField_sstate.getText();
+                    String zip = textField_szip.getText();
+                    String phone = textField_sphone.getText();
+                    String fax = textField_sfax.getText();
+                    String email = textField_semail.getText();
+
+
+                    String query = "UPDATE OFFICE " + 
+                      "SET  OfficeName ='" + name + "', Phone = '" + phone + "', Email = '" + email + 
+                            "', Street = '" + street +"', City = '"+ city +
+                            "', Zip = '" + zip + "', State = '" + state + 
+                            "', Fax = '" + fax + 
+                            "', WHERE OfficeID = " + currentUserID + ";";
+
+                    System.out.println(query);
+                    stmt.executeQuery(query);
+                } 
+                catch (Exception e) {}
+
+                JOptionPane.showMessageDialog(null,"Account information updated successfully!\n"
+                        + "Account ID and Type remain unchanged.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                
+                handleButton_account();
+                
+                break;
+                
+            case "Lab":
+                
+                try
+                {
+                    System.out.println("Connection Success!");
+                    Connection con = DatabaseConnection.connectDB();
+                    Statement stmt = con.createStatement();
+                    
+                    //String id = textField_serviceid.getText();
+                    String name = textField_sname.getText();
+                    //String type = textField_sType.getText();
+
+                    String street = textField_sstreet.getText();
+                    String city = textField_scity.getText();
+                    String state = textField_sstate.getText();
+                    String zip = textField_szip.getText();
+                    String phone = textField_sphone.getText();
+                    String fax = textField_sfax.getText();
+                    String email = textField_semail.getText();
+
+
+                    String query = "UPDATE LAB " + 
+                      "SET  Name ='" + name + "', Phone = '" + phone + "', Email = '" + email + 
+                            "', Street = '" + street +"', City = '"+ city +
+                            "', Zip = '" + zip + "', State = '" + state + 
+                            "', Fax = '" + fax + 
+                            "', WHERE LabID = " + currentUserID + ";";
+
+                    System.out.println(query);
+                    stmt.executeQuery(query);
+                } 
+                catch (Exception e) {}
+
+                JOptionPane.showMessageDialog(null,"Account information updated successfully!\n"
+                        + "Account ID and Type remain unchanged.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                
+                handleButton_account();
+                
+                break;
+                
+            case "Pharmacy":
+                
+                try
+                {
+                    System.out.println("Connection Success!");
+                    Connection con = DatabaseConnection.connectDB();
+                    Statement stmt = con.createStatement();
+                    
+                    //String id = textField_serviceid.getText();
+                    String name = textField_sname.getText();
+                    //String type = textField_sType.getText();
+
+                    String street = textField_sstreet.getText();
+                    String city = textField_scity.getText();
+                    String state = textField_sstate.getText();
+                    String zip = textField_szip.getText();
+                    String phone = textField_sphone.getText();
+                    String fax = textField_sfax.getText();
+                    String email = textField_semail.getText();
+
+
+                    String query = "UPDATE PHARMA " + 
+                      "SET  Name ='" + name + "', Phone = '" + phone + "', Email = '" + email + 
+                            "', Street = '" + street +"', City = '"+ city +
+                            "', Zip = '" + zip + "', State = '" + state + 
+                            "', Fax = '" + fax + 
+                            "', WHERE PharmID = " + currentUserID + ";";
+
+                    System.out.println(query);
+                    stmt.executeQuery(query);
+                } 
+                catch (Exception e) {}
+
+                JOptionPane.showMessageDialog(null,"Account information updated successfully!\n"
+                        + "Account ID and Type remain unchanged.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                
+                handleButton_account();
+                
+                break;
+            default:
+                JOptionPane.showMessageDialog(null,"Unable to get current user data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     
     

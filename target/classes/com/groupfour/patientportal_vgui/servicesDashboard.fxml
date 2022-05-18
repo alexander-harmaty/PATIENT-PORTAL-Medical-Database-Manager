@@ -138,7 +138,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="panel_dashboard" layoutX="13.0" layoutY="9.0" prefHeight="611.0" prefWidth="1050.0">
+            <AnchorPane fx:id="panel_dashboard" layoutX="13.0" layoutY="9.0" prefHeight="611.0" prefWidth="1050.0" visible="false">
                <children>
                   <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
                      <font>
@@ -160,75 +160,75 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="panel_account" prefHeight="582.0" prefWidth="1106.0" visible="false">
+            <AnchorPane fx:id="panel_account" prefHeight="582.0" prefWidth="1106.0">
                <children>
-                  <TextField fx:id="textField_serviceid" layoutX="140.0" layoutY="99.0" prefHeight="33.0" prefWidth="255.0">
-                     <font>
-                        <Font name="Arial" size="18.0" />
-                     </font>
-                  </TextField>
-                  <Text fill="WHITE" layoutX="18.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street:">
+                  <Text fill="WHITE" layoutX="449.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account ID:">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textField_scity" layoutX="140.0" layoutY="224.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_serviceid" layoutX="552.0" layoutY="103.0" prefHeight="33.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="20.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
+                  <Text fill="WHITE" layoutX="72.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street:">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textField_sstate" layoutX="140.0" layoutY="291.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_scity" layoutX="140.0" layoutY="167.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="57.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State">
+                  <Text fill="WHITE" layoutX="90.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textField_szip" layoutX="140.0" layoutY="358.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_sstate" layoutX="140.0" layoutY="234.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="57.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip:">
+                  <Text fill="WHITE" layoutX="87.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textField_sphone" layoutX="140.0" layoutY="421.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_szip" layoutX="140.0" layoutY="301.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="52.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" textAlignment="CENTER" wrappingWidth="70.234375">
+                  <Text fill="WHITE" layoutX="93.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_sphone" layoutX="140.0" layoutY="364.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="65.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:" textAlignment="CENTER" wrappingWidth="70.234375">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textField_sfax" layoutX="140.0" layoutY="485.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_sfax" layoutX="140.0" layoutY="428.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="37.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fax:" textAlignment="CENTER" wrappingWidth="85.0">
+                  <Text fill="WHITE" layoutX="65.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fax:" textAlignment="CENTER" wrappingWidth="70.234375">
                      <font>
                         <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" layoutX="18.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account ID:">
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#790f0f" height="80.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
-                  <Label fx:id="label_errorText" alignment="CENTER" layoutX="455.0" layoutY="155.0" prefHeight="40.0" prefWidth="255.0" textAlignment="CENTER" textFill="#cd1c1c">
+                  <Label fx:id="label_errorText" alignment="CENTER" layoutX="465.0" layoutY="394.0" prefHeight="40.0" prefWidth="255.0" textAlignment="CENTER" textFill="#cd1c1c">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
@@ -238,32 +238,42 @@
                         <Font name="Arial Bold" size="48.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textField_sstreet" layoutX="140.0" layoutY="160.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_sstreet" layoutX="140.0" layoutY="103.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <MFXButton layoutX="912.0" layoutY="528.0" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Update Info" textFill="WHITE">
+                  <MFXButton layoutX="912.0" layoutY="528.0" onAction="#handleButton_UpdateSAccInfo" rippleColor="#0dd75a" style="-fx-background-color: #0dd75a;" text="Update Info" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </MFXButton>
-                  <TextField fx:id="textField_semail" layoutX="552.0" layoutY="107.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_semail" layoutX="140.0" layoutY="492.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="464.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" textAlignment="CENTER" wrappingWidth="70.234375">
+                  <Text fill="WHITE" layoutX="65.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" textAlignment="CENTER" wrappingWidth="70.234375">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textField_sname" layoutX="552.0" layoutY="171.0" prefHeight="25.0" prefWidth="255.0">
+                  <TextField fx:id="textField_sname" layoutX="552.0" layoutY="233.0" prefHeight="25.0" prefWidth="255.0">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
-                  <Text fill="WHITE" layoutX="449.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="85.0">
+                  <Text fill="WHITE" layoutX="465.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="85.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="textField_sType" layoutX="552.0" layoutY="166.0" prefHeight="25.0" prefWidth="255.0">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Text fill="WHITE" layoutX="429.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Type:" textAlignment="CENTER" wrappingWidth="122.234375">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
