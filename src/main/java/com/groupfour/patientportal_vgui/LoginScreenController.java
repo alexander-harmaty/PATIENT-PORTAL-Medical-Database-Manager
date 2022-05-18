@@ -42,7 +42,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Angie 
+ * @author Angie, Alex, Yasin
  */
 public class LoginScreenController implements Initializable {
 
@@ -143,24 +143,18 @@ public class LoginScreenController implements Initializable {
                 else if (rs.getString(5).toUpperCase().equals("DOCTOR")) 
                 {
                         App.setRoot("doctorDashboard");
-                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        //button_login.getScene().getWindow().hide();
-                        //Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                        //Stage mainStage = new Stage();
-                        //Scene scene = new Scene(root);
-                        //mainStage.setScene(scene);
-                        //mainStage.show(); 
                 }
-                else if (rs.getString(5).toUpperCase().equals("SERVICE")) 
+                else if (rs.getString(5).toUpperCase().equals("LAB")) 
                 {
                         App.setRoot("servicesDashboard");
-                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        //button_login.getScene().getWindow().hide();
-                        //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-                        //Stage mainStage = new Stage();
-                        //Scene scene = new Scene(root);
-                        //mainStage.setScene(scene);
-                        //mainStage.show(); 
+                }
+                else if (rs.getString(5).toUpperCase().equals("PHARMACY")) 
+                {
+                        App.setRoot("servicesDashboard");
+                }
+                else if (rs.getString(5).toUpperCase().equals("OFFICE")) 
+                {
+                        App.setRoot("servicesDashboard");
                 }
             }
             else if (rs2.next() && rs2.getString(4).equals(userName) && rs2.getString(3).equals(passWord)) 
@@ -169,56 +163,31 @@ public class LoginScreenController implements Initializable {
                 
                 if (rs2.getString(5).toUpperCase().equals("PATIENT"))
                 {       
-                        App.setRoot("patientDashboard");
-                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        //button_login.getScene().getWindow().hide();
-                        //Parent root = FXMLLoader.load(getClass().getResource("patientDashboard.fxml")); 
-                        //Stage mainStage = new Stage();
-                        //Scene scene = new Scene(root);
-                        //mainStage.setScene(scene);
-                        //mainStage.show();
+                        App.setRoot("patientDashboard");   
                 }
                 else if (rs2.getString(5).toUpperCase().equals("DOCTOR")) 
                 {
-                        App.setRoot("doctorDashboard");
-                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        //button_login.getScene().getWindow().hide();
-                        //Parent root = FXMLLoader.load(getClass().getResource("doctorDashboard.fxml")); 
-                        //Stage mainStage = new Stage();
-                        //Scene scene = new Scene(root);
-                        //mainStage.setScene(scene);
-                        //mainStage.show(); 
+                        App.setRoot("doctorDashboard");  
                 }
-                else if (rs2.getString(5).toUpperCase().equals("SERVICE")) 
+                else if (rs2.getString(5).toUpperCase().equals("LAB")) 
                 {
-                        App.setRoot("servicesDashboard");
-                        //JOptionPane.showMessageDialog(null, "Your login was successful.");
-                        //button_login.getScene().getWindow().hide();
-                        //Parent root = FXMLLoader.load(getClass().getResource("servicesDashboard.fxml")); 
-                        //Stage mainStage = new Stage();
-                        //Scene scene = new Scene(root);
-                        //mainStage.setScene(scene);
-                        //mainStage.show(); 
+                        App.setRoot("servicesDashboard"); 
+                }
+                else if (rs2.getString(5).toUpperCase().equals("PHARMACY")) 
+                {
+                        App.setRoot("servicesDashboard"); 
+                }
+                else if (rs2.getString(5).toUpperCase().equals("OFFICE")) 
+                {
+                        App.setRoot("servicesDashboard"); 
                 }
             }
             else
-            {
-               
+            { 
              JOptionPane.showMessageDialog( null, "Incorrect username or password." , "Error", 
-             JOptionPane.ERROR_MESSAGE );
-         
-         //JOptionPane.showMessageDialog(f,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);  
-               
-               
-               
-                //JOptionPane.showMessageDialog(null, "Incorrect username or password.");
+             JOptionPane.ERROR_MESSAGE );     
             }
-        } catch (Exception e) {
-          
-            JOptionPane.showMessageDialog( null, "Please fill in all fields" , "Error", 
-             JOptionPane.ERROR_MESSAGE );
-            //JOptionPane.showMessageDialog(null, "Please fill in all fields.");
-        }
+        } catch (Exception e) {JOptionPane.showMessageDialog( null, "Please fill in all fields" , "Error",JOptionPane.ERROR_MESSAGE );}
     }
      
     
@@ -269,7 +238,7 @@ public class LoginScreenController implements Initializable {
            panel_registerDoctor.setVisible(true);
            panel_registerService.setVisible(false);
         }
-         else if (button_type2.getValue().equals("Service")){
+         else if (button_type2.getValue().equals("Lab")){
             
            textField_sid.setText(String.valueOf(id));
            textField_semail.setText(text_email.getText());
@@ -280,13 +249,32 @@ public class LoginScreenController implements Initializable {
            panel_registerDoctor.setVisible(false);
            panel_registerService.setVisible(true);
         }
-         
-             
-         
+        else if (button_type2.getValue().equals("Pharmacy")){
+            
+           textField_sid.setText(String.valueOf(id));
+           textField_semail.setText(text_email.getText());
+           
+           panel_login.setVisible(false);
+           panel_register.setVisible(false);
+           panel_registerPatient.setVisible(false);
+           panel_registerDoctor.setVisible(false);
+           panel_registerService.setVisible(true);
+        }
+        else if (button_type2.getValue().equals("Office")){
+            
+           textField_sid.setText(String.valueOf(id));
+           textField_semail.setText(text_email.getText());
+           
+           panel_login.setVisible(false);
+           panel_register.setVisible(false);
+           panel_registerPatient.setVisible(false);
+           panel_registerDoctor.setVisible(false);
+           panel_registerService.setVisible(true);
+        }    
     }
     
     /**
-     * WORKS!!
+     * Account Registration
      * @author Yasin
      * @param event 
      */
@@ -436,15 +424,15 @@ public class LoginScreenController implements Initializable {
             
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+        String[] type = new String[5];
+        type[0] = "Patient";
+        type[1] = "Doctor";
+        type[2] = "Lab";
+        type[3] = "Pharmacy";
+        type[4] = "Office";
         
-        //button_type2.getItems().addAll("Patient", "Doctor", "Service");
-        
-        String[] test = new String[3];
-        test[0] = "Patient";
-        test[1] = "Doctor";
-        test[2] = "Service";
-        
-        button_type2.getItems().addAll(test);
+        button_type2.getItems().addAll(type);
         
       
     }  
