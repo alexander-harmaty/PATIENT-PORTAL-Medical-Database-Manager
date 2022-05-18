@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -36,28 +37,155 @@
          <children>
             <AnchorPane fx:id="panel_search" layoutX="104.0" layoutY="102.0" prefHeight="697.0" prefWidth="1176.0" visible="false" />
             <AnchorPane fx:id="panel_records" layoutX="104.0" layoutY="104.0" prefHeight="696.0" prefWidth="1176.0" visible="false" />
-            <AnchorPane fx:id="panel_testResults" layoutX="10.0" layoutY="2.0" prefHeight="649.0" prefWidth="1152.0" visible="false">
+            <AnchorPane fx:id="panel_testResults" layoutX="28.0" layoutY="15.0" prefHeight="658.0" prefWidth="1143.0" visible="false">
                <children>
-                  <ScrollPane layoutX="38.0" layoutY="185.0" prefHeight="416.0" prefWidth="1080.0">
-                     <content>
-                        <TableView fx:id="table_testResults" prefHeight="497.0" prefWidth="1064.0" stylesheets="@../../../tablered.css">
-                           <columns>
-                              <TableColumn fx:id="column_trid" prefWidth="107.66665649414062" text="Result ID" />
-                              <TableColumn fx:id="column_title" prefWidth="184.2963104248047" text="Title" />
-                              <TableColumn fx:id="column_result" prefWidth="303.7036437988281" text="Result" />
-                              <TableColumn fx:id="column_trdate" prefWidth="131.99993896484375" text="Date" />
-                              <TableColumn fx:id="column_type" prefWidth="116.8887939453125" text="Type" />
-                              <TableColumn fx:id="column_trpatientid" prefWidth="114.51849365234375" text="Patient ID" />
-                              <TableColumn fx:id="column_trlabid" minWidth="0.0" prefWidth="98.370361328125" text="Lab ID" />
-                           </columns>
-                        </TableView>
-                     </content>
-                  </ScrollPane>
-                  <Text fill="WHITE" layoutX="64.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Results" wrappingWidth="288.21097564697266">
-                     <font>
-                        <Font name="Arial Black" size="36.0" />
-                     </font>
-                  </Text>
+                  <AnchorPane fx:id="testPanel_home" layoutX="10.0" layoutY="10.0" prefHeight="648.0" prefWidth="1151.0">
+                     <children>
+                        <ScrollPane layoutX="25.0" layoutY="190.0" prefHeight="416.0" prefWidth="1080.0">
+                           <content>
+                              <TableView fx:id="table_testResults" prefHeight="497.0" prefWidth="1064.0" stylesheets="@../../../tablered.css">
+                                 <columns>
+                                    <TableColumn fx:id="column_trid" prefWidth="107.66665649414062" text="Result ID" />
+                                    <TableColumn fx:id="column_title" prefWidth="184.2963104248047" text="Title" />
+                                    <TableColumn fx:id="column_result" prefWidth="303.7036437988281" text="Result" />
+                                    <TableColumn fx:id="column_trdate" prefWidth="131.99993896484375" text="Date" />
+                                    <TableColumn fx:id="column_type" prefWidth="116.8887939453125" text="Type" />
+                                    <TableColumn fx:id="column_trpatientid" prefWidth="114.51849365234375" text="Patient ID" />
+                                    <TableColumn fx:id="column_trlabid" minWidth="0.0" prefWidth="98.370361328125" text="Lab ID" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <Text fill="WHITE" layoutX="9.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test Results" wrappingWidth="264.21246337890636">
+                           <font>
+                              <Font name="Arial Black" size="36.0" />
+                           </font>
+                        </Text>
+                        <MFXButton fx:id="button_testAdd" layoutX="28.0" layoutY="107.0" onMouseReleased="#handleButton_testAdd" prefHeight="50.0" prefWidth="200.0" rippleColor="#7eaeff" style="-fx-background-color: #4277d3;" text="Add New Test" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_testDelete" layoutX="616.0" layoutY="109.0" onMouseReleased="#handleButton_testDelete" prefHeight="50.0" prefWidth="200.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Delete Test" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_testrRefresh" layoutX="900.0" layoutY="109.0" onMouseReleased="#handleButton_testRefresh" prefHeight="50.0" prefWidth="200.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <MFXButton fx:id="button_testrUpdate" layoutX="306.0" layoutY="107.0" onMouseReleased="#handleButton_testUpdate" prefHeight="50.0" prefWidth="200.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Update Test" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </MFXButton>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="testPanel_add" layoutX="1.0" layoutY="12.0" prefHeight="644.0" prefWidth="1151.0" visible="false">
+                     <children>
+                        <MFXButton fx:id="button_testBack" layoutX="953.0" layoutY="36.0" onAction="#handleButton_testBack" prefHeight="50.0" prefWidth="137.0" rippleColor="#ff3d3d" style="-fx-background-color: #ffb637;" text="Back" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <Text fill="WHITE" layoutX="8.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a new test result:" wrappingWidth="370.037109375">
+                           <font>
+                              <Font name="Arial Black" size="29.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="textField_tResult" layoutX="580.0" layoutY="187.0" prefHeight="273.0" prefWidth="358.0" />
+                        <VBox layoutX="211.0" layoutY="111.0" prefHeight="423.0" prefWidth="297.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="textField_tTitle" prefHeight="31.0" prefWidth="240.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="textField_tdate" prefHeight="31.0" prefWidth="240.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="textField_tType" prefHeight="31.0" prefWidth="240.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="textField_tPatientID" prefHeight="31.0" prefWidth="240.0" />
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="textField_tLabID" prefHeight="31.0" prefWidth="240.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <MFXButton fx:id="button_testInsert" layoutX="670.0" layoutY="478.0" onAction="#handleButton_testInsert" prefHeight="50.0" prefWidth="176.0" rippleColor="#ff3d3d" style="-fx-background-color: #ffb637;" text="Add Test Result" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </MFXButton>
+                        <VBox layoutX="54.0" layoutY="109.0" prefHeight="423.0" prefWidth="132.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Title: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Date" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Type:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Patient ID: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Lab ID: " textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial Black" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Label layoutX="588.0" layoutY="135.0" text="Results: " textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children></AnchorPane>
             <AnchorPane fx:id="panel_prescriptions" layoutX="1.0" layoutY="19.0" prefHeight="607.0" prefWidth="1180.0" visible="false">
                <children>
@@ -138,7 +266,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="panel_dashboard" layoutX="13.0" layoutY="9.0" prefHeight="611.0" prefWidth="1050.0" visible="false">
+            <AnchorPane fx:id="panel_dashboard" layoutX="13.0" layoutY="9.0" prefHeight="611.0" prefWidth="1050.0">
                <children>
                   <Label layoutX="28.0" layoutY="93.0" prefHeight="108.0" prefWidth="523.0" text="To use the Patient Portal from here, please use the navigation buttons to access your features." textFill="WHITE" wrapText="true">
                      <font>
@@ -160,7 +288,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="panel_account" prefHeight="582.0" prefWidth="1106.0">
+            <AnchorPane fx:id="panel_account" prefHeight="582.0" prefWidth="1106.0" visible="false">
                <children>
                   <Text fill="WHITE" layoutX="449.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account ID:">
                      <font>

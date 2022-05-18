@@ -4,6 +4,7 @@
  */
 package com.groupfour.patientportal_vgui;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -450,6 +452,10 @@ public class ServicesDashboardController implements Initializable
         panel_search.setVisible(false);
         panel_testResults.setVisible(true);
         panel_dashboard.setVisible(false);
+        
+        
+        //testPanel_home.setVisible(true);
+        //testPanel_add.setVisible(false);
     }
     
     //Declare table view for Results table
@@ -496,6 +502,81 @@ public class ServicesDashboardController implements Initializable
         table_testResults.setItems(resultList); 
     }
     
+     @FXML
+    private MFXButton button_testAdd, button_testBack,
+             button_testDelete, button_testInsert,
+             button_testrRefresh, button_testrUpdate;   
+     
+     @FXML
+    private AnchorPane testPanel_add, testPanel_home;
+     
+     @FXML
+    private TextField textField_tLabID, textField_tPatientID,
+             textField_tTitle, textField_tType, textField_tdate;
+     
+     @FXML
+     private TextArea textField_tResult;
+     
+     @FXML
+    void handleButton_testAdd() {
+        testPanel_home.setVisible(false);
+        testPanel_add.setVisible(true);
+
+    }
+
+    @FXML
+    void handleButton_testBack() {
+        testPanel_home.setVisible(true);
+        testPanel_add.setVisible(false);
+    }
+
+    @FXML
+    void handleButton_testDelete() {
+
+    }
+
+    @FXML
+    void handleButton_testInsert() {
+        try {
+        Connection con = DatabaseConnection.connectDB();
+        Statement stmt = con.createStatement();
+        
+            String title = textField_tTitle.getText();
+            String result = textField_tResult.getText();
+            String date =  textField_tdate.getText();
+            String type = textField_tType.getText();
+            String pid = textField_tPatientID.getText();
+            String lid = textField_tLabID.getText();
+            
+        String trquery = "INSERT INTO TESTRESULTS (Title, Result, Date, Type, PatientID, LabID)" 
+                    + " VALUES  ('" + title + "','" +result+ "','" +date+ "','" +type+ "'," +pid+ "," +lid+ ")";
+        
+        System.out.println(trquery);            
+        stmt.executeQuery(trquery); 
+            
+        } catch (Exception e) {}
+        
+        JOptionPane.showMessageDialog(null,"Results Added", "Success", JOptionPane.INFORMATION_MESSAGE);
+        testPanel_home.setVisible(true);
+        testPanel_add.setVisible(false);
+        textField_tTitle.clear();
+        textField_tResult.clear();
+        textField_tdate.clear();
+        textField_tType.clear();
+        textField_tPatientID.clear();
+        textField_tLabID.clear();
+
+    }
+
+    @FXML
+    void handleButton_testRefresh() {TestResultsTable();}
+
+    @FXML
+    void handleButton_testUpdate() {
+
+    }
+
+
     
     
 ////////////////////////////////////////////////////////////////////////////////
