@@ -9,75 +9,75 @@ package com.groupfour.patientportal_vgui;
  * @author Yaskh
  */
 public class TRTable {
-    int trid;
-    String title, result, trdate, type;
-    int trpatientid, trlabid; 
+    int TRID;
+    String Title, Result, Date, Type;
+    int PatientID, LabID; 
     
-    public TRTable(int trid, String title, String result, String trdate, String type, int trpatientid, int trlabid) {
-        this.trid = trid;
-        this.title = title;
-        this.result = result;
-        this.trdate = trdate;
-        this.type = type;
-        this.trpatientid = trpatientid;
-        this.trlabid = trlabid;
+    public TRTable(int TRID, String Title, String Result, String Date, String Type, int PatientID, int LabID) {
+        this.TRID = TRID;
+        this.Title = Title;
+        this.Result = Result;
+        this.Date = Date;
+        this.Type = Type;
+        this.PatientID = PatientID;
+        this.LabID = LabID;
     }
 
     
 
-    public int gettrid() {
-        return trid;
+    public int getTRID() {
+        return TRID;
     }
 
-    public void settrid(int trid) {
-        this.trid = trid;
+    public void seTRID(int TRID) {
+        this.TRID = TRID;
     }
 
-    public String gettitle() {
-        return title;
+    public String getTitle() {
+        return Title;
     }
 
-    public void settitle(String title) {
-        this.title = title;
+    public void setTitle(String Title) {
+        this.Title = Title;
     }
 
-    public String getresult() {
-        return result;
+    public String getResult() {
+        return Result;
     }
 
-    public void setresult(String result) {
-        this.result = result;
+    public void setResult(String Result) {
+        this.Result = Result;
     }
     
-    public String gettrdate() {
-        return trdate;
+    public String getDate() {
+        return Date;
     }
 
-    public void settrdate(String trdate) {
-        this.trdate = trdate;
+    public void setDate(String Dte) {
+        this.Date = Date;
     }
 
-    public String gettype() {
-        return type;
+    public String getType() {
+        return Type;
     }
 
-    public void settype(String type) {
-        this.type = type;
+    public void setType(String Type) {
+        this.Type = Type;
     }
 
-    public int gettrpatientid() {
-        return trpatientid;
+    public int getPatientID() {
+        return PatientID;
     }
 
-    public void settrpatientid(int trpatientid) {
-        this.trpatientid = trpatientid;
+    public void setPatientID(int PAtientID) {
+        this.PatientID = PatientID;
     }
 
-    public int gettrlabid() {
-        return trlabid;
+    public int getLabID() {
+        return LabID;
     }
 
-    public void settrlabid(int trlabid) {
-        this.trlabid = trlabid;
+    public void setLabID(int LabID) {
+        this.LabID= LabID;
     }
 }
