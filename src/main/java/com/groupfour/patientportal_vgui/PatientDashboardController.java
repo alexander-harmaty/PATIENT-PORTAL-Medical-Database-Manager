@@ -75,6 +75,7 @@ public class PatientDashboardController implements Initializable
         labTable();
         labSearch();
         searchPrescription();
+        appSearch();
         FilteredList<DoctorTable> filtereddata = new FilteredList<>(doctorslist, b -> true);
         textField_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filtereddata.setPredicate(doctors -> {
@@ -123,7 +124,7 @@ public class PatientDashboardController implements Initializable
     
     //Declare search text fields
     @FXML 
-    private TextField textField_pharmacysearch, textField_labsearch;
+    private TextField textField_pharmacysearch, textField_labsearch, textField_appsearch;
     
     //Declare columns for pharmacy table
     @FXML
@@ -232,6 +233,53 @@ public class PatientDashboardController implements Initializable
         panel_lab.setVisible(false);
     }
     
+    public void appSearch() {
+    FilteredList<Appointment> filtereddata = new FilteredList<>(appointmentslist, b -> true);
+        textField_appsearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtereddata.setPredicate(doctors -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (String.valueOf(doctors.getAppid()).contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if (String.valueOf(doctors.getDoctorID()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (String.valueOf(doctors.getPatientID()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (String.valueOf(doctors.getOfficeID()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (String.valueOf(doctors.getLabID()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getReason().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getDate().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else if (doctors.getTime().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;  
+                }
+                else 
+                    return false;
+            });
+        });
+        SortedList<Appointment> sortedData = new SortedList<>(filtereddata);
+        sortedData.comparatorProperty().bind(table_appointments.comparatorProperty());
+        table_appointments.setItems(sortedData);
+    
+    }   
+    /**
+     * Author: Angie
+     * Added pharmacy table
+     */
     public void pharmacyTable()
     {
         //button_refreshApp

@@ -117,22 +117,22 @@
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <MFXButton fx:id="button_scheduleDocApp" layoutX="14.0" layoutY="163.0" onMouseReleased="#handleButton_scheduleDocApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#7eaeff" style="-fx-background-color: #4277d3;" text="Schedule Doctor" textFill="WHITE">
+                        <MFXButton fx:id="button_scheduleDocApp" layoutX="579.0" layoutY="120.0" onMouseReleased="#handleButton_scheduleDocApp" prefHeight="20.0" prefWidth="197.0" rippleColor="#7eaeff" style="-fx-background-color: #4277d3;" text="Schedule Doctor" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="button_scheduleLabApp" layoutX="314.0" layoutY="163.0" onMouseReleased="#handleButton_scheduleLabApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Schedule Lab" textFill="WHITE">
+                        <MFXButton fx:id="button_scheduleLabApp" layoutX="579.0" layoutY="169.0" onMouseReleased="#handleButton_scheduleLabApp" prefHeight="20.0" prefWidth="197.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Schedule Lab" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="607.0" layoutY="163.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Reschedule / Cancel" textFill="WHITE">
+                        <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="793.0" layoutY="120.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" prefHeight="20.0" prefWidth="197.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Reschedule / Cancel" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="button_refreshApp" layoutX="902.0" layoutY="163.0" onMouseReleased="#appointmentTable" prefHeight="50.0" prefWidth="200.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
+                        <MFXButton fx:id="button_refreshApp" layoutX="793.0" layoutY="169.0" onMouseReleased="#appointmentTable" prefHeight="20.0" prefWidth="197.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
@@ -148,6 +148,16 @@
                               <Font name="Arial Bold" size="48.0" />
                            </font>
                         </Label>
+                        <Text fill="WHITE" layoutX="11.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="120.076171875">
+                           <font>
+                              <Font name="Arial Bold" size="31.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="textField_appsearch" layoutX="123.0" layoutY="174.0" prefHeight="0.0" prefWidth="301.0">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="panel_accountInfo" layoutX="271.0" layoutY="74.0" prefHeight="609.0" prefWidth="1129.0" visible="false">
@@ -343,7 +353,7 @@
                         </MFXButton>
                         <ScrollPane layoutX="659.0" layoutY="225.0" prefHeight="316.0" prefWidth="406.0">
                            <content>
-                              <TableView fx:id="table_EC" prefHeight="329.0" prefWidth="406.0" stylesheets="@../../../prescriptionTableCSS.css">
+                              <TableView fx:id="table_EC" prefHeight="329.0" prefWidth="406.0">
                                  <columns>
                                     <TableColumn fx:id="column_ecfirst" prefWidth="105.33337736129761" text="First Name" />
                                     <TableColumn fx:id="column_eclast" prefWidth="96.0" text="Last Name" />
@@ -441,7 +451,7 @@
                      <children>
                         <ScrollPane layoutX="10.0" layoutY="169.0" prefHeight="449.0" prefWidth="1096.0">
                            <content>
-                              <TableView fx:id="table_prescriptions" prefHeight="463.0" prefWidth="1090.0" stylesheets="@../../../prescriptionTableCSS.css">
+                              <TableView fx:id="table_prescriptions" prefHeight="463.0" prefWidth="1090.0">
                                  <columns>
                                     <TableColumn fx:id="column_scriptid" prefWidth="100.0" text="Precription ID" />
                                     <TableColumn fx:id="column_pharmid" prefWidth="100.0" text="Pharmacy ID" />

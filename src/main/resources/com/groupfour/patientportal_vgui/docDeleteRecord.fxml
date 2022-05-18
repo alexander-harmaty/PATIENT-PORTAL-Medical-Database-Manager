@@ -37,7 +37,7 @@
             <HBox prefHeight="38.0" prefWidth="371.0">
                <children>
                   <MFXButton onMousePressed="#handleButton_recorddelete" prefHeight="31.0" prefWidth="179.0" text="Delete" />
-                  <MFXButton onMouseDragReleased="#handleButton_recordclear" prefHeight="31.0" prefWidth="176.0" text="Clear" />
+                  <MFXButton onMouseReleased="#handleButton_recordclear" prefHeight="31.0" prefWidth="176.0" text="Clear" />
                </children>
             </HBox>
          </children>

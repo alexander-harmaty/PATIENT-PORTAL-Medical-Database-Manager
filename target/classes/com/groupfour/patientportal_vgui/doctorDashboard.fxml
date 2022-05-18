@@ -291,22 +291,22 @@
                   </TableView>
                </content>
             </ScrollPane>
-            <MFXButton fx:id="button_scheduleDocApp" layoutX="14.0" layoutY="163.0" onMouseReleased="#handleButton_scheduleDocApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#7eaeff" style="-fx-background-color: #4277d3;" text="Schedule Doctor" textFill="WHITE">
+            <MFXButton fx:id="button_scheduleDocApp" layoutX="574.0" layoutY="122.0" onMouseReleased="#handleButton_scheduleDocApp" prefHeight="20.0" prefWidth="197.0" rippleColor="#7eaeff" style="-fx-background-color: #4277d3;" text="Schedule Doctor" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </MFXButton>
-            <MFXButton fx:id="button_scheduleLabApp" layoutX="314.0" layoutY="163.0" onMouseReleased="#handleButton_scheduleLabApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Schedule Lab" textFill="WHITE">
+            <MFXButton fx:id="button_scheduleLabApp" layoutX="574.0" layoutY="171.0" onMouseReleased="#handleButton_scheduleLabApp" prefHeight="20.0" prefWidth="197.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Schedule Lab" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </MFXButton>
-            <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="607.0" layoutY="163.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" prefHeight="50.0" prefWidth="200.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Reschedule / Cancel" textFill="WHITE">
+            <MFXButton fx:id="button_rescheduleOrCancelApp" layoutX="802.0" layoutY="122.0" onMouseReleased="#handleButton_rescheduleOrCancelApp" prefHeight="20.0" prefWidth="197.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Reschedule / Cancel" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </MFXButton>
-            <MFXButton fx:id="button_refreshApp" layoutX="902.0" layoutY="163.0" onMouseReleased="#appointmentTable" prefHeight="50.0" prefWidth="200.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
+            <MFXButton fx:id="button_refreshApp" layoutX="802.0" layoutY="171.0" onMouseReleased="#appointmentTable" prefHeight="20.0" prefWidth="197.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -316,12 +316,22 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutY="27.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4277d3" height="74.0" layoutY="27.0" stroke="#ffffff00" strokeType="INSIDE" width="1117.0" />
             <Label layoutX="11.0" layoutY="34.0" prefHeight="56.0" prefWidth="372.0" text="Appointments" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="48.0" />
                </font>
             </Label>
+            <Text fill="WHITE" layoutX="20.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="108.0">
+               <font>
+                  <Font name="Arial Bold" size="31.0" />
+               </font>
+            </Text>
+            <TextField fx:id="textField_appsearch" layoutX="134.0" layoutY="167.0" prefHeight="0.0" prefWidth="301.0">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panel_medicalRecords" layoutX="178.0" layoutY="118.0" prefHeight="693.0" prefWidth="1078.0" visible="false">
