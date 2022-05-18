@@ -210,11 +210,14 @@
                         </TableView>
                      </content>
                   </ScrollPane>
-                  <HBox layoutX="613.0" layoutY="22.0" prefHeight="38.0" prefWidth="235.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#handleButton_pharmSendPatient" prefHeight="38.0" prefWidth="113.0" text="Send to Patient" />
-                     </children>
-                  </HBox>
+                  <HBox layoutX="613.0" layoutY="22.0" prefHeight="38.0" prefWidth="235.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#97062d" height="74.0" stroke="#ffffff00" strokeType="INSIDE" width="1128.0" />
+                  <Button layoutX="948.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleButton_pharmSendPatient" prefHeight="25.0" prefWidth="150.0" text="Send to Patient" />
+                  <Label layoutX="23.0" layoutY="13.0" prefHeight="56.0" prefWidth="372.0" text="Prescriptions" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="panel_appointment" layoutX="13.0" layoutY="-11.0" prefHeight="609.0" prefWidth="1117.0" visible="false">
@@ -424,23 +427,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="button_search" buttonType="RAISED" onMouseReleased="#handleButton_search" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Search" textFill="#c32929">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </MFXButton>
                   <MFXButton fx:id="button_accountInfo" buttonType="RAISED" onMouseReleased="#handleButton_account" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Account Info" textFill="#c32929">
-                     <font>
-                        <Font name="Arial Bold" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </MFXButton>
-                  <MFXButton fx:id="button_medicalRecords" buttonType="RAISED" onMouseReleased="#handleButton_record" prefHeight="50.0" prefWidth="150.0" rippleColor="#780000" style="-fx-border-color: #c32929; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Medical Records" textFill="#c32929">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>

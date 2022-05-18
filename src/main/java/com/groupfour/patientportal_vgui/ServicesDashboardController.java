@@ -829,12 +829,12 @@ public class ServicesDashboardController implements Initializable
                 
                 break;
                 
-            case "Office":
+            case "Pharmacy":
                 try
                 {
 
                     Connection con = DatabaseConnection.connectDB();
-                    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE OfficeID = " + currentUserID);
+                    ResultSet rs = con.createStatement().executeQuery("SELECT * FROM APPOINTMENT WHERE PharmID = " + currentUserID);
                     appointmentslist.clear();
 
                     while (rs.next()) 

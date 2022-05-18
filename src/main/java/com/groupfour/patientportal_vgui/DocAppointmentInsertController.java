@@ -115,13 +115,13 @@ public class DocAppointmentInsertController implements Initializable
                 textField_officeID.setText(currentUserID);
                 break;
             case "Lab":
-                JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
             case "Pharmacy":
-                JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showMessageDialog(null,"Current User data is unnecessary.", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
             default:
-                JOptionPane.showMessageDialog(null,"Unable to get current user data.", "Error", JOptionPane.ERROR_MESSAGE);
+                //JOptionPane.showMessageDialog(null,"Unable to get current user data.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
