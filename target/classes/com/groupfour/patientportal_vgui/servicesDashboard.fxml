@@ -68,17 +68,17 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="button_testDelete" layoutX="616.0" layoutY="109.0" onMouseReleased="#handleButton_testDelete" prefHeight="50.0" prefWidth="200.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Delete Test" textFill="WHITE">
+                        <MFXButton fx:id="button_testDelete" layoutX="616.0" layoutY="109.0" onMouseReleased="#handleButton_testDelete" prefHeight="50.0" prefWidth="200.0" rippleColor="#ff7171" style="-fx-background-color: #fc3f3f;" text="Delete Test" textFill="WHITE" visible="false">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="button_testrRefresh" layoutX="900.0" layoutY="109.0" onMouseReleased="#handleButton_testRefresh" prefHeight="50.0" prefWidth="200.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
+                        <MFXButton fx:id="button_testrRefresh" layoutX="257.0" layoutY="107.0" onMouseReleased="#handleButton_testRefresh" prefHeight="50.0" prefWidth="200.0" rippleColor="#67c7ff" style="-fx-background-color: #26acff;" text="Refresh Table" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </MFXButton>
-                        <MFXButton fx:id="button_testrUpdate" layoutX="306.0" layoutY="107.0" onMouseReleased="#handleButton_testUpdate" prefHeight="50.0" prefWidth="200.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Update Test" textFill="WHITE">
+                        <MFXButton fx:id="button_testrUpdate" layoutX="306.0" layoutY="107.0" onMouseReleased="#handleButton_testUpdate" prefHeight="50.0" prefWidth="200.0" rippleColor="#ffcf7b" style="-fx-background-color: #ffb637;" text="Update Test" textFill="WHITE" visible="false">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
@@ -484,7 +484,7 @@
             <Insets left="15.0" />
          </GridPane.margin>
       </Text>
-      <MFXButton fx:id="button_devMenu" buttonType="RAISED" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED" GridPane.columnIndex="2">
+      <MFXButton fx:id="button_devMenu" buttonType="RAISED" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED" visible="false" GridPane.columnIndex="2">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>

@@ -1,9 +1,12 @@
 com\groupfour\patientportal_vgui\LabAppointmentInsertController.class
+com\groupfour\patientportal_vgui\LabTable.class
 com\groupfour\patientportal_vgui\DoctorInsertPatientController.class
 com\groupfour\patientportal_vgui\DocPrintRecordController.class
 com\groupfour\patientportal_vgui\LoginScreenController.class
 com\groupfour\patientportal_vgui\DevMenuController.class
+com\groupfour\patientportal_vgui\PharmacyTable.class
 com\groupfour\patientportal_vgui\DoctorTable.class
+com\groupfour\patientportal_vgui\DoctorDashboardController.class
 com\groupfour\patientportal_vgui\MedicalTable.class
 com\groupfour\patientportal_vgui\ECTable.class
 com\groupfour\patientportal_vgui\PharmaTable.class
@@ -20,6 +23,8 @@ com\groupfour\patientportal_vgui\CurrentUser.class
 com\groupfour\patientportal_vgui\DocDeleteRecordController.class
 com\groupfour\patientportal_vgui\AppointmentRescheduleOrCancelController.class
 com\groupfour\patientportal_vgui\DocInsertMRecordController.class
+com\groupfour\patientportal_vgui\TRTable.class
 com\groupfour\patientportal_vgui\DocAppointmentInsertController.class
+com\groupfour\patientportal_vgui\PatientDashboardController.class
 com\groupfour\patientportal_vgui\DatabaseConnection.class
 com\groupfour\patientportal_vgui\Appointment.class

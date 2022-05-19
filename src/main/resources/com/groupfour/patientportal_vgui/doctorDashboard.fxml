@@ -543,7 +543,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </MFXButton>
-      <MFXButton fx:id="button_devMenu" buttonType="RAISED" layoutX="1154.0" layoutY="34.0" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED">
+      <MFXButton fx:id="button_devMenu" buttonType="RAISED" layoutX="1154.0" layoutY="34.0" onMouseReleased="#switchToDevMenu" prefHeight="35.0" prefWidth="88.0" rippleColor="#9c2121" style="-fx-background-color: Black;" text="Dev Menu" textFill="RED" visible="false">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
