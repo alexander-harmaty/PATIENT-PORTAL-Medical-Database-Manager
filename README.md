@@ -2,7 +2,7 @@
 Computer Programming and Information Systems Senior Project
 (FSC-BCS-430W: Senior Project)
 
-
+![logo](images/logo.png)
 
 ## Summary
 
