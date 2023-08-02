@@ -45,6 +45,31 @@ This project was made using MS SQL Server, and written with Java in Apache Netbe
 
 
 
+## Users
+
+Each user type has a specific dashboard and set of features tailored to their role in the healthcare system, allowing them to interact with the system according to their needs and responsibilities. 
+By segregating the functionalities based on the users role, the design provides a more personalized and secure user experience.
+
+-**Patients:**
+*Patients can view their own medical records, prescriptions, test results, and appointments.
+*They can schedule appointments with doctors or labs.
+*They can search for doctors, pharmacies, and labs.
+*Their dashboard provides them with various options to navigate through their healthcare-related information.
+
+-**Doctors:**
+*Doctors have access to patients' medical records and can perform CRUD (Create, Read, Update, Delete) operations on them.
+*They can view test results and prescriptions but have specific access to prescribe medications.
+*Doctors can search for patients, pharmacies, and labs.
+*They have access to functionalities such as inserting, deleting, and updating medical records and appointments, and can print medical records.
+*The medical dashboard caters to the doctor users as well as nurses and or any aiding technicians. 
+
+-**Service Users (Labs/Pharmacies):**
+*Service Users seem to represent entities such as labs or pharmacies.
+*They have unique functionalities related to handling test results. Specifically, they can add, update, delete, and view test results.
+*The dashboard for service users focuses on managing and displaying test results.
+
+
+
 ## How it Works
 
 
