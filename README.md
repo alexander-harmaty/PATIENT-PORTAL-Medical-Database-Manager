@@ -1,5 +1,7 @@
 # PATIENT PORTAL Medical Database Manager
+
 Computer Programming and Information Systems Senior Project
+
 (FSC-BCS-430W: Senior Project)
 
 ![logo](images/logo.png)
@@ -91,20 +93,28 @@ In all cases, if the user leaves a field empty, an error message prompts them to
 ![home](images/patienthome.png)
 
 The home page serves as the main dashboard once a user is logged in. 
+
 It's tailored to the specific type of user, with different colors, title, top left corner logo, and sometimes different buttons depending on the features enabled to the specific user. 
 
 Along the left side, there are several tabs for navigating the application, including Home, Search, Account Info, Medical Records, Appointments, Prescriptions, and Test Results. 
+
 The "Home" tab serves as a shortcut to return to their respective home page from any other part of the application. 
+
 The other tabs allow the user to navigate to various features of the application. 
+
 Each tab corresponds to a specific feature, and clicking on the tab will navigate to that feature. 
+
 The specific functionalities and permissions vary depending on the user type.
 
 While some users will have the same tabs as others, the color, title, and logo will stay the same for the user type that is currently logged in.
 
 
 ### Search
+
 The Search feature is accessible from the main dashboard and varies depending on the user type.
+
 Service users do not have access to the search feature.
+
 ![search](images/docsearch.png)
 
 The first page of the search feature allows users to choose which database they want to search in. 
@@ -126,13 +136,19 @@ The data, functionality, and permissions vary depending on the user type.
 
 
 ### Account Info
+
 Users can access the this feature by clicking on the "Account Info" tab on the dashboard's left side. 
+
 ![accountinfo](images/patientaccinfo.png)
 
 The Account Info feature provides users with a detailed view of their account information, allowing them to see and manage their personal details. 
+
 The user can update their account information by modifying the values in the text fields and clicking the "Update" button. 
+
 The system will update the user's details in the database and show a confirmation message.
+
 The layout and functionalities vary depending on the user type.
+
 In the case of the image shown, patients have an additional feature for emergency contacts.
 
 - **Refresh**: The user can click the "Refresh" button to refresh the Emergency Contacts table.
@@ -141,14 +157,19 @@ In the case of the image shown, patients have an additional feature for emergenc
 
 
 ### Medical Records
+
 The Medical Records panel can be accessed by clicking on the "Medical Records" button on the dashboard's left side. 
+
 ![medrecs](images/docmedrec.png)
 
 The "Medical Records" feature is a vital part of the healthcare application, providing medical professionals with the tools to handle patient medical records efficiently and effectively. 
+
 Its rich set of functionalities ensures that medical information is easily accessible, up-to-date, and manageable.
 
 This feature enables doctors to access, manage, and manipulate patient medical records.
+
 Only doctors can access all their patients' information and create new records, while patients can only view their own records.
+
 This section of the app provides a detailed view of the medical history of patients, along with functionalities to add, update, delete, search, refresh, and print medical records.
 
 - **Insert**: By clicking the "Insert" button, users can open a new window to insert a new medical record into the system.
@@ -158,20 +179,28 @@ This section of the app provides a detailed view of the medical history of patie
 - **Print**: By clicking the "Print" button, users can open a new window to print the medical records table.
 
 The search bar is provided to facilitate the search through the medical records table. 
+
 Users can input text into the search field, and the table will filter the results based on the input. 
+
 The search function considers multiple attributes such as Record ID, Patient ID, DOB, Record Date, Height, Weight, Blood Type, and Diagnosis.
 
 
 ### Appointments
+
 Users can access the this feature by clicking on the "Appointments" button on the users's dashboard.
+
 ![appointments](images/patientappointment.png)
 
 The "Appointments" feature provides a user-friendly interface for managing appointments, allowing patients and doctors to easily schedule, reschedule, cancel, and view their appointments. 
+
 By consolidating all appointment-related tasks into one panel, the feature offers a convenient and efficient way for users to manage their healthcare scheduling needs.
+
 This feature provides various functionalities including scheduling, rescheduling, canceling, and viewing existing appointments.
+
 A "Refresh Appointments" button has been conveniently included to ensure that the displayed information is always up to date.
 
 #### Scheduling, Rescheduling, or Canceling Appointments
+
 Patients can schedule appointments with doctors or labs using the following options:
 
 - **Schedule Doctor Appointment**: By clicking this button, patients are redirected to a new window where they can fill out the necessary details to schedule an appointment with a doctor.
@@ -192,10 +221,13 @@ The appointments table provides an overview of all existing appointments, displa
 
 
 ### Prescriptions
+
 The Prescriptions panel can be accessed by clicking the "Prescriptions" button on the users's dashboard. 
+
 ![prescriptions](images/docprescrip.png)
 
 The "Prescriptions" feature streamlines the medication prescribing process, providing an efficient way for doctors to order medications for patients and manage existing prescriptions.
+
 Patients and service users can view this information, while only doctors have the ability to write new prescriptions.
 
 Doctors can write a new prescription by filling in the following fields:
@@ -219,7 +251,9 @@ Once the form is filled, the doctor can click the "Order" button to place the pr
 ![tests](images/servicetestresut.png)
 
 The "Test Results" feature enables service users (ie labs) to manage medical test results efficiently, providing an interface to add new results and view existing ones. 
+
 By consolidating all test-related tasks into one panel, it offers a streamlined process for handling this critical aspect of medical care.
+
 Patients can view these results, similar to Medical Records, but only doctors and service users have full CRUD (Create, Read, Update, Delete) access. 
 
 The main panel displays a table containing the test results. Information in the table includes:
