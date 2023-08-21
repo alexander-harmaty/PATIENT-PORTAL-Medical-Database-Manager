@@ -30,8 +30,8 @@ To fulfill the requirements, my team I created a medical database and patient po
 - **Apache Netbeans** primary IDE
 - **Java** backend programming language
 - **FXML** frontend markup language
-- **MaterialFX** enhanced modern UI components library
 - **MS SQL Server** relational database
+- **MaterialFX** enhanced modern UI components library
 
 
 
