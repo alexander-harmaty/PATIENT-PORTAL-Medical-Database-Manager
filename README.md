@@ -6,6 +6,10 @@ Computer Programming and Information Systems Senior Project
 
 ![logo](images/logo.png)
 
+## Table of Contents
+
+
+
 ## Summary
 
 Patient Portal is a comprehensive application designed to manage a medical database for doctors, patients, and support services like test centers and pharmacies.
@@ -14,20 +18,24 @@ The app provides a unique dashboard for each user-type upon login, activating re
 
 Depending on the features enabled by the user-type, users can manipulate records for personal information, medical history, appointments, prescriptions, and test results.
 
-
-
-## Assignment Context
-
 This application was the product of a semester long development as the overall senior capstone project for my CPIS degree. 
 
 The goal was to take a team of five students through the SDLC and develop an original application from scratch, taking everything we've learned from all previous programming classes.
 
-The only requirements were to have an easy to use UI, and to use MS SQL Server as a database. 
+To fulfill the requirements, my team I created a medical database and patient portal. 
 
-To fulfill these requirements, my team I created a medical database and patient portal. 
 
-This project was made using MS SQL Server, and written with Java in Apache Netbeans.
 
+## Technologies
+- **Apache Netbeans** primary IDE
+- **Java** backend programming language
+- **FXML** frontend markup language
+- **MaterialFX** enhanced modern UI components library
+- **MS SQL Server** relational database
+
+
+
+## Setup
 
 
 ## Features
