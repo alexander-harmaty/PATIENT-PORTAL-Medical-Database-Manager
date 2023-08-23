@@ -37,6 +37,38 @@ To fulfill the requirements, my team I created a medical database and patient po
 
 ## Setup
 
+### Prerequisites:
+
+1. **Java Development Kit (JDK)**
+   - Version: 1.8 (Java 8) or higher
+   - [Download Link](https://www.oracle.com/java/technologies/downloads/#java8)
+   
+2. **Apache Maven**
+   - Version: 3.x
+   - [Download Link](https://maven.apache.org/download.cgi)
+   
+3. **Microsoft SQL Server**
+   - Ensure you have a running instance of Microsoft SQL Server to connect to.
+   - The application is configured to use the JDBC driver for Microsoft SQL Server.
+   - [Download Link](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+  
+### Instructions:
+
+1. **Clone the repository**
+
+2. **Compile and build the project**
+
+3. **Microsoft SQL Server Configuration:**
+   - Ensure you have a running instance of Microsoft SQL Server to connect to.
+   - Ensure that these credentials have the necessary permissions on your SQL Server instance.
+   - (default database username is pportal and the password is admin)
+   - Update the DatabaseConnection.java class if you need to modify the connection string
+   - Ensure that your SQL Server allows connections on the specified port.
+   -  nsure that any firewalls or security groups are configured to allow the application to connect.
+  
+4. **Run the application**
+
+
 
 ## Features
 - **Login**: Determines the user type and directs them to the appropriate dashboard.
@@ -315,6 +347,10 @@ All users have access to the refresh button"
 
 ## Status
 
+This project originated as a culmination of academic endeavors during the spring semester of 2022. Developed as the capstone senior project, it represents the integration and application of skills and knowledge acquired over the course of college studies.
 
+The project journeyed through the Software Development Life Cycle (SDLC), from requirements gathering to deployment. Its development phase concluded with a presentation in May 2022 to faculty members, where it not only met but exceeded expectations. Receiving full marks, the project was distinguished as the highest-scoring amongst its peers.
+
+Following the successful demonstration and subsequent accolades, the decision was made to mark the project's status as "completed." This signifies that, as of the presentation in May 2022, no further development or iterations are planned, marking its lifecycle's conclusion.
 
 ## Credits
