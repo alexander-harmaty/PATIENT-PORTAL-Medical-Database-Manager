@@ -8,7 +8,29 @@ Computer Programming and Information Systems Senior Project
 
 ## Table of Contents
 
-
+- [Summary](#summary)
+- [Technologies](#technologies)
+- [Setup](#setup)
+  * [Prerequisites](#prerequisites)
+  * [Instructions](#instructions)
+- [Features](#features)
+- [Users](#users)
+  * [Patients](#patients)
+  * [Doctors](#doctors)
+  * [Service Users (Labs/Pharmacies)](#service-users-labspharmacies)
+- [How it Works](#how-it-works)
+  * [Login and Registration](#login-and-registration)
+    + [Login Process](#login-process)
+    + [Registration Process](#registration-process)
+  * [Home & Tabs](#home--tabs)
+  * [Search](#search)
+  * [Account Info](#account-info)
+  * [Medical Records](#medical-records)
+  * [Appointments](#appointments)
+  * [Prescriptions](#prescriptions)
+  * [Test Results](#test-results)
+- [Status](#status)
+- [Credits](#credits)
 
 ## Summary
 
