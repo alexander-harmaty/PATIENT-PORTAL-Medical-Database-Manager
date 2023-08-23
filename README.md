@@ -50,10 +50,12 @@ To fulfill the requirements, my team I created a medical database and patient po
 
 ## Technologies
 - **Apache Netbeans** primary IDE
-- **Java** backend programming language
-- **FXML** frontend markup language
-- **MS SQL Server** relational database
+- **Java** JDK version 8, backend programming language
+- **JavaFX** Controls, FXML frontend markup language
+- **JFXtras** Controls, Agenda, All
 - **MaterialFX** enhanced modern UI components library
+- **FontAwesomeFX** Controls, font-awesome
+- **Microsoft SQL Server JDBC Driver:** relational database, mssql-jdbc Version 10.2.0.jre17
 
 
 
